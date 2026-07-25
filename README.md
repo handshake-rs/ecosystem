@@ -1,4 +1,8 @@
-# Handshake Rust Ecosystem
+<p align="center">
+  <img src="https://raw.githubusercontent.com/handshake-rs/.github/main/profile/assets/handshake-rs-logo-v1.png" alt="handshake-rs" width="100%">
+</p>
+
+<h1 align="center">Handshake Rust Ecosystem</h1>
 
 This repository coordinates architecture, source auditing, integration testing,
 qualification, and releases across the `handshake-rs` organization. Product
