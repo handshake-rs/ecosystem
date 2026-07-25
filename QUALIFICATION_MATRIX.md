@@ -1,0 +1,44 @@
+# Qualification matrix
+
+Status vocabulary:
+
+- `PASS`: directly demonstrated by retained command/output evidence.
+- `PARTIAL`: a lower-level prerequisite passes, but the demanded integration
+  has not been demonstrated.
+- `NOT RUN`: no qualifying execution yet.
+
+The assignment's minimum functioning integration is not complete:
+
+| # | Required demonstration | Status |
+| ---: | --- | --- |
+| 1 | two Rust full nodes start | NOT RUN |
+| 2 | registry fingerprints match | PARTIAL: canonical generator/unit tests pass |
+| 3 | standard Handshake P2P continues | PARTIAL: exact frame/packet vectors pass |
+| 4 | HIP 76 requester/relay validated exchange | PARTIAL: protocol codec tests pass |
+| 5 | HIP 76 opt-out disables requester | PARTIAL: shared policy generation tests pass |
+| 6 | HIP 77 through distinct proxy/target peers | PARTIAL: requester/target crypto round trip only |
+| 7 | proxy observes no plaintext qname | PARTIAL: HPKE boundary tested, topology not run |
+| 8 | ODoH opt-out disables path | PARTIAL: shared policy types tested |
+| 9 | HNSR inactive until enabled | PARTIAL: role defaults tested |
+| 10 | HNSR route and relayed inner peer | PARTIAL: records/store/envelopes tested |
+| 11 | disabling HNSR withdraws/closes | NOT RUN |
+| 12 | block traverses HNSR inner connection | NOT RUN |
+| 13 | wallet opens/bids/reveals/registers | NOT RUN |
+| 14 | seller creates fixed listing | PARTIAL: canonical seller proof tested |
+| 15 | second market discovers through DENUO_EXT | NOT RUN |
+| 16 | buyer previews/verifies | PARTIAL: proof verification tested |
+| 17 | buyer fulfills atomic swap | NOT RUN |
+| 18 | fulfillment confirms through ordinary relay | NOT RUN |
+| 19 | buyer finalizes name | NOT RUN |
+| 20 | Dutch lowest price cannot execute early | PASS: permanent primitive regression |
+| 21 | MeshMine coherent parent snapshot | NOT RUN against extracted external node |
+| 22 | mobile browser builds | NOT RUN after required changes |
+| 23 | Chromium extension builds | NOT RUN after required changes |
+| 24 | direct authoritative DNS remains first | NOT RUN |
+| 25 | fallbacks remain locally DNSSEC/DANE validated | NOT RUN |
+| 26 | no public recursive resolver contacted | NOT RUN |
+
+Primitive success never upgrades a topology row to `PASS`. Command transcripts,
+ports/process IDs, registry IDs, packet traces with privacy-safe redaction,
+wallet/market transaction IDs, browser build artifacts, and resolver-contact
+evidence must be retained for the final run.
