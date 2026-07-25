@@ -43,7 +43,6 @@ This ledger is deliberately release-blocking.
 
 ## Integration and release
 
-- Resolve pending reference-clone and PR-76/958 commit cells.
 - Run adversarial, restart, corruption, fuzz, browser, and performance suites.
 - Execute all 26 minimum regtest demonstrations in `QUALIFICATION_MATRIX.md`.
 - Produce checksummed binaries/packages, SBOM/license inventory, final commit

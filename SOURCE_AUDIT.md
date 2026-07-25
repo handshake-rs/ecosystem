@@ -48,6 +48,10 @@ recorded in `work/hns-node-rs/docs/extraction-provenance.md`.
 | --- | --- |
 | `references/hsd` | `698e252ebc7b5c1dd0a9587e342fdd153d020ae4` |
 | `references/HIPs` | `06f3226a8bf30b9517fe0f85c951d4a090786cd7` |
-| remaining reference clones | tracked in `REFERENCE_COMMITS.md`; incomplete clones are not treated as authority |
+| `references/denuoweb-hsd` | `698e252ebc7b5c1dd0a9587e342fdd153d020ae4` |
+| `references/hs-client` | `03a243a7fc38e2032950e6bec32d9137d2f74355` |
+| `references/shakedex` | `ab5687b04cb61d2548937b8cee3c056c1c75bbdc` |
+| `references/bob-wallet` | `0432158e5bc55c9d5aa24e0f256e468c44459d15` |
+| `references/handshake-docs` | `b8611a6bd4e9208ec0561f0a5042c6bbc532e3a1` |
 
 Reference repositories are read-only. No working repository has been pushed.
