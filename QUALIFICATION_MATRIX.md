@@ -9,6 +9,12 @@ Status vocabulary:
 
 The assignment's minimum functioning integration is not complete:
 
+The 2026-07-25 consent clarification refines rows 9–11: the HNSR
+requester/client, endpoint/output, and rendezvous roles remain opt-in, while
+opaque relay capacity is default-on with a persistent opt-out. The topology
+test must demonstrate those independent roles rather than a single HNSR
+enable/disable Boolean.
+
 | # | Required demonstration | Status |
 | ---: | --- | --- |
 | 1 | two Rust full nodes start | NOT RUN |
@@ -19,9 +25,9 @@ The assignment's minimum functioning integration is not complete:
 | 6 | HIP 77 through distinct proxy/target peers | PARTIAL: requester/target crypto round trip only |
 | 7 | proxy observes no plaintext qname | PARTIAL: HPKE boundary tested, topology not run |
 | 8 | ODoH opt-out disables path | PARTIAL: shared policy types tested |
-| 9 | HNSR inactive until enabled | PARTIAL: role defaults tested |
+| 9 | HNSR requester/output inactive until enabled; opaque relay independently opt-out | PARTIAL: independent role defaults and migration tested |
 | 10 | HNSR route and relayed inner peer | PARTIAL: records/store/envelopes tested |
-| 11 | disabling HNSR withdraws/closes | NOT RUN |
+| 11 | disabling an HNSR role withdraws/closes only that role's state | NOT RUN |
 | 12 | block traverses HNSR inner connection | NOT RUN |
 | 13 | wallet opens/bids/reveals/registers | NOT RUN |
 | 14 | seller creates fixed listing | PARTIAL: canonical seller proof tested |
@@ -32,10 +38,10 @@ The assignment's minimum functioning integration is not complete:
 | 19 | buyer finalizes name | NOT RUN |
 | 20 | Dutch lowest price cannot execute early | PASS: permanent primitive regression |
 | 21 | MeshMine coherent parent snapshot | NOT RUN against extracted external node |
-| 22 | mobile browser builds | NOT RUN after required changes |
-| 23 | Chromium extension builds | NOT RUN after required changes |
+| 22 | mobile browser builds | PARTIAL: portable Rust release, C/C++ Apple ABI, and source gates pass; Android SDK, Xcode, simulator, and devices not run |
+| 23 | Chromium extension builds | PARTIAL: native Rust, six Node/extension suites, and unpacked MV3 build pass; installed-browser/platform matrix not run |
 | 24 | direct authoritative DNS remains first | NOT RUN |
-| 25 | fallbacks remain locally DNSSEC/DANE validated | NOT RUN |
+| 25 | fallbacks remain locally DNSSEC/DANE validated | PARTIAL: typed policy and gateway/transport regressions pass; full live browser matrix not run |
 | 26 | no public recursive resolver contacted | NOT RUN |
 
 Primitive success never upgrades a topology row to `PASS`. Command transcripts,

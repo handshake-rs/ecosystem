@@ -25,6 +25,25 @@ an official Handshake assignment registry.**
 
 Service masks remain unsigned 64-bit values internally.
 
+## Runtime consent defaults
+
+Wire assignments do not imply consent. The runtime distinguishes opaque relay
+capacity from output-node capacity and persists each role independently:
+
+| Runtime role | Default | Consent boundary |
+| --- | --- | --- |
+| HIP 76 DNS relay/output | Off | Explicit operator opt-in; sees the plaintext qname and originates DNS |
+| HIP 77 ODoH proxy/opaque relay | On | Persistent operator opt-out |
+| HIP 77 ODoH target/output | Off | Explicit operator opt-in |
+| HNSR opaque relay | On | Persistent operator opt-out |
+| HNSR endpoint/output | Off | Explicit operator opt-in |
+| HNSR rendezvous | Off | Explicit operator opt-in |
+| HNSR requester/client | Off | Independent client opt-in |
+
+Requester policy for HIP 76/77 is separate from every provider role. Enabling
+opaque relay capacity never enables an output role, and enabling requester
+traffic never advertises provider capacity.
+
 ## Packet types
 
 | Semantic packet | Value | Maximum payload |

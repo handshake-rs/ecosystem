@@ -11,11 +11,14 @@ Planned release order:
 
 1. `hns-rs` primitive/protocol crates and registry artifacts.
 2. `hns-node-rs`, pinned to the exact compatible `hns-rs` release.
-3. `hns-dane-engine`, pinned to the same compatible protocol release.
+3. `hns-dane-engine`, including `hns-icann-dane`, pinned to the same
+   compatible protocol release.
 4. MeshMine external-node adapter and the mobile/extension native packages.
 
-All Rust packages currently use edition 2024, resolver 3, Rust 1.89, and
-`MIT OR Apache-2.0` where newly created.
+The canonical `hns-rs` and `hns-dane-engine` workspaces target Rust 1.89,
+edition 2024, resolver 3, and `MIT OR Apache-2.0` where newly created.
+Historical consumer workspaces retain their audited toolchain pins until
+their broader shared-engine consolidation is complete.
 
 ## Dependency constraints
 
@@ -24,9 +27,19 @@ All Rust packages currently use edition 2024, resolver 3, Rust 1.89, and
 - `hns-node-rs` may own runtimes and storage but not browser/platform shells.
 - `hns-dane-engine` exposes stable platform ABIs; TypeScript/Kotlin/Swift do not
   reimplement consensus, DNSSEC, DANE, HPKE, or P2P protocols.
+- `hns-icann-dane` owns TLSA service-owner derivation and the typed ICANN
+  DNSSEC-to-browser decision. Both browser clones may adapt network and
+  platform APIs, but must consume that shared decision and preserve it through
+  TLS verification and connection-cache keys.
 - MeshMine calls the external node API/bridge. Its mining database fast paths
   remain local to the mining/node implementations.
 - Dependency cycles are forbidden.
+
+The two browser workspaces currently consume `hns-icann-dane` through an
+explicit coordination-root path dependency. That is permitted for this
+development checkpoint only. A release artifact must replace it with the
+recorded immutable engine revision or the corresponding published crate and
+must reproduce the same lockfile graph.
 
 ## Release evidence required
 

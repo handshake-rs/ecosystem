@@ -37,3 +37,16 @@ HSD fixtures, compatible protocol documentation, existing Rust differential
 tests, and only then architectural inference. Draft behavior follows exact PR
 text/commits, deterministic PR fixtures, independent Rust vectors, the Denuo
 registry, and documented migration rules.
+
+## Local implementation checkpoints
+
+These commits are local coordination checkpoints, not published releases.
+
+| Working repository | Revision | Checkpoint |
+| --- | --- | --- |
+| `work/hns-rs` | `6bd4a23c4ec0f89dace34da58f07809a2a08d522` | canonical protocol, script/mining conformance, and independent relay/output/requester consent |
+| `work/hns-node-rs` | `d97aab205ef640008bd61d1b17ba3ef91ee2ac10` | history-preserving standalone extraction and portable qualification |
+| `work/hns-dane-engine` | `f8e8d7709f93490595e02b0bd48d484ea2421ab8` | shared automatic ICANN DANE policy |
+| `work/hns-dane-browser-mobile` | `75b5108ea9080ca3b1d9c74127e24e30d848b843` | Android/iOS automatic ICANN DANE request boundary |
+| `work/hns-dane-browser-extension` | `3347d7fbd214d771e0571dcb5749990137e4bc77` | Chromium canonical ICANN DANE policy integration |
+| `work/MeshMine` | `c8bd975fc80d0037772160018ecdaf35d5dd7d1d` | standalone Rust node adoption |

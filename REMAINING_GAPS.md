@@ -4,14 +4,11 @@ This ledger is deliberately release-blocking.
 
 ## Canonical protocol repository
 
-- Finish and gate the complete standalone script VM and `OP_TYPE`.
-- Finish/gate shared mining work and dedicated conformance/fuzz packages.
 - Add production-parser fuzz targets and retained corpus commands.
 - Adopt the canonical crates in every consumer without copying protocol logic.
 
 ## Standalone node, wallet, and market
 
-- Complete extraction cleanup and provenance commit.
 - Reconcile any HSRD readiness claims with executable gates.
 - Add/use canonical `hns-rs` dependencies.
 - Demonstrate two-node standard synchronization and all HIP 76/77/78 runtimes.
@@ -32,14 +29,22 @@ This ledger is deliberately release-blocking.
 
 ## DANE engine and clients
 
-- Implement `hns-dane-engine`: DNS wire, DNSSEC, authenticated HNS state,
-  iterative/direct resolution, TLSA/DANE, cache/provenance, HIP transports,
-  HNSR, policy generation, stable C/Android/iOS/native-messaging ABIs.
-- Replace duplicated browser crypto/protocol logic with the shared engine.
-- Remove third-party public recursive fallback for HNS.
-- Implement durable independent requester/provider/transport controls.
+- Replace the current IANA-suffix namespace shortcut with full-host,
+  independently authenticated HNS and ICANN resolution. Classify HNS-only,
+  ICANN-only, convergent, divergent, and neither results; apply a documented
+  precedence policy to divergence and expose the chosen namespace. The IANA
+  snapshot may remain only as a cache/performance hint.
+- Replace the browser clones' remaining historical gateway/runtime copies with
+  the shared engine. TLSA owner derivation and the ICANN trust decision are
+  already shared through `hns-icann-dane`, but this is not yet full engine
+  consolidation.
+- Pin or publish the shared engine dependency for release instead of using the
+  coordination-root path dependency.
 - Complete Android/iOS lifecycle/build/ABI tests and Chromium
   native-host/PAC/proxy/restart/uninstall tests.
+- Run signed-device Android/iOS and installed-browser Chromium matrices for
+  redirects, cross-origin subresources, Service Workers, downloads, WSS,
+  process restarts, and policy revocation.
 
 ## Integration and release
 
