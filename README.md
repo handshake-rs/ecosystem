@@ -26,17 +26,19 @@ workspace, monorepo, umbrella binary, or combined ecosystem package.
 The dependency direction and authority boundaries are recorded in
 [`CROSS_PROJECT_RECONCILIATION.md`](CROSS_PROJECT_RECONCILIATION.md).
 The browser-to-engine and MeshMine-to-node boundaries are implemented at the
-current audited checkpoints. The node's adoption of canonical `hns-rs`
-registry/types is the next identified integration milestone, not a completed
-dependency. Browser consumers currently pin the engine's DANE via ICANN DoH and
-dual-root policy crates; broader resolver/gateway consolidation remains tracked
-work. The crawler may hand an observed remediation queue to the bootstrap
-generator, but neither repository is browser trust authority and no browser
-request depends on crawler availability or generated cached evidence.
+current audited checkpoints. The node now pins canonical `hns-rs` registry
+types and negotiates that exact fingerprint on live peers; HIP runtime
+adoption remains tracked work. Browser consumers currently pin the engine's
+DANE via ICANN DoH and dual-root policy crates; broader resolver/gateway
+consolidation remains tracked work. The crawler may hand an observed
+remediation queue to the bootstrap generator, but neither repository is
+browser trust authority and no browser request depends on crawler availability
+or generated cached evidence.
 
-The consent boundary is role-specific across the ecosystem: opaque P2P relay
-capacity is default-on with a persistent opt-out, while requester/client and
-output-node authority are independent explicit opt-ins.
+The consent boundary is role- and protocol-specific: opaque P2P relay capacity
+is default-on with a persistent opt-out, every output/provider role requires
+an explicit opt-in, HIP-76 requester selection is automatic with a persistent
+opt-out, and HNSR client/endpoint participation remains independently opt-in.
 
 ## Current audit
 

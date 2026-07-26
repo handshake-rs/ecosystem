@@ -18,8 +18,8 @@ enable/disable Boolean.
 | # | Required demonstration | Status |
 | ---: | --- | --- |
 | 1 | two Rust full nodes start | NOT RUN |
-| 2 | registry fingerprints match | PARTIAL: canonical generator/unit tests pass |
-| 3 | standard Handshake P2P continues | PARTIAL: exact frame/packet vectors pass |
+| 2 | registry fingerprints match | PARTIAL: two live local peer managers negotiate the exact pinned canonical registry and mismatch cases isolate Denuo; two full-node processes have not run |
+| 3 | standard Handshake P2P continues | PARTIAL: live peers reach ordinary Ready and exchange `GetAddr` after registry negotiation and after scoped extension failure; full-node synchronization topology has not run |
 | 4 | HIP 76 requester/relay validated exchange | PARTIAL: protocol codec tests pass |
 | 5 | HIP 76 opt-out disables requester | PARTIAL: shared policy generation tests pass |
 | 6 | HIP 77 through distinct proxy/target peers | PARTIAL: requester/target crypto round trip only |

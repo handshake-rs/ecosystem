@@ -147,9 +147,10 @@ URL. MeshMine uses the same boundary for exact
 `handshake-rs/hns-node-rs` revision
 `504d3fed035feb8a637ca09c4e0816b6e1144622`.
 
-`hns-node-rs` must follow the same rule when it adopts `hns-rs`; lockfiles and
-SBOM/provenance evidence must identify the same immutable source revision in
-every consumer.
+`hns-node-rs` now follows the same rule for exact
+`handshake-rs/hns-rs` revision
+`5f56e5d381338314e4d7cf1f9e08da7c76d1cf6f`. Lockfiles and SBOM/provenance
+evidence must identify the same immutable source revision in every consumer.
 
 Do not copy shared crates into browser or node repositories to avoid this
 dependency boundary.

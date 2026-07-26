@@ -1,10 +1,10 @@
 # Next ecosystem milestone audit
 
-Date: 2026-07-25
+Date: 2026-07-26
 
-Status: identified; implementation not started
+Status: completed and pushed; successor milestone audited below
 
-## Recommendation
+## Completed recommendation
 
 The next independently committable milestone after the browser dual-root
 checkpoint is:
@@ -13,10 +13,10 @@ checkpoint is:
 > negotiation in `hns-node-rs`.
 
 This must precede wallet and marketplace construction. The standalone node
-currently has no `hns-rs` dependency, advertises only the ordinary network
-service, and discards decoded unknown packets—including packet `0xf4`. There
-are not yet wallet, wallet-service, market, or node-client crates on which to
-build a correct live marketplace.
+had no `hns-rs` dependency at the start of this milestone, advertised only the
+ordinary network service, and discarded decoded unknown packets—including
+packet `0xf4`. There were not yet wallet, wallet-service, market, or node-client
+crates on which to build a correct live marketplace.
 
 The canonical `hns-rs` implementation already owns the bounded Denuo envelope,
 registry hello/negotiation state, replay tracking, service assignments,
@@ -73,5 +73,98 @@ and full-node requirements and creates the required transport boundary for the
 later `DENUO_EXT` market board. It does not make the two-full-node topology,
 wallet, HIP runtime, market, or 26-point qualification rows pass.
 
-No source file in `hns-rs` or `hns-node-rs` was changed during this audit, and
-no build was run for it.
+The prerequisite is committed on `handshake-rs/hns-rs` main at
+`5f56e5d381338314e4d7cf1f9e08da7c76d1cf6f`. The live-node checkpoint is
+committed on `handshake-rs/hns-node-rs` main at
+`b2c375e37cac6cfa7a09cfa61113de52ac4f93a1`. Every focused requirement above
+is implemented and green at those revisions. Exact retained evidence is in
+`evidence/denuo-live-negotiation-checkpoint-2026-07-26.md`.
+
+This completion does not upgrade the unrun two-full-node, Brontide transport,
+HIP runtime, wallet, marketplace, or 26-point topology rows.
+
+## Successor recommendation
+
+The next independently committable milestone is:
+
+> Add a role-safe HIP-76 live session layer without yet claiming a production
+> DNS output service.
+
+This follows the PDF's ordered `hns-node-rs` workstream after Denuo registry
+negotiation. It should add real bounded `0xf0`/`0xf1` session admission,
+correlation, deadlines, revocation, and diagnostics over already negotiated
+Denuo peers, using an in-process qualification backend. Production recursion
+and acceptance of DNS answers remain a later, separately qualified boundary.
+
+### Consent and trust boundary
+
+- HIP-76's so-called relay sees the plaintext qname and performs DNS egress.
+  It is an output/provider role, not an opaque intermediary, and must remain
+  explicit opt-in.
+- Opaque relay defaults apply to protocols that forward opaque material, such
+  as the ODoH proxy and HNSR relay. They must not silently enable a HIP-76
+  output node.
+- Request generation is a third, independent role. The current canonical
+  HIP-76 policy is `Auto` with persistent opt-out; that eligibility must never
+  advertise the provider bit or perform unsolicited work. Any future change to
+  an opt-in requester default requires an explicit policy decision rather than
+  being smuggled into output-role implementation.
+- An untrusted DNS reply received over Brontide is not authenticated merely
+  because its peer or transport was authenticated. Local DNS message
+  correlation and DNSSEC/TLSA/DANE validation remain mandatory before a
+  higher-level consumer accepts it.
+
+### Canonical prerequisite
+
+In `hns-rs`:
+
+- add direction-aware HIP-76 admission APIs; remote service advertisement
+  authorizes outbound requester selection, while local advertisement and
+  backend readiness authorize inbound requests;
+- keep opaque-relay roles separate from output/provider roles;
+- expose the HIP-76 semantic version and distinguish the 4,096/65,535-byte DNS
+  body limits from the 4,106/65,546-byte complete request/response payload
+  limits; and
+- retain strict query/response codecs and current-generation request tracking.
+
+### Node checkpoint
+
+In `hns-node-rs`:
+
+- add a bounded per-peer HIP-76 session coordinator after ordinary readiness
+  and successful canonical Denuo negotiation;
+- advertise service `0x40000000` only when an explicitly enabled output
+  backend is synchronized, ready, and able to accept work;
+- keep requester eligibility independent from local service advertisement;
+- track peer, request ID, policy generation, DNS transaction/question,
+  absolute deadline, capacity, and disconnect cleanup;
+- never run recursive/output work on the peer reader;
+- use typed backend and response-authenticator boundaries so test responses,
+  untrusted wire responses, and locally authenticated answers cannot be
+  confused;
+- persist policy generation with a checksum, cancel or drain work on
+  revocation, withdraw future advertisements, and reconnect affected peers
+  when a connection's service mask changes; and
+- add qname-free structured HIP-76 status to native diagnostics and RPC.
+
+Malformed, oversized, duplicate, unsolicited, wrong-peer, stale-generation,
+late, or policy-incompatible HIP-76 traffic must disable only HIP-76 for that
+session. Ordinary Handshake and Denuo registry traffic must continue.
+
+### Focused qualification
+
+- Defaults advertise only ordinary network plus Denuo; no HIP-76 provider bit
+  is present and no request is sent without an actual requester operation.
+- Requester eligibility alone never advertises the provider service.
+- Output opt-in with an unready backend advertises nothing.
+- A ready test backend completes a live two-manager correlated request/response
+  after Denuo negotiation.
+- Exact PR fixtures, complete-payload maxima, duplicate/stale IDs, malformed
+  DNS/EDNS, prohibited query types, queue pressure, timeout, disconnect, and
+  policy revocation fail closed.
+- Ordinary ping, headers, blocks, and unknown packets continue after each
+  scoped HIP-76 failure.
+- Native and RPC status agree and contain no qname or raw DNS body.
+
+This milestone does not claim production recursion, a trusted DNS answer,
+signed-service discovery, ODoH, HNSR, wallet, or market completion.

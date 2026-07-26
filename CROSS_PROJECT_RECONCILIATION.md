@@ -90,7 +90,9 @@ opt-in” rule.
 
 ## Current unresolved joins
 
-- The extracted node has not yet adopted released/path `hns-rs` crates.
+- The node consumes the exact canonical `hns-rs` Denuo registry checkpoint,
+  but live HIP sessions, wallets, marketplace messages, and broader shared
+  primitive adoption remain.
 - MeshMine now consumes an exact immutable `handshake-rs/hns-node-rs` revision
   through its bridge, but the coherent parent/job topology has not yet been
   demonstrated end to end.

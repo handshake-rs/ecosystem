@@ -10,8 +10,10 @@ This ledger is deliberately release-blocking.
 ## Standalone node, wallet, and market
 
 - Reconcile any HSRD readiness claims with executable gates.
-- Add/use canonical `hns-rs` dependencies.
-- Demonstrate two-node standard synchronization and all HIP 76/77/78 runtimes.
+- Extend exact-revision canonical `hns-rs` adoption beyond the completed live
+  registry-negotiation boundary; do not copy HIP protocol logic into the node.
+- Demonstrate two-node standard synchronization, live Brontide Denuo
+  negotiation, and all HIP 76/77/78 runtimes.
 - Complete wallet persistence, encryption/signing, recovery, coin selection,
   fee handling, and OPEN/BID/REVEAL/REDEEM/REGISTER/UPDATE/RENEW/TRANSFER/
   FINALIZE/REVOKE flows.

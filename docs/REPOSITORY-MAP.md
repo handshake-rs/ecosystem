@@ -22,13 +22,14 @@ qualification. It must not become a copy of every product repository.
 Current implemented dependency direction:
 
 ```text
+hns-rs ────────────> hns-node-rs
 hns-dane-engine ──> mobile and Chromium browser adapters
 hns-node-rs ──────> MeshMine
 hns-dane-crawler ── observational gap/handoff ──> hns-dane-bootstrap-generator
 ```
 
-`hns-node-rs` adoption of `hns-rs` is the next audited integration milestone;
-it is not represented as an already completed dependency.
+`hns-node-rs` pins the exact canonical `hns-rs` checkpoint that defines its
+live Denuo registry negotiation.
 
 The crawler/generator arrow is an optional operator workflow, not a runtime
 trust dependency. Browsers independently resolve and DNSSEC-validate every

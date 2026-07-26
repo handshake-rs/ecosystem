@@ -45,8 +45,8 @@ branches, not published package or signed-artifact releases.
 
 | Working repository | Revision | Checkpoint |
 | --- | --- | --- |
-| `work/hns-rs` | `8543f317a0ac23e40b6a79ea0cdc957dd01a04d9` | canonical protocol/consent checkpoint plus migrated registry identity and fingerprint note |
-| `work/hns-node-rs` | `504d3fed035feb8a637ca09c4e0816b6e1144622` | history-preserving standalone extraction, portable qualification, and canonical repository metadata |
+| `work/hns-rs` | `5f56e5d381338314e4d7cf1f9e08da7c76d1cf6f` | canonical protocol/consent checkpoint plus exported registry identity, typed negotiation API, exact bounds, and artifact-bound fingerprint |
+| `work/hns-node-rs` | `b2c375e37cac6cfa7a09cfa61113de52ac4f93a1` | history-preserving standalone extraction plus exact-revision live Denuo registry negotiation, API-v12 diagnostics, and portable qualification |
 | `work/hns-dane-engine` | `127b9ad55852df00b4df40826517715048dc3571` | shared automatic ICANN DANE, full-host dual-root namespace policy, and canonical repository metadata |
 | `work/hns-dane-browser-mobile` | `05248d69f52b1963c4b775184fc7b3098fcdcffb` | Android/iOS full-host dual-root boundary, immutable engine pin, canonical migration, deterministic notices, fail-closed platform trace enforcement, and complete CI/localization-lint repair |
 | `work/hns-dane-browser-extension` | `bcf587a6cc06c9c07c1f713eef108d317fcadfc7` | Chromium full-host dual-root boundary plus immutable engine pin and canonical migration |

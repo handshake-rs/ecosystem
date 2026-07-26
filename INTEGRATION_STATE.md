@@ -3,7 +3,7 @@
 Status: **implementation in progress; not release-ready**
 
 Last audited canonical `hns-rs` main:
-`8543f317a0ac23e40b6a79ea0cdc957dd01a04d9`
+`5f56e5d381338314e4d7cf1f9e08da7c76d1cf6f`
 
 Implemented and locally committed there:
 
@@ -15,6 +15,8 @@ Implemented and locally committed there:
 - standard packet assignments/framing and strict core packet codecs;
 - HSD-compatible Urkel proof parsing/verification;
 - Denuo Experimental Registry v1 and collision-scoped negotiation;
+- exported canonical registry identity/limits and typed Hello/Ack APIs bound to
+  the generated TOML/binary/SHA artifacts;
 - draft HIP 76, 77, and 78 protocol/cryptographic records;
 - HSD-compatible script execution/mining coverage; and
 - independent consent for opaque relaying, output-node operation, and
@@ -114,7 +116,8 @@ label. XML and the complete 20-locale resource matrix validate without any
 missing translatable key.
 
 The standalone node canonical main is
-`504d3fed035feb8a637ca09c4e0816b6e1144622`, containing the extraction and
+`b2c375e37cac6cfa7a09cfa61113de52ac4f93a1`, containing live bounded
+negotiation of the exact `hns-rs` Denuo registry plus the extraction and
 qualification implementation checkpoint
 `d97aab205ef640008bd61d1b17ba3ef91ee2ac10` and retaining exact 126-commit
 subtree provenance from MeshMine. MeshMine's canonical main is
@@ -130,6 +133,21 @@ CI counterpart completed successfully for the exact final main in
 [`run 30189487369`](https://github.com/handshake-rs/MeshMine/actions/runs/30189487369).
 Details are recorded in
 `evidence/standalone-node-checkpoint-2026-07-25.md`.
+
+The live registry checkpoint pins
+`hns-p2p-experimental` at exact revision
+`5f56e5d381338314e4d7cf1f9e08da7c76d1cf6f`, advertises only ordinary network
+plus the extension-envelope service, and exchanges the canonical fingerprint
+only after ordinary peer readiness. Exact `0xf4` dispatch is bounded before
+generic unknown-packet decoding; mismatch, replay, timeout, malformed input,
+and repeated oversize traffic disable only Denuo while ordinary P2P remains
+Ready. API-v12 status and native-sync diagnostics expose the same canonical
+identity, service mask, live phases, admitted/received/agreement totals, and
+fixed rejection taxonomy. Thirty-eight P2P tests, eight RPC tests, 117
+no-default-feature node target tests, focused post-hardening status tests,
+warning-denied Clippy, formatting, and diff checks pass. Two-full-node and live
+Brontide negotiation matrices remain unrun. Exact evidence is in
+`evidence/denuo-live-negotiation-checkpoint-2026-07-26.md`.
 
 The DANE operator/data-plane auxiliaries are also migrated independently:
 

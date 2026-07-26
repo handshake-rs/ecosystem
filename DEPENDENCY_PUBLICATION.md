@@ -50,8 +50,10 @@ Both browser workspaces consume `hns-icann-dane` and
 `hns-namespace-resolution` from exact
 `handshake-rs/hns-dane-engine` revision
 `127b9ad55852df00b4df40826517715048dc3571`, allowlist only that Git source in
-`cargo-deny`, and record the full source revision in their lockfiles. MeshMine
-similarly consumes exact `handshake-rs/hns-node-rs` revision
+`cargo-deny`, and record the full source revision in their lockfiles.
+`hns-node-rs` consumes exact `handshake-rs/hns-rs` revision
+`5f56e5d381338314e4d7cf1f9e08da7c76d1cf6f`, and MeshMine consumes exact
+`handshake-rs/hns-node-rs` revision
 `504d3fed035feb8a637ca09c4e0816b6e1144622`. Published compatible crate
 versions may replace those pins later, but an unpinned branch, sibling path,
 embedded copy, or silent fallback is forbidden.
