@@ -4,42 +4,81 @@
 
 <h1 align="center">Handshake Rust Ecosystem</h1>
 
-This repository coordinates architecture, source auditing, integration testing,
-qualification, and releases across the `handshake-rs` organization. Product
-source code remains in independently versioned repositories.
+This repository coordinates architecture, source auditing, integration
+testing, qualification, migration, and releases across the
+[`handshake-rs`](https://github.com/handshake-rs) organization. Product source
+code remains in independently versioned repositories. This is not a Rust
+workspace, monorepo, umbrella binary, or combined ecosystem package.
 
-## Planned work repositories
+## Canonical repositories
 
-- `hns-rs`
-- `hns-node-rs`
-- `MeshMine`
-- `hns-dane-engine`
-- `hns-dane-browser-mobile`
-- `hns-dane-browser-extension`
+| Repository | Boundary |
+| --- | --- |
+| [`hns-rs`](https://github.com/handshake-rs/hns-rs) | Canonical runtime-independent protocol, consensus, wire, proof, registry, and consent types |
+| [`hns-node-rs`](https://github.com/handshake-rs/hns-node-rs) | Standalone node runtime, storage, P2P, synchronization, mining, and RPC |
+| [`MeshMine`](https://github.com/handshake-rs/MeshMine) | Mining overlay and application consuming the external node boundary |
+| [`hns-dane-engine`](https://github.com/handshake-rs/hns-dane-engine) | Canonical DNSSEC, TLSA/DANE, resolver, transport, and dual-root browser-policy crates |
+| [`hns-dane-browser-mobile`](https://github.com/handshake-rs/hns-dane-browser-mobile) | Android/iOS lifecycle, UI, proxy integration, packaging, and shared-policy adapters |
+| [`hns-dane-browser-extension`](https://github.com/handshake-rs/hns-dane-browser-extension) | Chromium extension, PAC/proxy integration, native host, packaging, and shared-policy adapters |
 
-Repository transfers and creation are intentionally deferred until ownership,
-licensing, history, and release boundaries have been reviewed.
+The dependency direction and authority boundaries are recorded in
+[`CROSS_PROJECT_RECONCILIATION.md`](CROSS_PROJECT_RECONCILIATION.md).
+The browser-to-engine and MeshMine-to-node boundaries are implemented at the
+current audited checkpoints. The node's adoption of canonical `hns-rs`
+registry/types is the next identified integration milestone, not a completed
+dependency. Browser consumers currently pin the engine's DANE via ICANN DoH and
+dual-root policy crates; broader resolver/gateway consolidation remains tracked
+work.
 
-## Workspace model
+The consent boundary is role-specific across the ecosystem: opaque P2P relay
+capacity is default-on with a persistent opt-out, while requester/client and
+output-node authority are independent explicit opt-ins.
 
-The reproducible local workspace separates maintained work from external
-reference material:
+## Current audit
+
+The ecosystem is still implementation-in-progress and is not release-ready as
+a whole. Start with:
+
+- [`INTEGRATION_STATE.md`](INTEGRATION_STATE.md) — committed checkpoints and
+  demonstrated gates;
+- [`REFERENCE_COMMITS.md`](REFERENCE_COMMITS.md) — exact local and upstream
+  revisions;
+- [`QUALIFICATION_MATRIX.md`](QUALIFICATION_MATRIX.md) — the required 26-point
+  integration demonstration;
+- [`REMAINING_GAPS.md`](REMAINING_GAPS.md) — explicit release blockers;
+- [`DEPENDENCY_PUBLICATION.md`](DEPENDENCY_PUBLICATION.md) — crate and
+  cross-repository publication policy;
+- [`GITHUB_ORGANIZATION_MIGRATION.md`](GITHUB_ORGANIZATION_MIGRATION.md) —
+  repository ownership and migration record; and
+- [`evidence/`](evidence/) — retained checkpoint command evidence.
+
+Primitive tests and portable builds do not make unrun full-node, wallet,
+marketplace, signed-device, installed-browser, performance, or mainnet rows
+pass.
+
+Some repositories do not yet have a finalized top-level license. Public source
+availability alone does not grant additional rights; consult each repository's
+license and notices before reuse.
+
+## Reproducible workspace model
+
+The audit workspace separates maintained work from external reference material:
 
 ```text
 hns-rust-ecosystem-YYYY-MM-DD/
-├── work/
-├── references/
-├── source-audit/
-└── integration/
+├── work/          # one independent Git repository per maintained project
+├── references/    # pinned read-only upstream implementations
+├── source-audit/  # supplied artifact inventory and provenance
+└── integration/   # this repository's coordination/evidence source
 ```
 
-External implementations are references, not implicitly maintained forks. Each
-reference must eventually be pinned by upstream URL and commit, with its license
-and audit purpose recorded.
+External implementations are references, not implicitly maintained forks.
+Each reference is pinned by upstream URL and commit, with its license and audit
+purpose recorded.
 
-See:
+Canonical source governance lives in `handshake-rs`. Denuo Web LLC may
+separately publish and sign browser or MeshMine artifacts; signing identity
+does not change the canonical source repository or review boundary.
 
-- [Repository map](docs/REPOSITORY-MAP.md)
-- [Reference policy](references/README.md)
-- [Source-audit workspace](source-audit/README.md)
-- [Integration workspace](integration/README.md)
+> This is an independent project and does not claim to be the official
+> Handshake organization.
