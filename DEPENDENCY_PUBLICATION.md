@@ -49,7 +49,7 @@ their broader shared-engine consolidation is complete.
 Both browser workspaces consume `hns-icann-dane`,
 `hns-namespace-resolution`, and `hns-resolution-policy` from exact
 `handshake-rs/hns-dane-engine` revision
-`127b9ad55852df00b4df40826517715048dc3571`, allowlist only that Git source in
+`2850ac1f50e361e2772e18f2e5ecbd7e77085afb`, allowlist only that Git source in
 their source policies and `cargo-deny`, and record the full source revision in
 their lockfiles.
 `hns-node-rs` consumes exact `handshake-rs/hns-rs` revision

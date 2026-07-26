@@ -49,11 +49,17 @@ The initial ecosystem map was published at
 update is `c71f13d9e3851799e913d5dfdd91048398f473ce`. The organization profile,
 including the observational crawler, operator generator, and
 source-versus-release boundary, was corrected at
-`534ffce5093363fd722de4de3d8cba9df47e7efd`. Its current ecosystem map is
-published through
+`534ffce5093363fd722de4de3d8cba9df47e7efd`. A later intermediate
+organization-profile checkpoint is
 `864357ba3badd2b5baf45a0791f9d7d4781da021`, adding the exact
 `hns-rs`-to-node relationship, live HIP-76 trust/consent boundary, shared
-mobile/Chromium whole-request policy, and the durable-policy limitation.
+mobile/Chromium whole-request policy, and the durable-policy limitation. The
+latest organization profile is
+`e6739420fa5152d0907bfe9690318a4b6d740079`; it also records the exact
+`hns-rs`-to-engine dependency and standalone engine boundary. The preceding
+ecosystem checkpoint is `ec8251aebe7e4107482045cba58fa3c80538df76`;
+current product and coordination revisions are maintained in
+`REFERENCE_COMMITS.md`.
 
 ## Transfer, import, and fork policy
 
@@ -144,13 +150,15 @@ at a transferred old path because doing so destroys GitHub's redirect.
 
 The browser migrations replaced coordination-root path dependencies with exact
 `handshake-rs/hns-dane-engine` revision
-`127b9ad55852df00b4df40826517715048dc3571`. Both now consume
+`2850ac1f50e361e2772e18f2e5ecbd7e77085afb`. Both now consume
 `hns-icann-dane`, `hns-namespace-resolution`, and `hns-resolution-policy`;
 their lockfiles record the complete Git source and their exact-source policies
 and `cargo-deny` configurations allowlist only the canonical engine URL.
-Standalone offline clone gates pass at mobile
-`cde7d6d9d15859ebd5c4169433e72a7e434b2c1b` and Chromium
-`13dbb87240807dda0fb6f72c7aaaa7a33d036e70`. MeshMine uses the same boundary
+The functional standalone-browser gates remain recorded at the preceding
+policy checkpoints. The pin-only follow-up passes exact-source, lock, notice,
+and focused product gates at mobile
+`7b826166a2bac3af8d2384dbff9875a992f252ca` and Chromium
+`1fde772006dde8b36c963b3ecc09cc011c542155`. MeshMine uses the same boundary
 for exact
 `handshake-rs/hns-node-rs` revision
 `504d3fed035feb8a637ca09c4e0816b6e1144622`.
@@ -159,6 +167,9 @@ for exact
 `handshake-rs/hns-rs` revision
 `dde2da81f29df935f043978a6d517c1d60ceff31`. Lockfiles and SBOM/provenance
 evidence must identify the same immutable source revision in every consumer.
+The complete engine graph now follows that rule too: nine direct and two
+transitive `hns-rs` packages resolve from the one exact canonical revision,
+with no coordination-workspace sibling dependency.
 
 Do not copy shared crates into browser or node repositories to avoid this
 dependency boundary.

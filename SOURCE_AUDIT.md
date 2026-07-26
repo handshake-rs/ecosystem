@@ -79,9 +79,9 @@ projects are neither pushed nor rewritten.
 | --- | --- |
 | `work/hns-rs` | `dde2da81f29df935f043978a6d517c1d60ceff31` |
 | `work/hns-node-rs` | `0e69319d11ca98d788466ed5028d8d897685e9f1` |
-| `work/hns-dane-engine` | `127b9ad55852df00b4df40826517715048dc3571` |
-| `work/hns-dane-browser-mobile` | `cde7d6d9d15859ebd5c4169433e72a7e434b2c1b` |
-| `work/hns-dane-browser-extension` | `13dbb87240807dda0fb6f72c7aaaa7a33d036e70` |
+| `work/hns-dane-engine` | `2850ac1f50e361e2772e18f2e5ecbd7e77085afb` |
+| `work/hns-dane-browser-mobile` | `7b826166a2bac3af8d2384dbff9875a992f252ca` |
+| `work/hns-dane-browser-extension` | `1fde772006dde8b36c963b3ecc09cc011c542155` |
 | `work/hns-dane-crawler` | `74546c7e6b0b8a764525a77177a88dc333bf64d8` |
 | `work/hns-dane-bootstrap-generator` | `f745f122243e5304e6a7ea0e111d47c61d22005e` |
 | `work/MeshMine` | `bc9cc70de22e455545d44453cec0d6f07ebeaabe` |

@@ -30,11 +30,13 @@ current audited checkpoints. The node now pins canonical `hns-rs` registry
 and HIP-76 types, negotiates that exact fingerprint on live peers, and carries
 a bounded role-safe HIP-76 requester/output session. Production recursion,
 DNSSEC validation, and DANE remain separate resolver boundaries and are not
-claimed by the node transport. Browser consumers currently pin the engine's
-DANE via ICANN DoH, complete-host dual-root, and direct-first typed transport
-policy crates. Their existing relay controls map only requester consent;
-browser provider roles stay disabled. Broader resolver/gateway consolidation
-remains tracked work. The crawler may hand an observed
+claimed by the node transport. The engine's complete Cargo graph now pins the
+canonical `hns-rs` protocol packages and builds without a sibling workspace.
+Browser consumers pin the qualified engine's DANE via ICANN DoH,
+complete-host dual-root, and direct-first typed transport policy crates. Their
+existing relay controls map only requester consent; browser provider roles
+stay disabled. Broader resolver/gateway consolidation remains tracked work.
+The crawler may hand an observed
 remediation queue to the bootstrap generator, but neither repository is
 browser trust authority and no browser request depends on crawler availability
 or generated cached evidence.
@@ -63,8 +65,8 @@ a whole. Start with:
 - [`GITHUB_ORGANIZATION_MIGRATION.md`](GITHUB_ORGANIZATION_MIGRATION.md) —
   repository ownership and migration record;
 - [`NEXT_MILESTONE_AUDIT.md`](NEXT_MILESTONE_AUDIT.md) — completed node
-  checkpoints, the completed first browser-consolidation slice, and the next
-  standalone-engine milestone; and
+  checkpoints, completed browser-policy and standalone-engine slices, and the
+  next runtime/observability consolidation milestone; and
 - [`evidence/`](evidence/) — retained checkpoint command evidence.
 
 Primitive tests and portable builds do not make unrun full-node, wallet,

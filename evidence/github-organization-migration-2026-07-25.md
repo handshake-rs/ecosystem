@@ -7,7 +7,11 @@ Target organization: `handshake-rs`
 Status: canonical product source migration complete; organization administration
 and signed-release configuration remain open
 
-## Canonical product mains
+## Canonical product mains at the migration checkpoint
+
+These revisions record the 2026-07-25 migration checkpoint and its immediate
+follow-up; they are not a moving current-main table. Current audited product
+revisions are maintained in `../REFERENCE_COMMITS.md`.
 
 | Repository | Canonical `main` | Migration |
 | --- | --- | --- |
@@ -25,7 +29,7 @@ Each local product `main` was clean and equal to its matching remote-tracking
 project, no unreviewed mirror push was used, and no canonical product was
 created as a GitHub fork.
 
-## Hosted current-main verification
+## Hosted migration-checkpoint verification
 
 - Chromium extension/native-host main `bcf587a6cc06c9c07c1f713eef108d317fcadfc7`:
   [`CI run 30187225880`](https://github.com/handshake-rs/hns-dane-browser-extension/actions/runs/30187225880)
@@ -63,11 +67,13 @@ explicit release blocker.
   `c71f13d9e3851799e913d5dfdd91048398f473ce` adds the transferred crawler and
   bootstrap generator, their optional handoff, current product checkpoints,
   and their remaining release gates.
-- Organization profile current main
+- Organization profile migration checkpoint
   `864357ba3badd2b5baf45a0791f9d7d4781da021` publishes the expanded map and
   authority model from `handshake-rs/.github`, including the crawler-to-
   generator operator workflow, exact protocol-to-node relationship, HIP-76
   trust/consent boundary, shared browser policy, and verified ecosystem links.
+  Later profile and product checkpoints are intentionally recorded in
+  `../REFERENCE_COMMITS.md` rather than rewriting this dated evidence.
 
 The existing ecosystem ruleset reported that `main` normally must not contain
 merge commits. GitHub accepted the user-authorized push through the caller's

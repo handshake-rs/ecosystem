@@ -41,10 +41,10 @@ This ledger is deliberately release-blocking.
   through `hns-namespace-resolution`; canonical direct-first transport and
   requester/provider admission are shared through `hns-resolution-policy`.
   This is not yet full engine consolidation.
-- Make the complete engine dependency graph standalone by replacing its
-  coordination-workspace `../../../hns-rs` sibling paths with reviewed
-  immutable dependencies, then prove a shallow clean clone before adopting
-  deeper engine crates in either browser.
+- The complete engine graph is now standalone at exact canonical `hns-rs`
+  revision `dde2da81f29df935f043978a6d517c1d60ceff31`; retain its exact-source,
+  shallow-clone, cargo-deny, and offline gates while adopting deeper engine
+  crates in each browser.
 - Resolve same-name browser/engine package collisions with explicit adapter
   boundaries, and remove the Chromium repository's retained `android/`,
   `ios/`, `android-ffi`, and `ios-ffi` trees after their history/evidence is

@@ -2,7 +2,7 @@
 
 Date: 2026-07-26
 
-Status: two milestones completed and pushed; next bounded audit identified
+Status: successive milestones completed and pushed; next bounded audit identified
 
 ## Completed recommendation
 
@@ -85,7 +85,7 @@ HIP runtime, wallet, marketplace, or 26-point topology rows.
 
 ## Completed successor
 
-The next independently committable milestone is:
+The next milestone identified at that checkpoint was:
 
 > Add a role-safe HIP-76 live session layer without yet claiming a production
 > DNS output service.
@@ -214,20 +214,22 @@ The next independently committable milestone is:
 > Make the complete `hns-dane-engine` dependency graph build from a shallow
 > standalone clone before migrating another browser trust boundary.
 
-Seven deeper engine crates currently reach `hns-rs` through
-coordination-workspace `../../../hns-rs` paths. That prevents independent
+At that checkpoint, seven deeper engine crates reached `hns-rs` through
+coordination-workspace `../../../hns-rs` paths. That prevented independent
 consumption of the full facade, resolver, transport, P2P transport, loopback
-proxy, and testkit. The milestone should:
+proxy, and testkit. Its acceptance scope was:
 
 - choose and enforce one reviewed immutable `handshake-rs/hns-rs` source
   revision for every engine dependency, with no branch, tag, sibling path, or
   duplicated protocol implementation;
-- regenerate and audit all locks, source-policy tests, `cargo-deny` rules,
-  SBOM/license inputs, and notices affected by the new graph;
+- regenerate and audit all locks, source-policy tests, and `cargo-deny` rules;
+  determine the SBOM/license/notice impact and retain any missing release
+  artifact generator as an explicit blocker;
 - prove `cargo metadata --locked`, formatting, warning-denied all-target
   Clippy, both workspace test forms, all-feature release build, ABI smoke, and
-  relevant fuzz smoke from a shallow engine clone with no coordination
-  siblings;
+  every implemented fuzz smoke from a shallow engine clone with no
+  coordination siblings, without treating the current lack of executable fuzz
+  targets as a pass;
 - document the package-name collisions and OpenSSL-versus-ring/rustls adapter
   boundary that consumers must address next; and
 - leave both browser pins unchanged until the standalone engine commit is
@@ -239,3 +241,62 @@ repository's historical mobile-only trees. The IANA suffix list must not
 return as classification authority, and bogus DNSSEC must remain distinct from
 authenticated absence throughout. This work does not itself upgrade
 installed-browser or signed-device qualification.
+
+## Completed standalone-engine successor
+
+The standalone-engine milestone is committed and pushed on
+`handshake-rs/hns-dane-engine` main at
+`2850ac1f50e361e2772e18f2e5ecbd7e77085afb`. All 24 declarations in the seven
+consumer manifests now inherit one reviewed canonical `hns-rs` source at
+`dde2da81f29df935f043978a6d517c1d60ceff31`. The lockfile binds the nine
+direct packages and two transitive packages to that same revision.
+
+Twelve source-policy tests, the exact source verifier, `cargo-deny`, 144
+workspace tests in every required form, 20 doc-test targets, warning-denied
+all-target/all-feature Clippy, the all-feature release build, formatting, and
+the C11 ABI header smoke pass. The complete gate also passes offline after one
+locked fetch in a depth-one clone with an isolated Cargo home and no sibling
+`hns-rs` tree. The new hosted workflow was added but was not polled or counted
+as passing. Exact evidence is in
+`evidence/hns-dane-engine-standalone-checkpoint-2026-07-26.md`.
+
+The three browser contracts were then advanced without runtime-source changes
+to that qualified revision on mobile
+`7b826166a2bac3af8d2384dbff9875a992f252ca` and Chromium
+`1fde772006dde8b36c963b3ecc09cc011c542155`. Their exact-source policies,
+lockfiles, deterministic notices, focused Rust gates, and Chromium extension
+gate pass.
+
+## Next bounded browser consolidation milestone
+
+The next independently committable browser milestone is:
+
+> Resolve the browser/engine Cargo name collisions, then adopt the canonical
+> engine authority lifecycle and observability contracts in both products.
+
+The slice should start with the duplicated browser-local
+`hns-browser-runtime` name. Rename the platform-owned socket, storage, proxy,
+download, WebSocket, and lifecycle adapter without changing its persisted
+settings or public ABI. Both products can then consume canonical
+`hns-browser-runtime` and `hns-browser-observability` from the same exact
+engine revision.
+
+Acceptance requires:
+
+- one documented owner for the authority state graph, runtime session,
+  generation/event admission, evidence-state taxonomy, and status schema;
+- stale session, generation, event, redirect, subresource, Service Worker,
+  download, and WebSocket work rejected before origin connection;
+- platform adapters retaining sockets, secure storage, process lifecycle, UI,
+  native messaging, and packaging without reimplementing trust decisions;
+- exact Git/lock/source-policy and deterministic notice checks remaining green
+  in both standalone browser clones;
+- no persisted-setting, Android/iOS ABI, native-message, PAC, or proxy policy
+  reinterpretation; and
+- the Chromium repository's inactive mobile trees retained only until their
+  history/evidence comparison is complete, then removed in a separate
+  reviewable trim.
+
+This slice does not yet migrate the complete live resolver/DNSSEC/DANE/proxy
+implementation and does not upgrade installed-browser or signed-device
+qualification.

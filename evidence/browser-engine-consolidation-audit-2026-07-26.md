@@ -228,3 +228,21 @@ extension with `CARGO_NET_OFFLINE=true`.
 This checkpoint proves the first consolidation slice only. It does not upgrade
 signed-device, installed-browser, HIP 77/78 runtime, complete engine
 consolidation, or release-readiness rows.
+
+## Standalone-engine follow-up
+
+The clean-checkout blocker described above was removed in the independently
+qualified engine commit
+`2850ac1f50e361e2772e18f2e5ecbd7e77085afb`. The complete engine graph now
+pins its nine direct and two transitive `hns-rs` packages to canonical revision
+`dde2da81f29df935f043978a6d517c1d60ceff31`, and the full gate passes from a
+depth-one isolated checkout with no sibling repository.
+
+The three already-adopted browser contracts advanced to that engine revision
+without runtime-source changes at mobile
+`7b826166a2bac3af8d2384dbff9875a992f252ca` and Chromium
+`1fde772006dde8b36c963b3ecc09cc011c542155`. Their exact-source, lock, notice,
+and focused product gates pass. The remaining sequence now begins at
+package-name/adapter separation and canonical runtime/observability adoption;
+the installed-browser, signed-device, HIP 77/78, full live
+resolver/DNSSEC/DANE migration, and release-readiness rows remain open.

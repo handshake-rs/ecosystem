@@ -43,14 +43,17 @@ browser checkpoint is committed and pushed across its shared and
 platform-specific boundaries:
 
 - shared DANE engine:
-  `127b9ad55852df00b4df40826517715048dc3571` (policy implementation
-  `ab3543ba9b80d23f9fe5a25abf44abd7496a41a2`);
+  `2850ac1f50e361e2772e18f2e5ecbd7e77085afb` (policy implementation
+  `ab3543ba9b80d23f9fe5a25abf44abd7496a41a2`, standalone dependency
+  checkpoint `2850ac1f50e361e2772e18f2e5ecbd7e77085afb`);
 - Android/iOS browser:
-  `cde7d6d9d15859ebd5c4169433e72a7e434b2c1b` (dual-root adapter implementation
-  `f25d5fd6dff33a46d5ebd11f73f7f99ec2e3b0b0`); and
+  `7b826166a2bac3af8d2384dbff9875a992f252ca` (dual-root adapter implementation
+  `f25d5fd6dff33a46d5ebd11f73f7f99ec2e3b0b0`, qualified-engine pin
+  follow-up `7b826166a2bac3af8d2384dbff9875a992f252ca`); and
 - Chromium extension/native host:
-  `13dbb87240807dda0fb6f72c7aaaa7a33d036e70` (dual-root adapter implementation
-  `124190f01c587bce2792a456cb40aab7d0247dfe`).
+  `1fde772006dde8b36c963b3ecc09cc011c542155` (dual-root adapter implementation
+  `124190f01c587bce2792a456cb40aab7d0247dfe`, qualified-engine pin
+  follow-up `1fde772006dde8b36c963b3ecc09cc011c542155`).
 
 Every canonical DNS host is resolved independently through complete HNS and
 ICANN plans. The shared contract reports HNS-only, ICANN-only, convergent,
@@ -91,6 +94,23 @@ desktop notice. Separate non-local clones pass locked offline metadata and the
 same 201/233 focused tests without a coordination-workspace dependency.
 Exact evidence is recorded in
 `evidence/browser-engine-consolidation-audit-2026-07-26.md`.
+
+The complete engine graph is now independently cloneable. Its seven deeper
+consumer manifests inherit 24 declarations for nine direct canonical
+`hns-rs` packages at
+`dde2da81f29df935f043978a6d517c1d60ceff31`; the lockfile adds only
+`hns-mining` and `hns-transaction` to that exact Git closure. Twelve
+source-policy tests, `cargo-deny`, all required 144-test workspace forms, 20
+doc-test targets, strict Clippy, release build, formatting, and the C11 header
+smoke pass locally and after one verified fetch in a depth-one isolated clone
+with no sibling `hns-rs`. Exact evidence is in
+`evidence/hns-dane-engine-standalone-checkpoint-2026-07-26.md`.
+
+The two pin-only consumer commits change no runtime source. Mobile passed its
+seven source-policy tests, notice/digest checks, locked metadata for both
+manifests, and 302 focused offline tests. Chromium passed nine source-policy
+tests, the supply-chain and notice gates, 233 focused Rust tests, strict
+Clippy/formatting, and its lint, 15-test, and extension-build gate.
 
 Installed-browser, Android SDK/device, Xcode/iOS device, and rebuilt
 store-screenshot matrices remain release gates. The initial complete-host
