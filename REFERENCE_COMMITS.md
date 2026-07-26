@@ -47,9 +47,9 @@ branches, not published package or signed-artifact releases.
 | --- | --- | --- |
 | `work/hns-rs` | `dde2da81f29df935f043978a6d517c1d60ceff31` | canonical protocol/consent checkpoint plus direction-safe HIP-76 requester/output policy APIs, exported registry identity, typed negotiation, exact bounds, and artifact-bound fingerprint |
 | `work/hns-node-rs` | `0e69319d11ca98d788466ed5028d8d897685e9f1` | history-preserving standalone extraction plus exact-revision live Denuo negotiation, bounded role-safe HIP-76 sessions, API-v13 qname-free diagnostics, and portable qualification |
-| `work/hns-dane-engine` | `127b9ad55852df00b4df40826517715048dc3571` | shared automatic ICANN DANE, full-host dual-root namespace policy, and canonical repository metadata |
-| `work/hns-dane-browser-mobile` | `05248d69f52b1963c4b775184fc7b3098fcdcffb` | Android/iOS full-host dual-root boundary, immutable engine pin, canonical migration, deterministic notices, fail-closed platform trace enforcement, and complete CI/localization-lint repair |
-| `work/hns-dane-browser-extension` | `bcf587a6cc06c9c07c1f713eef108d317fcadfc7` | Chromium full-host dual-root boundary plus immutable engine pin and canonical migration |
+| `work/hns-dane-engine` | `127b9ad55852df00b4df40826517715048dc3571` | shared automatic ICANN DANE, full-host dual-root namespace policy, typed transport/role admission, and canonical repository metadata |
+| `work/hns-dane-browser-mobile` | `cde7d6d9d15859ebd5c4169433e72a7e434b2c1b` | Android/iOS full-host dual-root boundary, immutable three-contract engine pin, canonical direct-first requester policy, deterministic notices, fail-closed platform trace enforcement, and complete portable qualification |
+| `work/hns-dane-browser-extension` | `13dbb87240807dda0fb6f72c7aaaa7a33d036e70` | Chromium full-host dual-root boundary, immutable three-contract engine pin, canonical direct-first requester policy, fail-closed native policy persistence, and desktop notice/install qualification |
 | `work/hns-dane-crawler` | `74546c7e6b0b8a764525a77177a88dc333bf64d8` | canonical migration, observational authority boundary, and date-stable qualification |
 | `work/hns-dane-bootstrap-generator` | `f745f122243e5304e6a7ea0e111d47c61d22005e` | canonical migration, release-source URL update, reproducible npm lock repair, and publisher-boundary documentation |
 | `work/MeshMine` | `bc9cc70de22e455545d44453cec0d6f07ebeaabe` | standalone Rust node adoption, immutable canonical Git dependency, portable CI correction, and consolidated warning-denied HSRD cleanup |

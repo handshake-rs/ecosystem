@@ -17,7 +17,7 @@ workspace, monorepo, umbrella binary, or combined ecosystem package.
 | [`hns-rs`](https://github.com/handshake-rs/hns-rs) | Canonical runtime-independent protocol, consensus, wire, proof, registry, and consent types |
 | [`hns-node-rs`](https://github.com/handshake-rs/hns-node-rs) | Standalone node runtime, storage, P2P, synchronization, mining, and RPC |
 | [`MeshMine`](https://github.com/handshake-rs/MeshMine) | Mining overlay and application consuming the external node boundary |
-| [`hns-dane-engine`](https://github.com/handshake-rs/hns-dane-engine) | Canonical DNSSEC, TLSA/DANE, resolver, transport, and dual-root browser-policy crates |
+| [`hns-dane-engine`](https://github.com/handshake-rs/hns-dane-engine) | Canonical DNSSEC, TLSA/DANE, resolver, transport, dual-root, and typed transport/role-policy crates |
 | [`hns-dane-browser-mobile`](https://github.com/handshake-rs/hns-dane-browser-mobile) | Android/iOS lifecycle, UI, proxy integration, packaging, and shared-policy adapters |
 | [`hns-dane-browser-extension`](https://github.com/handshake-rs/hns-dane-browser-extension) | Chromium extension, PAC/proxy integration, native host, packaging, and shared-policy adapters |
 | [`hns-dane-crawler`](https://github.com/handshake-rs/hns-dane-crawler) | Observational HNS topology, stored DNS evidence, DANE-readiness queues, static reports, and optional live-directory output |
@@ -31,8 +31,10 @@ and HIP-76 types, negotiates that exact fingerprint on live peers, and carries
 a bounded role-safe HIP-76 requester/output session. Production recursion,
 DNSSEC validation, and DANE remain separate resolver boundaries and are not
 claimed by the node transport. Browser consumers currently pin the engine's
-DANE via ICANN DoH and dual-root policy crates; broader resolver/gateway
-consolidation remains tracked work. The crawler may hand an observed
+DANE via ICANN DoH, complete-host dual-root, and direct-first typed transport
+policy crates. Their existing relay controls map only requester consent;
+browser provider roles stay disabled. Broader resolver/gateway consolidation
+remains tracked work. The crawler may hand an observed
 remediation queue to the bootstrap generator, but neither repository is
 browser trust authority and no browser request depends on crawler availability
 or generated cached evidence.
@@ -61,7 +63,8 @@ a whole. Start with:
 - [`GITHUB_ORGANIZATION_MIGRATION.md`](GITHUB_ORGANIZATION_MIGRATION.md) —
   repository ownership and migration record;
 - [`NEXT_MILESTONE_AUDIT.md`](NEXT_MILESTONE_AUDIT.md) — completed node
-  checkpoints and the next bounded browser-consolidation audit; and
+  checkpoints, the completed first browser-consolidation slice, and the next
+  standalone-engine milestone; and
 - [`evidence/`](evidence/) — retained checkpoint command evidence.
 
 Primitive tests and portable builds do not make unrun full-node, wallet,

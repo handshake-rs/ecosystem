@@ -117,6 +117,24 @@ Connection pools, TLS sessions, verifiers, resumption, Alt-Svc, and cached
 decisions are partitioned by a stable namespace-decision fingerprint and the
 runtime/policy generation.
 
+## Transport and role admission
+
+Both browser products consume the same exact-pinned
+`hns-resolution-policy` contract. Their stable relay preference controls
+requester consumption only:
+
+- off maps to `DnsRelayRequesterPolicy::Disabled`;
+- on maps to `DnsRelayRequesterPolicy::Auto`;
+- direct authoritative UDP and TCP precede authenticated authoritative DoH;
+- an admitted P2P DNS relay remains a later, untrusted transport whose answer
+  requires local DNSSEC, TLSA, and DANE validation; and
+- unsupported ODoH, HNSR, provider, output, market, and legacy roles are
+  explicitly disabled by both browser adapters.
+
+The generic ecosystem policy independently keeps opaque forwarding
+default-on/opt-out and every plaintext or external output role explicit
+opt-in. No browser requester setting grants provider or output consent.
+
 The dual-result cache key is derived from the actual query-, policy-,
 selected-root-, and whole-plan-bound decision. It additionally includes the
 canonical HNS network, resolver/trust configuration, authority/binding

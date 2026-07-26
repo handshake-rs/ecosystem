@@ -144,9 +144,14 @@ at a transferred old path because doing so destroys GitHub's redirect.
 
 The browser migrations replaced coordination-root path dependencies with exact
 `handshake-rs/hns-dane-engine` revision
-`127b9ad55852df00b4df40826517715048dc3571`. Both lockfiles record the complete
-Git source and both `cargo-deny` policies allowlist only the canonical engine
-URL. MeshMine uses the same boundary for exact
+`127b9ad55852df00b4df40826517715048dc3571`. Both now consume
+`hns-icann-dane`, `hns-namespace-resolution`, and `hns-resolution-policy`;
+their lockfiles record the complete Git source and their exact-source policies
+and `cargo-deny` configurations allowlist only the canonical engine URL.
+Standalone offline clone gates pass at mobile
+`cde7d6d9d15859ebd5c4169433e72a7e434b2c1b` and Chromium
+`13dbb87240807dda0fb6f72c7aaaa7a33d036e70`. MeshMine uses the same boundary
+for exact
 `handshake-rs/hns-node-rs` revision
 `504d3fed035feb8a637ca09c4e0816b6e1144622`.
 

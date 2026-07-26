@@ -191,32 +191,51 @@ assert that provenance end to end. Exact limitations and retained commands are
 in
 `evidence/hip76-live-session-checkpoint-2026-07-26.md`.
 
-## Next bounded ecosystem audit
+## Completed browser audit and next bounded milestone
 
-The next independently committable audit is:
+The browser shared-engine inventory and first implementation slice are complete
+at:
 
-> Inventory and plan the remaining browser shared-engine consolidation from
-> clean checkouts, without changing the already-qualified dual-root policy.
+- mobile `cde7d6d9d15859ebd5c4169433e72a7e434b2c1b`;
+- Chromium `13dbb87240807dda0fb6f72c7aaaa7a33d036e70`; and
+- unchanged shared engine `127b9ad55852df00b4df40826517715048dc3571`.
 
-Automatic ICANN DANE and complete-host HNS/ICANN comparison already live in the
-shared engine and are pinned by both mobile and Chromium consumers. The
-remaining browser shells still contain historical gateway/runtime copies.
-Before moving code, the audit should:
+Both products now derive relay-requester admission from the shared
+`hns-resolution-policy` transport plan without changing platform persistence
+or ABI meaning. Requester off maps to `Disabled`, requester on maps to `Auto`,
+all browser provider roles remain off, and live HNS resolution is direct
+authoritative UDP/TCP before authenticated authoritative DoH and any admitted
+relay. Separate offline clean-clone gates passed. The exact duplicate map,
+staged migration, commands, and limitations are retained in
+`evidence/browser-engine-consolidation-audit-2026-07-26.md`.
 
-- map every remaining copied gateway/runtime crate and its active mobile,
-  extension, or shared-engine consumers;
-- identify the one canonical owner for DNS wire, DNSSEC, DANE, namespace
-  selection, proxying, and platform-only adapters;
-- prove from clean locked checkouts that both products consume the same exact
-  engine revision and whole-request decision for navigation, redirects,
-  subresources, Service Workers, downloads, and WebSockets;
-- classify each copy as removable, platform-specific, or retained only for
-  historical migration compatibility; and
-- produce a staged, independently reversible consolidation sequence with
-  platform gates and no path dependency on this coordination workspace.
+The next independently committable milestone is:
 
-The IANA suffix list must not return as classification authority during this
-work. The audit is complete only when it leaves an exact file/dependency map,
-fresh-checkout command evidence, and a minimal first consolidation
-implementation slice with explicit acceptance gates. It does not itself
-upgrade installed-browser or signed-device qualification.
+> Make the complete `hns-dane-engine` dependency graph build from a shallow
+> standalone clone before migrating another browser trust boundary.
+
+Seven deeper engine crates currently reach `hns-rs` through
+coordination-workspace `../../../hns-rs` paths. That prevents independent
+consumption of the full facade, resolver, transport, P2P transport, loopback
+proxy, and testkit. The milestone should:
+
+- choose and enforce one reviewed immutable `handshake-rs/hns-rs` source
+  revision for every engine dependency, with no branch, tag, sibling path, or
+  duplicated protocol implementation;
+- regenerate and audit all locks, source-policy tests, `cargo-deny` rules,
+  SBOM/license inputs, and notices affected by the new graph;
+- prove `cargo metadata --locked`, formatting, warning-denied all-target
+  Clippy, both workspace test forms, all-feature release build, ABI smoke, and
+  relevant fuzz smoke from a shallow engine clone with no coordination
+  siblings;
+- document the package-name collisions and OpenSSL-versus-ring/rustls adapter
+  boundary that consumers must address next; and
+- leave both browser pins unchanged until the standalone engine commit is
+  qualified and independently revertible.
+
+After that gate, the next browser slice can rename local adapters, adopt one
+deeper canonical engine boundary at a time, and finally remove the Chromium
+repository's historical mobile-only trees. The IANA suffix list must not
+return as classification authority, and bogus DNSSEC must remain distinct from
+authenticated absence throughout. This work does not itself upgrade
+installed-browser or signed-device qualification.

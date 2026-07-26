@@ -46,11 +46,12 @@ their broader shared-engine consolidation is complete.
   artifacts.
 - Dependency cycles are forbidden.
 
-Both browser workspaces consume `hns-icann-dane` and
-`hns-namespace-resolution` from exact
+Both browser workspaces consume `hns-icann-dane`,
+`hns-namespace-resolution`, and `hns-resolution-policy` from exact
 `handshake-rs/hns-dane-engine` revision
 `127b9ad55852df00b4df40826517715048dc3571`, allowlist only that Git source in
-`cargo-deny`, and record the full source revision in their lockfiles.
+their source policies and `cargo-deny`, and record the full source revision in
+their lockfiles.
 `hns-node-rs` consumes exact `handshake-rs/hns-rs` revision
 `dde2da81f29df935f043978a6d517c1d60ceff31`, and MeshMine consumes exact
 `handshake-rs/hns-node-rs` revision

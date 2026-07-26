@@ -80,8 +80,8 @@ projects are neither pushed nor rewritten.
 | `work/hns-rs` | `dde2da81f29df935f043978a6d517c1d60ceff31` |
 | `work/hns-node-rs` | `0e69319d11ca98d788466ed5028d8d897685e9f1` |
 | `work/hns-dane-engine` | `127b9ad55852df00b4df40826517715048dc3571` |
-| `work/hns-dane-browser-mobile` | `05248d69f52b1963c4b775184fc7b3098fcdcffb` |
-| `work/hns-dane-browser-extension` | `bcf587a6cc06c9c07c1f713eef108d317fcadfc7` |
+| `work/hns-dane-browser-mobile` | `cde7d6d9d15859ebd5c4169433e72a7e434b2c1b` |
+| `work/hns-dane-browser-extension` | `13dbb87240807dda0fb6f72c7aaaa7a33d036e70` |
 | `work/hns-dane-crawler` | `74546c7e6b0b8a764525a77177a88dc333bf64d8` |
 | `work/hns-dane-bootstrap-generator` | `f745f122243e5304e6a7ea0e111d47c61d22005e` |
 | `work/MeshMine` | `bc9cc70de22e455545d44453cec0d6f07ebeaabe` |

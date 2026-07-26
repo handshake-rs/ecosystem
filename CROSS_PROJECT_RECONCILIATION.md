@@ -8,10 +8,10 @@ hns-rs ── exact immutable protocol pin ──> hns-node-rs ──> MeshMine 
 hns-dane-engine
   ├──> hns-icann-dane
   ├──> hns-namespace-resolution
-  │       ├──> Android/iOS browser adapters
-  │       └──> Chromium browser adapter
-  ├──> mobile shell
-  └──> Chromium extension
+  ├──> hns-resolution-policy
+  └──> three shared contracts consumed by:
+          ├──> Android/iOS browser adapter
+          └──> Chromium extension/native host
 
 hns-dane-crawler ── optional observed remediation handoff
                   └──> hns-dane-bootstrap-generator ──> operator-published DNS
@@ -32,6 +32,7 @@ either browser shell.
 | DNS wire, DNSSEC, authenticated resolution, TLSA/DANE, policy ABI | `hns-dane-engine` |
 | ICANN TLSA-owner derivation and browser trust decision | `hns-dane-engine/crates/hns-icann-dane` |
 | full-host HNS/ICANN comparison and namespace precedence | `hns-dane-engine/crates/hns-namespace-resolution` |
+| direct-first transport admission and independent requester/provider roles | `hns-dane-engine/crates/hns-resolution-policy` |
 | Android/iOS lifecycle and UI | mobile clone |
 | native messaging, PAC/proxy lifecycle, Chromium UI | extension clone |
 | namespace topology snapshots and observational DANE-readiness reports | `hns-dane-crawler` |
@@ -61,6 +62,10 @@ opt-in” rule.
   output capacity; durable node-policy reload remains a separate gate.
 - Direct authoritative DNS remains first. Relay transport never confers
   validation authority; DNSSEC, TLSA, and DANE are local.
+- Browser relay controls are requester controls only: off maps to `Disabled`
+  and on maps to direct-first `Auto`. Browser adapters explicitly disable
+  opaque-relay, output-node, target, market, and HNSR provider roles rather
+  than inheriting generic provider defaults.
 - ODoH-required never falls back to a plaintext relay.
 - HNSR requester and output roles remain inactive until independently enabled.
   An enabled opaque relay transports an inner Brontide session and never
@@ -100,12 +105,14 @@ opt-in” rule.
   through its bridge, but the coherent parent/job topology has not yet been
   demonstrated end to end.
 - Both browser adapters now submit independently resolved complete HNS and
-  ICANN plans to the shared full-host policy and expose the selected namespace.
-  Installed-browser and signed-device matrices still need to prove those
-  semantics through platform network processes, restarts, redirects, workers,
-  downloads, and WebSockets.
+  ICANN plans to the shared full-host policy, consume the same typed transport
+  policy, and expose the selected namespace. Installed-browser and
+  signed-device matrices still need to prove those semantics through platform
+  network processes, restarts, redirects, workers, downloads, and WebSockets.
 - Browser adapters still contain historical gateway/runtime code around the
-  canonical ICANN policy crate; broader shared-engine consolidation remains.
+  three canonical standalone policy contracts. The deeper engine graph must
+  first replace coordination-workspace `hns-rs` paths with immutable
+  dependencies; broader shared-engine consolidation remains.
 - Crawler production snapshots/live-directory operation and a deployed,
   hash-pinned bootstrap appliance still need independent release
   qualification; their unit/build gates do not upgrade browser trust rows.

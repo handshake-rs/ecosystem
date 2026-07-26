@@ -38,17 +38,18 @@ Assignments, payload bounds, meanings, and consent defaults did not change.
 Uncommitted work is not counted as a checkpoint until it passes its
 repository-specific gate.
 
-The automatic ICANN DANE and full-host dual-root browser checkpoint is
-committed and pushed across its shared and platform-specific boundaries:
+The automatic ICANN DANE, full-host dual-root, and typed transport-policy
+browser checkpoint is committed and pushed across its shared and
+platform-specific boundaries:
 
 - shared DANE engine:
   `127b9ad55852df00b4df40826517715048dc3571` (policy implementation
   `ab3543ba9b80d23f9fe5a25abf44abd7496a41a2`);
 - Android/iOS browser:
-  `05248d69f52b1963c4b775184fc7b3098fcdcffb` (adapter implementation
+  `cde7d6d9d15859ebd5c4169433e72a7e434b2c1b` (dual-root adapter implementation
   `f25d5fd6dff33a46d5ebd11f73f7f99ec2e3b0b0`); and
 - Chromium extension/native host:
-  `bcf587a6cc06c9c07c1f713eef108d317fcadfc7` (adapter implementation
+  `13dbb87240807dda0fb6f72c7aaaa7a33d036e70` (dual-root adapter implementation
   `124190f01c587bce2792a456cb40aab7d0247dfe`).
 
 Every canonical DNS host is resolved independently through complete HNS and
@@ -69,12 +70,31 @@ decision reaches navigation, redirects, subresources, supported Service Worker
 requests, downloads, and WebSockets through each browser's whole-request Rust
 proxy boundary.
 
-The browser consumers pin the exact canonical engine Git revision, and their
-lockfiles and `cargo-deny` policies bind that source. Post-pin gates passed 469
-mobile Rust tests plus Apple ABI/header/export checks, and 481 focused Chromium
-Rust tests plus all six extension suites and the MV3 build. Installed-browser,
-Android SDK/device, Xcode/iOS device, and rebuilt store-screenshot matrices
-remain release gates. Exact evidence is recorded in
+The browser consumers pin the exact canonical engine Git revision. Their
+lockfiles, exact-source policy tests, notices, and `cargo-deny` policies now
+bind three shared contracts: `hns-icann-dane`,
+`hns-namespace-resolution`, and `hns-resolution-policy`. Both products map the
+existing relay-requester control explicitly (`false` to `Disabled`, `true` to
+direct-first `Auto`) while disabling every unsupported ODoH, HNSR, provider,
+market, output, and legacy role. Direct authoritative UDP/TCP therefore
+precedes authenticated authoritative DoH and any admitted P2P relay. The
+generic shared policy retains independent default-on/opt-out opaque relaying
+and explicit-opt-in output-node operation; browser requester consent does not
+grant either provider role.
+
+Current full-workspace tests, warning-denied all-target Clippy, and formatting
+pass in both products. Mobile additionally passes seven exact-source policy
+tests and 201 focused runtime/resolver tests. Chromium passes 23
+source-policy/path tests, its supply-chain gate, 233 focused
+runtime/resolver/native-host tests, and all 15 extension tests with a packaged
+desktop notice. Separate non-local clones pass locked offline metadata and the
+same 201/233 focused tests without a coordination-workspace dependency.
+Exact evidence is recorded in
+`evidence/browser-engine-consolidation-audit-2026-07-26.md`.
+
+Installed-browser, Android SDK/device, Xcode/iOS device, and rebuilt
+store-screenshot matrices remain release gates. The initial complete-host
+checkpoint remains in
 `evidence/browser-dual-root-checkpoint-2026-07-25.md`; the earlier automatic
 ICANN milestone remains historical evidence in
 `evidence/browser-icann-dane-checkpoint-2026-07-25.md`.
@@ -83,7 +103,8 @@ The mobile migration follow-up at
 `cb6a5a31c4477fa32bc4d11bd2d935cb3e0c8aa4` reconciles its supply-chain
 script with that exact engine pin. Nineteen policy/classifier tests and the
 real supply-chain gate pass while alternate URLs, packages, locations,
-unpinned sources, and mismatched revisions remain rejected. Final main
+unpinned sources, and mismatched revisions remain rejected. The later
+migration head
 `90df79f445f90633cc46a64ce5475bde9879a58b` deterministically regenerates the
 third-party notice asset for the same two allowlisted Git crates and their
 canonical MIT/Apache license files; notice `--check` passes.
@@ -99,7 +120,8 @@ Runtime/platform boundaries, supply-chain policy, deterministic notices,
 version consistency, 20 policy/routing tests, formatting, and focused Rust
 namespace-plan tests pass locally. The immediate full-scope hosted run passed
 Rust and iOS plus Android assembly/unit tests before Android lint exposed the
-two untranslated legacy diagnostics. Final current-main
+two untranslated legacy diagnostics. The final hosted run for that
+pre-transport-policy head,
 [`CI run 30191799526`](https://github.com/handshake-rs/hns-dane-browser-mobile/actions/runs/30191799526)
 then passed its correctly selected Android assembly, unit, lint, and
 release-bundle gates. Installed and signed-device qualification remains a
@@ -109,7 +131,7 @@ also invalidates queued navigation whenever immutable proxy policy changes,
 repairs the standalone snapshot tool lock for the transitive exact engine
 revision, and extends the narrow Git-source policy regression suite. The
 updated tool lock passes locked offline check, Clippy, tests, `cargo-deny`, and
-deterministic-notice regeneration. Final current main
+deterministic-notice regeneration. The pre-transport-policy migration head
 `05248d69f52b1963c4b775184fc7b3098fcdcffb` marks both the intentionally
 technical unsupported-legacy-HNS-DoH protocol label and its matching
 remediation text non-translatable, consistent with the adjacent legacy source

@@ -38,8 +38,17 @@ This ledger is deliberately release-blocking.
 - Replace the browser clones' remaining historical gateway/runtime copies with
   the shared engine. TLSA owner derivation and the ICANN trust decision are
   shared through `hns-icann-dane`, and full-host root comparison is shared
-  through `hns-namespace-resolution`, but this is not yet full engine
-  consolidation.
+  through `hns-namespace-resolution`; canonical direct-first transport and
+  requester/provider admission are shared through `hns-resolution-policy`.
+  This is not yet full engine consolidation.
+- Make the complete engine dependency graph standalone by replacing its
+  coordination-workspace `../../../hns-rs` sibling paths with reviewed
+  immutable dependencies, then prove a shallow clean clone before adopting
+  deeper engine crates in either browser.
+- Resolve same-name browser/engine package collisions with explicit adapter
+  boundaries, and remove the Chromium repository's retained `android/`,
+  `ios/`, `android-ffi`, and `ios-ffi` trees after their history/evidence is
+  retained in the canonical mobile repository.
 - Exercise the implemented explicit-pin, sticky-binding, divergent-root,
   persistence-failure, cache-partition, and selected-namespace UI semantics in
   installed Chromium and signed Android/iOS network processes.
