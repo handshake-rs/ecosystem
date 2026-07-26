@@ -44,18 +44,21 @@ recorded in `work/hns-node-rs/docs/extraction-provenance.md`.
 
 ## Repositories added during organization migration
 
-Two additional user-transferred products entered scope after the initial
-assignment inventory. They were cloned only from their canonical transferred
-destinations and retained their histories:
+Two additional user-transferred products and the organization profile entered
+scope after the initial assignment inventory. The products were cloned only
+from their canonical transferred destinations and retained their histories:
 
 | Path | Canonical source | Starting revision |
 | --- | --- | --- |
 | `work/hns-dane-crawler` | `https://github.com/handshake-rs/hns-dane-crawler.git` | `b1428945ab187eee4c498a6f24e0977b995d596a` |
 | `work/hns-dane-bootstrap-generator` | `https://github.com/handshake-rs/hns-dane-bootstrap-generator.git` | `f8ad194609708ba0fdec1f5884ad6871557cdec2` |
+| `work/handshake-rs-profile` | `https://github.com/handshake-rs/.github.git` | `534ffce5093363fd722de4de3d8cba9df47e7efd` |
 
 These auxiliary tools remain independent repositories. Their addition does
 not rewrite the original supplied-artifact inventory or promote crawler data
-or generated instructions to browser trust authority.
+or generated instructions to browser trust authority. The `.github`
+repository contains organization profile/governance material, not a combined
+product package.
 
 ## Read-only authority
 
@@ -70,7 +73,7 @@ or generated instructions to browser trust authority.
 | `references/handshake-docs` | `b8611a6bd4e9208ec0561f0a5042c6bbc532e3a1` |
 
 Reference repositories remain read-only. Canonical working checkpoints are
-being published only to their matching `handshake-rs` repositories; reference
+published only to their matching `handshake-rs` repositories; reference
 projects are neither pushed nor rewritten.
 
 ## Current local checkpoints
@@ -79,12 +82,13 @@ projects are neither pushed nor rewritten.
 | --- | --- |
 | `work/hns-rs` | `dde2da81f29df935f043978a6d517c1d60ceff31` |
 | `work/hns-node-rs` | `0e69319d11ca98d788466ed5028d8d897685e9f1` |
-| `work/hns-dane-engine` | `2850ac1f50e361e2772e18f2e5ecbd7e77085afb` |
-| `work/hns-dane-browser-mobile` | `7b826166a2bac3af8d2384dbff9875a992f252ca` |
-| `work/hns-dane-browser-extension` | `1fde772006dde8b36c963b3ecc09cc011c542155` |
+| `work/hns-dane-engine` | `a03648ec85a115362ebc2ab24bb9ea0f1be127fc` |
+| `work/hns-dane-browser-mobile` | `140bb77e7b3b363747225b03de705d849768f122` |
+| `work/hns-dane-browser-extension` | `d6071a5cf969cc5b796b034d460d46ffbfb0a521` |
 | `work/hns-dane-crawler` | `74546c7e6b0b8a764525a77177a88dc333bf64d8` |
 | `work/hns-dane-bootstrap-generator` | `f745f122243e5304e6a7ea0e111d47c61d22005e` |
 | `work/MeshMine` | `bc9cc70de22e455545d44453cec0d6f07ebeaabe` |
+| `work/handshake-rs-profile` | `fcbeae9874c4eaa62ce5fc52d4cbc499dae94be1` |
 
 Starting revisions above remain unchanged provenance facts. The standalone
 node additionally records exact 126-commit subtree equivalence and its

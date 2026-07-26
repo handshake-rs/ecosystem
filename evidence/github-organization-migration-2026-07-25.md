@@ -113,11 +113,16 @@ node, engine, primitives, and extension are independent repositories rather
 than organization forks.
 
 `hns-node-rs` retains the history-filtered `hsrd/` lineage as provenance; that
-lineage was not merged back into MeshMine. The extension retains historical
-mobile source directories for traceable ancestry, but its active Cargo
-workspace, workflows, README, package metadata, and manifest define only the
-Chromium/native-host release. Current Android/iOS authority lives in the one
-canonical `hns-dane-browser-mobile` repository.
+lineage was not merged back into MeshMine. At this dated migration checkpoint,
+the extension retained historical mobile source directories for traceable
+ancestry while its active Cargo workspace, workflows, README, package
+metadata, and manifest defined only the Chromium/native-host release. The
+later reviewed Chromium-only trim removed those inactive paths after comparing
+all 255 of them with the canonical mobile repository; that successor is
+recorded in
+[`browser-authority-runtime-checkpoint-2026-07-26.md`](browser-authority-runtime-checkpoint-2026-07-26.md).
+Current Android/iOS authority lives in the one canonical
+`hns-dane-browser-mobile` repository.
 
 `handshake-rs/ecosystem` coordinates audits, policies, compatibility, and
 evidence. It is not a Rust monorepo, umbrella package, or replacement for any

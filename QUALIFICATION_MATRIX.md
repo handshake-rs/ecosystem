@@ -10,14 +10,18 @@ Status vocabulary:
 The assignment's minimum functioning integration is not complete:
 
 The 2026-07-25 consent clarification separates transport from output
-authority: opaque P2P relay capacity is default-on with persistent opt-out,
+authority: opaque P2P relay capacity is default-on with an opt-out policy,
 while any endpoint/output role remains explicit opt-in. HIP-76 requester
 eligibility defaults to `Auto` with an independent opt-out and never
 advertises provider capacity. Live revocation is tested, while durable
-operator-policy reload is still open. HNSR client, endpoint/output, and
-rendezvous are distinct roles and currently remain independently opt-in. The
-topology test must demonstrate these independent roles rather than a single
-enable/disable Boolean.
+operator-policy persistence and reload are still open. HNSR client,
+endpoint/output, and rendezvous are distinct roles and currently remain
+independently opt-in. The topology test must demonstrate these independent
+roles rather than a single enable/disable Boolean.
+The browser products intentionally use a stricter product default: new and
+persisted profiles keep requester relay off until explicit opt-in, mapping
+false to `Disabled` and true to direct-first `Auto`, while P2P services and all
+provider/output roles remain zero.
 
 | # | Required demonstration | Status |
 | ---: | --- | --- |
@@ -42,10 +46,10 @@ enable/disable Boolean.
 | 19 | buyer finalizes name | NOT RUN |
 | 20 | Dutch lowest price cannot execute early | PASS: permanent primitive regression |
 | 21 | MeshMine coherent parent snapshot | PARTIAL: immutable external-node bridge and eight focused snapshot/binding tests pass; live node topology not run |
-| 22 | mobile browser builds | PARTIAL: the full locked Rust workspace, strict Clippy, source/notices policy, 201 clean-clone focused tests, and the earlier C/C++ Apple ABI gate pass; Android SDK/NDK, Xcode, simulator, signed devices, and rebuilt store screenshots remain unrun |
-| 23 | Chromium extension builds | PARTIAL: the full locked Rust workspace, strict Clippy, source/notices policy, 233 clean-clone focused tests, 15 Node tests, and the unpacked MV3 build pass; installed-browser/platform matrix not run |
-| 24 | direct authoritative DNS remains first | PARTIAL: both live resolver implementations now use and test direct UDP/TCP before authenticated authoritative DoH and policy-admitted relay; packet-capture/full-process topology not run |
-| 25 | fallbacks remain locally DNSSEC/DANE validated | PARTIAL: both browser adapters test authenticated absence/proven-insecure WebPKI, secure TLSA enforcement, bogus/indeterminate failure, and immutable selected-root plans; full live browser matrix not run |
+| 22 | mobile browser builds | PARTIAL: the full five-contract Rust workspace passes 56 transport, 154 mobile-runtime, 149 loopback-proxy, 11 Android-FFI, and 12 iOS-FFI tests plus strict Clippy, formatting, seven exact-source checks, notices, runtime boundaries, and the Apple ABI gate; Android SDK/NDK, Xcode, simulator, signed devices, and rebuilt store screenshots remain unrun |
+| 23 | Chromium extension builds | PARTIAL: the authority checkpoint passes 173 Chromium-runtime, 17 native-host, 154 loopback-proxy, and 56 transport tests; final Chromium-only main passes its consolidated 707-test Rust workspace gate, strict Clippy, source/notices/boundary/version policy, a locked release native-host build, and 16 Node extension tests with the unpacked MV3 build; installed-browser/platform matrix remains unrun |
+| 24 | direct authoritative DNS remains first | PARTIAL: both five-contract adapters use and test direct UDP/TCP before authenticated authoritative DoH and a policy-admitted relay, with requester consent separate from every disabled browser provider/output role; packet-capture/full-process topology remains unrun |
+| 25 | fallbacks remain locally DNSSEC/DANE validated | PARTIAL: the shared engine and both adapters test secure TLSA enforcement, authenticated denial/proven-insecure WebPKI, bogus/indeterminate fail-closed state, transport-aware TLSA owner derivation, and immutable complete-host root plans through canonical authority/status publication; the full live installed-browser/device matrix remains unrun |
 | 26 | no public recursive resolver contacted | NOT RUN |
 
 Primitive success never upgrades a topology row to `PASS`. Command transcripts,

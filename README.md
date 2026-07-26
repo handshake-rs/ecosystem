@@ -10,18 +10,22 @@ testing, qualification, migration, and releases across the
 code remains in independently versioned repositories. This is not a Rust
 workspace, monorepo, umbrella binary, or combined ecosystem package.
 
-## Canonical repositories
+## Canonical product repositories
 
 | Repository | Boundary |
 | --- | --- |
 | [`hns-rs`](https://github.com/handshake-rs/hns-rs) | Canonical runtime-independent protocol, consensus, wire, proof, registry, and consent types |
 | [`hns-node-rs`](https://github.com/handshake-rs/hns-node-rs) | Standalone node runtime, storage, P2P, synchronization, mining, and RPC |
 | [`MeshMine`](https://github.com/handshake-rs/MeshMine) | Mining overlay and application consuming the external node boundary |
-| [`hns-dane-engine`](https://github.com/handshake-rs/hns-dane-engine) | Canonical DNSSEC, TLSA/DANE, resolver, transport, dual-root, and typed transport/role-policy crates |
-| [`hns-dane-browser-mobile`](https://github.com/handshake-rs/hns-dane-browser-mobile) | Android/iOS lifecycle, UI, proxy integration, packaging, and shared-policy adapters |
-| [`hns-dane-browser-extension`](https://github.com/handshake-rs/hns-dane-browser-extension) | Chromium extension, PAC/proxy integration, native host, packaging, and shared-policy adapters |
+| [`hns-dane-engine`](https://github.com/handshake-rs/hns-dane-engine) | Canonical DNSSEC, TLSA/DANE, resolver, transport, dual-root and transport/role policy, browser authority lifecycle, and security observability crates |
+| [`hns-dane-browser-mobile`](https://github.com/handshake-rs/hns-dane-browser-mobile) | Android/iOS lifecycle, UI, proxy integration, packaging, and canonical-engine adapters |
+| [`hns-dane-browser-extension`](https://github.com/handshake-rs/hns-dane-browser-extension) | Chromium extension, PAC/proxy integration, native host, packaging, and canonical-engine adapters |
 | [`hns-dane-crawler`](https://github.com/handshake-rs/hns-dane-crawler) | Observational HNS topology, stored DNS evidence, DANE-readiness queues, static reports, and optional live-directory output |
 | [`hns-dane-bootstrap-generator`](https://github.com/handshake-rs/hns-dane-bootstrap-generator) | Operator-facing HNS/ICANN delegation, DNSSEC/DS, authoritative DoH, and TLSA record/deployment generation |
+
+These eight products, this `ecosystem` coordination repository, and the
+organization `.github` profile are ten independent repositories. None is a
+monorepo subpackage or a fork of another ecosystem product.
 
 The dependency direction and authority boundaries are recorded in
 [`CROSS_PROJECT_RECONCILIATION.md`](CROSS_PROJECT_RECONCILIATION.md).
@@ -33,20 +37,27 @@ DNSSEC validation, and DANE remain separate resolver boundaries and are not
 claimed by the node transport. The engine's complete Cargo graph now pins the
 canonical `hns-rs` protocol packages and builds without a sibling workspace.
 Browser consumers pin the qualified engine's DANE via ICANN DoH,
-complete-host dual-root, and direct-first typed transport policy crates. Their
-existing relay controls map only requester consent; browser provider roles
-stay disabled. Broader resolver/gateway consolidation remains tracked work.
+complete-host dual-root, direct-first typed transport policy, canonical
+authority lifecycle, and schema-v2 observability crates. Their existing relay
+controls map only requester consent; browser provider roles stay disabled.
+Platform proxy/resolver migration and installed-device qualification remain
+tracked work.
 The crawler may hand an observed
 remediation queue to the bootstrap generator, but neither repository is
 browser trust authority and no browser request depends on crawler availability
 or generated cached evidence.
 
-The consent boundary is role- and protocol-specific: opaque P2P relay capacity
-is default-on with a persistent opt-out, every output role—including a
-HIP-76 provider—requires an explicit opt-in, HIP-76 requester selection is
-automatic with an independent opt-out, and HNSR client/endpoint participation
-remains independently opt-in. Live requester revocation is tested; durable
-node-policy reload remains tracked work.
+In the generic node/runtime policy, the consent boundary is role- and
+protocol-specific: opaque P2P relay capacity is default-on with an opt-out
+policy, every output role—including a HIP-76 provider—requires an explicit
+opt-in, HIP-76 requester selection is automatic with an independent opt-out,
+and HNSR client/endpoint participation remains independently opt-in. Live
+requester revocation is tested; durable node-policy persistence and reload
+remain tracked work.
+The browser products intentionally apply a stricter product default: a new or
+persisted requester switch starts false/off and requires explicit user opt-in.
+False maps to `Disabled`, true maps to direct-first `Auto`; the browser P2P
+`VERSION` service mask and every provider/output role remain zero.
 
 ## Current audit
 
@@ -65,8 +76,9 @@ a whole. Start with:
 - [`GITHUB_ORGANIZATION_MIGRATION.md`](GITHUB_ORGANIZATION_MIGRATION.md) —
   repository ownership and migration record;
 - [`NEXT_MILESTONE_AUDIT.md`](NEXT_MILESTONE_AUDIT.md) — completed node
-  checkpoints, completed browser-policy and standalone-engine slices, and the
-  next runtime/observability consolidation milestone; and
+  checkpoints, completed browser-policy, standalone-engine, and canonical
+  authority/observability slices, plus the next bounded consolidation
+  milestone; and
 - [`evidence/`](evidence/) — retained checkpoint command evidence.
 
 Primitive tests and portable builds do not make unrun full-node, wallet,

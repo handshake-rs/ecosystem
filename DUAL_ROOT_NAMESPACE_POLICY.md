@@ -6,13 +6,16 @@ browser/device qualification remains in progress
 ## Authority boundary
 
 The IANA root-zone snapshot is never authoritative for browser namespace
-selection. It may be used only to order or prewarm lookups. Every valid
-DNS-named browser origin is independently resolved through HNS and ICANN before
-one root is selected.
+selection. It may remain only as a non-authoritative performance or
+compatibility/diagnostic hint; it cannot alter lookup, routing, root choice,
+trust, or trusted status. Every valid DNS-named browser origin is independently
+resolved through HNS and ICANN before one root is selected.
 
-PAC, Kotlin, Swift, JavaScript, and synchronous native-messaging classifiers
-perform syntax and special-use checks only. They cannot decide whether a
-complete hostname exists in HNS or ICANN.
+PAC, Kotlin, Swift, JavaScript, and synchronous native-messaging components
+cannot decide whether a complete hostname exists in HNS or ICANN. They may
+perform syntax/special-use checks or expose a clearly labeled legacy
+IANA-snapshot diagnostic hint, but that hint cannot select a root, route a
+request, or populate trusted status.
 
 ## Typed root results
 
@@ -123,6 +126,8 @@ Both browser products consume the same exact-pinned
 `hns-resolution-policy` contract. Their stable relay preference controls
 requester consumption only:
 
+- new and persisted browser profiles start false/off and require explicit user
+  opt-in;
 - off maps to `DnsRelayRequesterPolicy::Disabled`;
 - on maps to `DnsRelayRequesterPolicy::Auto`;
 - direct authoritative UDP and TCP precede authenticated authoritative DoH;
@@ -148,16 +153,36 @@ never a negative-answer entry.
 
 Trusted, generation-bound status exposes at least:
 
+- schema version and one engine-issued runtime snapshot;
+- checked nonzero per-start runtime session;
+- runtime generation, policy generation, event sequence, and authority state;
 - outcome;
 - selected namespace, when any;
 - selection source;
+- typed name-free root failures when classification has no outcome;
 - HNS and ICANN evidence states;
-- divergence mask;
-- decision fingerprint and expiry.
+- a nonzero name-free decision fingerprint whenever classification produced an
+  outcome, including `Neither`;
+- actual transport and exact intermediary identity topology; and
+- typed ICANN DNSSEC and DANE/WebPKI/fail-closed action.
 
-Legacy `nameClass` fields may remain for compatibility only when populated
-from the actual selected namespace. They must never be populated from the IANA
-snapshot.
+The request-local namespace decision—not the status view—retains the complete
+query, both validated plans, divergence details, and expiry needed for
+connection and cache enforcement. Those name-bearing fields are deliberately
+excluded from the trusted status schema.
+
+Policy change or entry into degraded, revoked, or stopped authority
+permanently invalidates older admitted work. A stale session, generation,
+event, proxy binding, redirect, subresource, Service Worker operation,
+download, or WebSocket completion cannot publish a response or trusted status
+after recovery. Bogus or indeterminate ICANN DNSSEC is reported as a
+name-free root failure with validating-DoH provenance and an explicit
+fail-closed action; it is never relabeled as absence or an ICANN-only outcome.
+
+Legacy `nameClass` fields inside routing or trusted status may remain only when
+populated from the actual selected namespace. A standalone diagnostic ABI may
+expose an explicitly non-authoritative IANA-snapshot hint, but that value must
+never select a root, admit a connection, or create trusted status.
 
 ## Qualification gates
 

@@ -11,8 +11,10 @@ Planned release order:
 
 1. `hns-rs` primitive/protocol crates and registry artifacts.
 2. `hns-node-rs`, pinned to the exact compatible `hns-rs` release.
-3. `hns-dane-engine`, including `hns-icann-dane` and
-   `hns-namespace-resolution`, pinned to the same compatible protocol release.
+3. `hns-dane-engine`, including `hns-icann-dane`,
+   `hns-namespace-resolution`, `hns-resolution-policy`,
+   `hns-browser-runtime`, and `hns-browser-observability`, pinned to the same
+   compatible protocol release.
 4. MeshMine external-node adapter and the mobile/extension native packages.
 5. Independently versioned crawler snapshots/services and bootstrap-generator
    web/appliance artifacts after their own provenance and deployment gates.
@@ -30,7 +32,7 @@ their broader shared-engine consolidation is complete.
 - `hns-dane-engine` exposes stable platform ABIs; TypeScript/Kotlin/Swift do not
   reimplement consensus, DNSSEC, DANE, HPKE, or P2P protocols.
 - `hns-icann-dane` owns TLSA service-owner derivation and the typed ICANN
-  DNSSEC-to-browser decision. Both browser clones may adapt network and
+  DNSSEC-to-browser decision. Both browser products may adapt network and
   platform APIs, but must consume that shared decision and preserve it through
   TLS verification and connection-cache keys.
 - `hns-namespace-resolution` owns complete-origin HNS/ICANN comparison,
@@ -38,6 +40,15 @@ their broader shared-engine consolidation is complete.
   decision/cache identity. Browser adapters may construct typed root evidence
   but may not reimplement or bypass that decision in Kotlin, Swift,
   JavaScript, PAC, or platform networking code.
+- `hns-browser-runtime` owns the authority state graph, checked nonzero runtime
+  session, lifecycle invalidation, generation/event admission, and stale-work
+  rejection. Platform adapters may bind those capabilities to one active
+  listener/proxy generation but may not publish work after canonical
+  revocation.
+- `hns-browser-observability` owns schema-v2 trusted status, typed root
+  failures, ICANN DNSSEC/trust actions, transport/intermediary topology, and
+  authority provenance. Platform UI may render that status but may not infer a
+  more favorable trust state.
 - MeshMine calls the external node API/bridge. Its mining database fast paths
   remain local to the mining/node implementations.
 - The browser engine and clients must not consume crawler snapshots or
@@ -46,10 +57,11 @@ their broader shared-engine consolidation is complete.
   artifacts.
 - Dependency cycles are forbidden.
 
-Both browser workspaces consume `hns-icann-dane`,
+Both browser workspaces consume `hns-browser-runtime`,
+`hns-browser-observability`, `hns-icann-dane`,
 `hns-namespace-resolution`, and `hns-resolution-policy` from exact
 `handshake-rs/hns-dane-engine` revision
-`2850ac1f50e361e2772e18f2e5ecbd7e77085afb`, allowlist only that Git source in
+`a03648ec85a115362ebc2ab24bb9ea0f1be127fc`, allowlist only that Git source in
 their source policies and `cargo-deny`, and record the full source revision in
 their lockfiles.
 `hns-node-rs` consumes exact `handshake-rs/hns-rs` revision

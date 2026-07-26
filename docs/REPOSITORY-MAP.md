@@ -5,9 +5,9 @@
 | Repository | Responsibility |
 | --- | --- |
 | [`hns-rs`](https://github.com/handshake-rs/hns-rs) | Runtime-independent Handshake protocol, consensus, wire, proof, registry, and role-specific consent types |
-| [`hns-node-rs`](https://github.com/handshake-rs/hns-node-rs) | Full-node networking, chain state, storage, synchronization, mining, and RPC |
+| [`hns-node-rs`](https://github.com/handshake-rs/hns-node-rs) | Standalone node runtime/networking under construction: chain state, storage, synchronization, mining, and RPC |
 | [`MeshMine`](https://github.com/handshake-rs/MeshMine) | Mining overlay, work scheduling, operator UI, and exact external-node consumer |
-| [`hns-dane-engine`](https://github.com/handshake-rs/hns-dane-engine) | DNSSEC, TLSA/DANE, validating resolution, and full-host dual-root policy |
+| [`hns-dane-engine`](https://github.com/handshake-rs/hns-dane-engine) | DNSSEC, TLSA/DANE, validating resolution, full-host dual-root policy, canonical browser authority lifecycle, and shared observability |
 | [`hns-dane-browser-mobile`](https://github.com/handshake-rs/hns-dane-browser-mobile) | Android/iOS lifecycle, UI, FFI, proxy, packaging, and shared-engine adapters |
 | [`hns-dane-browser-extension`](https://github.com/handshake-rs/hns-dane-browser-extension) | Chromium MV3 extension, PAC/proxy, native host, installers, and shared-engine adapters |
 | [`hns-dane-crawler`](https://github.com/handshake-rs/hns-dane-crawler) | HSD-derived topology snapshots, stored DNS evidence, readiness queues, reports, and optional live directory |
@@ -36,10 +36,17 @@ its light-chain, resolver, and P2P transport graph. The node transport returns
 remote DNS bytes as untrusted; DNSSEC/DANE acceptance remains a separate
 resolver authority.
 
+Both browser products pin one immutable engine revision for ICANN DANE,
+namespace, transport-policy, authority-runtime, and observability contracts.
+The engine owns their canonical security generation/event clock and status
+schema; platform adapters bind and render those contracts while retaining
+sockets, storage, proxy integration, native interfaces, UI, and packaging.
+
 The crawler/generator arrow is an optional operator workflow, not a runtime
-trust dependency. Browsers independently resolve and DNSSEC-validate every
-request; crawler snapshots and generated instructions cannot authorize a
-connection.
+trust dependency. Portable whole-request browser boundaries require and test
+independent resolution and DNSSEC validation; crawler snapshots and generated
+instructions cannot authorize a connection. Installed-browser and
+signed-device matrices remain open.
 
 ## External references
 

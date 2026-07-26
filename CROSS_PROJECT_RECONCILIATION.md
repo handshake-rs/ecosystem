@@ -5,11 +5,13 @@
 ```text
 hns-rs ── exact immutable protocol pin ──> hns-node-rs ──> MeshMine bridge
 
-hns-dane-engine
+hns-rs ── exact immutable protocol pin ──> hns-dane-engine
   ├──> hns-icann-dane
   ├──> hns-namespace-resolution
   ├──> hns-resolution-policy
-  └──> three shared contracts consumed by:
+  ├──> hns-browser-runtime
+  ├──> hns-browser-observability
+  └──> five canonical contracts consumed by:
           ├──> Android/iOS browser adapter
           └──> Chromium extension/native host
 
@@ -33,8 +35,10 @@ either browser shell.
 | ICANN TLSA-owner derivation and browser trust decision | `hns-dane-engine/crates/hns-icann-dane` |
 | full-host HNS/ICANN comparison and namespace precedence | `hns-dane-engine/crates/hns-namespace-resolution` |
 | direct-first transport admission and independent requester/provider roles | `hns-dane-engine/crates/hns-resolution-policy` |
-| Android/iOS lifecycle and UI | mobile clone |
-| native messaging, PAC/proxy lifecycle, Chromium UI | extension clone |
+| browser authority state, checked runtime sessions, and generation/event admission | `hns-dane-engine/crates/hns-browser-runtime` |
+| schema-v2 trusted browser status and evidence/transport topology | `hns-dane-engine/crates/hns-browser-observability` |
+| Android/iOS lifecycle and UI | `hns-dane-browser-mobile` |
+| native messaging, PAC/proxy lifecycle, Chromium UI | `hns-dane-browser-extension` |
 | namespace topology snapshots and observational DANE-readiness reports | `hns-dane-crawler` |
 | operator-authored delegation, DNSSEC/DS, TLSA, and appliance material | `hns-dane-bootstrap-generator` |
 
@@ -62,10 +66,12 @@ opt-in” rule.
   output capacity; durable node-policy reload remains a separate gate.
 - Direct authoritative DNS remains first. Relay transport never confers
   validation authority; DNSSEC, TLSA, and DANE are local.
-- Browser relay controls are requester controls only: off maps to `Disabled`
-  and on maps to direct-first `Auto`. Browser adapters explicitly disable
-  opaque-relay, output-node, target, market, and HNSR provider roles rather
-  than inheriting generic provider defaults.
+- Browser relay controls are requester controls only. New and persisted
+  browser profiles start false/off and require explicit user opt-in; false
+  maps to `Disabled` and true maps to direct-first `Auto`. Browser P2P
+  `VERSION` services and all opaque-relay, output-node, target, market, and
+  HNSR provider roles remain zero/disabled rather than inheriting generic
+  provider defaults.
 - ODoH-required never falls back to a plaintext relay.
 - HNSR requester and output roles remain inactive until independently enabled.
   An enabled opaque relay transports an inner Brontide session and never
@@ -106,13 +112,18 @@ opt-in” rule.
   demonstrated end to end.
 - Both browser adapters now submit independently resolved complete HNS and
   ICANN plans to the shared full-host policy, consume the same typed transport
-  policy, and expose the selected namespace. Installed-browser and
-  signed-device matrices still need to prove those semantics through platform
-  network processes, restarts, redirects, workers, downloads, and WebSockets.
-- Browser adapters still contain historical gateway/runtime code around the
-  three canonical standalone policy contracts. The deeper engine graph must
-  first replace coordination-workspace `hns-rs` paths with immutable
-  dependencies; broader shared-engine consolidation remains.
+  policy and canonical authority/status contracts, and expose the selected
+  namespace. One checked nonzero runtime session and active proxy generation
+  bind admission; stale generations/events cannot publish responses or trusted
+  status after lifecycle invalidation. Installed-browser and signed-device
+  matrices still need to prove those semantics through platform network
+  processes, restarts, redirects, workers, downloads, and WebSockets.
+- Browser adapters still contain platform-owned gateway, resolver, proxy, and
+  network code around the five canonical contracts. Proxy-core and live
+  resolver/DNSSEC/DANE migration remain broader shared-engine consolidation.
+  The Chromium repository's inactive historical mobile product trees were removed
+  in a separate repository-boundary commit after their retained source was
+  compared with canonical mobile.
 - Crawler production snapshots/live-directory operation and a deployed,
   hash-pinned bootstrap appliance still need independent release
   qualification; their unit/build gates do not upgrade browser trust rows.

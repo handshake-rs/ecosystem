@@ -35,23 +35,36 @@ This ledger is deliberately release-blocking.
 
 ## DANE engine and clients
 
-- Replace the browser clones' remaining historical gateway/runtime copies with
-  the shared engine. TLSA owner derivation and the ICANN trust decision are
-  shared through `hns-icann-dane`, and full-host root comparison is shared
-  through `hns-namespace-resolution`; canonical direct-first transport and
-  requester/provider admission are shared through `hns-resolution-policy`.
-  This is not yet full engine consolidation.
+- Continue replacing the browser products' historical platform-neutral copies
+  with the shared engine. TLSA-owner/ICANN trust, full-host root comparison,
+  direct-first transport/role policy, canonical authority lifecycle, and
+  schema-v2 observability are now shared through five exact-pinned contracts.
+  The next bounded slice is the loopback proxy admission/publication core;
+  live DNS wire, light-chain, DNSSEC, DANE, resolver, origin transport, and
+  gateway migration follow independently.
 - The complete engine graph is now standalone at exact canonical `hns-rs`
   revision `dde2da81f29df935f043978a6d517c1d60ceff31`; retain its exact-source,
   shallow-clone, cargo-deny, and offline gates while adopting deeper engine
   crates in each browser.
-- Resolve same-name browser/engine package collisions with explicit adapter
-  boundaries, and remove the Chromium repository's retained `android/`,
-  `ios/`, `android-ffi`, and `ios-ffi` trees after their history/evidence is
-  retained in the canonical mobile repository.
+- The platform runtime versus canonical `hns-browser-runtime` collision is
+  resolved with explicit mobile and Chromium adapter package names. Resolve
+  each remaining same-name package collision the same way; in particular, do
+  not alias the browser-local complete TLS proxy server to the engine's
+  narrower `hns-loopback-proxy` admission crate.
+- Keep Chromium free of the historical Android/iOS product trees now retained
+  in the canonical mobile repository; prevent mobile packaging, FFI, and
+  store-only paths from returning through copied release automation.
 - Exercise the implemented explicit-pin, sticky-binding, divergent-root,
   persistence-failure, cache-partition, and selected-namespace UI semantics in
   installed Chromium and signed Android/iOS network processes.
+- Make Chromium's initial-sync UI distinguish a bound/listening native host
+  from canonical authority that is still header-syncing, degraded, and
+  non-admitting; expose bounded progress or an explicit sync trigger without
+  weakening the authority gate.
+- Keep the strict `Neither` end-to-end Chromium regression, but separate its
+  optional live validating-DoH/Node dependency from the deterministic offline
+  conformance gate so external tool or network availability cannot obscure a
+  product regression.
 - Complete Android/iOS lifecycle/build/ABI tests and Chromium
   native-host/PAC/proxy/restart/uninstall tests.
 - Run signed-device Android/iOS and installed-browser Chromium matrices for

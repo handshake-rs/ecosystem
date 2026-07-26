@@ -300,3 +300,114 @@ Acceptance requires:
 This slice does not yet migrate the complete live resolver/DNSSEC/DANE/proxy
 implementation and does not upgrade installed-browser or signed-device
 qualification.
+
+## Completed authority and observability successor
+
+The shared engine successor is committed on `handshake-rs/hns-dane-engine`
+main at `a03648ec85a115362ebc2ab24bb9ea0f1be127fc`. It makes five canonical
+contracts independently consumable:
+
+- `hns-browser-runtime`;
+- `hns-browser-observability`;
+- `hns-icann-dane`;
+- `hns-namespace-resolution`; and
+- `hns-resolution-policy`.
+
+The platform-owned runtime packages were first renamed at mobile
+`5ef5cb9ec66ea460b4168946a7d2d0bba7c2f141` and Chromium
+`0334126fa4f5a6d5ae14d15b2584b64e0c8985b3`, so the products can consume the
+canonical authority crate without a Cargo package collision. Their final
+consumer revisions are retained in `REFERENCE_COMMITS.md`.
+
+Both portable adapters bind one checked nonzero runtime session to the active
+proxy generation, mint an engine event stamp before DNS/classification work,
+and require that exact stamp through response or tunnel-head publication.
+Policy change and degraded, revoked, or stopped lifecycle transitions
+permanently invalidate earlier work; recovery cannot resurrect it. The
+adapters retain typed request-local root failures and namespace decisions,
+including `Neither`, and emit schema-v2 name-free status without parsing
+diagnostic JSON or inventing negotiated P2P identity. ICANN bogus or
+indeterminate DNSSEC keeps validating-DoH provenance and fails closed; HNS
+failure remains unavailable transport; unrelated post-selection errors cannot
+be mislabeled as DANE or SNI evidence.
+
+The final Chromium repository boundary also removes the historical
+Android/iOS product trees after their retained history was compared with the
+canonical mobile repository. That is a source-boundary cleanup, not installed
+Chromium qualification. It safely advances only the repository-boundary half
+of the historical later trim stage; it does not skip or complete the earlier
+installed-device and installed-browser qualification stages.
+
+Exact source/lock/notice checks, stale-work regressions, test counts, final
+consumer and trim revisions, and environmental limitations are retained in
+`evidence/browser-authority-runtime-checkpoint-2026-07-26.md`.
+
+## Next bounded browser proxy-core milestone
+
+The next independently committable browser milestone is:
+
+> Make `hns-dane-engine` own the platform-neutral loopback proxy admission and
+> publication core, while Android, iOS, and Chromium keep their native
+> listener, certificate-store, TLS-I/O, and lifecycle adapters.
+
+This is stage 5 of the previously recorded reversible consolidation sequence.
+It precedes the larger live resolution-core migration. The current same-name
+`hns-loopback-proxy` packages conceal materially different APIs: browser-local
+crates own complete socket/TLS servers, while the engine crate owns only an
+older CONNECT/capability admission gate. A path substitution would therefore
+be unsafe.
+
+### Engine checkpoint
+
+- Rebase the engine proxy contract on the canonical checked runtime
+  session/generation/event types rather than a parallel bridge clock.
+- Own strict host/port normalization, numeric-loopback admission,
+  per-instance capability validation, HTTP head/header bounds, pending-request
+  capacity, exact-origin binding, and lifecycle revocation.
+- Represent response, local-error, download, and `101` publication as typed
+  capabilities that carry the exact admitted stamp.
+- Require one atomic publication boundary for any durable namespace choice or
+  cache-visible side effect and the corresponding HTTP/`101` head write and
+  flush.
+- Hold the authority permit only through head publication. Response bodies and
+  tunnel I/O must own revocation-aware guards without blocking policy changes
+  indefinitely.
+- Signal cancellation before any lifecycle operation waits for an in-flight
+  permit, and bound every listener/worker join.
+- Keep platform CA keys, exact-host leaf issuance, socket accept loops, TLS
+  termination, browser authentication callbacks, and native packaging outside
+  the engine crate.
+
+### Consumer checkpoints
+
+- Rename the platform-local complete-server adapters before adding the exact
+  engine dependency; do not hide the collision behind a Cargo alias.
+- Adopt mobile and Chromium separately so each consumer revision is
+  independently revertible.
+- Preserve Android/iOS ABIs, native-messaging schema, PAC behavior, persisted
+  policy meaning, local-CA identity, and current listener endpoints.
+- Prove that navigation, redirect, subresource, Service Worker, download,
+  WebSocket, generated-error, and upgrade paths cannot publish or persist
+  routing state from stale work.
+- Keep all five current engine contracts and add the proxy-core contract from
+  one immutable engine revision, with matching locks, source policy,
+  `cargo-deny`, notices, and shallow standalone builds.
+
+### Focused qualification
+
+- wrong endpoint, realm, capability, method, host syntax, port, header count,
+  head size, session, generation, event, or proxy instance fails closed;
+- same-generation degrade/recover and listener replacement cannot publish an
+  old success, error, download, sticky binding, or `101` head;
+- cancellation/revocation completes under a deliberately blocked head writer,
+  and the authority permit is released before a deliberately blocked response
+  body or tunnel read;
+- ordinary Chromium and mobile proxy behavior remains green under their
+  existing portable suites; and
+- engine full checks plus both consumer format, warning-denied Clippy,
+  test/source/notice, and platform-neutral packaging gates pass.
+
+This checkpoint will not yet replace the browser-local DNS wire, light-chain,
+DNSSEC, DANE, resolver, origin transport, or gateway implementations. It also
+will not upgrade installed-browser, Android device, iOS device, store-signing,
+or the PDF's 26-row topology qualification.

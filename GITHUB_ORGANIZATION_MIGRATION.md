@@ -38,11 +38,12 @@ package.
 | `work/hns-dane-bootstrap-generator` | `handshake-rs/hns-dane-bootstrap-generator` | user-completed transfer; canonical identity, release URLs, and role boundary audited on `main` |
 | `work/MeshMine` | `handshake-rs/MeshMine` | user-completed transfer; audited `main` pushed |
 | `integration` | `handshake-rs/ecosystem` | existing coordination history merged with the local audit history and pushed |
+| `work/handshake-rs-profile` | `handshake-rs/.github` | organization profile and public repository/authority map pushed |
 
-All nine canonical repositories exist independently under `handshake-rs`;
-`.github` holds the organization profile. The product repositories are not
-GitHub forks of one another. Each local `origin` names only its matching
-canonical repository.
+The workspace represents eight product repositories plus `ecosystem` and
+`.github`: ten independent repositories under `handshake-rs`. The product
+repositories are not GitHub forks of one another. Each local `origin` names
+only its matching canonical repository.
 
 The initial ecosystem map was published at
 `16b21e4200f3a5f82ffc76871bb026b5ee4c646a`; its expanded migration/evidence
@@ -54,12 +55,19 @@ organization-profile checkpoint is
 `864357ba3badd2b5baf45a0791f9d7d4781da021`, adding the exact
 `hns-rs`-to-node relationship, live HIP-76 trust/consent boundary, shared
 mobile/Chromium whole-request policy, and the durable-policy limitation. The
-latest organization profile is
-`e6739420fa5152d0907bfe9690318a4b6d740079`; it also records the exact
-`hns-rs`-to-engine dependency and standalone engine boundary. The preceding
-ecosystem checkpoint is `ec8251aebe7e4107482045cba58fa3c80538df76`;
-current product and coordination revisions are maintained in
-`REFERENCE_COMMITS.md`.
+next organization-profile checkpoint,
+`e6739420fa5152d0907bfe9690318a4b6d740079`, records the exact
+`hns-rs`-to-engine dependency and standalone engine boundary. The next
+organization-profile checkpoint,
+`4fbfbc2df1c9d67ae0b7dff434b9e31a0ccc29d8`, publishes the complete
+repository/authority graph, five browser-engine contracts, crawler/generator
+handoff boundary, role-specific consent, and source-versus-signing ownership.
+The latest organization profile is
+`fcbeae9874c4eaa62ce5fc52d4cbc499dae94be1`; it additionally makes the
+browser-specific requester opt-in exception explicit.
+The preceding ecosystem checkpoint is
+`ec8251aebe7e4107482045cba58fa3c80538df76`; current product and coordination
+revisions are maintained in `REFERENCE_COMMITS.md`.
 
 ## Transfer, import, and fork policy
 
@@ -83,12 +91,13 @@ MeshMine fork.
 
 The two browser worktrees descend from the same historical
 `Denuo-Web/hns-dane-browser` repository but now have distinct package and
-release boundaries. The transferred repository becomes the canonical mobile
-repository when the user renames it. Create the extension as an independent
-repository, retaining the common ancestry and exact source checkpoint. Remove
-irrelevant platform directories later in ordinary reviewed commits; do not
-rewrite the recorded checkpoint hashes merely to make the histories look
-separate.
+release boundaries. The transferred repository is the canonical
+`hns-dane-browser-mobile` repository. The extension is an independent
+repository that retains the common ancestry and exact source checkpoint; it is
+not a GitHub fork of mobile. Its historical Android/iOS source, FFI, store, and
+packaging trees were removed only after comparison with the canonical mobile
+repository and in a separate reviewed commit. No history was rewritten merely
+to make the products look separate.
 
 Forks are appropriate only for contributing back to external reference
 projects such as HSD or HIPs. They are not appropriate for the canonical
@@ -124,8 +133,9 @@ mirror or `git bundle --all` may be used for backup and object verification.
 
 Completed in this source migration:
 
-- every current milestone was committed, qualified proportionately, promoted
-  to project-local `main`, and pushed explicitly;
+- every milestone included in this source-migration/browser-authority
+  checkpoint was committed, qualified proportionately, promoted to its
+  project-local `main`, and pushed explicitly;
 - transferred repositories were reused instead of recreated;
 - new destinations were initialized without unrelated generated source
   commits;
@@ -150,16 +160,18 @@ at a transferred old path because doing so destroys GitHub's redirect.
 
 The browser migrations replaced coordination-root path dependencies with exact
 `handshake-rs/hns-dane-engine` revision
-`2850ac1f50e361e2772e18f2e5ecbd7e77085afb`. Both now consume
-`hns-icann-dane`, `hns-namespace-resolution`, and `hns-resolution-policy`;
+`a03648ec85a115362ebc2ab24bb9ea0f1be127fc`. Both now consume
+`hns-browser-runtime`, `hns-browser-observability`, `hns-icann-dane`,
+`hns-namespace-resolution`, and `hns-resolution-policy`;
 their lockfiles record the complete Git source and their exact-source policies
 and `cargo-deny` configurations allowlist only the canonical engine URL.
-The functional standalone-browser gates remain recorded at the preceding
-policy checkpoints. The pin-only follow-up passes exact-source, lock, notice,
-and focused product gates at mobile
-`7b826166a2bac3af8d2384dbff9875a992f252ca` and Chromium
-`1fde772006dde8b36c963b3ecc09cc011c542155`. MeshMine uses the same boundary
-for exact
+The mobile and Chromium platform-owned runtimes were first separated from the
+canonical package name at `5ef5cb9ec66ea460b4168946a7d2d0bba7c2f141`
+and `0334126fa4f5a6d5ae14d15b2584b64e0c8985b3`, respectively. The final
+consumer heads and their exact source, lock, notice, authority, stale-work,
+and focused product gates are recorded in `REFERENCE_COMMITS.md` and
+`INTEGRATION_STATE.md`. MeshMine uses the same immutable-boundary rule for
+exact
 `handshake-rs/hns-node-rs` revision
 `504d3fed035feb8a637ca09c4e0816b6e1144622`.
 
@@ -186,20 +198,32 @@ The MeshMine transfer is complete, but its visibility, licensing, and any
 affected protected-branch or Pages behavior still require a release audit.
 GitHub Packages likewise require a registry-specific ownership/link audit.
 
-## Acceptance criteria
+## Source-migration acceptance
 
 - every local project maps to exactly one canonical repository;
-- every expected branch/tag object ID is present remotely;
-- no uncommitted or untracked source was omitted;
-- all required checks pass from fresh standalone checkouts;
-- Denuo Web publisher/signing access works without organization-wide owner
-  access;
-- old URLs either redirect or clearly identify the canonical replacement;
-- dependency metadata and release artifacts name immutable canonical sources;
+- each audited project-local `main` has the exact expected remote object ID;
+- no uncommitted or untracked source was omitted from the promoted
+  checkpoints;
+- repository-local source, lock, policy, and portable qualification checks
+  pass for each promoted checkpoint;
+- dependency metadata names immutable canonical sources;
 - no reference-project fork is mistaken for a canonical implementation; and
 - every write stays within the user-authorized migration: project-local audited
   mains, the ecosystem coordination history, and the organization profile
   README.
+
+## Open administrative and release acceptance
+
+- configure organization teams, 2FA, repository rulesets, protected release
+  tags, and environment-scoped release credentials;
+- prove that Denuo Web publisher/signing access works without
+  organization-wide owner access;
+- verify transferred old-URL redirects and any changed Pages, package, webhook,
+  deploy-key, or Actions behavior;
+- run fresh standalone release-checkout gates and installed/signed platform
+  matrices; and
+- make every release artifact identify its exact canonical source tag, SBOM,
+  provenance, checksums, publisher, and rollback path.
 
 ## GitHub references
 

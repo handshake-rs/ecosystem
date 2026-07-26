@@ -85,6 +85,12 @@ generic shared policy retains independent default-on/opt-out opaque relaying
 and explicit-opt-in output-node operation; browser requester consent does not
 grant either provider role.
 
+The browser products intentionally do not inherit the generic node requester
+default. A new or persisted browser profile starts with requester relay
+false/off and requires explicit user opt-in; false maps to `Disabled`, true
+maps to direct-first `Auto`, browser P2P `VERSION` services remain zero, and
+all provider/output roles remain disabled.
+
 Current full-workspace tests, warning-denied all-target Clippy, and formatting
 pass in both products. Mobile additionally passes seven exact-source policy
 tests and 201 focused runtime/resolver tests. Chromium passes 23
@@ -232,3 +238,63 @@ All eight product repositories now have their audited checkpoints on canonical
 and merged with this audit, and both the ecosystem README and organization
 profile now publish the repository/authority map. No package, store binary,
 production service, or mainnet state was published or mutated.
+
+## 2026-07-26 browser authority-runtime successor
+
+The browser authority and observability successor advances the shared engine
+to `a03648ec85a115362ebc2ab24bb9ea0f1be127fc`. Both browser products now pin
+five canonical contracts at that exact Git revision:
+
+- `hns-browser-runtime`;
+- `hns-browser-observability`;
+- `hns-icann-dane`;
+- `hns-namespace-resolution`; and
+- `hns-resolution-policy`.
+
+Mobile authority adoption is committed at
+`00cb9f3e1fdd59bbb3b3f5c8ef371d0f5fecf875`; final mobile main is
+`140bb77e7b3b363747225b03de705d849768f122`, whose follow-up corrects only the
+requester/output consent documentation. Chromium authority adoption is
+committed at `a9a7a046c8a8404af5088dd13522bea632126511`; its final
+Chromium-only source boundary is
+`d6071a5cf969cc5b796b034d460d46ffbfb0a521`.
+
+The canonical runtime now issues the checked session, runtime generation,
+policy generation, event sequence, and authority state used to admit work.
+Each adapter obtains one stamp before namespace or DNS work, retains that
+exact request-local snapshot through routing and origin I/O, and requires it
+again for response, download, local-error, or `101` publication. Revocation,
+degradation, policy change, stop, and restart permanently invalidate earlier
+work; later recovery cannot create an ABA publication path.
+
+The canonical observability contract emits name-free schema-v2 authority and
+security status from the same retained decision. Chromium's native boundary
+serializes that contract as schema v3 for the extension. The production
+Chromium regression carries a real strict-`Neither` request through the
+loopback backend, metadata observer, native serializer, and the extension's
+actual JavaScript validator. Typed DANE association failure survives the
+HTTP/1.1, controlled HTTP/1.1, HTTP/2, HTTP/3, Upgrade, and WebSocket paths;
+unrelated TLS, QUIC, framing, I/O, or SNI evidence cannot fabricate it.
+
+Full-host dual-root resolution remains authoritative for every canonical DNS
+HTTP(S)/WS(S) request. ICANN-selected HTTPS/WSS derives the TLSA owner from the
+effective host, port, and service transport; TCP uses `_tcp`, while QUIC/UDP
+uses `_udp`. Secure TLSA enforces DANE, authenticated denial or a proven
+insecure delegation permits the defined WebPKI fallback, and bogus or
+indeterminate DNSSEC fails closed with validating-ICANN-DoH provenance.
+
+Chromium's final source-boundary commit removes the 255 tracked Android/iOS,
+FFI, store, branding, and mobile automation paths previously retained from
+the shared historical repository. Every selected path was present in the
+canonical mobile repository before deletion: 163 were byte-identical, 92 had
+since diverged, and none was missing. Git history and the canonical mobile
+repository retain the removed source.
+
+Portable workspace tests, warning-denied Clippy, formatting, exact-source,
+lock, notice, runtime-boundary, version, native-host, and extension checks are
+retained in
+`evidence/browser-authority-runtime-checkpoint-2026-07-26.md`. No hosted
+workflow was polled or counted as passing for this successor. Installed
+Chromium variants, Android/iOS SDK and signed-device matrices, packet-capture
+resolver proof, artifact signing/provenance, and the PDF's full topology
+qualification remain open release gates.

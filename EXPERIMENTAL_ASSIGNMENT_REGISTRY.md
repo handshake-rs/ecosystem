@@ -1,10 +1,10 @@
 # Experimental assignment registry
 
 Canonical source:
-`work/hns-rs/registry/denuo-experimental-v1.toml`
+[`handshake-rs/hns-rs/registry/denuo-experimental-v1.toml`](https://github.com/handshake-rs/hns-rs/blob/main/registry/denuo-experimental-v1.toml)
 
 Canonical binary:
-`work/hns-rs/registry/denuo-experimental-v1.bin`
+[`handshake-rs/hns-rs/registry/denuo-experimental-v1.bin`](https://github.com/handshake-rs/hns-rs/blob/main/registry/denuo-experimental-v1.bin)
 
 Registry fingerprint:
 `95774db08c569b36fa7b7e4a071930f563b7251fc30934ba986732379a6e542d`
@@ -52,6 +52,12 @@ advertises provider capacity. “Persistent” in this table is the required
 operator-policy behavior for opaque relays; the current node enforces live
 HIP-76 requester revocation but does not yet persist and reload that decision
 across process restart.
+
+Browser products deliberately do not inherit the generic HIP-76 requester
+default. Their new and persisted requester switch starts false/off and
+requires explicit user opt-in; false maps to `Disabled`, true maps to
+direct-first `Auto`, browser P2P services remain zero, and every provider or
+output role remains disabled.
 
 ## Packet types
 
