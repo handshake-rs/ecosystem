@@ -19,7 +19,7 @@ Status: locally committed portable checkpoint; not a release qualification
 - canonical `handshake-rs/hns-node-rs` main:
   `504d3fed035feb8a637ca09c4e0816b6e1144622`
 - MeshMine immutable external-node consumer:
-  `f0f25aacdc5eb05ba41d3bd81e4d22680fa70fb9`
+  `bc9cc70de22e455545d44453cec0d6f07ebeaabe`
 
 The split tree was compared exactly with the source prefix. The normalization
 removed the MeshMine-only miner binary/service, corrected root-relative
@@ -75,3 +75,19 @@ Clippy's type-complexity threshold. Commit
 `f0f25aacdc5eb05ba41d3bd81e4d22680fa70fb9` introduces documented semantic
 aliases without lint suppression; the exact Clippy command, formatting, and 19
 focused Urkel tests pass.
+
+That rerun then reached additional serially masked type/argument/scope findings
+in `hns-state` and `hns-node`. Final main
+`bc9cc70de22e455545d44453cec0d6f07ebeaabe` adds documented state-tree record
+path aliases, a named staged-compaction type, grouped commit-target context,
+lexical snapshot scoping, and an equivalent simplified rollback predicate.
+There are no lint exemptions. Formatting, warning-denied `hns-state`, the
+warning-denied portable HSRD workspace, 46 state tests, and 116 node tests pass.
+
+The exact local all-features workspace Clippy run was attempted and interrupted
+after 20 minutes while still compiling bundled RocksDB; it is not counted as a
+pass. The hosted all-features workflow for the exact final commit completed
+successfully:
+[`MeshMine CI run 30189487369`](https://github.com/handshake-rs/MeshMine/actions/runs/30189487369).
+That hosted run is the acceptance evidence for the path that could not finish
+within the local audit window.

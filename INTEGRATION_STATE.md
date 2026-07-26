@@ -42,7 +42,7 @@ committed and pushed across its shared and platform-specific boundaries:
   `127b9ad55852df00b4df40826517715048dc3571` (policy implementation
   `ab3543ba9b80d23f9fe5a25abf44abd7496a41a2`);
 - Android/iOS browser:
-  `90df79f445f90633cc46a64ce5475bde9879a58b` (adapter implementation
+  `05248d69f52b1963c4b775184fc7b3098fcdcffb` (adapter implementation
   `f25d5fd6dff33a46d5ebd11f73f7f99ec2e3b0b0`); and
 - Chromium extension/native host:
   `bcf587a6cc06c9c07c1f713eef108d317fcadfc7` (adapter implementation
@@ -84,19 +84,51 @@ unpinned sources, and mismatched revisions remain rejected. Final main
 `90df79f445f90633cc46a64ce5475bde9879a58b` deterministically regenerates the
 third-party notice asset for the same two allowlisted Git crates and their
 canonical MIT/Apache license files; notice `--check` passes.
+Mobile platform hardening commit
+`271044d759b9df3963a934a19cacd47fa8fada12` then binds Android WebView,
+Service Worker, download, and security-display WebPKI fallback to a consistent
+nested ICANN selection retained by Rust.
+Missing, malformed, legacy-top-level, HNS-selected, or contradictory traces
+fail closed on both Android and iOS. Android's synthetic WebView asset origin
+is local only for canonical HTTPS `/assets/` URLs; alternate schemes, ports,
+paths, workers, and downloads cannot escape into DNS or the network proxy.
+Runtime/platform boundaries, supply-chain policy, deterministic notices,
+version consistency, 20 policy/routing tests, formatting, and focused Rust
+namespace-plan tests pass locally. The immediate full-scope hosted run passed
+Rust and iOS plus Android assembly/unit tests before Android lint exposed the
+two untranslated legacy diagnostics. Final current-main
+[`CI run 30191799526`](https://github.com/handshake-rs/hns-dane-browser-mobile/actions/runs/30191799526)
+then passed its correctly selected Android assembly, unit, lint, and
+release-bundle gates. Installed and signed-device qualification remains a
+separate release gate.
+CI repair commit `dc3e22483e160d17a75dec39396ede5704d9a06b`
+also invalidates queued navigation whenever immutable proxy policy changes,
+repairs the standalone snapshot tool lock for the transitive exact engine
+revision, and extends the narrow Git-source policy regression suite. The
+updated tool lock passes locked offline check, Clippy, tests, `cargo-deny`, and
+deterministic-notice regeneration. Final current main
+`05248d69f52b1963c4b775184fc7b3098fcdcffb` marks both the intentionally
+technical unsupported-legacy-HNS-DoH protocol label and its matching
+remediation text non-translatable, consistent with the adjacent legacy source
+label. XML and the complete 20-locale resource matrix validate without any
+missing translatable key.
 
 The standalone node canonical main is
 `504d3fed035feb8a637ca09c4e0816b6e1144622`, containing the extraction and
 qualification implementation checkpoint
 `d97aab205ef640008bd61d1b17ba3ef91ee2ac10` and retaining exact 126-commit
 subtree provenance from MeshMine. MeshMine's canonical main is
-`f0f25aacdc5eb05ba41d3bd81e4d22680fa70fb9`, containing the external-node
+`bc9cc70de22e455545d44453cec0d6f07ebeaabe`, containing the external-node
 adoption and immutable canonical dependency checkpoint
 `ca64fc70ca00475318053bf4a4de763d6200f3d6` plus the portable-CI correction.
-The current main also names authenticated Urkel record-path types so the exact
-warning-denied HSRD Clippy gate passes without lint suppression; 19 focused
-Urkel tests pass. Its completed portable gates and the interrupted
-all-features RocksDB build are recorded in
+The current main names authenticated Urkel/state record paths, groups node
+compaction/commit context, and corrects test scoping so the warning-denied
+portable HSRD workspace passes without lint suppression. Focused gates pass 19
+Urkel, 46 state, and 116 node tests. The exact local all-features gate was
+interrupted after 20 minutes in the known bundled-RocksDB compile; the hosted
+CI counterpart completed successfully for the exact final main in
+[`run 30189487369`](https://github.com/handshake-rs/MeshMine/actions/runs/30189487369).
+Details are recorded in
 `evidence/standalone-node-checkpoint-2026-07-25.md`.
 
 The DANE operator/data-plane auxiliaries are also migrated independently:
@@ -106,7 +138,7 @@ The DANE operator/data-plane auxiliaries are also migrated independently:
   topology/evidence/report artifacts only; 140 tests, Ruff, shell syntax,
   Node syntax, and dependency checks pass.
 - `hns-dane-bootstrap-generator` main
-  `63548ff6ae76fb175fce2d118f5ddee6910e7c96` produces operator-reviewed
+  `f745f122243e5304e6a7ea0e111d47c61d22005e` produces operator-reviewed
   delegation, DNSSEC/DS, DoH, TLSA, and appliance material; 34 web tests, the
   appliance suite, the production build, and a reproducible `npm ci` pass.
 

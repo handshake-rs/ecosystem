@@ -14,16 +14,40 @@ and signed-release configuration remain open
 | `handshake-rs/hns-rs` | `8543f317a0ac23e40b6a79ea0cdc957dd01a04d9` | new independent repository |
 | `handshake-rs/hns-node-rs` | `504d3fed035feb8a637ca09c4e0816b6e1144622` | new independent repository retaining the documented 126-commit MeshMine subtree extraction |
 | `handshake-rs/hns-dane-engine` | `127b9ad55852df00b4df40826517715048dc3571` | new independent repository |
-| `handshake-rs/hns-dane-browser-mobile` | `90df79f445f90633cc46a64ce5475bde9879a58b` | existing Denuo Web repository transferred and renamed by the user, then fast-forwarded, migrated, given an exact-source CI policy, and supplied deterministic notices |
+| `handshake-rs/hns-dane-browser-mobile` | `05248d69f52b1963c4b775184fc7b3098fcdcffb` | existing Denuo Web repository transferred and renamed by the user, then fast-forwarded, migrated, given an exact-source CI policy and deterministic notices, hardened so platform WebPKI paths require the retained Rust ICANN decision, supplied a consistent standalone-tool lock, and cleared the complete Android localization matrix |
 | `handshake-rs/hns-dane-browser-extension` | `bcf587a6cc06c9c07c1f713eef108d317fcadfc7` | new independent repository retaining common historical browser ancestry and the Chromium-only release boundary |
 | `handshake-rs/hns-dane-crawler` | `74546c7e6b0b8a764525a77177a88dc333bf64d8` | existing repository transferred by the user, migrated to canonical source links, and bounded as observational output |
-| `handshake-rs/hns-dane-bootstrap-generator` | `63548ff6ae76fb175fce2d118f5ddee6910e7c96` | existing repository transferred by the user, migrated to canonical source/release URLs, and given a reproducible npm lock |
-| `handshake-rs/MeshMine` | `f0f25aacdc5eb05ba41d3bd81e4d22680fa70fb9` | existing repository transferred by the user and fast-forwarded to the audited external-node boundary plus warning-denied HSRD lint correction |
+| `handshake-rs/hns-dane-bootstrap-generator` | `f745f122243e5304e6a7ea0e111d47c61d22005e` | existing repository transferred by the user, migrated to canonical source/release URLs, given a reproducible npm lock, and documented with a separate publisher boundary |
+| `handshake-rs/MeshMine` | `bc9cc70de22e455545d44453cec0d6f07ebeaabe` | existing repository transferred by the user and fast-forwarded to the audited external-node boundary plus consolidated warning-denied HSRD cleanup |
 
 Each local product `main` was clean and equal to its matching remote-tracking
 `origin/main` after push. No product branch was merged into a different
 project, no unreviewed mirror push was used, and no canonical product was
 created as a GitHub fork.
+
+## Hosted current-main verification
+
+- Chromium extension/native-host main `bcf587a6cc06c9c07c1f713eef108d317fcadfc7`:
+  [`CI run 30187225880`](https://github.com/handshake-rs/hns-dane-browser-extension/actions/runs/30187225880)
+  succeeded.
+- Crawler main `74546c7e6b0b8a764525a77177a88dc333bf64d8`:
+  [`CI run 30188089994`](https://github.com/handshake-rs/hns-dane-crawler/actions/runs/30188089994)
+  succeeded.
+- MeshMine main `bc9cc70de22e455545d44453cec0d6f07ebeaabe`:
+  [`CI run 30189487369`](https://github.com/handshake-rs/MeshMine/actions/runs/30189487369)
+  succeeded.
+- Mobile browser main `05248d69f52b1963c4b775184fc7b3098fcdcffb`:
+  [`CI run 30191799526`](https://github.com/handshake-rs/hns-dane-browser-mobile/actions/runs/30191799526)
+  succeeded for its Android-only final diff. Its immediate full-scope ancestor
+  passed Rust and iOS plus Android assembly/unit tests before the subsequently
+  repaired localization-lint finding.
+
+The primitives, standalone-node, engine, bootstrap-generator, ecosystem, and
+organization-profile repositories have no checked-in hosted workflows at this
+checkpoint; their evidence is local or comes from exact-revision consumer
+gates. The bootstrap generator's locked install, tests, appliance suite, and
+production build passed locally, and its missing required workflow remains an
+explicit release blocker.
 
 ## Coordination and organization profile
 
@@ -35,10 +59,14 @@ created as a GitHub fork.
   `16b21e4200f3a5f82ffc76871bb026b5ee4c646a` documents every product boundary,
   dependency direction, consent role, source/release distinction, and
   qualification entrypoint.
+- Expanded ecosystem map/evidence commit
+  `c71f13d9e3851799e913d5dfdd91048398f473ce` adds the transferred crawler and
+  bootstrap generator, their optional handoff, current product checkpoints,
+  and their remaining release gates.
 - Organization profile commit
-  `0991c638aa00c7c951308fe0b99eb615212314e1` publishes the expanded map and
+  `534ffce5093363fd722de4de3d8cba9df47e7efd` publishes the expanded map and
   authority model from `handshake-rs/.github`, including the crawler-to-
-  generator operator workflow.
+  generator operator workflow and verified root-level ecosystem links.
 
 The existing ecosystem ruleset reported that `main` normally must not contain
 merge commits. GitHub accepted the user-authorized push through the caller's

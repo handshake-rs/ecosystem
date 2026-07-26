@@ -45,10 +45,12 @@ GitHub forks of one another. Each local `origin` names only its matching
 canonical repository.
 
 The initial ecosystem map was published at
-`16b21e4200f3a5f82ffc76871bb026b5ee4c646a`, and the expanded organization
-profile, including the observational crawler, operator generator, and
-source-versus-release boundary, was published at
-`0991c638aa00c7c951308fe0b99eb615212314e1`.
+`16b21e4200f3a5f82ffc76871bb026b5ee4c646a`; its expanded migration/evidence
+update is `c71f13d9e3851799e913d5dfdd91048398f473ce`. The organization profile,
+including the observational crawler, operator generator, and
+source-versus-release boundary, is published at
+`534ffce5093363fd722de4de3d8cba9df47e7efd`, including corrected links to
+the ecosystem's root qualification, gaps, and integration-state records.
 
 ## Transfer, import, and fork policy
 

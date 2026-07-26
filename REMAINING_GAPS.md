@@ -60,6 +60,10 @@ This ledger is deliberately release-blocking.
 
 ## Integration and release
 
+- Add required per-repository hosted workflows for `hns-rs`, `hns-node-rs`,
+  `hns-dane-engine`, and the ecosystem evidence repository; local and
+  exact-revision consumer gates are retained evidence, not a substitute for
+  protected current-main checks.
 - Run adversarial, restart, corruption, fuzz, browser, and performance suites.
 - Execute all 26 minimum regtest demonstrations in `QUALIFICATION_MATRIX.md`.
 - Produce checksummed binaries/packages, SBOM/license inventory, final commit
