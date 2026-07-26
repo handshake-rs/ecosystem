@@ -89,5 +89,7 @@ recorded in
 `evidence/standalone-node-checkpoint-2026-07-25.md`.
 
 All six product repositories now have their audited checkpoints on canonical
-`handshake-rs` `main` branches. No package, store binary, production service,
-or mainnet state was published or mutated.
+`handshake-rs` `main` branches. The existing `ecosystem` history was preserved
+and merged with this audit, and both the ecosystem README and organization
+profile now publish the repository/authority map. No package, store binary,
+production service, or mainnet state was published or mutated.

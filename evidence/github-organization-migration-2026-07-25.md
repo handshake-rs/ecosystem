@@ -23,6 +23,25 @@ Each local product `main` was clean and equal to its matching remote-tracking
 project, no unreviewed mirror push was used, and no canonical product was
 created as a GitHub fork.
 
+## Coordination and organization profile
+
+- Existing `handshake-rs/ecosystem` commit
+  `000d0bab5782a6a74a861847cc23121f30ec3db0` and the local audit lineage were
+  preserved through merge commit
+  `b7a3dabebf3faaa3f83c75fe3e96dd205fef3578`.
+- Ecosystem repository map/README commit
+  `16b21e4200f3a5f82ffc76871bb026b5ee4c646a` documents every product boundary,
+  dependency direction, consent role, source/release distinction, and
+  qualification entrypoint.
+- Organization profile commit
+  `084fb2f0f120e085a363934d055e46146434c15d` publishes the same map and
+  authority model from `handshake-rs/.github`.
+
+The existing ecosystem ruleset reported that `main` normally must not contain
+merge commits. GitHub accepted the user-authorized push through the caller's
+ruleset bypass for the single unrelated-history preservation merge. Product
+repositories did not receive cross-project merge commits.
+
 ## Immutable source boundaries
 
 - Mobile and Chromium both pin `hns-icann-dane` and

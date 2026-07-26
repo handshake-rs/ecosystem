@@ -41,6 +41,10 @@ All seven canonical repositories exist independently under `handshake-rs`;
 GitHub forks of one another. Each local `origin` names only its matching
 canonical repository.
 
+The ecosystem map was published at
+`16b21e4200f3a5f82ffc76871bb026b5ee4c646a`, and the organization profile was
+published at `084fb2f0f120e085a363934d055e46146434c15d`.
+
 ## Transfer, import, and fork policy
 
 A local `git clone` is not automatically a GitHub fork. Pushing that history to
