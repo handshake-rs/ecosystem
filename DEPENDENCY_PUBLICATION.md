@@ -14,6 +14,8 @@ Planned release order:
 3. `hns-dane-engine`, including `hns-icann-dane` and
    `hns-namespace-resolution`, pinned to the same compatible protocol release.
 4. MeshMine external-node adapter and the mobile/extension native packages.
+5. Independently versioned crawler snapshots/services and bootstrap-generator
+   web/appliance artifacts after their own provenance and deployment gates.
 
 The canonical `hns-rs` and `hns-dane-engine` workspaces target Rust 1.89,
 edition 2024, resolver 3, and `MIT OR Apache-2.0` where newly created.
@@ -38,6 +40,10 @@ their broader shared-engine consolidation is complete.
   JavaScript, PAC, or platform networking code.
 - MeshMine calls the external node API/bridge. Its mining database fast paths
   remain local to the mining/node implementations.
+- The browser engine and clients must not consume crawler snapshots or
+  bootstrap-generator output as runtime trust evidence. The crawler-to-
+  generator path is an optional operator workflow with separately versioned
+  artifacts.
 - Dependency cycles are forbidden.
 
 Both browser workspaces consume `hns-icann-dane` and

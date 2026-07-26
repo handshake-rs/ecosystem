@@ -13,7 +13,8 @@ separate authorities:
 
 - `handshake-rs` owns the canonical source repositories and review policy.
 - Denuo Web LLC may continue to own browser-store listings, mobile publisher
-  accounts, release certificates, and MeshMine signing keys.
+  accounts, release certificates, MeshMine signing keys, crawler deployments,
+  and bootstrap-generator service/appliance publishing.
 - A dedicated Denuo Web release team receives only the repository/environment
   permissions needed to build and sign those products.
 - Moving a repository does not transfer copyright or trademark ownership.
@@ -33,17 +34,21 @@ package.
 | `work/hns-dane-engine` | `handshake-rs/hns-dane-engine` | independent repository; audited `main` pushed |
 | `work/hns-dane-browser-mobile` | `handshake-rs/hns-dane-browser-mobile` | user-completed transfer/rename; audited `main` pushed |
 | `work/hns-dane-browser-extension` | `handshake-rs/hns-dane-browser-extension` | independent historical split; audited Chromium `main` pushed |
+| `work/hns-dane-crawler` | `handshake-rs/hns-dane-crawler` | user-completed transfer; canonical identity and role boundary audited on `main` |
+| `work/hns-dane-bootstrap-generator` | `handshake-rs/hns-dane-bootstrap-generator` | user-completed transfer; canonical identity, release URLs, and role boundary audited on `main` |
 | `work/MeshMine` | `handshake-rs/MeshMine` | user-completed transfer; audited `main` pushed |
 | `integration` | `handshake-rs/ecosystem` | existing coordination history merged with the local audit history and pushed |
 
-All seven canonical repositories exist independently under `handshake-rs`;
+All nine canonical repositories exist independently under `handshake-rs`;
 `.github` holds the organization profile. The product repositories are not
 GitHub forks of one another. Each local `origin` names only its matching
 canonical repository.
 
-The ecosystem map was published at
-`16b21e4200f3a5f82ffc76871bb026b5ee4c646a`, and the organization profile was
-published at `084fb2f0f120e085a363934d055e46146434c15d`.
+The initial ecosystem map was published at
+`16b21e4200f3a5f82ffc76871bb026b5ee4c646a`, and the expanded organization
+profile, including the observational crawler, operator generator, and
+source-versus-release boundary, was published at
+`0991c638aa00c7c951308fe0b99eb615212314e1`.
 
 ## Transfer, import, and fork policy
 
@@ -53,10 +58,12 @@ unless the destination was explicitly created through GitHub's fork workflow.
 
 Use a GitHub repository transfer when one existing repository maps to one
 canonical destination. The user completed that operation for
-`denuoweb/MeshMine` and `Denuo-Web/hns-dane-browser`; neither is a fork. A
-transfer preserves Git history, issues, pull requests, releases, settings,
-stars/watchers, secrets, deploy keys, webhooks, and its fork network, while old
-repository and Git URLs redirect.
+`denuoweb/MeshMine`, `Denuo-Web/hns-dane-browser`,
+`denuoweb/HNScrawler`, and
+`denuoweb/hns-dane-bootstrap-generator`; none is a fork. A transfer preserves
+Git history, issues, pull requests, releases, settings, stars/watchers,
+secrets, deploy keys, webhooks, and its fork network, while old repository and
+Git URLs redirect.
 
 Create independent repositories for the three new Rust workspaces because
 they have no upstream GitHub repository. `hns-node-rs` retains its documented
@@ -114,6 +121,9 @@ Completed in this source migration:
 - Cargo repository identities, immutable cross-repository pins, lockfiles,
   source links, mobile release commands, and browser-extension metadata were
   migrated;
+- crawler and bootstrap-generator source/release links now name their
+  canonical repositories, while preserving their separate observational and
+  operator-control boundaries;
 - the unrelated existing `ecosystem` history was merged, not discarded; and
 - the organization and ecosystem READMEs now describe repository authority,
   dependencies, consent roles, release ownership, and remaining gates.
@@ -150,10 +160,9 @@ unavailable to ordinary pull requests, and usable only by the Denuo Web Release
 team after protected-tag approval. Store listings should link to the canonical
 `handshake-rs` source and the exact signed source tag.
 
-For MeshMine, decide visibility and licensing before transfer. A private
-repository moved to a lower GitHub plan can lose protected-branch or Pages
-features, so target-organization plan and policy are a transfer preflight.
-GitHub Packages also require a registry-specific ownership/link audit.
+The MeshMine transfer is complete, but its visibility, licensing, and any
+affected protected-branch or Pages behavior still require a release audit.
+GitHub Packages likewise require a registry-specific ownership/link audit.
 
 ## Acceptance criteria
 

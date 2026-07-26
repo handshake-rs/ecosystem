@@ -10,6 +10,8 @@
 | [`hns-dane-engine`](https://github.com/handshake-rs/hns-dane-engine) | DNSSEC, TLSA/DANE, validating resolution, and full-host dual-root policy |
 | [`hns-dane-browser-mobile`](https://github.com/handshake-rs/hns-dane-browser-mobile) | Android/iOS lifecycle, UI, FFI, proxy, packaging, and shared-engine adapters |
 | [`hns-dane-browser-extension`](https://github.com/handshake-rs/hns-dane-browser-extension) | Chromium MV3 extension, PAC/proxy, native host, installers, and shared-engine adapters |
+| [`hns-dane-crawler`](https://github.com/handshake-rs/hns-dane-crawler) | HSD-derived topology snapshots, stored DNS evidence, readiness queues, reports, and optional live directory |
+| [`hns-dane-bootstrap-generator`](https://github.com/handshake-rs/hns-dane-bootstrap-generator) | Operator-authored delegation, DNSSEC/DS, authoritative DoH, TLSA, verification, and appliance material |
 
 ## Coordination
 
@@ -22,10 +24,16 @@ Current implemented dependency direction:
 ```text
 hns-dane-engine ──> mobile and Chromium browser adapters
 hns-node-rs ──────> MeshMine
+hns-dane-crawler ── observational gap/handoff ──> hns-dane-bootstrap-generator
 ```
 
 `hns-node-rs` adoption of `hns-rs` is the next audited integration milestone;
 it is not represented as an already completed dependency.
+
+The crawler/generator arrow is an optional operator workflow, not a runtime
+trust dependency. Browsers independently resolve and DNSSEC-validate every
+request; crawler snapshots and generated instructions cannot authorize a
+connection.
 
 ## External references
 

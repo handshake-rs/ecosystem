@@ -43,6 +43,21 @@ This ledger is deliberately release-blocking.
   redirects, cross-origin subresources, Service Workers, downloads, WSS,
   process restarts, and policy revocation.
 
+## DANE observational and operator tools
+
+- Qualify crawler production snapshot provenance, incremental/reorg handling,
+  stored DNS evidence expiry, static publication, and the optional live
+  directory without promoting observed data to trust authority.
+- Qualify a hash-pinned bootstrap-generator release archive and appliance on
+  supported operating systems, including DNSSEC rollover, authoritative DoH,
+  TLSA rollover, backup/restore, uninstall, and failure recovery.
+- Add a required bootstrap-generator CI workflow for its locked install, web
+  tests, appliance tests, and production build; those gates pass locally, but
+  the transferred repository currently has no hosted Actions workflow.
+- Retain a versioned crawler-to-generator handoff fixture and prove that every
+  generated record still requires operator review and independent live
+  DNSSEC/DANE validation.
+
 ## Integration and release
 
 - Run adversarial, restart, corruption, fuzz, browser, and performance suites.

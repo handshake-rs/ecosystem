@@ -42,6 +42,21 @@ The HSRD extraction preserves source history while removing MeshMine as an
 upstream dependency. Its exact extraction command and file-boundary report are
 recorded in `work/hns-node-rs/docs/extraction-provenance.md`.
 
+## Repositories added during organization migration
+
+Two additional user-transferred products entered scope after the initial
+assignment inventory. They were cloned only from their canonical transferred
+destinations and retained their histories:
+
+| Path | Canonical source | Starting revision |
+| --- | --- | --- |
+| `work/hns-dane-crawler` | `https://github.com/handshake-rs/hns-dane-crawler.git` | `b1428945ab187eee4c498a6f24e0977b995d596a` |
+| `work/hns-dane-bootstrap-generator` | `https://github.com/handshake-rs/hns-dane-bootstrap-generator.git` | `f8ad194609708ba0fdec1f5884ad6871557cdec2` |
+
+These auxiliary tools remain independent repositories. Their addition does
+not rewrite the original supplied-artifact inventory or promote crawler data
+or generated instructions to browser trust authority.
+
 ## Read-only authority
 
 | Reference | Revision/status |
@@ -65,9 +80,11 @@ projects are neither pushed nor rewritten.
 | `work/hns-rs` | `8543f317a0ac23e40b6a79ea0cdc957dd01a04d9` |
 | `work/hns-node-rs` | `504d3fed035feb8a637ca09c4e0816b6e1144622` |
 | `work/hns-dane-engine` | `127b9ad55852df00b4df40826517715048dc3571` |
-| `work/hns-dane-browser-mobile` | `0d069d102c0bf8fe9975798faf6864193fe20bf3` |
+| `work/hns-dane-browser-mobile` | `90df79f445f90633cc46a64ce5475bde9879a58b` |
 | `work/hns-dane-browser-extension` | `bcf587a6cc06c9c07c1f713eef108d317fcadfc7` |
-| `work/MeshMine` | `a8ce46e276ec27749afe578484e65b3df3546515` |
+| `work/hns-dane-crawler` | `74546c7e6b0b8a764525a77177a88dc333bf64d8` |
+| `work/hns-dane-bootstrap-generator` | `63548ff6ae76fb175fce2d118f5ddee6910e7c96` |
+| `work/MeshMine` | `f0f25aacdc5eb05ba41d3bd81e4d22680fa70fb9` |
 
 Starting revisions above remain unchanged provenance facts. The standalone
 node additionally records exact 126-commit subtree equivalence and its

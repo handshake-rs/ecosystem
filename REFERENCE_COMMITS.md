@@ -48,6 +48,8 @@ branches, not published package or signed-artifact releases.
 | `work/hns-rs` | `8543f317a0ac23e40b6a79ea0cdc957dd01a04d9` | canonical protocol/consent checkpoint plus migrated registry identity and fingerprint note |
 | `work/hns-node-rs` | `504d3fed035feb8a637ca09c4e0816b6e1144622` | history-preserving standalone extraction, portable qualification, and canonical repository metadata |
 | `work/hns-dane-engine` | `127b9ad55852df00b4df40826517715048dc3571` | shared automatic ICANN DANE, full-host dual-root namespace policy, and canonical repository metadata |
-| `work/hns-dane-browser-mobile` | `0d069d102c0bf8fe9975798faf6864193fe20bf3` | Android/iOS full-host dual-root boundary plus immutable engine pin and canonical migration |
+| `work/hns-dane-browser-mobile` | `90df79f445f90633cc46a64ce5475bde9879a58b` | Android/iOS full-host dual-root boundary, immutable engine pin, canonical migration, exact-source CI policy, and regenerated notices |
 | `work/hns-dane-browser-extension` | `bcf587a6cc06c9c07c1f713eef108d317fcadfc7` | Chromium full-host dual-root boundary plus immutable engine pin and canonical migration |
-| `work/MeshMine` | `a8ce46e276ec27749afe578484e65b3df3546515` | standalone Rust node adoption, immutable canonical Git dependency, and portable CI correction |
+| `work/hns-dane-crawler` | `74546c7e6b0b8a764525a77177a88dc333bf64d8` | canonical migration, observational authority boundary, and date-stable qualification |
+| `work/hns-dane-bootstrap-generator` | `63548ff6ae76fb175fce2d118f5ddee6910e7c96` | canonical migration, release-source URL update, and reproducible npm lock repair |
+| `work/MeshMine` | `f0f25aacdc5eb05ba41d3bd81e4d22680fa70fb9` | standalone Rust node adoption, immutable canonical Git dependency, portable CI correction, and warning-denied HSRD lint repair |

@@ -12,5 +12,7 @@ Integration gates should cover:
 - full-node state and deployment compatibility;
 - node-to-miner job and candidate publication paths;
 - DANE engine and client conformance;
+- crawler snapshot provenance and crawler-to-generator handoff integrity;
+- bootstrap-generator record, appliance, and verification-output correctness;
 - supported platform and hardware qualification;
 - reproducible builds, upgrades, rollback, and release provenance.

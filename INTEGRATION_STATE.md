@@ -42,7 +42,7 @@ committed and pushed across its shared and platform-specific boundaries:
   `127b9ad55852df00b4df40826517715048dc3571` (policy implementation
   `ab3543ba9b80d23f9fe5a25abf44abd7496a41a2`);
 - Android/iOS browser:
-  `0d069d102c0bf8fe9975798faf6864193fe20bf3` (adapter implementation
+  `90df79f445f90633cc46a64ce5475bde9879a58b` (adapter implementation
   `f25d5fd6dff33a46d5ebd11f73f7f99ec2e3b0b0`); and
 - Chromium extension/native host:
   `bcf587a6cc06c9c07c1f713eef108d317fcadfc7` (adapter implementation
@@ -76,19 +76,41 @@ remain release gates. Exact evidence is recorded in
 ICANN milestone remains historical evidence in
 `evidence/browser-icann-dane-checkpoint-2026-07-25.md`.
 
+The mobile migration follow-up at
+`cb6a5a31c4477fa32bc4d11bd2d935cb3e0c8aa4` reconciles its supply-chain
+script with that exact engine pin. Nineteen policy/classifier tests and the
+real supply-chain gate pass while alternate URLs, packages, locations,
+unpinned sources, and mismatched revisions remain rejected. Final main
+`90df79f445f90633cc46a64ce5475bde9879a58b` deterministically regenerates the
+third-party notice asset for the same two allowlisted Git crates and their
+canonical MIT/Apache license files; notice `--check` passes.
+
 The standalone node canonical main is
 `504d3fed035feb8a637ca09c4e0816b6e1144622`, containing the extraction and
 qualification implementation checkpoint
 `d97aab205ef640008bd61d1b17ba3ef91ee2ac10` and retaining exact 126-commit
 subtree provenance from MeshMine. MeshMine's canonical main is
-`a8ce46e276ec27749afe578484e65b3df3546515`, containing the external-node
+`f0f25aacdc5eb05ba41d3bd81e4d22680fa70fb9`, containing the external-node
 adoption and immutable canonical dependency checkpoint
 `ca64fc70ca00475318053bf4a4de763d6200f3d6` plus the portable-CI correction.
-Its completed portable gates and the interrupted all-features RocksDB build are
-recorded in
+The current main also names authenticated Urkel record-path types so the exact
+warning-denied HSRD Clippy gate passes without lint suppression; 19 focused
+Urkel tests pass. Its completed portable gates and the interrupted
+all-features RocksDB build are recorded in
 `evidence/standalone-node-checkpoint-2026-07-25.md`.
 
-All six product repositories now have their audited checkpoints on canonical
+The DANE operator/data-plane auxiliaries are also migrated independently:
+
+- `hns-dane-crawler` main
+  `74546c7e6b0b8a764525a77177a88dc333bf64d8` produces observational
+  topology/evidence/report artifacts only; 140 tests, Ruff, shell syntax,
+  Node syntax, and dependency checks pass.
+- `hns-dane-bootstrap-generator` main
+  `63548ff6ae76fb175fce2d118f5ddee6910e7c96` produces operator-reviewed
+  delegation, DNSSEC/DS, DoH, TLSA, and appliance material; 34 web tests, the
+  appliance suite, the production build, and a reproducible `npm ci` pass.
+
+All eight product repositories now have their audited checkpoints on canonical
 `handshake-rs` `main` branches. The existing `ecosystem` history was preserved
 and merged with this audit, and both the ecosystem README and organization
 profile now publish the repository/authority map. No package, store binary,

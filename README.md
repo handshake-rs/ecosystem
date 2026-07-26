@@ -20,6 +20,8 @@ workspace, monorepo, umbrella binary, or combined ecosystem package.
 | [`hns-dane-engine`](https://github.com/handshake-rs/hns-dane-engine) | Canonical DNSSEC, TLSA/DANE, resolver, transport, and dual-root browser-policy crates |
 | [`hns-dane-browser-mobile`](https://github.com/handshake-rs/hns-dane-browser-mobile) | Android/iOS lifecycle, UI, proxy integration, packaging, and shared-policy adapters |
 | [`hns-dane-browser-extension`](https://github.com/handshake-rs/hns-dane-browser-extension) | Chromium extension, PAC/proxy integration, native host, packaging, and shared-policy adapters |
+| [`hns-dane-crawler`](https://github.com/handshake-rs/hns-dane-crawler) | Observational HNS topology, stored DNS evidence, DANE-readiness queues, static reports, and optional live-directory output |
+| [`hns-dane-bootstrap-generator`](https://github.com/handshake-rs/hns-dane-bootstrap-generator) | Operator-facing HNS/ICANN delegation, DNSSEC/DS, authoritative DoH, and TLSA record/deployment generation |
 
 The dependency direction and authority boundaries are recorded in
 [`CROSS_PROJECT_RECONCILIATION.md`](CROSS_PROJECT_RECONCILIATION.md).
@@ -28,7 +30,9 @@ current audited checkpoints. The node's adoption of canonical `hns-rs`
 registry/types is the next identified integration milestone, not a completed
 dependency. Browser consumers currently pin the engine's DANE via ICANN DoH and
 dual-root policy crates; broader resolver/gateway consolidation remains tracked
-work.
+work. The crawler may hand an observed remediation queue to the bootstrap
+generator, but neither repository is browser trust authority and no browser
+request depends on crawler availability or generated cached evidence.
 
 The consent boundary is role-specific across the ecosystem: opaque P2P relay
 capacity is default-on with a persistent opt-out, while requester/client and
@@ -77,8 +81,9 @@ Each reference is pinned by upstream URL and commit, with its license and audit
 purpose recorded.
 
 Canonical source governance lives in `handshake-rs`. Denuo Web LLC may
-separately publish and sign browser or MeshMine artifacts; signing identity
-does not change the canonical source repository or review boundary.
+separately publish and sign browser, MeshMine, crawler-service, or
+bootstrap-appliance artifacts; signing identity does not change the canonical
+source repository or review boundary.
 
 > This is an independent project and does not claim to be the official
 > Handshake organization.

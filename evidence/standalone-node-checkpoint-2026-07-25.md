@@ -19,7 +19,7 @@ Status: locally committed portable checkpoint; not a release qualification
 - canonical `handshake-rs/hns-node-rs` main:
   `504d3fed035feb8a637ca09c4e0816b6e1144622`
 - MeshMine immutable external-node consumer:
-  `a8ce46e276ec27749afe578484e65b3df3546515`
+  `f0f25aacdc5eb05ba41d3bd81e4d22680fa70fb9`
 
 The split tree was compared exactly with the source prefix. The normalization
 removed the MeshMine-only miner binary/service, corrected root-relative
@@ -66,3 +66,12 @@ Migration gates passed:
 The node and MeshMine worktrees were clean and their exact mains were pushed to
 their matching canonical repositories. This does not upgrade the unrun live
 node/MeshMine topology to release-ready.
+
+The first hosted post-migration MeshMine run passed the complete primary
+workspace, RustSec, fixtures, external-node boundary, differential, regtest,
+simulation, and performance jobs. Its only failure was the warning-denied HSRD
+lint job, where two authenticated Urkel record-path return signatures exceeded
+Clippy's type-complexity threshold. Commit
+`f0f25aacdc5eb05ba41d3bd81e4d22680fa70fb9` introduces documented semantic
+aliases without lint suppression; the exact Clippy command, formatting, and 19
+focused Urkel tests pass.

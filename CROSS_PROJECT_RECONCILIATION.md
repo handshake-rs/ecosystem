@@ -12,6 +12,9 @@ hns-dane-engine
   │       └──> Chromium browser adapter
   ├──> mobile shell
   └──> Chromium extension
+
+hns-dane-crawler ── optional observed remediation handoff
+                  └──> hns-dane-bootstrap-generator ──> operator-published DNS
 ```
 
 The wallet and atomic market belong in `hns-node-rs`; their gossip protocol
@@ -31,6 +34,8 @@ either browser shell.
 | full-host HNS/ICANN comparison and namespace precedence | `hns-dane-engine/crates/hns-namespace-resolution` |
 | Android/iOS lifecycle and UI | mobile clone |
 | native messaging, PAC/proxy lifecycle, Chromium UI | extension clone |
+| namespace topology snapshots and observational DANE-readiness reports | `hns-dane-crawler` |
+| operator-authored delegation, DNSSEC/DS, TLSA, and appliance material | `hns-dane-bootstrap-generator` |
 
 ## Reconciliation rules
 
@@ -72,6 +77,12 @@ opt-in” rule.
   states; applies exact-origin pin, successful sticky binding, then ICANN
   first-use precedence; and never combines address, service, or trust records
   across roots.
+- Crawler snapshots are observational inputs only. They may identify a
+  remediation candidate and populate a generator handoff, but they never
+  classify a live browser hostname or authorize TLS.
+- Bootstrap-generator output remains an operator-reviewed control-plane
+  artifact. A published record becomes security policy only when obtained and
+  validated through the applicable live DNSSEC chain.
 - Marketplace discovery is best-effort untrusted gossip. Every listing and
   fulfillment is locally verified against chain state and the seller proof.
 - Mining authority consumes only a coherent committed node snapshot and is
@@ -90,6 +101,9 @@ opt-in” rule.
   downloads, and WebSockets.
 - Browser adapters still contain historical gateway/runtime code around the
   canonical ICANN policy crate; broader shared-engine consolidation remains.
+- Crawler production snapshots/live-directory operation and a deployed,
+  hash-pinned bootstrap appliance still need independent release
+  qualification; their unit/build gates do not upgrade browser trust rows.
 - Signed-device Android/iOS and installed-browser Chromium matrices remain
   release gates even after portable builds and tests pass.
 - The end-to-end regtest topology and prohibition on public recursive resolver

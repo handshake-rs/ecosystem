@@ -90,7 +90,7 @@ sockets. It made no public resolver or dependency-network contact.
 
 | Adapter | Implementation | Canonical `main` |
 | --- | --- | --- |
-| Android/iOS mobile | `f25d5fd6dff33a46d5ebd11f73f7f99ec2e3b0b0` | `0d069d102c0bf8fe9975798faf6864193fe20bf3` |
+| Android/iOS mobile | `f25d5fd6dff33a46d5ebd11f73f7f99ec2e3b0b0` | `90df79f445f90633cc46a64ce5475bde9879a58b` |
 | Chromium extension/native host | `124190f01c587bce2792a456cb40aab7d0247dfe` | `bcf587a6cc06c9c07c1f713eef108d317fcadfc7` |
 
 Both canonical browser lockfiles resolve `hns-icann-dane` and
@@ -150,6 +150,20 @@ and the 50-round stress run passed.
 Both adapter checkpoints and the engine authority were pushed to their
 canonical `handshake-rs` `main` branches. No package, store artifact,
 production service, or mainnet state was published or changed.
+
+The first hosted mobile migration run exposed a repository-policy
+contradiction: its shell gate rejected every Cargo Git source even though the
+manifest, lockfile, and `cargo-deny` policy intentionally require the exact
+canonical engine revision. Commit
+`cb6a5a31c4477fa32bc4d11bd2d935cb3e0c8aa4` replaces that blanket check with a
+TOML-parsed allowlist for only the two intended packages, URL, and revision.
+Nineteen policy/classifier tests and the actual supply-chain script pass; all
+other Git inputs remain rejected. A subsequent hosted gate exposed only stale
+generated third-party-notice fingerprints. Final main
+`90df79f445f90633cc46a64ce5475bde9879a58b` regenerates that asset
+deterministically, includes the two exact-revision engine crates and their
+canonical license files, fingerprints the policy script, and passes notice
+`--check` without accepting any additional Git source.
 
 ## Live ICANN DANE evidence
 
