@@ -3,7 +3,7 @@
 Status: **implementation in progress; not release-ready**
 
 Last audited canonical `hns-rs` main:
-`5f56e5d381338314e4d7cf1f9e08da7c76d1cf6f`
+`dde2da81f29df935f043978a6d517c1d60ceff31`
 
 Implemented and locally committed there:
 
@@ -19,8 +19,9 @@ Implemented and locally committed there:
   the generated TOML/binary/SHA artifacts;
 - draft HIP 76, 77, and 78 protocol/cryptographic records;
 - HSD-compatible script execution/mining coverage; and
-- independent consent for opaque relaying, output-node operation, and
-  requester/client operation.
+- independent consent for default-on/opt-out opaque relaying, explicit-opt-in
+  output-node operation, and independently revocable requester/client
+  operation.
 
 Verified checkpoint gates:
 
@@ -116,9 +117,9 @@ label. XML and the complete 20-locale resource matrix validate without any
 missing translatable key.
 
 The standalone node canonical main is
-`b2c375e37cac6cfa7a09cfa61113de52ac4f93a1`, containing live bounded
-negotiation of the exact `hns-rs` Denuo registry plus the extraction and
-qualification implementation checkpoint
+`0e69319d11ca98d788466ed5028d8d897685e9f1`. Its historical live-Denuo
+checkpoint is `b2c375e37cac6cfa7a09cfa61113de52ac4f93a1`, layered on the
+extraction and qualification implementation checkpoint
 `d97aab205ef640008bd61d1b17ba3ef91ee2ac10` and retaining exact 126-commit
 subtree provenance from MeshMine. MeshMine's canonical main is
 `bc9cc70de22e455545d44453cec0d6f07ebeaabe`, containing the external-node
@@ -134,7 +135,7 @@ CI counterpart completed successfully for the exact final main in
 Details are recorded in
 `evidence/standalone-node-checkpoint-2026-07-25.md`.
 
-The live registry checkpoint pins
+The historical live-registry checkpoint pins
 `hns-p2p-experimental` at exact revision
 `5f56e5d381338314e4d7cf1f9e08da7c76d1cf6f`, advertises only ordinary network
 plus the extension-envelope service, and exchanges the canonical fingerprint
@@ -148,6 +149,30 @@ no-default-feature node target tests, focused post-hardening status tests,
 warning-denied Clippy, formatting, and diff checks pass. Two-full-node and live
 Brontide negotiation matrices remain unrun. Exact evidence is in
 `evidence/denuo-live-negotiation-checkpoint-2026-07-26.md`.
+
+The role-safe HIP-76 live-session checkpoint pins canonical `hns-rs`
+`dde2da81f29df935f043978a6d517c1d60ceff31`. Node implementation commit
+`5a35ab9d84da26ce20b8f343efde31e77d6fc898` wires bounded `0xf0`/`0xf1`
+sessions into the live manager, and final main
+`0e69319d11ca98d788466ed5028d8d897685e9f1` adds a live requester opt-out
+regression. Requesting defaults to `Auto` with independent opt-out; operating
+a plaintext DNS output remains disabled until the operator opts in and a
+backend is ready. Mainnet/testnet plaintext peers are rejected, while Brontide
+binds peer provenance to the authenticated remote static key.
+
+Two live regtest TCP peer managers using the explicit plaintext development
+transport negotiate the registry and complete a strict, correlated
+request/provider-work/response exchange without leaking private frames into
+generic packet delivery. The returned DNS bytes remain explicitly untrusted,
+ordinary `GetAddr` traffic continues after the exchange and after requester
+opt-out, and provider readiness never implies DNSSEC authenticity. The final
+portable gates pass 63 P2P, 8 RPC, and 109 no-default-feature node tests plus
+warning-denied Clippy, formatting, and diff checks. A
+default-feature target was stopped during the known bundled-RocksDB C++
+compile and is not counted as passing. A production recursive and
+DNSSEC-validating provider backend, durable operator-policy restart, and
+two-full-node topology remain open. Exact evidence is in
+`evidence/hip76-live-session-checkpoint-2026-07-26.md`.
 
 The DANE operator/data-plane auxiliaries are also migrated independently:
 

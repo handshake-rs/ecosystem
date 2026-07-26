@@ -9,10 +9,14 @@ Status vocabulary:
 
 The assignment's minimum functioning integration is not complete:
 
-The 2026-07-25 consent clarification refines rows 9–11: the HNSR
-requester/client, endpoint/output, and rendezvous roles remain opt-in, while
-opaque relay capacity is default-on with a persistent opt-out. The topology
-test must demonstrate those independent roles rather than a single HNSR
+The 2026-07-25 consent clarification separates transport from output
+authority: opaque P2P relay capacity is default-on with persistent opt-out,
+while any endpoint/output role remains explicit opt-in. HIP-76 requester
+eligibility defaults to `Auto` with an independent opt-out and never
+advertises provider capacity. Live revocation is tested, while durable
+operator-policy reload is still open. HNSR client, endpoint/output, and
+rendezvous are distinct roles and currently remain independently opt-in. The
+topology test must demonstrate these independent roles rather than a single
 enable/disable Boolean.
 
 | # | Required demonstration | Status |
@@ -20,8 +24,8 @@ enable/disable Boolean.
 | 1 | two Rust full nodes start | NOT RUN |
 | 2 | registry fingerprints match | PARTIAL: two live local peer managers negotiate the exact pinned canonical registry and mismatch cases isolate Denuo; two full-node processes have not run |
 | 3 | standard Handshake P2P continues | PARTIAL: live peers reach ordinary Ready and exchange `GetAddr` after registry negotiation and after scoped extension failure; full-node synchronization topology has not run |
-| 4 | HIP 76 requester/relay validated exchange | PARTIAL: protocol codec tests pass |
-| 5 | HIP 76 opt-out disables requester | PARTIAL: shared policy generation tests pass |
+| 4 | HIP 76 requester/relay validated exchange | PARTIAL: two live TCP peer managers complete strict DNSSEC-shaped f0/provider-work/f1 exchange with correlated per-admission provenance and no generic-packet leak; a production recursive/DNSSEC-validating backend and full-node process topology have not run |
+| 5 | HIP 76 opt-out disables requester | PARTIAL: the live requester policy is replaced with disabled, new HIP work fails closed, and ordinary P2P continues; durable operator-policy restart has not been demonstrated |
 | 6 | HIP 77 through distinct proxy/target peers | PARTIAL: requester/target crypto round trip only |
 | 7 | proxy observes no plaintext qname | PARTIAL: HPKE boundary tested, topology not run |
 | 8 | ODoH opt-out disables path | PARTIAL: shared policy types tested |

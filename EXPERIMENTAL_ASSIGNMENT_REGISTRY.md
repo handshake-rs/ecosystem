@@ -31,22 +31,27 @@ Service masks remain unsigned 64-bit values internally.
 
 ## Runtime consent defaults
 
-Wire assignments do not imply consent. The runtime distinguishes opaque relay
-capacity from output-node capacity and persists each role independently:
+Wire assignments do not imply consent. The canonical policy distinguishes
+opaque relay capacity from output-node capacity and represents each role
+independently:
 
 | Runtime role | Default | Consent boundary |
 | --- | --- | --- |
+| HIP 76 requester | Auto | Independent operator opt-out; live revocation implemented; never advertises provider capacity |
 | HIP 76 DNS relay/output | Off | Explicit operator opt-in; sees the plaintext qname and originates DNS |
 | HIP 77 ODoH proxy/opaque relay | On | Persistent operator opt-out |
 | HIP 77 ODoH target/output | Off | Explicit operator opt-in |
 | HNSR opaque relay | On | Persistent operator opt-out |
 | HNSR endpoint/output | Off | Explicit operator opt-in |
 | HNSR rendezvous | Off | Explicit operator opt-in |
-| HNSR requester/client | Off | Independent client opt-in |
+| HNSR requester/client | Off | Independent HNSR client opt-in |
 
-Requester policy for HIP 76/77 is separate from every provider role. Enabling
-opaque relay capacity never enables an output role, and enabling requester
-traffic never advertises provider capacity.
+Requester policy is separate from every provider role. Enabling opaque relay
+capacity never enables an output role, and enabling requester traffic never
+advertises provider capacity. “Persistent” in this table is the required
+operator-policy behavior for opaque relays; the current node enforces live
+HIP-76 requester revocation but does not yet persist and reload that decision
+across process restart.
 
 ## Packet types
 

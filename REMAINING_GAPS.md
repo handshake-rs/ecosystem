@@ -11,9 +11,13 @@ This ledger is deliberately release-blocking.
 
 - Reconcile any HSRD readiness claims with executable gates.
 - Extend exact-revision canonical `hns-rs` adoption beyond the completed live
-  registry-negotiation boundary; do not copy HIP protocol logic into the node.
-- Demonstrate two-node standard synchronization, live Brontide Denuo
-  negotiation, and all HIP 76/77/78 runtimes.
+  registry and HIP-76 session boundaries; do not copy protocol semantics into
+  the node.
+- Connect HIP-76 provider work to an explicitly opted-in production recursive
+  and DNSSEC-validating backend, persist/reload operator role policy, and
+  demonstrate it through two full-node processes.
+- Demonstrate two-node standard synchronization, live Brontide Denuo/HIP-76
+  negotiation, and HIP 77/78 runtimes.
 - Complete wallet persistence, encryption/signing, recovery, coin selection,
   fee handling, and OPEN/BID/REVEAL/REDEEM/REGISTER/UPDATE/RENEW/TRANSFER/
   FINALIZE/REVOKE flows.

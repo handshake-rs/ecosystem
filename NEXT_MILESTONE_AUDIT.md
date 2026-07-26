@@ -2,7 +2,7 @@
 
 Date: 2026-07-26
 
-Status: completed and pushed; successor milestone audited below
+Status: two milestones completed and pushed; next bounded audit identified
 
 ## Completed recommendation
 
@@ -83,7 +83,7 @@ is implemented and green at those revisions. Exact retained evidence is in
 This completion does not upgrade the unrun two-full-node, Brontide transport,
 HIP runtime, wallet, marketplace, or 26-point topology rows.
 
-## Successor recommendation
+## Completed successor
 
 The next independently committable milestone is:
 
@@ -105,9 +105,10 @@ and acceptance of DNS answers remain a later, separately qualified boundary.
   as the ODoH proxy and HNSR relay. They must not silently enable a HIP-76
   output node.
 - Request generation is a third, independent role. The current canonical
-  HIP-76 policy is `Auto` with persistent opt-out; that eligibility must never
-  advertise the provider bit or perform unsolicited work. Any future change to
-  an opt-in requester default requires an explicit policy decision rather than
+  HIP-76 policy is `Auto` with independent opt-out; that eligibility must
+  never advertise the provider bit or perform unsolicited work. Durable
+  operator-policy reload remains a separate gate. Any future change to an
+  opt-in requester default requires an explicit policy decision rather than
   being smuggled into output-role implementation.
 - An untrusted DNS reply received over Brontide is not authenticated merely
   because its peer or transport was authenticated. Local DNS message
@@ -142,9 +143,9 @@ In `hns-node-rs`:
 - use typed backend and response-authenticator boundaries so test responses,
   untrusted wire responses, and locally authenticated answers cannot be
   confused;
-- persist policy generation with a checksum, cancel or drain work on
-  revocation, withdraw future advertisements, and reconnect affected peers
-  when a connection's service mask changes; and
+- replace policy generations live, cancel or drain work on revocation,
+  withdraw future advertisements, and reconnect affected peers when a
+  connection's service mask changes; and
 - add qname-free structured HIP-76 status to native diagnostics and RPC.
 
 Malformed, oversized, duplicate, unsolicited, wrong-peer, stale-generation,
@@ -167,4 +168,55 @@ session. Ordinary Handshake and Denuo registry traffic must continue.
 - Native and RPC status agree and contain no qname or raw DNS body.
 
 This milestone does not claim production recursion, a trusted DNS answer,
-signed-service discovery, ODoH, HNSR, wallet, or market completion.
+durable policy reload, signed-service discovery, ODoH, HNSR, wallet, or market
+completion.
+
+### Completion record
+
+The canonical prerequisite is committed on `handshake-rs/hns-rs` main at
+`dde2da81f29df935f043978a6d517c1d60ceff31`. The live-session implementation
+is `5a35ab9d84da26ce20b8f343efde31e77d6fc898`; the final requester-opt-out
+regression and canonical `handshake-rs/hns-node-rs` main are
+`0e69319d11ca98d788466ed5028d8d897685e9f1`.
+
+The focused checkpoint passes 63 `hns-p2p` library tests, 8 `hns-rpc` library
+tests, 109 portable `hns-node` library tests, warning-denied Clippy for the
+affected targets, formatting, and diff checks. The live plaintext regtest TCP
+topology includes canonical Denuo negotiation, bounded `0xf0`/`0xf1` exchange,
+no generic-packet leak, ordinary traffic after HIP activity, and a live
+requester opt-out. The Brontide implementation carries the authenticated
+remote static key into peer provenance; separate frame tests prove
+authentication/decryption precedes typed frame classification, but do not
+assert that provenance end to end. Exact limitations and retained commands are
+in
+`evidence/hip76-live-session-checkpoint-2026-07-26.md`.
+
+## Next bounded ecosystem audit
+
+The next independently committable audit is:
+
+> Inventory and plan the remaining browser shared-engine consolidation from
+> clean checkouts, without changing the already-qualified dual-root policy.
+
+Automatic ICANN DANE and complete-host HNS/ICANN comparison already live in the
+shared engine and are pinned by both mobile and Chromium consumers. The
+remaining browser shells still contain historical gateway/runtime copies.
+Before moving code, the audit should:
+
+- map every remaining copied gateway/runtime crate and its active mobile,
+  extension, or shared-engine consumers;
+- identify the one canonical owner for DNS wire, DNSSEC, DANE, namespace
+  selection, proxying, and platform-only adapters;
+- prove from clean locked checkouts that both products consume the same exact
+  engine revision and whole-request decision for navigation, redirects,
+  subresources, Service Workers, downloads, and WebSockets;
+- classify each copy as removable, platform-specific, or retained only for
+  historical migration compatibility; and
+- produce a staged, independently reversible consolidation sequence with
+  platform gates and no path dependency on this coordination workspace.
+
+The IANA suffix list must not return as classification authority during this
+work. The audit is complete only when it leaves an exact file/dependency map,
+fresh-checkout command evidence, and a minimal first consolidation
+implementation slice with explicit acceptance gates. It does not itself
+upgrade installed-browser or signed-device qualification.

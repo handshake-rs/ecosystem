@@ -27,8 +27,10 @@ The dependency direction and authority boundaries are recorded in
 [`CROSS_PROJECT_RECONCILIATION.md`](CROSS_PROJECT_RECONCILIATION.md).
 The browser-to-engine and MeshMine-to-node boundaries are implemented at the
 current audited checkpoints. The node now pins canonical `hns-rs` registry
-types and negotiates that exact fingerprint on live peers; HIP runtime
-adoption remains tracked work. Browser consumers currently pin the engine's
+and HIP-76 types, negotiates that exact fingerprint on live peers, and carries
+a bounded role-safe HIP-76 requester/output session. Production recursion,
+DNSSEC validation, and DANE remain separate resolver boundaries and are not
+claimed by the node transport. Browser consumers currently pin the engine's
 DANE via ICANN DoH and dual-root policy crates; broader resolver/gateway
 consolidation remains tracked work. The crawler may hand an observed
 remediation queue to the bootstrap generator, but neither repository is
@@ -36,9 +38,11 @@ browser trust authority and no browser request depends on crawler availability
 or generated cached evidence.
 
 The consent boundary is role- and protocol-specific: opaque P2P relay capacity
-is default-on with a persistent opt-out, every output/provider role requires
-an explicit opt-in, HIP-76 requester selection is automatic with a persistent
-opt-out, and HNSR client/endpoint participation remains independently opt-in.
+is default-on with a persistent opt-out, every output role—including a
+HIP-76 provider—requires an explicit opt-in, HIP-76 requester selection is
+automatic with an independent opt-out, and HNSR client/endpoint participation
+remains independently opt-in. Live requester revocation is tested; durable
+node-policy reload remains tracked work.
 
 ## Current audit
 
@@ -55,7 +59,9 @@ a whole. Start with:
 - [`DEPENDENCY_PUBLICATION.md`](DEPENDENCY_PUBLICATION.md) — crate and
   cross-repository publication policy;
 - [`GITHUB_ORGANIZATION_MIGRATION.md`](GITHUB_ORGANIZATION_MIGRATION.md) —
-  repository ownership and migration record; and
+  repository ownership and migration record;
+- [`NEXT_MILESTONE_AUDIT.md`](NEXT_MILESTONE_AUDIT.md) — completed node
+  checkpoints and the next bounded browser-consolidation audit; and
 - [`evidence/`](evidence/) — retained checkpoint command evidence.
 
 Primitive tests and portable builds do not make unrun full-node, wallet,

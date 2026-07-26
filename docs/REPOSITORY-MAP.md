@@ -29,7 +29,9 @@ hns-dane-crawler ── observational gap/handoff ──> hns-dane-bootstrap-gen
 ```
 
 `hns-node-rs` pins the exact canonical `hns-rs` checkpoint that defines its
-live Denuo registry negotiation.
+live Denuo registry negotiation and role-safe HIP-76 session policy. The node
+transport returns remote DNS bytes as untrusted; DNSSEC/DANE acceptance remains
+a separate resolver authority.
 
 The crawler/generator arrow is an optional operator workflow, not a runtime
 trust dependency. Browsers independently resolve and DNSSEC-validate every

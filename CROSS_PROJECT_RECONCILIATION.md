@@ -3,7 +3,7 @@
 ## Authority and dependency direction
 
 ```text
-hns-rs ── next integration milestone ──> hns-node-rs ──> MeshMine bridge
+hns-rs ── exact immutable protocol pin ──> hns-node-rs ──> MeshMine bridge
 
 hns-dane-engine
   ├──> hns-icann-dane
@@ -56,7 +56,9 @@ opt-in” rule.
   77 ODoH proxy is an opaque relay and defaults on with opt-out; the HIP 77
   target defaults off; the HNSR opaque relay defaults on with opt-out; and
   HNSR endpoint/output and rendezvous roles default off. Requester/client
-  policy is represented and revoked independently.
+  policy is represented and revoked independently. HIP 76 requester
+  eligibility defaults to `Auto` with independent opt-out and never advertises
+  output capacity; durable node-policy reload remains a separate gate.
 - Direct authoritative DNS remains first. Relay transport never confers
   validation authority; DNSSEC, TLSA, and DANE are local.
 - ODoH-required never falls back to a plaintext relay.
@@ -90,9 +92,10 @@ opt-in” rule.
 
 ## Current unresolved joins
 
-- The node consumes the exact canonical `hns-rs` Denuo registry checkpoint,
-  but live HIP sessions, wallets, marketplace messages, and broader shared
-  primitive adoption remain.
+- The node consumes the exact canonical `hns-rs` Denuo/HIP-76 checkpoint and
+  now runs bounded live HIP-76 sessions. A production recursive and
+  DNSSEC-validating output backend, durable operator-policy restart, HIP 77/78,
+  wallets, marketplace messages, and broader shared primitive adoption remain.
 - MeshMine now consumes an exact immutable `handshake-rs/hns-node-rs` revision
   through its bridge, but the coherent parent/job topology has not yet been
   demonstrated end to end.

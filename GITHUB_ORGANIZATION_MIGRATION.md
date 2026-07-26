@@ -48,9 +48,12 @@ The initial ecosystem map was published at
 `16b21e4200f3a5f82ffc76871bb026b5ee4c646a`; its expanded migration/evidence
 update is `c71f13d9e3851799e913d5dfdd91048398f473ce`. The organization profile,
 including the observational crawler, operator generator, and
-source-versus-release boundary, is published at
-`534ffce5093363fd722de4de3d8cba9df47e7efd`, including corrected links to
-the ecosystem's root qualification, gaps, and integration-state records.
+source-versus-release boundary, was corrected at
+`534ffce5093363fd722de4de3d8cba9df47e7efd`. Its current ecosystem map is
+published through
+`864357ba3badd2b5baf45a0791f9d7d4781da021`, adding the exact
+`hns-rs`-to-node relationship, live HIP-76 trust/consent boundary, shared
+mobile/Chromium whole-request policy, and the durable-policy limitation.
 
 ## Transfer, import, and fork policy
 
@@ -149,7 +152,7 @@ URL. MeshMine uses the same boundary for exact
 
 `hns-node-rs` now follows the same rule for exact
 `handshake-rs/hns-rs` revision
-`5f56e5d381338314e4d7cf1f9e08da7c76d1cf6f`. Lockfiles and SBOM/provenance
+`dde2da81f29df935f043978a6d517c1d60ceff31`. Lockfiles and SBOM/provenance
 evidence must identify the same immutable source revision in every consumer.
 
 Do not copy shared crates into browser or node repositories to avoid this

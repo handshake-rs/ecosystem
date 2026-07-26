@@ -1,6 +1,6 @@
 # GitHub organization migration evidence
 
-Date: 2026-07-25
+Date: 2026-07-25; current-main follow-up: 2026-07-26
 
 Target organization: `handshake-rs`
 
@@ -11,8 +11,8 @@ and signed-release configuration remain open
 
 | Repository | Canonical `main` | Migration |
 | --- | --- | --- |
-| `handshake-rs/hns-rs` | `8543f317a0ac23e40b6a79ea0cdc957dd01a04d9` | new independent repository |
-| `handshake-rs/hns-node-rs` | `504d3fed035feb8a637ca09c4e0816b6e1144622` | new independent repository retaining the documented 126-commit MeshMine subtree extraction |
+| `handshake-rs/hns-rs` | `dde2da81f29df935f043978a6d517c1d60ceff31` | new independent repository; current main adds direction-safe HIP-76 requester/output admission |
+| `handshake-rs/hns-node-rs` | `0e69319d11ca98d788466ed5028d8d897685e9f1` | new independent repository retaining the documented 126-commit MeshMine subtree extraction; current main adds bounded live Denuo/HIP-76 sessions and a live requester-opt-out regression |
 | `handshake-rs/hns-dane-engine` | `127b9ad55852df00b4df40826517715048dc3571` | new independent repository |
 | `handshake-rs/hns-dane-browser-mobile` | `05248d69f52b1963c4b775184fc7b3098fcdcffb` | existing Denuo Web repository transferred and renamed by the user, then fast-forwarded, migrated, given an exact-source CI policy and deterministic notices, hardened so platform WebPKI paths require the retained Rust ICANN decision, supplied a consistent standalone-tool lock, and cleared the complete Android localization matrix |
 | `handshake-rs/hns-dane-browser-extension` | `bcf587a6cc06c9c07c1f713eef108d317fcadfc7` | new independent repository retaining common historical browser ancestry and the Chromium-only release boundary |
@@ -63,10 +63,11 @@ explicit release blocker.
   `c71f13d9e3851799e913d5dfdd91048398f473ce` adds the transferred crawler and
   bootstrap generator, their optional handoff, current product checkpoints,
   and their remaining release gates.
-- Organization profile commit
-  `534ffce5093363fd722de4de3d8cba9df47e7efd` publishes the expanded map and
+- Organization profile current main
+  `864357ba3badd2b5baf45a0791f9d7d4781da021` publishes the expanded map and
   authority model from `handshake-rs/.github`, including the crawler-to-
-  generator operator workflow and verified root-level ecosystem links.
+  generator operator workflow, exact protocol-to-node relationship, HIP-76
+  trust/consent boundary, shared browser policy, and verified ecosystem links.
 
 The existing ecosystem ruleset reported that `main` normally must not contain
 merge commits. GitHub accepted the user-authorized push through the caller's
@@ -85,6 +86,10 @@ repositories did not receive cross-project merge commits.
 - MeshMine pins exact `handshake-rs/hns-node-rs` revision
   `504d3fed035feb8a637ca09c4e0816b6e1144622` and its validators reject path,
   embedded, unpinned, or alternate-source fallbacks.
+- The current node pins both canonical HIP-76 crates to exact
+  `handshake-rs/hns-rs` revision
+  `dde2da81f29df935f043978a6d517c1d60ceff31`; its lockfile records the same
+  source and revision.
 - A clean shallow MeshMine clone resolved that node revision without a sibling
   checkout. The browser post-pin Rust/extension/ABI gates likewise resolved
   the engine through the canonical Git source.

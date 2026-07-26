@@ -77,8 +77,8 @@ projects are neither pushed nor rewritten.
 
 | Path | Current committed checkpoint |
 | --- | --- |
-| `work/hns-rs` | `5f56e5d381338314e4d7cf1f9e08da7c76d1cf6f` |
-| `work/hns-node-rs` | `b2c375e37cac6cfa7a09cfa61113de52ac4f93a1` |
+| `work/hns-rs` | `dde2da81f29df935f043978a6d517c1d60ceff31` |
+| `work/hns-node-rs` | `0e69319d11ca98d788466ed5028d8d897685e9f1` |
 | `work/hns-dane-engine` | `127b9ad55852df00b4df40826517715048dc3571` |
 | `work/hns-dane-browser-mobile` | `05248d69f52b1963c4b775184fc7b3098fcdcffb` |
 | `work/hns-dane-browser-extension` | `bcf587a6cc06c9c07c1f713eef108d317fcadfc7` |
