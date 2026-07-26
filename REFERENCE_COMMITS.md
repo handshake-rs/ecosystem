@@ -40,13 +40,14 @@ registry, and documented migration rules.
 
 ## Local implementation checkpoints
 
-These commits are local coordination checkpoints, not published releases.
+These commits are canonical source checkpoints on their project `main`
+branches, not published package or signed-artifact releases.
 
 | Working repository | Revision | Checkpoint |
 | --- | --- | --- |
-| `work/hns-rs` | `6bd4a23c4ec0f89dace34da58f07809a2a08d522` | canonical protocol, script/mining conformance, and independent relay/output/requester consent |
-| `work/hns-node-rs` | `d97aab205ef640008bd61d1b17ba3ef91ee2ac10` | history-preserving standalone extraction and portable qualification |
-| `work/hns-dane-engine` | `f8e8d7709f93490595e02b0bd48d484ea2421ab8` | shared automatic ICANN DANE policy |
-| `work/hns-dane-browser-mobile` | `75b5108ea9080ca3b1d9c74127e24e30d848b843` | Android/iOS automatic ICANN DANE request boundary |
-| `work/hns-dane-browser-extension` | `3347d7fbd214d771e0571dcb5749990137e4bc77` | Chromium canonical ICANN DANE policy integration |
-| `work/MeshMine` | `c8bd975fc80d0037772160018ecdaf35d5dd7d1d` | standalone Rust node adoption |
+| `work/hns-rs` | `8543f317a0ac23e40b6a79ea0cdc957dd01a04d9` | canonical protocol/consent checkpoint plus migrated registry identity and fingerprint note |
+| `work/hns-node-rs` | `504d3fed035feb8a637ca09c4e0816b6e1144622` | history-preserving standalone extraction, portable qualification, and canonical repository metadata |
+| `work/hns-dane-engine` | `127b9ad55852df00b4df40826517715048dc3571` | shared automatic ICANN DANE, full-host dual-root namespace policy, and canonical repository metadata |
+| `work/hns-dane-browser-mobile` | `0d069d102c0bf8fe9975798faf6864193fe20bf3` | Android/iOS full-host dual-root boundary plus immutable engine pin and canonical migration |
+| `work/hns-dane-browser-extension` | `bcf587a6cc06c9c07c1f713eef108d317fcadfc7` | Chromium full-host dual-root boundary plus immutable engine pin and canonical migration |
+| `work/MeshMine` | `a8ce46e276ec27749afe578484e65b3df3546515` | standalone Rust node adoption, immutable canonical Git dependency, and portable CI correction |

@@ -2,17 +2,17 @@
 
 ## Policy
 
-Development uses explicit path dependencies inside the coordination root.
-Release candidates must use one immutable `hns-rs` revision or published crate
-set and must record the registry fingerprint. No consumer may silently vendor
-and modify canonical protocol logic.
+Cross-repository consumers use exact immutable Git revisions until compatible
+crate releases exist. Release candidates must use one immutable `hns-rs`
+revision or published crate set and must record the registry fingerprint. No
+consumer may silently vendor and modify canonical protocol logic.
 
 Planned release order:
 
 1. `hns-rs` primitive/protocol crates and registry artifacts.
 2. `hns-node-rs`, pinned to the exact compatible `hns-rs` release.
-3. `hns-dane-engine`, including `hns-icann-dane`, pinned to the same
-   compatible protocol release.
+3. `hns-dane-engine`, including `hns-icann-dane` and
+   `hns-namespace-resolution`, pinned to the same compatible protocol release.
 4. MeshMine external-node adapter and the mobile/extension native packages.
 
 The canonical `hns-rs` and `hns-dane-engine` workspaces target Rust 1.89,
@@ -31,15 +31,24 @@ their broader shared-engine consolidation is complete.
   DNSSEC-to-browser decision. Both browser clones may adapt network and
   platform APIs, but must consume that shared decision and preserve it through
   TLS verification and connection-cache keys.
+- `hns-namespace-resolution` owns complete-origin HNS/ICANN comparison,
+  absence/failure semantics, divergence precedence, and normalized
+  decision/cache identity. Browser adapters may construct typed root evidence
+  but may not reimplement or bypass that decision in Kotlin, Swift,
+  JavaScript, PAC, or platform networking code.
 - MeshMine calls the external node API/bridge. Its mining database fast paths
   remain local to the mining/node implementations.
 - Dependency cycles are forbidden.
 
-The two browser workspaces currently consume `hns-icann-dane` through an
-explicit coordination-root path dependency. That is permitted for this
-development checkpoint only. A release artifact must replace it with the
-recorded immutable engine revision or the corresponding published crate and
-must reproduce the same lockfile graph.
+Both browser workspaces consume `hns-icann-dane` and
+`hns-namespace-resolution` from exact
+`handshake-rs/hns-dane-engine` revision
+`127b9ad55852df00b4df40826517715048dc3571`, allowlist only that Git source in
+`cargo-deny`, and record the full source revision in their lockfiles. MeshMine
+similarly consumes exact `handshake-rs/hns-node-rs` revision
+`504d3fed035feb8a637ca09c4e0816b6e1144622`. Published compatible crate
+versions may replace those pins later, but an unpinned branch, sibling path,
+embedded copy, or silent fallback is forbidden.
 
 ## Release evidence required
 

@@ -1,16 +1,17 @@
 # Cross-project reconciliation
 
-## Dependency direction
+## Authority and dependency direction
 
 ```text
-hns-rs
-  ├──> hns-node-rs ──> MeshMine bridge
-  └──> hns-dane-engine
-          ├──> hns-icann-dane
-          │       ├──> Android/iOS browser adapters
-          │       └──> Chromium browser adapter
-          ├──> mobile shell
-          └──> Chromium extension
+hns-rs ── next integration milestone ──> hns-node-rs ──> MeshMine bridge
+
+hns-dane-engine
+  ├──> hns-icann-dane
+  ├──> hns-namespace-resolution
+  │       ├──> Android/iOS browser adapters
+  │       └──> Chromium browser adapter
+  ├──> mobile shell
+  └──> Chromium extension
 ```
 
 The wallet and atomic market belong in `hns-node-rs`; their gossip protocol
@@ -27,6 +28,7 @@ either browser shell.
 | mining application, DAG/settlement, external-node adapter | `MeshMine` |
 | DNS wire, DNSSEC, authenticated resolution, TLSA/DANE, policy ABI | `hns-dane-engine` |
 | ICANN TLSA-owner derivation and browser trust decision | `hns-dane-engine/crates/hns-icann-dane` |
+| full-host HNS/ICANN comparison and namespace precedence | `hns-dane-engine/crates/hns-namespace-resolution` |
 | Android/iOS lifecycle and UI | mobile clone |
 | native messaging, PAC/proxy lifecycle, Chromium UI | extension clone |
 
@@ -64,6 +66,12 @@ opt-in” rule.
   request boundary to navigations, redirects, subresources, Service Workers,
   downloads, and WebSockets. The accurate transport label is **DANE via ICANN
   DoH**.
+- Namespace ownership is decided from two independently validated complete
+  origin plans, never from an IANA suffix list. The shared classifier retains
+  HNS-only, ICANN-only, convergent, divergent, neither, and indeterminate
+  states; applies exact-origin pin, successful sticky binding, then ICANN
+  first-use precedence; and never combines address, service, or trust records
+  across roots.
 - Marketplace discovery is best-effort untrusted gossip. Every listing and
   fulfillment is locally verified against chain state and the seller proof.
 - Mining authority consumes only a coherent committed node snapshot and is
@@ -72,12 +80,14 @@ opt-in” rule.
 ## Current unresolved joins
 
 - The extracted node has not yet adopted released/path `hns-rs` crates.
-- MeshMine has not yet been changed to run exclusively through the standalone
-  external-node boundary.
-- Browser namespace selection still uses the IANA suffix snapshot as an
-  authoritative shortcut. It must resolve the complete hostname independently
-  through HNS and ICANN, distinguish only/convergent/divergent/neither states,
-  and expose the selected namespace under an explicit precedence policy.
+- MeshMine now consumes an exact immutable `handshake-rs/hns-node-rs` revision
+  through its bridge, but the coherent parent/job topology has not yet been
+  demonstrated end to end.
+- Both browser adapters now submit independently resolved complete HNS and
+  ICANN plans to the shared full-host policy and expose the selected namespace.
+  Installed-browser and signed-device matrices still need to prove those
+  semantics through platform network processes, restarts, redirects, workers,
+  downloads, and WebSockets.
 - Browser adapters still contain historical gateway/runtime code around the
   canonical ICANN policy crate; broader shared-engine consolidation remains.
 - Signed-device Android/iOS and installed-browser Chromium matrices remain

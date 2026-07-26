@@ -3,6 +3,11 @@
 Date: 2026-07-25
 Status: locally committed portable checkpoint; not a signed release
 
+Historical evidence: this commit boundary predates and is superseded by
+`browser-dual-root-checkpoint-2026-07-25.md`. Its path-dependency, push-state,
+and IANA-shortcut statements remain here only as facts about that earlier
+checkpoint.
+
 ## Commit boundary
 
 | Component | Commit |

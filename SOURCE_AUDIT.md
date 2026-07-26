@@ -54,18 +54,20 @@ recorded in `work/hns-node-rs/docs/extraction-provenance.md`.
 | `references/bob-wallet` | `0432158e5bc55c9d5aa24e0f256e468c44459d15` |
 | `references/handshake-docs` | `b8611a6bd4e9208ec0561f0a5042c6bbc532e3a1` |
 
-Reference repositories are read-only. No working repository has been pushed.
+Reference repositories remain read-only. Canonical working checkpoints are
+being published only to their matching `handshake-rs` repositories; reference
+projects are neither pushed nor rewritten.
 
 ## Current local checkpoints
 
 | Path | Current committed checkpoint |
 | --- | --- |
-| `work/hns-rs` | `6bd4a23c4ec0f89dace34da58f07809a2a08d522` |
-| `work/hns-node-rs` | `d97aab205ef640008bd61d1b17ba3ef91ee2ac10` |
-| `work/hns-dane-engine` | `f8e8d7709f93490595e02b0bd48d484ea2421ab8` |
-| `work/hns-dane-browser-mobile` | `75b5108ea9080ca3b1d9c74127e24e30d848b843` |
-| `work/hns-dane-browser-extension` | `3347d7fbd214d771e0571dcb5749990137e4bc77` |
-| `work/MeshMine` | `c8bd975fc80d0037772160018ecdaf35d5dd7d1d` |
+| `work/hns-rs` | `8543f317a0ac23e40b6a79ea0cdc957dd01a04d9` |
+| `work/hns-node-rs` | `504d3fed035feb8a637ca09c4e0816b6e1144622` |
+| `work/hns-dane-engine` | `127b9ad55852df00b4df40826517715048dc3571` |
+| `work/hns-dane-browser-mobile` | `0d069d102c0bf8fe9975798faf6864193fe20bf3` |
+| `work/hns-dane-browser-extension` | `bcf587a6cc06c9c07c1f713eef108d317fcadfc7` |
+| `work/MeshMine` | `a8ce46e276ec27749afe578484e65b3df3546515` |
 
 Starting revisions above remain unchanged provenance facts. The standalone
 node additionally records exact 126-commit subtree equivalence and its

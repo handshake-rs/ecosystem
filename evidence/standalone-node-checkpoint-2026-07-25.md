@@ -16,6 +16,10 @@ Status: locally committed portable checkpoint; not a release qualification
   `7e5c5d96fb8fd2430a141284ed0c13aafe2e8d34`
 - qualification cleanup:
   `d97aab205ef640008bd61d1b17ba3ef91ee2ac10`
+- canonical `handshake-rs/hns-node-rs` main:
+  `504d3fed035feb8a637ca09c4e0816b6e1144622`
+- MeshMine immutable external-node consumer:
+  `a8ce46e276ec27749afe578484e65b3df3546515`
 
 The split tree was compared exactly with the source prefix. The normalization
 removed the MeshMine-only miner binary/service, corrected root-relative
@@ -42,4 +46,23 @@ The release rebuild was not started. Existing readiness-document
 inconsistencies also require a dedicated evidence reconciliation before any
 production-readiness claim.
 
-The worktree was clean at handoff. Nothing was pushed.
+## Migration-specific external boundary
+
+MeshMine now resolves `hns-consensus`, `hns-mining`, `hns-node`, and
+`hns-primitives` from the exact canonical node Git revision above. The locked
+metadata validator rejects a sibling path override, unpinned branch, different
+URL/revision, or embedded `MeshMine/hsrd` runtime source.
+
+Migration gates passed:
+
+- exact locked/offline Cargo metadata and source-boundary validation;
+- live-parent/source validation against the resolved Git checkout;
+- 8 focused `meshmine-hsrd-bridge` tests;
+- strict focused Clippy;
+- formatting, shell syntax, Python compilation, and diff checks; and
+- a shallow fresh clone of `handshake-rs/MeshMine` resolved locked metadata and
+  passed the external-node validator without a sibling node checkout.
+
+The node and MeshMine worktrees were clean and their exact mains were pushed to
+their matching canonical repositories. This does not upgrade the unrun live
+node/MeshMine topology to release-ready.

@@ -2,8 +2,8 @@
 
 Status: **implementation in progress; not release-ready**
 
-Last audited canonical `hns-rs` checkpoint:
-`6bd4a23c4ec0f89dace34da58f07809a2a08d522`
+Last audited canonical `hns-rs` main:
+`8543f317a0ac23e40b6a79ea0cdc957dd01a04d9`
 
 Implemented and locally committed there:
 
@@ -26,41 +26,68 @@ Verified checkpoint gates:
 - `cargo clippy --workspace --all-targets -- -D warnings`
 - `cargo build --workspace --release`
 
+The organization migration changed the Denuo Experimental Registry fingerprint
+to
+`95774db08c569b36fa7b7e4a071930f563b7251fc30934ba986732379a6e542d`
+because its canonical encoded source URLs now name `handshake-rs/hns-rs`.
+Assignments, payload bounds, meanings, and consent defaults did not change.
+
 Uncommitted work is not counted as a checkpoint until it passes its
 repository-specific gate.
 
-The automatic ICANN DANE browser checkpoint is locally committed across its
-shared and platform-specific boundaries:
+The automatic ICANN DANE and full-host dual-root browser checkpoint is
+committed and pushed across its shared and platform-specific boundaries:
 
 - shared DANE engine:
-  `f8e8d7709f93490595e02b0bd48d484ea2421ab8`;
+  `127b9ad55852df00b4df40826517715048dc3571` (policy implementation
+  `ab3543ba9b80d23f9fe5a25abf44abd7496a41a2`);
 - Android/iOS browser:
-  `75b5108ea9080ca3b1d9c74127e24e30d848b843`;
+  `0d069d102c0bf8fe9975798faf6864193fe20bf3` (adapter implementation
+  `f25d5fd6dff33a46d5ebd11f73f7f99ec2e3b0b0`); and
 - Chromium extension/native host:
-  `3347d7fbd214d771e0571dcb5749990137e4bc77`.
+  `bcf587a6cc06c9c07c1f713eef108d317fcadfc7` (adapter implementation
+  `124190f01c587bce2792a456cb40aab7d0247dfe`).
 
-Every DNS-named ICANN HTTPS/WSS request admitted by the current namespace
-classifier derives its transport-aware TLSA owner. Secure TLSA presence
-enforces DANE; authenticated denial or a proven insecure delegation permits
-the defined WebPKI fallback; bogus, indeterminate, malformed, or failed DNSSEC
-resolution fails closed. The shared decision reaches navigation, redirects,
-subresources, supported Service Worker requests, downloads, and WebSockets
-through each browser's whole-request proxy boundary. Portable Rust, ABI, and
-extension gates pass; installed-browser, Android SDK/device, and Xcode/iOS
-device matrices remain release gates. Exact evidence is recorded in
+Every canonical DNS host is resolved independently through complete HNS and
+ICANN plans. The shared contract reports HNS-only, ICANN-only, convergent,
+divergent, neither, or indeterminate state; applies exact pin, successful
+persistent binding, then ICANN first-use precedence; retains both roots'
+evidence; and derives connection/cache identity without consulting an IANA
+suffix list. The selected immutable plan alone supplies endpoints, service
+parameters, transport, TLSA owner, trust decision, trace attribution, and cache
+partition.
+
+Every DNS-named ICANN HTTPS/WSS request derives its transport-aware TLSA owner.
+Secure TLSA presence enforces DANE; authenticated denial or a proven insecure
+delegation permits the defined WebPKI fallback; bogus, indeterminate,
+malformed, or failed DNSSEC resolution fails closed. HNS address presence
+without required TLSA is a root failure, never namespace absence. The shared
+decision reaches navigation, redirects, subresources, supported Service Worker
+requests, downloads, and WebSockets through each browser's whole-request Rust
+proxy boundary.
+
+The browser consumers pin the exact canonical engine Git revision, and their
+lockfiles and `cargo-deny` policies bind that source. Post-pin gates passed 469
+mobile Rust tests plus Apple ABI/header/export checks, and 481 focused Chromium
+Rust tests plus all six extension suites and the MV3 build. Installed-browser,
+Android SDK/device, Xcode/iOS device, and rebuilt store-screenshot matrices
+remain release gates. Exact evidence is recorded in
+`evidence/browser-dual-root-checkpoint-2026-07-25.md`; the earlier automatic
+ICANN milestone remains historical evidence in
 `evidence/browser-icann-dane-checkpoint-2026-07-25.md`.
 
-The current IANA-suffix check is an interim routing shortcut, not the intended
-authoritative namespace classifier. Full-host resolution through both HNS and
-ICANN, typed convergence/divergence, explicit precedence, and visible
-namespace choice remain release-blocking.
-
-The standalone node extraction and qualification checkpoint is
-`d97aab205ef640008bd61d1b17ba3ef91ee2ac10`, retaining exact 126-commit subtree
-provenance from MeshMine. MeshMine's external-node adoption is committed at
-`c8bd975fc80d0037772160018ecdaf35d5dd7d1d`. Its completed portable gates and
-the interrupted all-features RocksDB build are recorded in
+The standalone node canonical main is
+`504d3fed035feb8a637ca09c4e0816b6e1144622`, containing the extraction and
+qualification implementation checkpoint
+`d97aab205ef640008bd61d1b17ba3ef91ee2ac10` and retaining exact 126-commit
+subtree provenance from MeshMine. MeshMine's canonical main is
+`a8ce46e276ec27749afe578484e65b3df3546515`, containing the external-node
+adoption and immutable canonical dependency checkpoint
+`ca64fc70ca00475318053bf4a4de763d6200f3d6` plus the portable-CI correction.
+Its completed portable gates and the interrupted all-features RocksDB build are
+recorded in
 `evidence/standalone-node-checkpoint-2026-07-25.md`.
 
-No push, public deployment, package publication, or mainnet state mutation has
-occurred.
+All six product repositories now have their audited checkpoints on canonical
+`handshake-rs` `main` branches. No package, store binary, production service,
+or mainnet state was published or mutated.

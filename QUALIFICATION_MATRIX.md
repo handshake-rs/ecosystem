@@ -37,11 +37,11 @@ enable/disable Boolean.
 | 18 | fulfillment confirms through ordinary relay | NOT RUN |
 | 19 | buyer finalizes name | NOT RUN |
 | 20 | Dutch lowest price cannot execute early | PASS: permanent primitive regression |
-| 21 | MeshMine coherent parent snapshot | NOT RUN against extracted external node |
-| 22 | mobile browser builds | PARTIAL: portable Rust release, C/C++ Apple ABI, and source gates pass; Android SDK, Xcode, simulator, and devices not run |
-| 23 | Chromium extension builds | PARTIAL: native Rust, six Node/extension suites, and unpacked MV3 build pass; installed-browser/platform matrix not run |
+| 21 | MeshMine coherent parent snapshot | PARTIAL: immutable external-node bridge and eight focused snapshot/binding tests pass; live node topology not run |
+| 22 | mobile browser builds | PARTIAL: 469 Git-pinned Rust tests, strict Clippy, cargo-deny, and the C/C++ Apple ABI gate pass; Android SDK/NDK, Xcode, simulator, signed devices, and rebuilt store screenshots remain unrun |
+| 23 | Chromium extension builds | PARTIAL: 481 focused Git-pinned Rust tests, strict Clippy, cargo-deny, six Node suites, and the unpacked MV3 build pass; installed-browser/platform matrix not run |
 | 24 | direct authoritative DNS remains first | NOT RUN |
-| 25 | fallbacks remain locally DNSSEC/DANE validated | PARTIAL: typed policy and gateway/transport regressions pass; full live browser matrix not run |
+| 25 | fallbacks remain locally DNSSEC/DANE validated | PARTIAL: both browser adapters test authenticated absence/proven-insecure WebPKI, secure TLSA enforcement, bogus/indeterminate failure, and immutable selected-root plans; full live browser matrix not run |
 | 26 | no public recursive resolver contacted | NOT RUN |
 
 Primitive success never upgrades a topology row to `PASS`. Command transcripts,
