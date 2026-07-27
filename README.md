@@ -79,7 +79,9 @@ a whole. Start with:
   checkpoints, completed browser-policy, standalone-engine, and canonical
   authority/observability slices, plus the next bounded consolidation
   milestone; and
-- [`evidence/`](evidence/) — retained checkpoint command evidence.
+- [`evidence/`](evidence/) — retained checkpoint command evidence, including
+  the
+  [`2026-07-27 software-gate audit`](evidence/software-gate-audit-2026-07-27.md).
 
 Primitive tests and portable builds do not make unrun full-node, wallet,
 marketplace, signed-device, installed-browser, performance, or mainnet rows

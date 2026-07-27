@@ -4,12 +4,15 @@ This ledger is deliberately release-blocking.
 
 ## Canonical protocol repository
 
-- Add production-parser fuzz targets and retained corpus commands.
+- Retain the production-parser fuzz target, locked fuzz dependency graph, and
+  deterministic parser-smoke command in hosted qualification.
 - Adopt the canonical crates in every consumer without copying protocol logic.
 
 ## Standalone node, wallet, and market
 
-- Reconcile any HSRD readiness claims with executable gates.
+- Keep HSRD readiness claims bound to the implemented executable package and
+  two-process regtest gates; do not generalize them to synchronization,
+  consensus completeness, provider readiness, or mining authority.
 - Extend exact-revision canonical `hns-rs` adoption beyond the completed live
   registry and HIP-76 session boundaries; do not copy protocol semantics into
   the node.
@@ -76,22 +79,26 @@ This ledger is deliberately release-blocking.
 - Qualify crawler production snapshot provenance, incremental/reorg handling,
   stored DNS evidence expiry, static publication, and the optional live
   directory without promoting observed data to trust authority.
+- Retain the crawler's exact development lock, clean-environment install, Ruff,
+  140-test, and full fixture/export/validation/archive pipeline gates.
 - Qualify a hash-pinned bootstrap-generator release archive and appliance on
   supported operating systems, including DNSSEC rollover, authoritative DoH,
   TLSA rollover, backup/restore, uninstall, and failure recovery.
-- Add a required bootstrap-generator CI workflow for its locked install, web
-  tests, appliance tests, and production build; those gates pass locally, but
-  the transferred repository currently has no hosted Actions workflow.
+- Publish and protect the bootstrap-generator CI workflow now implemented
+  locally for its locked install, dependency audit, web tests, appliance
+  tests, and production build; no hosted run exists until that local commit is
+  deliberately pushed.
 - Retain a versioned crawler-to-generator handoff fixture and prove that every
   generated record still requires operator review and independent live
   DNSSEC/DANE validation.
 
 ## Integration and release
 
-- Add required per-repository hosted workflows for `hns-rs`, `hns-node-rs`,
-  `hns-dane-engine`, and the ecosystem evidence repository; local and
-  exact-revision consumer gates are retained evidence, not a substitute for
-  protected current-main checks.
+- Deliberately publish and protect the locally implemented workflows for
+  `handshake-rs-profile`, `hns-dane-bootstrap-generator`, `hns-rs`,
+  `hns-node-rs`, and the ecosystem evidence repository. The engine already has
+  a successful exact-head hosted workflow; local gates and exact-revision
+  consumer evidence do not substitute for protected current-main checks.
 - Run adversarial, restart, corruption, fuzz, browser, and performance suites.
 - Execute all 26 minimum regtest demonstrations in `QUALIFICATION_MATRIX.md`.
 - Produce checksummed binaries/packages, SBOM/license inventory, final commit

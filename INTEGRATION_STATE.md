@@ -3,7 +3,7 @@
 Status: **implementation in progress; not release-ready**
 
 Last audited canonical `hns-rs` main:
-`dde2da81f29df935f043978a6d517c1d60ceff31`
+`8c55e8ff1c75c9880dca793a55b02c49d052be87`
 
 Implemented and locally committed there:
 
@@ -298,3 +298,44 @@ workflow was polled or counted as passing for this successor. Installed
 Chromium variants, Android/iOS SDK and signed-device matrices, packet-capture
 resolver proof, artifact signing/provenance, and the PDF's full topology
 qualification remain open release gates.
+
+## 2026-07-27 ecosystem software-gate audit
+
+All nine requested working repositories were reconciled against the PDF's
+package and evidence requirements. Existing complete gates passed for the
+DANE engine and Chromium extension. The exact current MeshMine remote head has
+a successful scheduled hosted workflow. No implementation changes were
+needed in those three repositories.
+
+Bounded release-engineering gaps were closed locally in the remaining
+repositories:
+
+- the organization profile now verifies a canonical checksum/dimension
+  inventory for every published image and has an immutable-action CI gate;
+- the bootstrap generator has a clean dependency audit, repaired lockfile, one
+  complete check command, and immutable-action CI;
+- mobile has all five missing diagnostic resources in every one of 20 locales,
+  plus a format-token-safe completeness gate wired into change classification
+  and CI;
+- the crawler has an exact development lock, clean-environment install gate,
+  and immutable-action CI;
+- canonical `hns-rs` has a locked production-parser fuzz graph, root/fuzz
+  source/license/advisory gates, deterministic parser smoke, a complete check
+  command, CI, and RustSec;
+- the standalone node has a repaired canonical fuzz lock, root/fuzz
+  source/license/advisory gates, a complete check command, CI, RustSec, and a
+  two-release-process regtest gate that directly passes matrix rows 1–3; and
+- this evidence repository now enforces its required documents, exact 26-row
+  matrix, nine-repository checkpoint inventory, and relative-link integrity.
+
+The detailed commands, package results, local/hosted distinction, and read-only
+`gh` run audit are retained in
+`evidence/software-gate-audit-2026-07-27.md`.
+
+These changes were committed only in the local working repositories. The PDF
+forbids pushes, releases, upstream comments, and publication during the audit,
+so new workflows do not yet have protected hosted results. Portable software
+and local two-process success also do not satisfy full block synchronization,
+production provider/public-service, wallet/market, installed-browser,
+signed-device, ASIC, signing/provenance, or independent-review gates. Release
+readiness therefore remains **NO**.

@@ -45,12 +45,12 @@ branches, not published package or signed-artifact releases.
 
 | Working repository | Revision | Checkpoint |
 | --- | --- | --- |
-| `work/hns-rs` | `dde2da81f29df935f043978a6d517c1d60ceff31` | canonical protocol/consent checkpoint plus direction-safe HIP-76 requester/output policy APIs, exported registry identity, typed negotiation, exact bounds, and artifact-bound fingerprint |
-| `work/hns-node-rs` | `0e69319d11ca98d788466ed5028d8d897685e9f1` | history-preserving standalone extraction plus exact-revision live Denuo negotiation, bounded role-safe HIP-76 sessions, API-v13 qname-free diagnostics, and portable qualification |
-| `work/hns-dane-engine` | `a03648ec85a115362ebc2ab24bb9ea0f1be127fc` | standalone exact-revision DNSSEC/DANE and dual-root graph plus the canonical schema-v2 browser authority lifecycle, checked runtime session/generation/event admission, typed ICANN failure semantics, and security observability contract |
-| `work/hns-dane-browser-mobile` | `140bb77e7b3b363747225b03de705d849768f122` | Android/iOS five-contract canonical authority/observability adoption, exact engine pin, stale-work and status enforcement, complete portable qualification, and corrected requester/output consent documentation |
-| `work/hns-dane-browser-extension` | `d6071a5cf969cc5b796b034d460d46ffbfb0a521` | Chromium five-contract canonical authority/observability adoption, exact engine pin, typed DANE and schema-v3 native security publication, stale-work qualification, and final Chromium-only source boundary |
-| `work/hns-dane-crawler` | `74546c7e6b0b8a764525a77177a88dc333bf64d8` | canonical migration, observational authority boundary, and date-stable qualification |
-| `work/hns-dane-bootstrap-generator` | `f745f122243e5304e6a7ea0e111d47c61d22005e` | canonical migration, release-source URL update, reproducible npm lock repair, and publisher-boundary documentation |
+| `work/hns-rs` | `8c55e8ff1c75c9880dca793a55b02c49d052be87` | canonical protocol/consent checkpoint plus locked production-parser fuzz graph, root/fuzz source/license/advisory gates, deterministic parser smoke, complete check command, CI, and RustSec |
+| `work/hns-node-rs` | `42c76a622f2600a833835b4ca737d3350f73af52` | standalone node plus repaired canonical fuzz lock, root/fuzz deny/audit gates, complete CI/RustSec qualification, release build, and two-full-process matching-registry regtest proof |
+| `work/hns-dane-engine` | `7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5` | standalone exact-revision DNSSEC/DANE graph, canonical browser authority/observability contracts, and recursive-DoH consent binding |
+| `work/hns-dane-browser-mobile` | `3072c24deef86bc1edd45247ac743251fb3ab598` | Android/iOS canonical-engine adoption plus complete format-safe diagnostic resources across all 20 localized Android sets and an enforced completeness gate |
+| `work/hns-dane-browser-extension` | `3d40d164c35e0c462750969f7055d3acdb12398c` | Chromium canonical-engine/native-host boundary, complete portable/packaging qualification, and corrected draft-release lookup |
+| `work/hns-dane-crawler` | `26deeb0a7b451922b6a86130c6c0da6d3cbc945a` | observational authority boundary plus exact development lock, clean-environment qualification, and pinned CI |
+| `work/hns-dane-bootstrap-generator` | `225182962dfbc7c738312e50f8e6ea7dcc889844` | operator-review boundary plus clean dependency audit, complete locked qualification command, and pinned CI |
 | `work/MeshMine` | `bc9cc70de22e455545d44453cec0d6f07ebeaabe` | standalone Rust node adoption, immutable canonical Git dependency, portable CI correction, and consolidated warning-denied HSRD cleanup |
-| `work/handshake-rs-profile` | `fcbeae9874c4eaa62ce5fc52d4cbc499dae94be1` | organization repository/authority graph, role consent, product-specific browser requester opt-in, and source-versus-release boundary |
+| `work/handshake-rs-profile` | `0b3b703f31a92e2c2795c64b04b409753fba4e6f` | organization repository/authority graph plus canonical profile-image checksum/dimension inventory and pinned CI |
