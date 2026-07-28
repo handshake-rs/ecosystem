@@ -1,8 +1,8 @@
 # GitHub organization migration
 
-Status: **canonical source migration complete**; release credentials,
-organization teams/rulesets, signed artifacts, and platform qualification
-remain separate administrative/release work
+Status: **canonical source migration complete**; organization teams/rulesets,
+remaining signing platforms, and installed-platform qualification remain
+separate administrative/release work
 
 Target organization: `handshake-rs`
 
@@ -62,12 +62,16 @@ organization-profile checkpoint,
 `4fbfbc2df1c9d67ae0b7dff434b9e31a0ccc29d8`, publishes the complete
 repository/authority graph, five browser-engine contracts, crawler/generator
 handoff boundary, role-specific consent, and source-versus-signing ownership.
-The latest organization profile is
-`fcbeae9874c4eaa62ce5fc52d4cbc499dae94be1`; it additionally makes the
-browser-specific requester opt-in exception explicit.
-The preceding ecosystem checkpoint is
-`ec8251aebe7e4107482045cba58fa3c80538df76`; current product and coordination
-revisions are maintained in `REFERENCE_COMMITS.md`.
+The next organization-profile checkpoint,
+`fcbeae9874c4eaa62ce5fc52d4cbc499dae94be1`, makes the browser-specific
+requester opt-in exception explicit. Organization-profile implementation
+checkpoint `0b3b703f31a92e2c2795c64b04b409753fba4e6f` adds the
+checksum/dimension inventory and immutable-action asset gate; documentation
+reconciliation head `a87b859e2b1cbd597ff3598862c3d08dd4d1c8c3` records the
+current repository and distribution boundaries. The current
+ecosystem coordination checkpoint before this documentation reconciliation is
+`cba166bd8ab7049a1972d6821b0cafe084c50746`; current product and
+coordination revisions are maintained in `REFERENCE_COMMITS.md`.
 
 ## Transfer, import, and fork policy
 
@@ -160,7 +164,7 @@ at a transferred old path because doing so destroys GitHub's redirect.
 
 The browser migrations replaced coordination-root path dependencies with exact
 `handshake-rs/hns-dane-engine` revision
-`a03648ec85a115362ebc2ab24bb9ea0f1be127fc`. Both now consume
+`7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`. Both now consume
 `hns-browser-runtime`, `hns-browser-observability`, `hns-icann-dane`,
 `hns-namespace-resolution`, and `hns-resolution-policy`;
 their lockfiles record the complete Git source and their exact-source policies
@@ -194,6 +198,18 @@ unavailable to ordinary pull requests, and usable only by the Denuo Web Release
 team after protected-tag approval. Store listings should link to the canonical
 `handshake-rs` source and the exact signed source tag.
 
+That separation is now exercised for the Chromium v0.5.4 release. Canonical
+source and release automation live under `handshake-rs`; the protected,
+default-branch-restricted `macos-signing` environment supplied the Denuo Web
+Apple credentials for jobs that rebuilt the existing tag, verified the exact
+Developer ID identity, notarized both macOS architectures, and stapled the
+Setup applications. A separate default-branch publisher replaced only the
+affected assets plus checksum inventory. Its write-enabled `release`
+environment currently lacks approval and branch rules. This proves one
+bounded signing path, not complete publisher protection, organization-wide
+credential governance, or installed-browser qualification. Windows release
+artifacts remain unsigned.
+
 The MeshMine transfer is complete, but its visibility, licensing, and any
 affected protected-branch or Pages behavior still require a release audit.
 GitHub Packages likewise require a registry-specific ownership/link audit.
@@ -216,7 +232,8 @@ GitHub Packages likewise require a registry-specific ownership/link audit.
 
 - configure organization teams, 2FA, repository rulesets, protected release
   tags, and environment-scoped release credentials;
-- prove that Denuo Web publisher/signing access works without
+- protect and default-branch-restrict the Chromium write-enabled `release`
+  environment, then generalize the bounded model without granting
   organization-wide owner access;
 - verify transferred old-URL redirects and any changed Pages, package, webhook,
   deploy-key, or Actions behavior;

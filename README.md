@@ -18,8 +18,8 @@ workspace, monorepo, umbrella binary, or combined ecosystem package.
 | [`hns-node-rs`](https://github.com/handshake-rs/hns-node-rs) | Standalone node runtime, storage, P2P, synchronization, mining, and RPC |
 | [`MeshMine`](https://github.com/handshake-rs/MeshMine) | Mining overlay and application consuming the external node boundary |
 | [`hns-dane-engine`](https://github.com/handshake-rs/hns-dane-engine) | Canonical DNSSEC, TLSA/DANE, resolver, transport, dual-root and transport/role policy, browser authority lifecycle, and security observability crates |
-| [`hns-dane-browser-mobile`](https://github.com/handshake-rs/hns-dane-browser-mobile) | Android/iOS lifecycle, UI, proxy integration, packaging, and canonical-engine adapters |
-| [`hns-dane-browser-extension`](https://github.com/handshake-rs/hns-dane-browser-extension) | Chromium extension, PAC/proxy integration, native host, packaging, and canonical-engine adapters |
+| [`hns-dane-browser-mobile`](https://github.com/handshake-rs/hns-dane-browser-mobile) | Android/iOS lifecycle, UI, proxy integration, app-store packaging, and canonical-engine adapters |
+| [`hns-dane-browser-extension`](https://github.com/handshake-rs/hns-dane-browser-extension) | Chromium extension, PAC/proxy integration, native host, cross-platform Setup, release signing, and canonical-engine adapters |
 | [`hns-dane-crawler`](https://github.com/handshake-rs/hns-dane-crawler) | Observational HNS topology, stored DNS evidence, DANE-readiness queues, static reports, and optional live-directory output |
 | [`hns-dane-bootstrap-generator`](https://github.com/handshake-rs/hns-dane-bootstrap-generator) | Operator-facing HNS/ICANN delegation, DNSSEC/DS, authoritative DoH, and TLSA record/deployment generation |
 
@@ -36,12 +36,26 @@ a bounded role-safe HIP-76 requester/output session. Production recursion,
 DNSSEC validation, and DANE remain separate resolver boundaries and are not
 claimed by the node transport. The engine's complete Cargo graph now pins the
 canonical `hns-rs` protocol packages and builds without a sibling workspace.
+The standalone node's functional consensus-readiness fields are all true. Its
+base snapshot initializes `release_stage` as `pre-authority`, while live
+native RPC replaces that value with a configuration-specific diagnostic stage
+such as `native-sync-live-p2p`, `mining-engine-observe`, or
+`mainnet-canary-gated`. None of those labels grants authority: mainnet mining
+still requires the explicit synchronized canary plus a coherent durable
+authoritative tip. MeshMine pins node revision
+`504d3fed035feb8a637ca09c4e0816b6e1144622`, so its bridge does not yet
+consume the later standalone Denuo/HIP-76 session commits.
 Browser consumers pin the qualified engine's DANE via ICANN DoH,
 complete-host dual-root, direct-first typed transport policy, canonical
 authority lifecycle, and schema-v2 observability crates. Their existing relay
 controls map only requester consent; browser provider roles stay disabled.
 Platform proxy/resolver migration and installed-device qualification remain
 tracked work.
+The mobile and Chromium runtimes now stage header synchronization away from
+live request admission and publish validated header/peer/readiness state
+atomically. Chromium additionally keeps a mandatory PAC under explicit
+connection/control generations during native-host replacement and transient
+header maintenance, while evidence expiry remains independently fail closed.
 The crawler may hand an observed
 remediation queue to the bootstrap generator, but neither repository is
 browser trust authority and no browser request depends on crawler availability
@@ -81,11 +95,20 @@ a whole. Start with:
   milestone; and
 - [`evidence/`](evidence/) — retained checkpoint command evidence, including
   the
-  [`2026-07-27 software-gate audit`](evidence/software-gate-audit-2026-07-27.md).
+  [`2026-07-27 software-gate audit`](evidence/software-gate-audit-2026-07-27.md)
+  and the
+  [`2026-07-28 browser maintenance/release successor`](evidence/browser-maintenance-release-successor-2026-07-28.md).
 
 Primitive tests and portable builds do not make unrun full-node, wallet,
 marketplace, signed-device, installed-browser, performance, or mainnet rows
 pass.
+
+Individual product publication is not ecosystem qualification. The Chromium
+v0.5.4 GitHub release and its protected macOS signing jobs/default-branch asset
+replacement, and the mobile Google Play/App Store listings, do not upgrade the
+unrun installed-browser, signed-device, resolver-contact, or full-topology
+rows. The replacement's write-enabled `release` environment still needs
+approval and branch protection rules.
 
 Some repositories do not yet have a finalized top-level license. Public source
 availability alone does not grant additional rights; consult each repository's

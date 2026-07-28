@@ -80,15 +80,15 @@ projects are neither pushed nor rewritten.
 
 | Path | Current committed checkpoint |
 | --- | --- |
-| `work/hns-rs` | `dde2da81f29df935f043978a6d517c1d60ceff31` |
-| `work/hns-node-rs` | `0e69319d11ca98d788466ed5028d8d897685e9f1` |
-| `work/hns-dane-engine` | `a03648ec85a115362ebc2ab24bb9ea0f1be127fc` |
-| `work/hns-dane-browser-mobile` | `140bb77e7b3b363747225b03de705d849768f122` |
-| `work/hns-dane-browser-extension` | `d6071a5cf969cc5b796b034d460d46ffbfb0a521` |
-| `work/hns-dane-crawler` | `74546c7e6b0b8a764525a77177a88dc333bf64d8` |
-| `work/hns-dane-bootstrap-generator` | `f745f122243e5304e6a7ea0e111d47c61d22005e` |
-| `work/MeshMine` | `bc9cc70de22e455545d44453cec0d6f07ebeaabe` |
-| `work/handshake-rs-profile` | `fcbeae9874c4eaa62ce5fc52d4cbc499dae94be1` |
+| `work/hns-rs` | `8c55e8ff1c75c9880dca793a55b02c49d052be87` |
+| `work/hns-node-rs` | `eba0237dedcbc958a8bc09dd811a4a9eeaa9afe7` |
+| `work/hns-dane-engine` | `7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5` |
+| `work/hns-dane-browser-mobile` | `21719bb9cbe972e11ba1ad285707e6cfa0d629c1` |
+| `work/hns-dane-browser-extension` | `9109dc4a9115a8fde8c3026700a104ebf8cdb164` |
+| `work/hns-dane-crawler` | `b9e3c406631eb253f26979a0d3d9f794fd9fb11f` |
+| `work/hns-dane-bootstrap-generator` | `ff1c709c8584b13bc02654d19ebc00d09025f4c7` |
+| `work/MeshMine` | `93681bf85b61bcc031ad928321b1bcdb94dfc4bd` |
+| `work/handshake-rs-profile` | `a87b859e2b1cbd597ff3598862c3d08dd4d1c8c3` |
 
 Starting revisions above remain unchanged provenance facts. The standalone
 node additionally records exact 126-commit subtree equivalence and its

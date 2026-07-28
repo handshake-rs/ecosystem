@@ -61,7 +61,7 @@ Both browser workspaces consume `hns-browser-runtime`,
 `hns-browser-observability`, `hns-icann-dane`,
 `hns-namespace-resolution`, and `hns-resolution-policy` from exact
 `handshake-rs/hns-dane-engine` revision
-`a03648ec85a115362ebc2ab24bb9ea0f1be127fc`, allowlist only that Git source in
+`7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`, allowlist only that Git source in
 their source policies and `cargo-deny`, and record the full source revision in
 their lockfiles.
 `hns-node-rs` consumes exact `handshake-rs/hns-rs` revision

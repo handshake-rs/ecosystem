@@ -10,9 +10,12 @@ This ledger is deliberately release-blocking.
 
 ## Standalone node, wallet, and market
 
-- Keep HSRD readiness claims bound to the implemented executable package and
-  two-process regtest gates; do not generalize them to synchronization,
-  consensus completeness, provider readiness, or mining authority.
+- Keep the all-true HSRD functional-readiness matrix bound to its retained
+  stopped-state, rollback, invalid-corpus, and executable evidence. Do not
+  conflate it with either the base snapshot's `pre-authority` label or live
+  native RPC's mode-specific release-stage diagnostics, a synchronized durable
+  runtime tip, production provider readiness, operational endorsement, or
+  independent review.
 - Extend exact-revision canonical `hns-rs` adoption beyond the completed live
   registry and HIP-76 session boundaries; do not copy protocol semantics into
   the node.
@@ -29,6 +32,9 @@ This ledger is deliberately release-blocking.
 
 ## MeshMine
 
+- Deliberately advance and requalify MeshMine's immutable node pin before
+  attributing the standalone node's later Denuo/HIP-76 session features to the
+  bridge.
 - Retire the historical embedded `hsrd` qualification tree only after its
   remaining fixtures/provenance are retained independently; runtime and build
   authority now use the immutable canonical external-node revision.
@@ -68,11 +74,21 @@ This ledger is deliberately release-blocking.
   optional live validating-DoH/Node dependency from the deterministic offline
   conformance gate so external tool or network availability cannot obscure a
   product regression.
+- Retain atomic staged header/peer/readiness publication and Chromium's
+  generation-bound mandatory PAC during native-host replacement. Exercise
+  crash recovery, concurrent runtimes, evidence expiry, and replacement races
+  in installed processes rather than treating portable lifecycle tests as the
+  installed-browser result.
 - Complete Android/iOS lifecycle/build/ABI tests and Chromium
   native-host/PAC/proxy/restart/uninstall tests.
 - Run signed-device Android/iOS and installed-browser Chromium matrices for
   redirects, cross-origin subresources, Service Workers, downloads, WSS,
   process restarts, and policy revocation.
+- Retain the protected Developer ID identity checks, notarization evidence,
+  stapling, and digest-verified replacement path proven for Chromium v0.5.4.
+  Add approval and branch restrictions to the write-enabled `release`
+  environment, add equivalent authorized signing/provenance for Windows, and
+  qualify the published artifacts after installation.
 
 ## DANE observational and operator tools
 

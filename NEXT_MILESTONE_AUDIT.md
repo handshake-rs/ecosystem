@@ -1,8 +1,8 @@
 # Next ecosystem milestone audit
 
-Date: 2026-07-26
+Last updated: 2026-07-28
 
-Status: successive milestones completed and pushed; next bounded audit identified
+Status: successive milestones completed; shared proxy-core audit remains next
 
 ## Completed recommendation
 
@@ -409,5 +409,32 @@ be unsafe.
 
 This checkpoint will not yet replace the browser-local DNS wire, light-chain,
 DNSSEC, DANE, resolver, origin transport, or gateway implementations. It also
-will not upgrade installed-browser, Android device, iOS device, store-signing,
-or the PDF's 26-row topology qualification.
+will not upgrade installed-browser, Android device, iOS device, remaining
+platform signing, or the PDF's 26-row topology qualification.
+
+## Browser product successor after milestone selection
+
+The selected shared proxy-core milestone remains open. Product-local work
+subsequently hardened the boundary that it will eventually consume:
+
+- mobile `14edcaf5f1039e7fd2e6d99c178de927ede5d1b0` and Chromium
+  `43819ee3a87e8e400d3b8f3202647f0d4ccc04d8` stage long-running header,
+  quorum, snapshot, and peer work outside the live database, validate
+  conditional deltas, and atomically publish header/peer/readiness
+  generations;
+- Chromium keeps mandatory PAC control through native-host replacement and
+  transient due-but-unexpired maintenance failures, with callbacks, alarms,
+  status, and publication bound to explicit connection/control generations;
+  and
+- Chromium release-hardening head
+  `be27931c88929e1e0e7d1504687a5a49a5e86bc3` adds and successfully exercises
+  protected Developer ID signing/notarization jobs and the default-branch
+  asset replacement for the existing v0.5.4 tag; the write-enabled `release`
+  environment still needs protection rules.
+
+This work does not move the product-local complete TLS proxy server into
+`hns-dane-engine`, so it does not satisfy the engine/consumer checkpoints
+above. It does supply stronger executable lifecycle and publication behavior
+that the shared proxy-core adoption must preserve. Exact hosted evidence and
+release claim boundaries are in
+`evidence/browser-maintenance-release-successor-2026-07-28.md`.

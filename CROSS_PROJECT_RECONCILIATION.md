@@ -38,7 +38,7 @@ either browser shell.
 | browser authority state, checked runtime sessions, and generation/event admission | `hns-dane-engine/crates/hns-browser-runtime` |
 | schema-v2 trusted browser status and evidence/transport topology | `hns-dane-engine/crates/hns-browser-observability` |
 | Android/iOS lifecycle and UI | `hns-dane-browser-mobile` |
-| native messaging, PAC/proxy lifecycle, Chromium UI | `hns-dane-browser-extension` |
+| native messaging, mandatory PAC/proxy lifecycle, Chromium UI, cross-platform Setup, and release signing | `hns-dane-browser-extension` |
 | namespace topology snapshots and observational DANE-readiness reports | `hns-dane-crawler` |
 | operator-authored delegation, DNSSEC/DS, TLSA, and appliance material | `hns-dane-bootstrap-generator` |
 
@@ -84,6 +84,13 @@ opt-in” rule.
   request boundary to navigations, redirects, subresources, Service Workers,
   downloads, and WebSockets. The accurate transport label is **DANE via ICANN
   DoH**.
+- A user-configured recursive HNS DoH recovery endpoint is a separate
+  blank-by-default consent boundary. Its ICANN hostname is bootstrapped only
+  through validating ICANN DoH, its connection uses exact public addresses
+  plus WebPKI for that hostname, and its returned HNS DNS remains untrusted
+  until local proof, DNSSEC, TLSA, and DANE validation. It is eligible only
+  after admitted direct, owner-authoritative, and requester transports fail
+  for a transport reason; it cannot mask bogus DNSSEC or stale/missing proofs.
 - Namespace ownership is decided from two independently validated complete
   origin plans, never from an IANA suffix list. The shared classifier retains
   HNS-only, ICANN-only, convergent, divergent, neither, and indeterminate
@@ -104,11 +111,17 @@ opt-in” rule.
 ## Current unresolved joins
 
 - The node consumes the exact canonical `hns-rs` Denuo/HIP-76 checkpoint and
-  now runs bounded live HIP-76 sessions. A production recursive and
+  now runs bounded live HIP-76 sessions. Its functional readiness matrix is
+  complete. The base snapshot's `pre-authority` release stage is replaced in
+  live native RPC by a mode-specific diagnostic label; runtime authority
+  remains conditional on the synchronized durable canary. A production
+  recursive and
   DNSSEC-validating output backend, durable operator-policy restart, HIP 77/78,
   wallets, marketplace messages, and broader shared primitive adoption remain.
 - MeshMine now consumes an exact immutable `handshake-rs/hns-node-rs` revision
-  through its bridge, but the coherent parent/job topology has not yet been
+  through its bridge. Its `504d3fed035feb8a637ca09c4e0816b6e1144622`
+  pin has complete functional readiness but predates the standalone
+  Denuo/HIP-76 session; the coherent parent/job topology has not yet been
   demonstrated end to end.
 - Both browser adapters now submit independently resolved complete HNS and
   ICANN plans to the shared full-host policy, consume the same typed transport
@@ -118,6 +131,12 @@ opt-in” rule.
   status after lifecycle invalidation. Installed-browser and signed-device
   matrices still need to prove those semantics through platform network
   processes, restarts, redirects, workers, downloads, and WebSockets.
+- Both products now perform long-running header/peer work in private staged
+  databases and atomically publish validated header, peer, and readiness
+  generations. Chromium additionally retains mandatory PAC control through
+  native-host replacement and transient due-but-unexpired maintenance
+  failures. These product-local concurrency improvements do not complete the
+  planned shared loopback proxy-core migration.
 - Browser adapters still contain platform-owned gateway, resolver, proxy, and
   network code around the five canonical contracts. Proxy-core and live
   resolver/DNSSEC/DANE migration remain broader shared-engine consolidation.
@@ -128,6 +147,7 @@ opt-in” rule.
   hash-pinned bootstrap appliance still need independent release
   qualification; their unit/build gates do not upgrade browser trust rows.
 - Signed-device Android/iOS and installed-browser Chromium matrices remain
-  release gates even after portable builds and tests pass.
+  qualification gates even though mobile store listings and the Chromium
+  v0.5.4 packages now exist and the macOS assets are signed/notarized.
 - The end-to-end regtest topology and prohibition on public recursive resolver
   contact have not yet been demonstrated.

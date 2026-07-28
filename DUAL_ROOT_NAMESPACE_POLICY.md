@@ -140,6 +140,17 @@ The generic ecosystem policy independently keeps opaque forwarding
 default-on/opt-out and every plaintext or external output role explicit
 opt-in. No browser requester setting grants provider or output consent.
 
+The separately configured recursive HNS DoH recovery URL is blank/off by
+default and does not inherit relay consent. When enabled, its hostname is
+bootstrapped only through validating ICANN DoH, the selected public endpoint
+is authenticated with WebPKI for that hostname, and its answer remains
+untrusted until the browser completes local HNS proof, DNSSEC, TLSA, and DANE
+validation. Recovery is eligible only after direct authoritative UDP/TCP,
+proof-anchored owner-authoritative DoH, and any independently admitted P2P
+requester are unavailable for a typed transport reason. Bogus DNSSEC,
+malformed replies, DNS response codes, and stale or missing HNS proofs remain
+terminal.
+
 The dual-result cache key is derived from the actual query-, policy-,
 selected-root-, and whole-plan-bound decision. It additionally includes the
 canonical HNS network, resolver/trust configuration, authority/binding
@@ -178,6 +189,17 @@ download, or WebSocket completion cannot publish a response or trusted status
 after recovery. Bogus or indeterminate ICANN DNSSEC is reported as a
 name-free root failure with validating-DoH provenance and an explicit
 fail-closed action; it is never relabeled as absence or an ICANN-only outcome.
+
+Long-running header synchronization is staged outside the live admission
+database. A product may publish staged header, peer, and readiness state only
+after conditional baseline, parent linkage, proof-of-work, chainwork, and
+canonical-suffix validation; those generations become visible atomically.
+Unchanged-header peer refreshes do not revoke otherwise valid admitted work.
+Chromium retains either its current mandatory PAC or a confirmed blocking PAC
+during native-host replacement, and binds every PAC callback, native event,
+status adoption, alarm mutation, and maintenance completion to the captured
+connection/control generation. Authenticated evidence expiry remains an
+independent fail-closed boundary.
 
 Legacy `nameClass` fields inside routing or trusted status may remain only when
 populated from the actual selected namespace. A standalone diagnostic ABI may

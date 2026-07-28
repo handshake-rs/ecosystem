@@ -169,19 +169,45 @@ The standalone node canonical main is
 checkpoint is `b2c375e37cac6cfa7a09cfa61113de52ac4f93a1`, layered on the
 extraction and qualification implementation checkpoint
 `d97aab205ef640008bd61d1b17ba3ef91ee2ac10` and retaining exact 126-commit
-subtree provenance from MeshMine. MeshMine's canonical main is
-`bc9cc70de22e455545d44453cec0d6f07ebeaabe`, containing the external-node
+subtree provenance from MeshMine. MeshMine implementation checkpoint
+`bc9cc70de22e455545d44453cec0d6f07ebeaabe` contains the external-node
 adoption and immutable canonical dependency checkpoint
 `ca64fc70ca00475318053bf4a4de763d6200f3d6` plus the portable-CI correction.
-The current main names authenticated Urkel/state record paths, groups node
+Documentation reconciliation head
+`93681bf85b61bcc031ad928321b1bcdb94dfc4bd` additionally marks the embedded
+HSRD tree as archival and reconciles the exact standalone-node boundary. The
+implementation checkpoint names authenticated Urkel/state record paths, groups node
 compaction/commit context, and corrects test scoping so the warning-denied
 portable HSRD workspace passes without lint suppression. Focused gates pass 19
 Urkel, 46 state, and 116 node tests. The exact local all-features gate was
 interrupted after 20 minutes in the known bundled-RocksDB compile; the hosted
-CI counterpart completed successfully for the exact final main in
+CI counterpart completed successfully for that exact implementation head in
 [`run 30189487369`](https://github.com/handshake-rs/MeshMine/actions/runs/30189487369).
 Details are recorded in
 `evidence/standalone-node-checkpoint-2026-07-25.md`.
+
+The later standalone release-qualification implementation head is
+`42c76a622f2600a833835b4ca737d3350f73af52`; documentation reconciliation head
+`eba0237dedcbc958a8bc09dd811a4a9eeaa9afe7` preserves its claim boundaries.
+Every
+`RpcConsensusReadiness` field is true there, including the retained historical
+replay and independently generated invalid corpus. That is functional source
+readiness. `NodeService` initializes its base snapshot with `release_stage:
+pre-authority`, but live native RPC replaces that field with
+`native-sync-live-p2p`, `mining-engine-observe`, or
+`mainnet-canary-gated` according to the active configuration. Those are
+diagnostic mode labels, not authority. A mainnet process receives a private
+mining permit only when its explicit hardened canary configuration, best
+header/active-state synchronization, durable validation/undo state, and
+authoritative tip all pass at runtime.
+
+MeshMine still pins standalone node revision
+`504d3fed035feb8a637ca09c4e0816b6e1144622`. That revision already has the
+promoted functional readiness and conditional canary authority path, but it
+predates the later canonical Denuo negotiation and live HIP-76 commits.
+MeshMine therefore exposes no substitute relay/provider policy and must
+deliberately advance and requalify its immutable pin before claiming those
+standalone features.
 
 The historical live-registry checkpoint pins
 `hns-p2p-experimental` at exact revision
@@ -332,10 +358,74 @@ The detailed commands, package results, local/hosted distinction, and read-only
 `gh` run audit are retained in
 `evidence/software-gate-audit-2026-07-27.md`.
 
-These changes were committed only in the local working repositories. The PDF
-forbids pushes, releases, upstream comments, and publication during the audit,
-so new workflows do not yet have protected hosted results. Portable software
+At the close of that July 27 audit, these changes were committed only in the
+local working repositories. The PDF forbade pushes, releases, upstream
+comments, and publication during that audit, so its newly added workflows did
+not yet have protected hosted results. Portable software
 and local two-process success also do not satisfy full block synchronization,
 production provider/public-service, wallet/market, installed-browser,
 signed-device, ASIC, signing/provenance, or independent-review gates. Release
 readiness therefore remains **NO**.
+
+## 2026-07-28 browser maintenance and release successor
+
+The browser products advanced after the July 27 software-gate audit.
+
+Mobile implementation commit
+`14edcaf5f1039e7fd2e6d99c178de927ede5d1b0` moves network I/O, quorum
+collection, snapshot preparation, and peer merging into a private staged
+database. Header, peer, and readiness generations publish atomically after
+baseline, chain, proof-of-work, chainwork, and canonical-suffix checks.
+Unchanged-header peer refreshes do not invalidate admitted requests; process-
+wide publication locks, crash-state tokens, conditional deltas, stale-stage
+reclamation, and bounded SQLite contention keep concurrent runtimes fail
+closed. Exact-head CI run
+[`30323566765`](https://github.com/handshake-rs/hns-dane-browser-mobile/actions/runs/30323566765)
+passed. Store-link checkpoint
+`153db0306836007b08a9d3bc47c16041b04418d6` then added the live
+[Google Play](https://play.google.com/store/apps/details?id=com.denuoweb.hnsdane)
+and
+[App Store](https://apps.apple.com/us/app/hns-dane-browser/id6791914326)
+links; its documentation-only required-CI run
+[`30393560141`](https://github.com/handshake-rs/hns-dane-browser-mobile/actions/runs/30393560141)
+passed change classification and repository policy while correctly skipping
+unchanged product gates. Current documentation reconciliation head
+`21719bb9cbe972e11ba1ad285707e6cfa0d629c1` updates release, store,
+qualification, and staged-maintenance guidance without changing product code.
+
+Chromium release/runtime commit
+`43819ee3a87e8e400d3b8f3202647f0d4ccc04d8` applies the same staged-chain
+model and adds explicit connection/control generations around PAC, native-host
+replacement, status adoption, alarms, and header maintenance. The extension
+keeps either its live mandatory PAC or a confirmed fixed blocking PAC through
+replacement; transient due-but-unexpired synchronization failures retain the
+live proxy, while authenticated evidence expiry still blocks. The release also
+publishes version-matched graphical Setup applications and native hosts for
+Linux, macOS, and Windows on x64 and arm64.
+
+Chromium release-hardening head
+`be27931c88929e1e0e7d1504687a5a49a5e86bc3` adds the default-branch Apple
+release-replacement workflow and its protected credential-bearing signing
+jobs, PKCS#12 normalization, exact certificate fingerprint/SHA-1 identity
+selection, concurrent notarization, conservative queue polling, retained
+failure evidence, and post-replacement digest checks. The final write-enabled
+publisher uses a separate `release` environment that currently has no
+environment approval or branch protection rules.
+Exact-head CI run
+[`30350645836`](https://github.com/handshake-rs/hns-dane-browser-extension/actions/runs/30350645836)
+passed. Workflow run
+[`30350653092`](https://github.com/handshake-rs/hns-dane-browser-extension/actions/runs/30350653092)
+validated the immutable v0.5.4 source/release, ran the protected signing jobs
+for both macOS architectures, stapled Setup, and replaced and reverified the
+nine affected
+[v0.5.4 release](https://github.com/handshake-rs/hns-dane-browser-extension/releases/tag/v0.5.4)
+assets. Windows artifacts remain explicitly unsigned.
+Current documentation reconciliation head
+`9109dc4a9115a8fde8c3026700a104ebf8cdb164` records those release and
+environment-protection boundaries without changing the packaged runtime.
+
+These are real product and release advances, but they do not demonstrate an
+installed Chromium catalog/browser matrix, Android/iOS signed-device behavior,
+packet-capture proof that no public recursive resolver is contacted, or the
+remaining node, wallet, market, ASIC, and multi-operator topology. Ecosystem
+release readiness remains **NO**.

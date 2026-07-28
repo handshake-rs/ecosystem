@@ -8,8 +8,8 @@
 | [`hns-node-rs`](https://github.com/handshake-rs/hns-node-rs) | Standalone node runtime/networking under construction: chain state, storage, synchronization, mining, and RPC |
 | [`MeshMine`](https://github.com/handshake-rs/MeshMine) | Mining overlay, work scheduling, operator UI, and exact external-node consumer |
 | [`hns-dane-engine`](https://github.com/handshake-rs/hns-dane-engine) | DNSSEC, TLSA/DANE, validating resolution, full-host dual-root policy, canonical browser authority lifecycle, and shared observability |
-| [`hns-dane-browser-mobile`](https://github.com/handshake-rs/hns-dane-browser-mobile) | Android/iOS lifecycle, UI, FFI, proxy, packaging, and shared-engine adapters |
-| [`hns-dane-browser-extension`](https://github.com/handshake-rs/hns-dane-browser-extension) | Chromium MV3 extension, PAC/proxy, native host, installers, and shared-engine adapters |
+| [`hns-dane-browser-mobile`](https://github.com/handshake-rs/hns-dane-browser-mobile) | Android/iOS lifecycle, UI, FFI, proxy, store packaging, staged header publication, and shared-engine adapters |
+| [`hns-dane-browser-extension`](https://github.com/handshake-rs/hns-dane-browser-extension) | Chromium MV3 extension, mandatory PAC/proxy, native host, cross-platform Setup, release signing, and shared-engine adapters |
 | [`hns-dane-crawler`](https://github.com/handshake-rs/hns-dane-crawler) | HSD-derived topology snapshots, stored DNS evidence, readiness queues, reports, and optional live directory |
 | [`hns-dane-bootstrap-generator`](https://github.com/handshake-rs/hns-dane-bootstrap-generator) | Operator-authored delegation, DNSSEC/DS, authoritative DoH, TLSA, verification, and appliance material |
 
@@ -41,6 +41,11 @@ namespace, transport-policy, authority-runtime, and observability contracts.
 The engine owns their canonical security generation/event clock and status
 schema; platform adapters bind and render those contracts while retaining
 sockets, storage, proxy integration, native interfaces, UI, and packaging.
+Their current platform runtimes stage header synchronization and publish
+validated header/peer/readiness generations atomically. Chromium also binds
+PAC and native-host replacement to explicit connection/control generations;
+this remains product-adapter code rather than completion of the planned shared
+engine proxy-core migration.
 
 The crawler/generator arrow is an optional operator workflow, not a runtime
 trust dependency. Portable whole-request browser boundaries require and test
