@@ -53,6 +53,29 @@ independent resolution and DNSSEC validation; crawler snapshots and generated
 instructions cannot authorize a connection. Installed-browser and
 signed-device matrices remain open.
 
+## Current non-mobile publication checkpoints
+
+- All 14 allowlisted `hns-rs` crates are published and non-yanked at `0.1.0`.
+  Their Cargo VCS metadata records source
+  `0ea5994c336642ea7d01c51c0e22df2008985426`; documentation head is
+  `f6f46e1ecf9b31ca6592a6350c254a6effb9c9d0`, and no `v0.1.0` tag exists.
+- `hns-dane-engine` remote `main` remains
+  `7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`. Local release preparation
+  ending at `1d0fc9c6ba72f008e60d8c5a98741a32aeea4a75` is unpublished and
+  unpushed.
+- Chromium v0.5.5 is public from source/tag
+  `86b18497285753944ec1b9196ec05ee359c6db11` with 29 assets. macOS artifacts
+  are signed and notarized; Windows artifacts are unsigned. Documentation
+  head `3495bd1c5e7c26f9486ea81fb21dc1618c9bc2c8` passed CI `30439859541`.
+- MeshMine documentation head
+  `9f781a00ee8fc3b7c6773538434235a65f167ca3` passed CI `30440116148`
+  without changing its immutable external-node boundary.
+- Bootstrap-generator CI `30401402868` exists but failed at `npm ci` because
+  `@emnapi/runtime@1.11.3` is missing from `package-lock.json`.
+
+Mobile remains a release candidate here until its final source, release, and
+store evidence are reconciled separately.
+
 ## External references
 
 `hsd`, `hs-client`, HIPs, Shakedex, Bob Wallet, and Handshake documentation

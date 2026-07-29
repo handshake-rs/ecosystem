@@ -198,17 +198,14 @@ unavailable to ordinary pull requests, and usable only by the Denuo Web Release
 team after protected-tag approval. Store listings should link to the canonical
 `handshake-rs` source and the exact signed source tag.
 
-That separation is now exercised for the Chromium v0.5.4 release. Canonical
-source and release automation live under `handshake-rs`; the protected,
-default-branch-restricted `macos-signing` environment supplied the Denuo Web
-Apple credentials for jobs that rebuilt the existing tag, verified the exact
-Developer ID identity, notarized both macOS architectures, and stapled the
-Setup applications. A separate default-branch publisher replaced only the
-affected assets plus checksum inventory. Its write-enabled `release`
-environment currently lacks approval and branch rules. This proves one
-bounded signing path, not complete publisher protection, organization-wide
-credential governance, or installed-browser qualification. Windows release
-artifacts remain unsigned.
+That separation is now exercised for the public Chromium v0.5.5 release.
+Canonical source/tag `86b18497285753944ec1b9196ec05ee359c6db11` and release
+automation live under `handshake-rs`; the 29-asset release contains
+Developer ID-signed and Apple-notarized macOS artifacts. Windows artifacts
+remain unsigned. Documentation head
+`3495bd1c5e7c26f9486ea81fb21dc1618c9bc2c8` passed exact-head CI
+`30439859541`. This proves a bounded source/signing path, not
+organization-wide credential governance or installed-browser qualification.
 
 The MeshMine transfer is complete, but its visibility, licensing, and any
 affected protected-branch or Pages behavior still require a release audit.

@@ -38,19 +38,20 @@ tests, and only then architectural inference. Draft behavior follows exact PR
 text/commits, deterministic PR fixtures, independent Rust vectors, the Denuo
 registry, and documented migration rules.
 
-## Local implementation checkpoints
+## Current implementation and release checkpoints
 
-These commits are canonical source checkpoints on their project `main`
-branches, not published package or signed-artifact releases.
+The table distinguishes remote or public source from later documentation
+heads. A documentation head does not retag a release, and an unpushed local
+head is not a canonical remote checkpoint.
 
 | Working repository | Revision | Checkpoint |
 | --- | --- | --- |
-| `work/hns-rs` | `8c55e8ff1c75c9880dca793a55b02c49d052be87` | canonical protocol/consent checkpoint plus locked production-parser fuzz graph, root/fuzz source/license/advisory gates, deterministic parser smoke, complete check command, CI, and RustSec |
+| `work/hns-rs` | `f6f46e1ecf9b31ca6592a6350c254a6effb9c9d0` | current documentation head; all 14 non-yanked `0.1.0` crates embed published source `0ea5994c336642ea7d01c51c0e22df2008985426`; no local or remote `v0.1.0` tag exists |
 | `work/hns-node-rs` | `eba0237dedcbc958a8bc09dd811a4a9eeaa9afe7` | all-true functional consensus readiness, base `pre-authority` plus mode-specific live release-stage diagnostics, conditional synchronized-canary authority, repaired canonical fuzz lock, complete CI/RustSec qualification, release build, two-full-process matching-registry regtest proof, and current documentation reconciliation |
-| `work/hns-dane-engine` | `7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5` | standalone exact-revision DNSSEC/DANE graph, canonical browser authority/observability contracts, and recursive-DoH consent binding |
+| `work/hns-dane-engine` | `7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5` | current remote `main`; standalone exact-revision DNSSEC/DANE graph, canonical browser authority/observability contracts, and recursive-DoH consent binding; local unpublished release preparation ends at `1d0fc9c6ba72f008e60d8c5a98741a32aeea4a75` and remains unpushed |
 | `work/hns-dane-browser-mobile` | `21719bb9cbe972e11ba1ad285707e6cfa0d629c1` | Android/iOS canonical-engine adoption, atomic staged header maintenance at `14edcaf5f1039e7fd2e6d99c178de927ede5d1b0`, complete localized diagnostics, current Google Play/App Store links, and release-state documentation reconciliation |
-| `work/hns-dane-browser-extension` | `9109dc4a9115a8fde8c3026700a104ebf8cdb164` | Chromium canonical-engine/native-host boundary, proxy continuity during staged header maintenance, v0.5.4 cross-platform Setup release, protected Developer ID signing/notarization jobs, default-branch asset replacement, and release-state documentation reconciliation |
+| `work/hns-dane-browser-extension` | `3495bd1c5e7c26f9486ea81fb21dc1618c9bc2c8` | current documentation head with green CI `30439859541`; public v0.5.5 source/tag is `86b18497285753944ec1b9196ec05ee359c6db11`, with 29 assets, signed/notarized macOS artifacts, and unsigned Windows artifacts |
 | `work/hns-dane-crawler` | `b9e3c406631eb253f26979a0d3d9f794fd9fb11f` | observational authority boundary, exact development lock, clean-environment qualification, pinned CI, and current output/deployment documentation |
-| `work/hns-dane-bootstrap-generator` | `ff1c709c8584b13bc02654d19ebc00d09025f4c7` | operator-review boundary, clean dependency audit, complete locked qualification command, pinned CI, and current interface/deployment documentation |
-| `work/MeshMine` | `93681bf85b61bcc031ad928321b1bcdb94dfc4bd` | immutable canonical node pin `504d3fed035feb8a637ca09c4e0816b6e1144622`, pre-Denuo/HIP-76 bridge adoption, portable CI correction, consolidated warning-denied HSRD cleanup, and current boundary documentation |
+| `work/hns-dane-bootstrap-generator` | `ff1c709c8584b13bc02654d19ebc00d09025f4c7` | operator-review boundary and current documentation; hosted CI `30401402868` exists but fails at `npm ci` because `@emnapi/runtime@1.11.3` is missing from the lockfile |
+| `work/MeshMine` | `9f781a00ee8fc3b7c6773538434235a65f167ca3` | current documentation head with green CI `30440116148`; immutable canonical node pin `504d3fed035feb8a637ca09c4e0816b6e1144622` still predates the later standalone Denuo/HIP-76 implementation |
 | `work/handshake-rs-profile` | `a87b859e2b1cbd597ff3598862c3d08dd4d1c8c3` | organization repository/authority graph, canonical profile-image checksum/dimension inventory, pinned CI, and current ecosystem profile reconciliation |

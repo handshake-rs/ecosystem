@@ -7,8 +7,8 @@ qualification remains open
 
 | Repository | Revision | Role |
 | --- | --- | --- |
-| `work/hns-dane-browser-mobile` | `21719bb9cbe972e11ba1ad285707e6cfa0d629c1` | current documentation head; store-link checkpoint `153db0306836007b08a9d3bc47c16041b04418d6` follows atomic header-maintenance implementation `14edcaf5f1039e7fd2e6d99c178de927ede5d1b0` |
-| `work/hns-dane-browser-extension` | `9109dc4a9115a8fde8c3026700a104ebf8cdb164` | current documentation head; protected signing/notarization jobs and default-branch asset-replacement head `be27931c88929e1e0e7d1504687a5a49a5e86bc3` follows v0.5.4 proxy/header-maintenance source `43819ee3a87e8e400d3b8f3202647f0d4ccc04d8` |
+| `work/hns-dane-browser-mobile` | `21719bb9cbe972e11ba1ad285707e6cfa0d629c1` | July 28 documentation head; store-link checkpoint `153db0306836007b08a9d3bc47c16041b04418d6` follows atomic header-maintenance implementation `14edcaf5f1039e7fd2e6d99c178de927ede5d1b0` |
+| `work/hns-dane-browser-extension` | `9109dc4a9115a8fde8c3026700a104ebf8cdb164` | July 28 documentation head; protected signing/notarization jobs and default-branch asset-replacement head `be27931c88929e1e0e7d1504687a5a49a5e86bc3` follows v0.5.4 proxy/header-maintenance source `43819ee3a87e8e400d3b8f3202647f0d4ccc04d8` |
 
 Both repositories continue to pin the five canonical
 `handshake-rs/hns-dane-engine` contracts at exact revision
@@ -63,3 +63,15 @@ device, or platform network process. They also do not prove resolver-contact
 privacy, full ecosystem topology, wallet/market operation, ASIC behavior, or
 independent review. Qualification rows 22 and 23 therefore remain `PARTIAL`,
 and release readiness remains **NO**.
+
+## 2026-07-29 Chromium successor
+
+The July 28 v0.5.4 evidence above remains the historical predecessor. Public
+v0.5.5 source/tag
+`86b18497285753944ec1b9196ec05ee359c6db11` supersedes it with 29 release
+assets. macOS artifacts are Developer ID signed and Apple notarized; Windows
+artifacts remain unsigned. Documentation head
+`3495bd1c5e7c26f9486ea81fb21dc1618c9bc2c8` records that state, and
+[CI run `30439859541`](https://github.com/handshake-rs/hns-dane-browser-extension/actions/runs/30439859541)
+passed all four jobs. The installed-browser and wider qualification boundaries
+above remain unchanged.

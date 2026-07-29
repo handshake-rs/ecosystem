@@ -112,6 +112,15 @@ implementation, not hosted results. The evidence repository likewise has no
 hosted result for its new structural gate until publication is separately
 authorized.
 
+Later hosted-state reconciliation on 2026-07-29 supersedes only the
+bootstrap-generator availability statement: the workflow now has
+[run `30401402868`](https://github.com/handshake-rs/hns-dane-bootstrap-generator/actions/runs/30401402868)
+at exact head `ff1c709c8584b13bc02654d19ebc00d09025f4c7`. It failed during
+`npm ci` because `package-lock.json` is missing `@emnapi/runtime@1.11.3`, so
+none of its later qualification steps is counted as hosted success. The
+original “at audit start” record remains historical evidence, not the current
+run state.
+
 The extension's earlier `v0.5.3` release run failed in historical publish
 logic; the current main commit contains the repair and current CI passes.
 Release/publish workflows were intentionally not rerun.

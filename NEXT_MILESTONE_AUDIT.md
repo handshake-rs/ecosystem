@@ -429,7 +429,7 @@ subsequently hardened the boundary that it will eventually consume:
 - Chromium release-hardening head
   `be27931c88929e1e0e7d1504687a5a49a5e86bc3` adds and successfully exercises
   protected Developer ID signing/notarization jobs and the default-branch
-  asset replacement for the existing v0.5.4 tag; the write-enabled `release`
+  asset replacement for the then-existing v0.5.4 tag; the write-enabled `release`
   environment still needs protection rules.
 
 This work does not move the product-local complete TLS proxy server into
@@ -438,3 +438,31 @@ above. It does supply stronger executable lifecycle and publication behavior
 that the shared proxy-core adoption must preserve. Exact hosted evidence and
 release claim boundaries are in
 `evidence/browser-maintenance-release-successor-2026-07-28.md`.
+
+## 2026-07-29 non-mobile release follow-up
+
+This follow-up records publication and distribution evidence without changing
+the still-open shared proxy-core milestone:
+
+- all 14 allowlisted `hns-rs` `0.1.0` crates are published and non-yanked,
+  with embedded Cargo VCS source
+  `0ea5994c336642ea7d01c51c0e22df2008985426`; documentation head is
+  `f6f46e1ecf9b31ca6592a6350c254a6effb9c9d0`, and no local or remote
+  `v0.1.0` tag exists;
+- `hns-dane-engine` remote `main` remains
+  `7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`; the local unpublished
+  release-preparation series ends at
+  `1d0fc9c6ba72f008e60d8c5a98741a32aeea4a75` and remains unpushed;
+- Chromium v0.5.5 is public from source/tag
+  `86b18497285753944ec1b9196ec05ee359c6db11` with 29 assets, signed and
+  notarized macOS artifacts, and unsigned Windows artifacts; documentation
+  head `3495bd1c5e7c26f9486ea81fb21dc1618c9bc2c8` passed CI
+  `30439859541`;
+- MeshMine documentation head
+  `9f781a00ee8fc3b7c6773538434235a65f167ca3` passed CI `30440116148`; and
+- bootstrap-generator CI `30401402868` exists but failed at `npm ci` because
+  `@emnapi/runtime@1.11.3` is missing from its lockfile.
+
+These facts do not complete the installed-browser, device, resolver-contact,
+topology, or independent-review gates. Mobile remains a separate release
+candidate pending final reconciliation.

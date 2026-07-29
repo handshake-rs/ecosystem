@@ -3,7 +3,12 @@
 Status: **implementation in progress; not release-ready**
 
 Last audited canonical `hns-rs` main:
-`8c55e8ff1c75c9880dca793a55b02c49d052be87`
+`f6f46e1ecf9b31ca6592a6350c254a6effb9c9d0`
+
+All 14 allowlisted `hns-rs` crates at `0.1.0` are published and non-yanked.
+Their Cargo VCS metadata identifies
+`0ea5994c336642ea7d01c51c0e22df2008985426` as the release source. No local
+or remote `v0.1.0` Git tag exists.
 
 Implemented and locally committed there:
 
@@ -173,7 +178,7 @@ subtree provenance from MeshMine. MeshMine implementation checkpoint
 `bc9cc70de22e455545d44453cec0d6f07ebeaabe` contains the external-node
 adoption and immutable canonical dependency checkpoint
 `ca64fc70ca00475318053bf4a4de763d6200f3d6` plus the portable-CI correction.
-Documentation reconciliation head
+The 2026-07-28 documentation reconciliation head
 `93681bf85b61bcc031ad928321b1bcdb94dfc4bd` additionally marks the embedded
 HSRD tree as archival and reconciles the exact standalone-node boundary. The
 implementation checkpoint names authenticated Urkel/state record paths, groups node
@@ -329,9 +334,9 @@ qualification remain open release gates.
 
 All nine requested working repositories were reconciled against the PDF's
 package and evidence requirements. Existing complete gates passed for the
-DANE engine and Chromium extension. The exact current MeshMine remote head has
-a successful scheduled hosted workflow. No implementation changes were
-needed in those three repositories.
+DANE engine and Chromium extension. The exact MeshMine remote head audited on
+July 27 had a successful scheduled hosted workflow. No implementation changes
+were needed in those three repositories.
 
 Bounded release-engineering gaps were closed locally in the remaining
 repositories:
@@ -389,7 +394,7 @@ and
 links; its documentation-only required-CI run
 [`30393560141`](https://github.com/handshake-rs/hns-dane-browser-mobile/actions/runs/30393560141)
 passed change classification and repository policy while correctly skipping
-unchanged product gates. Current documentation reconciliation head
+unchanged product gates. The July 28 documentation reconciliation head
 `21719bb9cbe972e11ba1ad285707e6cfa0d629c1` updates release, store,
 qualification, and staged-maintenance guidance without changing product code.
 
@@ -420,7 +425,7 @@ for both macOS architectures, stapled Setup, and replaced and reverified the
 nine affected
 [v0.5.4 release](https://github.com/handshake-rs/hns-dane-browser-extension/releases/tag/v0.5.4)
 assets. Windows artifacts remain explicitly unsigned.
-Current documentation reconciliation head
+The July 28 documentation reconciliation head
 `9109dc4a9115a8fde8c3026700a104ebf8cdb164` records those release and
 environment-protection boundaries without changing the packaged runtime.
 
@@ -429,3 +434,42 @@ installed Chromium catalog/browser matrix, Android/iOS signed-device behavior,
 packet-capture proof that no public recursive resolver is contacted, or the
 remaining node, wallet, market, ASIC, and multi-operator topology. Ecosystem
 release readiness remains **NO**.
+
+## 2026-07-29 non-mobile publication and release reconciliation
+
+The first dependency-publication stage is complete: every one of the 14
+allowlisted `hns-rs` `0.1.0` packages is published and non-yanked. Each package
+embeds source commit
+`0ea5994c336642ea7d01c51c0e22df2008985426`; documentation head
+`f6f46e1ecf9b31ca6592a6350c254a6effb9c9d0` records that result. A
+`v0.1.0` Git tag does not exist locally or on `origin`.
+
+The engine has not advanced remotely or published crates. Remote `main`
+remains `7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`; the local
+release-preparation series ending at
+`1d0fc9c6ba72f008e60d8c5a98741a32aeea4a75` is explicitly unpublished and
+remains unpushed.
+
+Chromium v0.5.5 is public from source/tag
+`86b18497285753944ec1b9196ec05ee359c6db11`. Its 29 release assets include
+Developer ID-signed and Apple-notarized macOS artifacts; Windows artifacts
+remain unsigned. Documentation head
+`3495bd1c5e7c26f9486ea81fb21dc1618c9bc2c8` passed
+[CI run `30439859541`](https://github.com/handshake-rs/hns-dane-browser-extension/actions/runs/30439859541).
+
+MeshMine documentation head
+`9f781a00ee8fc3b7c6773538434235a65f167ca3` passed all three jobs in
+[CI run `30440116148`](https://github.com/handshake-rs/MeshMine/actions/runs/30440116148).
+This documentation-only successor does not change its immutable external-node
+pin.
+
+The bootstrap generator now has hosted evidence, but it is failing evidence:
+[CI run `30401402868`](https://github.com/handshake-rs/hns-dane-bootstrap-generator/actions/runs/30401402868)
+stopped at `npm ci` because `@emnapi/runtime@1.11.3` is missing from
+`package-lock.json`. It must not be described as having no hosted run or as a
+passing current hosted gate.
+
+The exact checkpoint and claim boundaries are retained in
+`evidence/non-mobile-publication-release-checkpoint-2026-07-29.md`. Mobile
+remains a separate candidate and is not promoted to a final release by this
+non-mobile reconciliation.

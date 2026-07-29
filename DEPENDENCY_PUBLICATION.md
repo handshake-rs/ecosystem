@@ -7,9 +7,10 @@ crate releases exist. Release candidates must use one immutable `hns-rs`
 revision or published crate set and must record the registry fingerprint. No
 consumer may silently vendor and modify canonical protocol logic.
 
-Planned release order:
+Release progression:
 
-1. `hns-rs` primitive/protocol crates and registry artifacts.
+1. `hns-rs` primitive/protocol crates: complete for all 14 allowlisted
+   `0.1.0` packages.
 2. `hns-node-rs`, pinned to the exact compatible `hns-rs` release.
 3. `hns-dane-engine`, including `hns-icann-dane`,
    `hns-namespace-resolution`, `hns-resolution-policy`,
@@ -80,4 +81,20 @@ embedded copy, or silent fallback is forbidden.
 - artifact checksums for Android, iOS, extension, and node packages;
 - no unpublished Git dependency in a release artifact.
 
-No crate or package has been published by this execution.
+## Current publication state
+
+All 14 allowlisted `hns-rs` crates at version `0.1.0` were published to
+crates.io on 2026-07-29 and are non-yanked. Every published package records
+release-source commit
+`0ea5994c336642ea7d01c51c0e22df2008985426` in its Cargo VCS metadata. The
+later documentation head is
+`f6f46e1ecf9b31ca6592a6350c254a6effb9c9d0`.
+
+No local or remote `v0.1.0` Git tag exists. Registry version `0.1.0` must
+therefore be attributed to its embedded source commit, not described as a
+Git-tagged release.
+
+`hns-dane-engine` remains unpublished. Canonical remote `main` is
+`7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`; the local release-preparation
+series ending at `1d0fc9c6ba72f008e60d8c5a98741a32aeea4a75` remains unpushed
+and is not a registry release.

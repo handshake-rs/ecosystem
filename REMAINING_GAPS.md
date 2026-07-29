@@ -85,10 +85,9 @@ This ledger is deliberately release-blocking.
   redirects, cross-origin subresources, Service Workers, downloads, WSS,
   process restarts, and policy revocation.
 - Retain the protected Developer ID identity checks, notarization evidence,
-  stapling, and digest-verified replacement path proven for Chromium v0.5.4.
-  Add approval and branch restrictions to the write-enabled `release`
-  environment, add equivalent authorized signing/provenance for Windows, and
-  qualify the published artifacts after installation.
+  stapling, and digest-verified release path proven for Chromium v0.5.5.
+  Add equivalent authorized signing/provenance for Windows and qualify all
+  published artifacts after installation.
 
 ## DANE observational and operator tools
 
@@ -100,21 +99,23 @@ This ledger is deliberately release-blocking.
 - Qualify a hash-pinned bootstrap-generator release archive and appliance on
   supported operating systems, including DNSSEC rollover, authoritative DoH,
   TLSA rollover, backup/restore, uninstall, and failure recovery.
-- Publish and protect the bootstrap-generator CI workflow now implemented
-  locally for its locked install, dependency audit, web tests, appliance
-  tests, and production build; no hosted run exists until that local commit is
-  deliberately pushed.
+- Repair and rerun the published bootstrap-generator CI workflow. Hosted run
+  `30401402868` failed before qualification at `npm ci` because
+  `package-lock.json` lacks `@emnapi/runtime@1.11.3`; do not count downstream
+  audit, web, appliance, or production-build steps until the locked install
+  passes.
 - Retain a versioned crawler-to-generator handoff fixture and prove that every
   generated record still requires operator review and independent live
   DNSSEC/DANE validation.
 
 ## Integration and release
 
-- Deliberately publish and protect the locally implemented workflows for
-  `handshake-rs-profile`, `hns-dane-bootstrap-generator`, `hns-rs`,
-  `hns-node-rs`, and the ecosystem evidence repository. The engine already has
-  a successful exact-head hosted workflow; local gates and exact-revision
-  consumer evidence do not substitute for protected current-main checks.
+- Retain protected, exact-head hosted evidence for published checkpoints and
+  close any current hosted failures. The engine's local release-preparation
+  head `1d0fc9c6ba72f008e60d8c5a98741a32aeea4a75` must remain unpushed and
+  unpublished until its separate release is authorized; local gates and
+  exact-revision consumer evidence do not substitute for protected
+  current-main checks.
 - Run adversarial, restart, corruption, fuzz, browser, and performance suites.
 - Execute all 26 minimum regtest demonstrations in `QUALIFICATION_MATRIX.md`.
 - Produce checksummed binaries/packages, SBOM/license inventory, final commit

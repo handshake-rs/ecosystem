@@ -97,18 +97,29 @@ a whole. Start with:
   the
   [`2026-07-27 software-gate audit`](evidence/software-gate-audit-2026-07-27.md)
   and the
-  [`2026-07-28 browser maintenance/release successor`](evidence/browser-maintenance-release-successor-2026-07-28.md).
+  [`2026-07-28 browser maintenance/release successor`](evidence/browser-maintenance-release-successor-2026-07-28.md),
+  followed by the
+  [`2026-07-29 non-mobile publication/release checkpoint`](evidence/non-mobile-publication-release-checkpoint-2026-07-29.md).
 
 Primitive tests and portable builds do not make unrun full-node, wallet,
 marketplace, signed-device, installed-browser, performance, or mainnet rows
 pass.
 
-Individual product publication is not ecosystem qualification. The Chromium
-v0.5.4 GitHub release and its protected macOS signing jobs/default-branch asset
-replacement, and the mobile Google Play/App Store listings, do not upgrade the
-unrun installed-browser, signed-device, resolver-contact, or full-topology
-rows. The replacement's write-enabled `release` environment still needs
-approval and branch protection rules.
+Individual product publication is not ecosystem qualification. All 14
+`hns-rs` `0.1.0` crates are published and non-yanked from embedded source
+`0ea5994c336642ea7d01c51c0e22df2008985426`, but no `v0.1.0` Git tag exists.
+Chromium v0.5.5 is public from source/tag
+`86b18497285753944ec1b9196ec05ee359c6db11` with 29 assets: macOS is signed
+and notarized, while Windows remains unsigned. Those releases, and the mobile
+Google Play/App Store candidate state, do not upgrade the unrun
+installed-browser, signed-device, resolver-contact, or full-topology rows.
+
+Canonical engine remote `main` remains
+`7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`; its local release-preparation
+head `1d0fc9c6ba72f008e60d8c5a98741a32aeea4a75` is unpublished and unpushed.
+The bootstrap generator does have a hosted run, but
+[`30401402868`](https://github.com/handshake-rs/hns-dane-bootstrap-generator/actions/runs/30401402868)
+failed at `npm ci` because `@emnapi/runtime@1.11.3` is missing from its lockfile.
 
 Some repositories do not yet have a finalized top-level license. Public source
 availability alone does not grant additional rights; consult each repository's
@@ -122,7 +133,7 @@ The audit workspace separates maintained work from external reference material:
 hns-rust-ecosystem-YYYY-MM-DD/
 ├── work/          # one independent Git repository per maintained project
 ├── references/    # pinned read-only upstream implementations
-├── source-audit/  # supplied artifact inventory and provenance
+├── SOURCE_AUDIT.md # supplied artifact inventory and provenance
 └── integration/   # this repository's coordination/evidence source
 ```
 
