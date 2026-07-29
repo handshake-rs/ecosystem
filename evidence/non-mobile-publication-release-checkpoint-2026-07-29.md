@@ -1,7 +1,7 @@
 # Non-mobile publication and release checkpoint — 2026-07-29
 
-Status: verified registry, source, release, and hosted-CI facts; mobile remains
-a separate release candidate
+Status: verified registry, source, release, and hosted-CI facts; mobile is
+intentionally excluded and has a separate successor checkpoint
 
 ## Exact checkpoints
 
@@ -44,6 +44,9 @@ recorded failure, not a passing qualification result. The extension release
 and the two successful documentation-head workflows do not complete installed
 browser, device, topology, or independent-review qualification.
 
-Mobile is intentionally excluded from this checkpoint. Existing mobile
-references remain candidate language until its final source, store, and
-release evidence are reconciled separately.
+Mobile was intentionally excluded from this non-mobile checkpoint. Its source,
+store, and release evidence is reconciled in the successor below.
+
+Successor: [`mobile-v0.5.5-release-checkpoint-2026-07-29.md`](mobile-v0.5.5-release-checkpoint-2026-07-29.md)
+records the Android 0.5.5 production deployment and the independently
+versioned iOS 0.5.5 release path.

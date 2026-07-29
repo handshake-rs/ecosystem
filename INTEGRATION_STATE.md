@@ -470,6 +470,37 @@ stopped at `npm ci` because `@emnapi/runtime@1.11.3` is missing from
 passing current hosted gate.
 
 The exact checkpoint and claim boundaries are retained in
-`evidence/non-mobile-publication-release-checkpoint-2026-07-29.md`. Mobile
-remains a separate candidate and is not promoted to a final release by this
-non-mobile reconciliation.
+`evidence/non-mobile-publication-release-checkpoint-2026-07-29.md`. Mobile is
+intentionally excluded from that checkpoint and reconciled separately below.
+
+## 2026-07-29 mobile v0.5.5 release reconciliation
+
+Mobile Android 0.5.5 version code 46 was built from
+`d24f85158854abb8be4a7bb9e914aebe5e7e4679`, signed, structurally verified,
+and uploaded directly to the Google Play production track. Play edit
+`17438779769069438085` completed and generated APKs for version code 46 are
+available. The signed APK SHA-256 is
+`b36a4346ffcba14c081500ef3dc7c5012cabd30f42cdaa80a354eefb5da210ba`;
+the uploaded AAB SHA-256 is
+`728d8892e180d954652668a4e53a7e2d6c7542e9d36330f4803cdecdb34598b0`.
+
+iOS 0.5.5 build 57 uses source and annotated tag
+`d926561091634cd69fc9b7e79a4b76003fa4ee47`. Exact-source Apple
+[CI run `30454904736`](https://github.com/handshake-rs/hns-dane-browser-mobile/actions/runs/30454904736)
+passed. The four live `1284 × 2778` App Store screenshots from
+[run `30454926117`](https://github.com/handshake-rs/hns-dane-browser-mobile/actions/runs/30454926117)
+passed provenance, semantic, and visual validation. Build `57` is `VALID` and
+its direct App Review submission is `WAITING_FOR_REVIEW` after protected upload
+run `30456522039`. This is a direct App Review path configured for manual store
+release, with no
+TestFlight build distribution or beta group.
+
+Public GitHub Release
+[`v0.5.5`](https://github.com/handshake-rs/hns-dane-browser-mobile/releases/tag/v0.5.5)
+retains the verified code 46 APK and build 57 App Store IPA.
+
+Exact artifact and claim boundaries are retained in
+`evidence/mobile-v0.5.5-release-checkpoint-2026-07-29.md`. Store build,
+signing, screenshot, and publication evidence does not substitute for the
+installed signed-device matrix. Qualification row 22 remains `PARTIAL`, and
+ecosystem release readiness remains **NO**.

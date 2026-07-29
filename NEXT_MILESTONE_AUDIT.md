@@ -464,5 +464,32 @@ the still-open shared proxy-core milestone:
   `@emnapi/runtime@1.11.3` is missing from its lockfile.
 
 These facts do not complete the installed-browser, device, resolver-contact,
-topology, or independent-review gates. Mobile remains a separate release
-candidate pending final reconciliation.
+topology, or independent-review gates. Mobile is reconciled separately in
+`evidence/mobile-v0.5.5-release-checkpoint-2026-07-29.md`.
+
+## 2026-07-29 mobile v0.5.5 release follow-up
+
+This release follow-up does not change the still-open shared proxy-core
+milestone:
+
+- Android 0.5.5 version code 46 from
+  `d24f85158854abb8be4a7bb9e914aebe5e7e4679` is signed, artifact-verified,
+  and deployed to Google Play production;
+- iOS 0.5.5 build 57 source and annotated `v0.5.5` tag
+  `d926561091634cd69fc9b7e79a4b76003fa4ee47` passed exact-source Apple CI
+  `30454904736`;
+- the four live App Store screenshots from run `30454926117` passed
+  provenance, semantic, and visual validation; and
+- build `57` is `VALID` and its direct App Review submission is
+  `WAITING_FOR_REVIEW` after protected upload run `30456522039`. The iOS path
+  is direct App Review with manual release,
+  and no TestFlight or beta group is used.
+
+Public GitHub Release
+[`v0.5.5`](https://github.com/handshake-rs/hns-dane-browser-mobile/releases/tag/v0.5.5)
+retains the verified code 46 APK and build 57 App Store IPA.
+
+These product-release facts narrow the distribution gap but do not move
+loopback proxy ownership into `hns-dane-engine`, demonstrate installed
+Android/iOS behavior, prove resolver-contact isolation, or upgrade
+qualification row 22 beyond `PARTIAL`.

@@ -149,9 +149,15 @@ opt-in” rule.
   Bootstrap-generator hosted CI now exists, but run `30401402868` failed at
   `npm ci` because `@emnapi/runtime@1.11.3` is absent from the lockfile.
 - Signed-device Android/iOS and installed-browser Chromium matrices remain
-  qualification gates even though mobile store listings and the Chromium
-  v0.5.5 release now has 29 assets and its macOS artifacts are
-  signed/notarized. Windows artifacts remain unsigned.
+  qualification gates. Android 0.5.5 version code 46 is deployed to Google
+  Play production; iOS 0.5.5 build 57 has passing exact Apple CI and live
+  screenshot evidence, with direct manual App Review and no TestFlight
+  (build `57` is `VALID` and its direct App Review submission is
+  `WAITING_FOR_REVIEW` after protected upload run `30456522039`). Those
+  distribution facts do not constitute installed
+  device evidence. Mobile GitHub Release `v0.5.5` publicly retains the verified
+  code 46 APK and build 57 IPA. The Chromium v0.5.5 release has 29 assets and
+  its macOS artifacts are signed/notarized; Windows artifacts remain unsigned.
 - All 14 `hns-rs` `0.1.0` crates are published and non-yanked from embedded
   source `0ea5994c336642ea7d01c51c0e22df2008985426`; no `v0.1.0` Git tag
   exists. The engine remains at remote head

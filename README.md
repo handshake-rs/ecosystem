@@ -99,7 +99,9 @@ a whole. Start with:
   and the
   [`2026-07-28 browser maintenance/release successor`](evidence/browser-maintenance-release-successor-2026-07-28.md),
   followed by the
-  [`2026-07-29 non-mobile publication/release checkpoint`](evidence/non-mobile-publication-release-checkpoint-2026-07-29.md).
+  [`2026-07-29 non-mobile publication/release checkpoint`](evidence/non-mobile-publication-release-checkpoint-2026-07-29.md)
+  and the
+  [`2026-07-29 mobile v0.5.5 release checkpoint`](evidence/mobile-v0.5.5-release-checkpoint-2026-07-29.md).
 
 Primitive tests and portable builds do not make unrun full-node, wallet,
 marketplace, signed-device, installed-browser, performance, or mainnet rows
@@ -110,9 +112,18 @@ Individual product publication is not ecosystem qualification. All 14
 `0ea5994c336642ea7d01c51c0e22df2008985426`, but no `v0.1.0` Git tag exists.
 Chromium v0.5.5 is public from source/tag
 `86b18497285753944ec1b9196ec05ee359c6db11` with 29 assets: macOS is signed
-and notarized, while Windows remains unsigned. Those releases, and the mobile
-Google Play/App Store candidate state, do not upgrade the unrun
-installed-browser, signed-device, resolver-contact, or full-topology rows.
+and notarized, while Windows remains unsigned. Mobile Android 0.5.5 version
+code 46 is deployed to Google Play production from source
+`d24f85158854abb8be4a7bb9e914aebe5e7e4679`. The iOS 0.5.5 build 57 source
+and `v0.5.5` tag are
+`d926561091634cd69fc9b7e79a4b76003fa4ee47`; exact Apple CI and live
+App Store screenshots pass, while build `57` is `VALID` and its direct App
+Review submission is `WAITING_FOR_REVIEW` after protected upload run
+`30456522039`. The iOS path is direct
+App Review with manual release and no TestFlight distribution. Public mobile
+GitHub Release `v0.5.5` retains the verified code 46 APK and build 57 App Store
+IPA. These product releases do not upgrade the unrun installed-browser,
+signed-device, resolver-contact, or full-topology rows.
 
 Canonical engine remote `main` remains
 `7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`; its local release-preparation

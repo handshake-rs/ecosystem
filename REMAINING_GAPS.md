@@ -79,7 +79,9 @@ This ledger is deliberately release-blocking.
   crash recovery, concurrent runtimes, evidence expiry, and replacement races
   in installed processes rather than treating portable lifecycle tests as the
   installed-browser result.
-- Complete Android/iOS lifecycle/build/ABI tests and Chromium
+- Retain the completed Android/iOS portable lifecycle, build, ABI, signed
+  artifact, store-upload, and live-screenshot gates while keeping them
+  distinct from installed-device qualification; complete Chromium
   native-host/PAC/proxy/restart/uninstall tests.
 - Run signed-device Android/iOS and installed-browser Chromium matrices for
   redirects, cross-origin subresources, Service Workers, downloads, WSS,
@@ -116,6 +118,13 @@ This ledger is deliberately release-blocking.
   unpublished until its separate release is authorized; local gates and
   exact-revision consumer evidence do not substitute for protected
   current-main checks.
+- Mobile distribution readback: iOS 0.5.5 build 57 is `VALID` and its direct
+  App Review submission is `WAITING_FOR_REVIEW` after protected upload run
+  `30456522039`; GitHub
+  `v0.5.5` is public with the verified code 46 APK and build 57 App Store IPA.
+  Keep App Store release manual and do not add
+  a TestFlight or beta-group path. Android 0.5.5 version code 46 is already on
+  the Google Play production track.
 - Run adversarial, restart, corruption, fuzz, browser, and performance suites.
 - Execute all 26 minimum regtest demonstrations in `QUALIFICATION_MATRIX.md`.
 - Produce checksummed binaries/packages, SBOM/license inventory, final commit

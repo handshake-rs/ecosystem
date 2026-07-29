@@ -73,8 +73,25 @@ signed-device matrices remain open.
 - Bootstrap-generator CI `30401402868` exists but failed at `npm ci` because
   `@emnapi/runtime@1.11.3` is missing from `package-lock.json`.
 
-Mobile remains a release candidate here until its final source, release, and
-store evidence are reconciled separately.
+## Current mobile publication checkpoint
+
+- Android 0.5.5 version code 46 from source
+  `d24f85158854abb8be4a7bb9e914aebe5e7e4679` is deployed to Google Play
+  production.
+- The iOS 0.5.5 build 57 source and annotated `v0.5.5` tag are
+  `d926561091634cd69fc9b7e79a4b76003fa4ee47`. Exact Apple CI run
+  `30454904736` and live-screenshot run `30454926117` passed.
+- Build `57` is `VALID` and its direct App Review submission is
+  `WAITING_FOR_REVIEW` after protected upload run `30456522039`. The intended
+  App Store path is direct App Review with
+  manual release; no TestFlight or beta group is part of this release.
+- Public GitHub Release `v0.5.5` retains the verified code 46 APK and build 57
+  App Store IPA.
+- Signed-device Android/iOS qualification remains open independently of store
+  build and publication evidence.
+
+Exact artifact and claim boundaries are recorded in
+[`mobile-v0.5.5-release-checkpoint-2026-07-29.md`](../evidence/mobile-v0.5.5-release-checkpoint-2026-07-29.md).
 
 ## External references
 
