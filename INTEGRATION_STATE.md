@@ -1,6 +1,44 @@
 # Integration state
 
-Status: **implementation in progress; not release-ready**
+Status: **experimental wallet/marketplace foundation delivered; not
+release-ready and not authorized for mainnet settlement**
+
+## 2026-08-02 local wallet and marketplace checkpoint
+
+The coordinated implementation is committed on `main` in six independent
+code repositories. It creates the standalone `hns-wallet-rs` workspace, adds
+canonical marketplace protocols, adds optional node wallet indexes and a
+bounded relay core, and adds fail-closed provider-authority/adaptor slices to
+the engine and browser products.
+
+| Repository | Local `main` revision | Delivered boundary |
+| --- | --- | --- |
+| `work/hns-rs` | `b66470a6a07f0211e3e7fa9aef7d034c8486e75b` | unpublished Denuo V2 marketplace protocol, price/session records, listings, and HNS HTLC primitives |
+| `work/hns-node-rs` | `96570aa2d0841c5244e464ef46b609e2f6b0a672` | disabled-by-default confirmed wallet indexes, twelve-call typed backend, and five-role bounded relay policy core |
+| `work/hns-dane-engine` | `6ed28559cd32163e3995a944010152d92eabe184` | exact-origin provider-injection decision without wallet or marketplace logic |
+| `work/hns-wallet-rs` | `8aa82dd990d41732874f566a256348b1c325e2a1` | eleven-crate encrypted wallet/provider/Shakedex/Kyoto/ETH/settlement foundation |
+| `work/hns-dane-browser-mobile` | `58996db0facef1bb6a7cb2876361d13dabc90c75` | deliberately inactive Android/iOS provider, secure-key-wrapper, and UI-state source adapters |
+| `work/hns-dane-browser-extension` | `2300ef82a765a6dbd1b99ad537d3d3c2ac312d95` | fail-closed provider bridge, approval/event UI, and no-key demonstration dapp |
+
+The full `./scripts/check.sh` gates passed for `hns-rs`, `hns-node-rs`,
+`hns-dane-engine`, `hns-wallet-rs`, and mobile. Chromium's source/Rust,
+release, fuzz, audit, and exporter stages passed before a documentation-only
+permission-justification amendment; the affected final
+`npm run check:extension` then passed 113 tests plus lint/build. No redundant
+7.4 GiB Rust rebuild was performed, so this is staged evidence rather than a
+claim that one final-commit full-script invocation exited zero. Swift/Xcode,
+installed-browser, signed-device, real-chain settlement, sustained fuzz,
+resource benchmark, and independent security gates remain open.
+
+Compatible schemas do not create a runtime join. Denuo V2 is unpublished;
+the node does not advertise it; the wallet does not have complete registered
+chain-module implementations; Chromium returns `walletUnavailable`; mobile
+adapters are hardwired unavailable; and HNS/BTC and HNS/ETH remain disabled.
+No commit in this checkpoint was pushed, tagged, published, or used with live
+mainnet funds. Exact commands and limitations are in
+`WALLET_MARKETPLACE_IMPLEMENTATION.md`.
+
+## Earlier checkpoint ledger
 
 Last audited canonical `hns-rs` main:
 `f6f46e1ecf9b31ca6592a6350c254a6effb9c9d0`

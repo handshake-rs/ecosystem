@@ -38,7 +38,24 @@ tests, and only then architectural inference. Draft behavior follows exact PR
 text/commits, deterministic PR fixtures, independent Rust vectors, the Denuo
 registry, and documented migration rules.
 
-## Current implementation and release checkpoints
+## 2026-08-02 local wallet and marketplace checkpoint
+
+These are local `main` heads for this update. They were not pushed, tagged,
+or published. A repository gate establishes only the tested source/build
+scope recorded here; it does not authorize a wallet, provider, marketplace,
+or settlement path for mainnet use.
+
+| Working repository | Branch | Revision | Last non-redundant qualification |
+| --- | --- | --- | --- |
+| `work/hns-rs` | `main` | `b66470a6a07f0211e3e7fa9aef7d034c8486e75b` | PASS — `./scripts/check.sh`; complete protocol, feature-matrix, registry, fuzz-smoke, release, and 15-package dry-run gate |
+| `work/hns-node-rs` | `main` | `96570aa2d0841c5244e464ef46b609e2f6b0a672` | PASS — `./scripts/check.sh` with disposable NVMe target/temp directories; full feature matrices, release, performance gate, and two-node regtest |
+| `work/hns-dane-engine` | `main` | `6ed28559cd32163e3995a944010152d92eabe184` | PASS — `./scripts/check.sh` with disposable NVMe target/temp directories; all matrices, release/ABI, and archive dry-runs |
+| `work/hns-wallet-rs` | `main` | `8aa82dd990d41732874f566a256348b1c325e2a1` | PASS — `./scripts/check.sh`; 34 Rust tests, strict docs/lints, dependency boundary, npm audit, and deterministic Solidity artifact |
+| `work/hns-dane-browser-mobile` | `main` | `58996db0facef1bb6a7cb2876361d13dabc90c75` | PASS — `./scripts/check.sh`; focused Android app/test compilation also passed; Swift/Xcode unavailable |
+| `work/hns-dane-browser-extension` | `main` | `2300ef82a765a6dbd1b99ad537d3d3c2ac312d95` | STAGED PASS — `./scripts/check.sh` stages through Rust/release passed on the source-equivalent predecessor; after the docs-only fix, `npm run check:extension` passed; full script not rerun |
+| `integration` | `main` | containing commit; exact hash reported in the handoff | PASS — `./scripts/check.sh`; strict evidence/revision cross-check and diff check |
+
+## Prior public and documentation checkpoints
 
 The table distinguishes remote or public source from later documentation
 heads. A documentation head does not retag a release, and an unpushed local

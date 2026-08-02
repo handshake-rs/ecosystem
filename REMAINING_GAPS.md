@@ -24,11 +24,42 @@ This ledger is deliberately release-blocking.
   demonstrate it through two full-node processes.
 - Demonstrate two-node standard synchronization, live Brontide Denuo/HIP-76
   negotiation, and HIP 77/78 runtimes.
-- Complete wallet persistence, encryption/signing, recovery, coin selection,
-  fee handling, and OPEN/BID/REVEAL/REDEEM/REGISTER/UPDATE/RENEW/TRANSFER/
-  FINALIZE/REVOKE flows.
-- Complete fixed/Dutch listing storage, discovery, preview, fulfillment,
-  confirmation, cancellation/expiry, threat controls, and DENUO_EXT board.
+- Publish the new canonical marketplace protocol/Denuo V2 crate boundary and
+  adopt it by immutable release in node/wallet/browser consumers; do not use a
+  sibling path or copied wire types.
+- Complete the standalone wallet's HNS transaction builders/backend client,
+  entity-specific recovery supervisor, platform-backed database-key wrapping,
+  and full send/name/transfer/finalize/reorg integration.
+- Implement and register complete HNS, Bitcoin, and Ethereum runtime adapters
+  for the capability traits. The current trait definitions and focused helper
+  functions are not an executable `ChainModule`/`AtomicSettlement` join.
+- Complete and independently review the derivation/recovery specification:
+  retain HNS and Ethereum role separation, add the missing dedicated Bitcoin
+  atomic-swap branch, bind metadata-encryption key recovery, and publish
+  deterministic vectors for every required role.
+- Complete fixed-price Shakedex transaction construction, discovery,
+  preview, fulfillment, finalization, recovery, restart-at-every-state, reorg,
+  and Denuo relay integration. Reverse Dutch remains deferred until fixed
+  price passes.
+- Run Kyoto direct-P2P/regtest birthday, invalid-PoW, filter mismatch,
+  inconsistent-peer, false-positive, spend, signed HTLC, reorg, restart, and
+  resource suites. No Esplora/Electrum/RPC fallback may be added.
+- Embed and audit the selected Helios proof/persistence adapter; run the
+  deterministic native-ETH contract on a local development chain through
+  lock/redeem/refund/replay/authorization/reentrancy/event/rollback cases; bind
+  any approved address to exact chain ID and deployed runtime hash.
+- Demonstrate HNS/BTC and HNS/ETH success/refund/restart/reorg flows before
+  advertising either pair. Mainnet settlement remains disabled.
+- Complete reporter governance, quorum/outlier/circuit-breaker policy,
+  malicious-board controls, fill-grant expiration, peer cooldown/scoring, and
+  end-to-end browser approval for the market-price board.
+- Add confirmed and mempool-aware Shakedex transaction tracking, HTLC funding/
+  redemption/refund tracking, and verified witness/preimage extraction to the
+  node/backend boundary. Denuo status relay objects must remain hints.
+- Qualify wallet schema upgrades from every supported prior version, offline
+  backup/restore, rollback detection, and corruption recovery. Qualify the
+  node's offline wallet-index reindex path and measure index disk/build cost;
+  do not claim an online backfill that does not exist.
 
 ## MeshMine
 
@@ -86,6 +117,12 @@ This ledger is deliberately release-blocking.
 - Run signed-device Android/iOS and installed-browser Chromium matrices for
   redirects, cross-origin subresources, Service Workers, downloads, WSS,
   process restarts, and policy revocation.
+- Publish and consume the versioned wallet ABI in each browser, wire the
+  engine v3 opaque provider-injection decision through the native/mobile
+  boundary, and implement the actual wallet screens, permission persistence,
+  notification, backup, migration, and removal paths. Until then the Chromium
+  host and both mobile scaffolds must continue to report unavailable and avoid
+  announcing a provider.
 - Retain the protected Developer ID identity checks, notarization evidence,
   stapling, and digest-verified release path proven for Chromium v0.5.5.
   Add equivalent authorized signing/provenance for Windows and qualify all
@@ -126,7 +163,10 @@ This ledger is deliberately release-blocking.
   a TestFlight or beta-group path. Android 0.5.5 version code 46 is already on
   the Google Play production track.
 - Run adversarial, restart, corruption, fuzz, browser, and performance suites.
-- Execute all 26 minimum regtest demonstrations in `QUALIFICATION_MATRIX.md`.
+- Complete every applicable open demonstration in the 38-row
+  `QUALIFICATION_MATRIX.md`. Historical row 13 remains explicitly excluded by
+  the current wallet scope and must not be implemented as a shortcut to a
+  green matrix.
 - Produce checksummed binaries/packages, SBOM/license inventory, final commit
   table, environmental limitations, mainnet risks, and rollback plan.
 

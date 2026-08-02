@@ -1,20 +1,37 @@
 # Experimental assignment registry
 
-Canonical source:
-[`handshake-rs/hns-rs/registry/denuo-experimental-v1.toml`](https://github.com/handshake-rs/hns-rs/blob/main/registry/denuo-experimental-v1.toml)
+Published canonical V1 source:
 
-Canonical binary:
-[`handshake-rs/hns-rs/registry/denuo-experimental-v1.bin`](https://github.com/handshake-rs/hns-rs/blob/main/registry/denuo-experimental-v1.bin)
+- [`handshake-rs/hns-rs/registry/denuo-experimental-v1.toml`](https://github.com/handshake-rs/hns-rs/blob/main/registry/denuo-experimental-v1.toml)
 
-Registry fingerprint:
-`95774db08c569b36fa7b7e4a071930f563b7251fc30934ba986732379a6e542d`
+Published canonical V1 binary:
+
+- [`handshake-rs/hns-rs/registry/denuo-experimental-v1.bin`](https://github.com/handshake-rs/hns-rs/blob/main/registry/denuo-experimental-v1.bin)
+
+The local, unpublished V2 candidate is generated at
+`work/hns-rs/registry/denuo-experimental-v2.toml` and
+`work/hns-rs/registry/denuo-experimental-v2.bin`. No remote link is published
+for those files until the candidate is pushed and released.
+
+Registry fingerprints:
+
+- V1: `95774db08c569b36fa7b7e4a071930f563b7251fc30934ba986732379a6e542d`
+- V2: `734226e866435821e40be7bde85fb19dd6eb867c5620abb8347ac8cd23da4f2c`
 
 The organization migration changed only canonical source-identity URLs encoded
 in the registry metadata. Assignments, payload limits, meanings, and consent
 defaults are unchanged.
 
-Status: **Denuo Experimental Registry v1; not globally authoritative and not
-an official Handshake assignment registry.**
+Status: **Denuo Experimental Registry V1 and additive V2; neither is globally
+authoritative or an official Handshake assignment registry.** V2 retains
+every V1 assignment and adds one separately negotiated cross-chain protocol.
+Peers must compare the exact generated fingerprint and may use only the
+semantics present in the mutually selected registry version.
+
+V2 is currently a locally qualified, unpublished `hns-rs` release candidate.
+No maintained node or wallet release advertises protocol `0x0002`; the node's
+five-role relay is a wire-disabled cache/policy core until it pins the
+generated V2 types and installs the typed envelope adapter.
 
 ## Service bits
 
@@ -76,7 +93,18 @@ output role remains disabled.
 | --- | ---: | ---: |
 | registry negotiation | `0x0000` | 16,384 |
 | atomic name marketplace | `0x0001` | 1,048,576 |
-| reserved | `0x0002..=0xffff` | no semantics |
+| cross-chain marketplace (V2 only) | `0x0002` | 524,288 |
+| reserved in V1 | `0x0002..=0xffff` | no semantics |
+| reserved in V2 | `0x0003..=0xffff` | no semantics |
+
+The atomic-name protocol defines eight typed message kinds: `HELLO`,
+`GET_OFFER_INVENTORY`, `OFFER_INVENTORY`, `GET_OFFERS`, `OFFERS`, `GET_OFFER`,
+`OFFER`, and `CANCEL`. The V2 cross-chain protocol defines fifteen typed kinds:
+intent inventory/get/object/cancel, price-observation inventory/get/object and
+price round, match request/fill grant/reject, session hello, and funding,
+redeem, and refund status. All are nested in the existing bounded
+`DENUO_EXT` envelope; V1 peers reject protocol `0x0002` rather than
+reinterpreting it.
 
 The fingerprint is SHA-256 of the generated canonical binary, not ordinary
 TOML or JSON serialization. Mainnet/testnet experimental traffic requires the

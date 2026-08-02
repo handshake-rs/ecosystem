@@ -3,7 +3,16 @@
 ## Authority and dependency direction
 
 ```text
-hns-rs ── exact immutable protocol pin ──> hns-node-rs ──> MeshMine bridge
+hns-rs 0.1 released crates ────────────> hns-wallet-rs foundation
+hns-rs exact immutable protocol pin ──> hns-node-rs ──> MeshMine bridge
+
+hns-rs 0.2 marketplace release - - - -> hns-node-rs / hns-wallet-rs (blocked)
+hns-node-rs typed backend       - - - -> hns-wallet-rs runtime (not joined)
+hns-wallet-rs versioned ABI     - - - -> mobile / Chromium (not released/wired)
+
+hns-wallet-rs
+  ├──> Kyoto direct-P2P Bitcoin source boundary
+  └──> selected Helios Ethereum evidence policy (runtime not embedded)
 
 hns-rs ── exact immutable protocol pin ──> hns-dane-engine
   ├──> hns-icann-dane
@@ -19,17 +28,24 @@ hns-dane-crawler ── optional observed remediation handoff
                   └──> hns-dane-bootstrap-generator ──> operator-published DNS
 ```
 
-The wallet and atomic market belong in `hns-node-rs`; their gossip protocol
-uses the canonical Denuo extension registry. MeshMine must not become a
-dependency of `hns-rs`, `hns-node-rs`, the wallet/market, the DANE engine, or
-either browser shell.
+Solid arrows are current compiled dependencies. Dashed arrows are designed
+joins that remain unavailable; compatible schemas do not constitute runtime
+integration.
+
+The encrypted user wallet and atomic-market application belong in standalone
+`hns-wallet-rs`; validated Handshake indexes/RPC and bounded untrusted Denuo
+relay storage belong in `hns-node-rs`; canonical wire/consensus semantics and
+registry assignments belong in `hns-rs`. MeshMine must not become a dependency
+of `hns-rs`, `hns-node-rs`, the wallet/market, the DANE engine, or either
+browser shell.
 
 ## One owner per concern
 
 | Concern | Canonical owner |
 | --- | --- |
 | semantic consensus/wire/registry types | `hns-rs` |
-| chain, P2P runtime, storage, wallet, auctions, atomic market | `hns-node-rs` |
+| chain, P2P runtime, validated indexes/RPC, and bounded Denuo relay | `hns-node-rs` |
+| encrypted keys/state, wallet/name workflows, Provider API, Shakedex, external-chain settlement | `hns-wallet-rs` |
 | mining application, DAG/settlement, external-node adapter | `MeshMine` |
 | DNS wire, DNSSEC, authenticated resolution, TLSA/DANE, policy ABI | `hns-dane-engine` |
 | ICANN TLSA-owner derivation and browser trust decision | `hns-dane-engine/crates/hns-icann-dane` |
@@ -105,6 +121,10 @@ opt-in” rule.
   validated through the applicable live DNSSEC chain.
 - Marketplace discovery is best-effort untrusted gossip. Every listing and
   fulfillment is locally verified against chain state and the seller proof.
+- Website wallet-provider injection requires the canonical engine's exact
+  logical-origin decision. Permission and approval state in `hns-wallet-rs`
+  cannot override a denied, stale, insecure, mismatched-port, or degraded
+  browser-authority decision.
 - Mining authority consumes only a coherent committed node snapshot and is
   rechecked before publication.
 
@@ -118,6 +138,21 @@ opt-in” rule.
   recursive and
   DNSSEC-validating output backend, durable operator-policy restart, HIP 77/78,
   wallets, marketplace messages, and broader shared primitive adoption remain.
+- `hns-wallet-rs` now exists as an independent workspace with encrypted secret
+  records, origin-bound Provider API policy, persisted Shakedex/market state,
+  a Kyoto-only Bitcoin boundary, and a narrow Ethereum contract/evidence
+  boundary. The chain traits do not yet have registered end-to-end module
+  implementations, the Bitcoin module lacks a dedicated swap-key derivation
+  branch, and the complete recovery-vector specification is missing. Full HNS
+  transaction/runtime integration, released marketplace protocol consumption,
+  live browser ABI integration, real-chain restart/reorg suites, resource
+  benchmarks, Helios proof production, and independent security review remain
+  release blockers.
+- The node's confirmed wallet indexes and twelve-call typed backend are
+  implemented, but wallet mempool restoration/subscriptions and Shakedex,
+  HTLC, and verified preimage tracking are not. Its five-role marketplace
+  relay is a bounded cache/policy core only; Denuo V2 wire advertisement is
+  disabled until canonical V2 adoption.
 - MeshMine now consumes an exact immutable `handshake-rs/hns-node-rs` revision
   through its bridge. Its `504d3fed035feb8a637ca09c4e0816b6e1144622`
   pin has complete functional readiness but predates the standalone
@@ -143,6 +178,11 @@ opt-in” rule.
   The Chromium repository's inactive historical mobile product trees were removed
   in a separate repository-boundary commit after their retained source was
   compared with canonical mobile.
+- Wallet-provider source adapters are fail-closed and deliberately inactive:
+  Chromium's native host reports `walletUnavailable`, while Android/iOS are
+  source-hardwired unavailable and not controller-wired. The browser pins do
+  not yet carry the engine v3 opaque provider-authority context or a released
+  wallet ABI, so no provider method is executable end to end.
 - Crawler production snapshots/live-directory operation and a deployed,
   hash-pinned bootstrap appliance still need independent release
   qualification; their unit/build gates do not upgrade browser trust rows.

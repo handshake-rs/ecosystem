@@ -9,15 +9,18 @@ consumer may silently vendor and modify canonical protocol logic.
 
 Release progression:
 
-1. `hns-rs` primitive/protocol crates: complete for all 14 allowlisted
-   `0.1.0` packages.
+1. `hns-rs` primitive/protocol crates: the original 14 allowlisted `0.1.0`
+   packages are published; the lockstep 15-package `0.2.0` marketplace
+   release candidate is locally qualified but unpublished.
 2. `hns-node-rs`, pinned to the exact compatible `hns-rs` release.
-3. `hns-dane-engine`, including `hns-icann-dane`,
+3. `hns-wallet-rs`, consuming published canonical protocol crates or one
+   immutable `hns-rs` revision and publishing its versioned typed ABI.
+4. `hns-dane-engine`, including `hns-icann-dane`,
    `hns-namespace-resolution`, `hns-resolution-policy`,
    `hns-browser-runtime`, and `hns-browser-observability`, pinned to the same
    compatible protocol release.
-4. MeshMine external-node adapter and the mobile/extension native packages.
-5. Independently versioned crawler snapshots/services and bootstrap-generator
+5. MeshMine external-node adapter and the mobile/extension native packages.
+6. Independently versioned crawler snapshots/services and bootstrap-generator
    web/appliance artifacts after their own provenance and deployment gates.
 
 The canonical `hns-rs` and `hns-dane-engine` workspaces target Rust 1.89,
@@ -30,6 +33,13 @@ their broader shared-engine consolidation is complete.
 - Shared primitives do not depend on Tokio, RocksDB, SQLite, Quinn, JNI,
   Kotlin, Swift, Chromium, wallet persistence, or MeshMine.
 - `hns-node-rs` may own runtimes and storage but not browser/platform shells.
+- `hns-wallet-rs` owns encrypted user keys and workflow persistence. It may
+  consume canonical published protocol crates, connect to the node through a
+  typed noncustodial adapter, use Kyoto, and embed the one selected Ethereum
+  light-client boundary, but it may not embed node consensus/P2P or browser
+  authority/UI code. At this checkpoint the node and browser joins are not
+  compiled dependencies, and Helios is selected policy rather than an embedded
+  runtime.
 - `hns-dane-engine` exposes stable platform ABIs; TypeScript/Kotlin/Swift do not
   reimplement consensus, DNSSEC, DANE, HPKE, or P2P protocols.
 - `hns-icann-dane` owns TLSA service-owner derivation and the typed ICANN
@@ -57,6 +67,9 @@ their broader shared-engine consolidation is complete.
   generator path is an optional operator workflow with separately versioned
   artifacts.
 - Dependency cycles are forbidden.
+- Sibling-checkout paths are forbidden across maintained repositories. Browser
+  products consume a released wallet ABI artifact; they never link an
+  uncommitted `../hns-wallet-rs` path.
 
 Both browser workspaces consume `hns-browser-runtime`,
 `hns-browser-observability`, `hns-icann-dane`,
@@ -71,6 +84,13 @@ their lockfiles.
 `504d3fed035feb8a637ca09c4e0816b6e1144622`. Published compatible crate
 versions may replace those pins later, but an unpinned branch, sibling path,
 embedded copy, or silent fallback is forbidden.
+
+The initial `hns-wallet-rs` workspace consumes the existing published
+`hns-rs` 0.1.0 primitives exactly. The new marketplace protocol and Denuo V2
+types are not yet published, so downstream live board integration remains
+disabled rather than using a sibling path or copied wire implementation.
+The wallet repository itself has no configured remote and publishes no crate
+or ABI artifact. Browser provider scaffolds therefore remain unavailable.
 
 ## Release evidence required
 
@@ -89,6 +109,12 @@ release-source commit
 `0ea5994c336642ea7d01c51c0e22df2008985426` in its Cargo VCS metadata. The
 later documentation head is
 `f6f46e1ecf9b31ca6592a6350c254a6effb9c9d0`.
+
+The locally qualified marketplace candidate is
+`b66470a6a07f0211e3e7fa9aef7d034c8486e75b`. It advances all public workspace
+packages and internal version requirements to `0.2.0`, adds the fifteenth
+allowlisted package `hns-marketplace-protocol`, and passes publication dry-run
+for every archive. It is not a crates.io release, remote checkpoint, or tag.
 
 No local or remote `v0.1.0` Git tag exists. Registry version `0.1.0` must
 therefore be attributed to its embedded source commit, not described as a

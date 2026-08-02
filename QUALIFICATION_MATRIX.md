@@ -9,6 +9,12 @@ Status vocabulary:
 
 The assignment's minimum functioning integration is not complete:
 
+Rows 1–26 preserve the earlier browser/node topology ledger. Row 13 is a
+historical auction demonstration and is explicitly excluded from the current
+wallet program; its `NOT RUN` status must not be reinterpreted as permission to
+add OPEN/BID/REVEAL/REGISTER flows. Rows 27–38 are the wallet/marketplace
+supplement. Only directly demonstrated scope is credited.
+
 The 2026-07-25 consent clarification separates transport from output
 authority: opaque P2P relay capacity is default-on with an opt-out policy,
 while any endpoint/output role remains explicit opt-in. HIP-76 requester
@@ -37,7 +43,7 @@ provider/output roles remain zero.
 | 10 | HNSR route and relayed inner peer | PARTIAL: records/store/envelopes tested |
 | 11 | disabling an HNSR role withdraws/closes only that role's state | NOT RUN |
 | 12 | block traverses HNSR inner connection | NOT RUN |
-| 13 | wallet opens/bids/reveals/registers | NOT RUN |
+| 13 | historical wallet opens/bids/reveals/registers demonstration | NOT RUN: explicitly excluded from this wallet update; retained only for the earlier topology ledger |
 | 14 | seller creates fixed listing | PARTIAL: canonical seller proof tested |
 | 15 | second market discovers through DENUO_EXT | NOT RUN |
 | 16 | buyer previews/verifies | PARTIAL: proof verification tested |
@@ -56,3 +62,23 @@ Primitive success never upgrades a topology row to `PASS`. Command transcripts,
 ports/process IDs, registry IDs, packet traces with privacy-safe redaction,
 wallet/market transaction IDs, browser build artifacts, and resolver-contact
 evidence must be retained for the final run.
+
+## Wallet and marketplace supplement
+
+These rows extend the original topology matrix for the standalone wallet
+program. They use the same evidence vocabulary.
+
+| # | Required demonstration | Status |
+| ---: | --- | --- |
+| 27 | standalone wallet locked build, Clippy, tests, docs, dependency policy, and contract reproducibility | PASS: local `hns-wallet-rs/scripts/check.sh`; 34 Rust tests, warning-denied Clippy/docs, deterministic solc artifact comparison, and zero npm audit vulnerabilities |
+| 28 | encrypted store, deterministic restore/key separation, lock, migration, workflow CAS, and replay protection | PARTIAL: HNS/ETH separation and focused store units pass; dedicated Bitcoin swap-key derivation, complete recovery vectors, platform key wrapping, entity-complete recovery, backup/rollback, and device persistence remain unavailable or unrun |
+| 29 | hostile Provider API origin/permission/navigation/approval/rate/forbidden-method matrix | PARTIAL: Rust core negatives and 25 focused Chromium adapter tests pass; no browser can dispatch a wallet method through a live ABI, and installed-browser/signed-device matrices remain unrun |
+| 30 | complete fixed-price Shakedex seller/buyer/recovery lifecycle over Denuo | PARTIAL: canonical proof/state primitives and recovery ordering are tested; live transaction, relay, restart, reorg, and regtest sequence not run |
+| 31 | Kyoto direct-P2P restore/send/history/HTLC/reorg qualification | PARTIAL: actual Kyoto/BDK construction and HTLC units pass; dedicated swap-key derivation, persistent supervisor/history, signed settlement, P2P/regtest adversarial, and resource suites are unavailable or unrun |
+| 32 | Helios native-ETH wallet plus immutable contract qualification | PARTIAL: role-separated typed signing, fail-closed evidence policy, exact contract artifact, and Rust negatives pass; no embedded Helios producer, complete balance/history runtime, local-chain execution, rollback demonstration, approved deployment, or audit exists |
+| 33 | HNS/BTC success, restart, reorg, and refund | NOT RUN |
+| 34 | HNS/ETH success, restart, finality rollback, and refund | NOT RUN |
+| 35 | price quorum, market intent/fill, Denuo board, griefing limits, and browser approval | PARTIAL: bounded canonical protocol and local reservation/session units exist; governance, live relay, integration, and adversarial board suite not run |
+| 36 | Chromium installed extension/provider/native-host/demo dapp | PARTIAL: the source bridge, approval/event lifecycle, and 25 focused JavaScript tests pass; the native host reports `walletUnavailable`, and no released ABI or installed-browser E2E exists |
+| 37 | Android/iOS signed-device wallet/provider screens and secure storage | PARTIAL: Android provider/key-store sources and tests compile in the focused Gradle path and iOS project references are present; adapters are source-hardwired unavailable, screens/controller/FFI wiring do not exist, Swift/Xcode was unavailable, and no signed-device run occurred |
+| 38 | Bitcoin disk/bandwidth/startup/mobile-memory benchmark matrix | NOT RUN: no values estimated |

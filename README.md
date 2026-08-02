@@ -16,6 +16,7 @@ workspace, monorepo, umbrella binary, or combined ecosystem package.
 | --- | --- |
 | [`hns-rs`](https://github.com/handshake-rs/hns-rs) | Canonical runtime-independent protocol, consensus, wire, proof, registry, and consent types |
 | [`hns-node-rs`](https://github.com/handshake-rs/hns-node-rs) | Standalone node runtime, storage, P2P, synchronization, mining, and RPC |
+| `hns-wallet-rs` (local; no remote configured) | Experimental encrypted Handshake-first wallet foundation, Provider API core, Shakedex/market workflows, Kyoto Bitcoin boundary, and Helios-selected Ethereum evidence policy |
 | [`MeshMine`](https://github.com/handshake-rs/MeshMine) | Mining overlay and application consuming the external node boundary |
 | [`hns-dane-engine`](https://github.com/handshake-rs/hns-dane-engine) | Canonical DNSSEC, TLSA/DANE, resolver, transport, dual-root and transport/role policy, browser authority lifecycle, and security observability crates |
 | [`hns-dane-browser-mobile`](https://github.com/handshake-rs/hns-dane-browser-mobile) | Android/iOS lifecycle, UI, proxy integration, app-store packaging, and canonical-engine adapters |
@@ -23,9 +24,14 @@ workspace, monorepo, umbrella binary, or combined ecosystem package.
 | [`hns-dane-crawler`](https://github.com/handshake-rs/hns-dane-crawler) | Observational HNS topology, stored DNS evidence, DANE-readiness queues, static reports, and optional live-directory output |
 | [`hns-dane-bootstrap-generator`](https://github.com/handshake-rs/hns-dane-bootstrap-generator) | Operator-facing HNS/ICANN delegation, DNSSEC/DS, authoritative DoH, and TLSA record/deployment generation |
 
-These eight products, this `ecosystem` coordination repository, and the
-organization `.github` profile are ten independent repositories. None is a
+These nine products, this `ecosystem` coordination repository, and the
+organization `.github` profile are eleven independent repositories. None is a
 monorepo subpackage or a fork of another ecosystem product.
+
+`hns-wallet-rs` is presently local-only: it has an independent Git history and
+release boundary, but no configured remote, published crates, or browser ABI
+artifact. Its planned organization URL must not be read as an existing remote
+checkpoint until publication is separately authorized.
 
 The dependency direction and authority boundaries are recorded in
 [`CROSS_PROJECT_RECONCILIATION.md`](CROSS_PROJECT_RECONCILIATION.md).
@@ -82,8 +88,8 @@ a whole. Start with:
   demonstrated gates;
 - [`REFERENCE_COMMITS.md`](REFERENCE_COMMITS.md) — exact local and upstream
   revisions;
-- [`QUALIFICATION_MATRIX.md`](QUALIFICATION_MATRIX.md) — the required 26-point
-  integration demonstration;
+- [`QUALIFICATION_MATRIX.md`](QUALIFICATION_MATRIX.md) — the retained 26-row
+  browser/node topology plus the 12-row wallet/marketplace supplement;
 - [`REMAINING_GAPS.md`](REMAINING_GAPS.md) — explicit release blockers;
 - [`DEPENDENCY_PUBLICATION.md`](DEPENDENCY_PUBLICATION.md) — crate and
   cross-repository publication policy;
@@ -92,7 +98,12 @@ a whole. Start with:
 - [`NEXT_MILESTONE_AUDIT.md`](NEXT_MILESTONE_AUDIT.md) — completed node
   checkpoints, completed browser-policy, standalone-engine, and canonical
   authority/observability slices, plus the next bounded consolidation
-  milestone; and
+  milestone;
+- [`WALLET_MARKETPLACE_AUDIT.md`](WALLET_MARKETPLACE_AUDIT.md) — wallet,
+  Provider API, Shakedex, Denuo, Kyoto, Ethereum, and browser seam audit;
+- [`WALLET_MARKETPLACE_IMPLEMENTATION.md`](WALLET_MARKETPLACE_IMPLEMENTATION.md)
+  — exact delivered status, qualification evidence, limitations, and
+  revisions; and
 - [`evidence/`](evidence/) — retained checkpoint command evidence, including
   the
   [`2026-07-27 software-gate audit`](evidence/software-gate-audit-2026-07-27.md)
