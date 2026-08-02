@@ -104,6 +104,9 @@ a whole. Start with:
 - [`WALLET_MARKETPLACE_IMPLEMENTATION.md`](WALLET_MARKETPLACE_IMPLEMENTATION.md)
   — exact delivered status, qualification evidence, limitations, and
   revisions; and
+- [`PRODUCTION_COMPLETION_PLAN.md`](PRODUCTION_COMPLETION_PLAN.md) — ordered
+  production tranches, completion evidence, and non-redundant NVMe-only build
+  policy; and
 - [`evidence/`](evidence/) — retained checkpoint command evidence, including
   the
   [`2026-07-27 software-gate audit`](evidence/software-gate-audit-2026-07-27.md)

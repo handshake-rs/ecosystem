@@ -3,6 +3,23 @@
 Status: **experimental wallet/marketplace foundation delivered; not
 release-ready and not authorized for mainnet settlement**
 
+## Production-completion continuation
+
+Production completion is now the active objective. Work proceeds in the
+dependency order and with the evidence rules in
+`PRODUCTION_COMPLETION_PLAN.md`; this heading does not upgrade any status on
+its own. The first parallel source tranche covers the node's authoritative
+wallet/HTLC tracking, the wallet's encrypted runtime/recovery join, and the
+Chromium native-host wallet ABI boundary.
+
+Before that tranche, the pre-existing Chromium insecure-delegation correction
+was committed on `main` at
+`5ffca638481b64172666db482f99f6156a44ccbf`, together with a repository-root
+`dist/` ignore rule. No new qualification claim is attached to that follow-up
+here. Future local build state is NVMe-only, RocksDB must be supplied from an
+existing optimized library rather than rebuilt, and each coherent source
+revision receives only one consolidated qualification layer.
+
 ## 2026-08-02 local wallet and marketplace checkpoint
 
 The coordinated implementation is committed on `main` in six independent
