@@ -50,13 +50,16 @@ types or silently substitute a backend.
 
 ## Active production tranche
 
-The first tranche is being implemented in parallel on `main`:
+The first source tranche has committed its node, wallet, and Chromium
+boundaries on `main`; canonical protocol correction and the next engine/Kyoto
+joins continue without upgrading release status:
 
 | Repository | Cohesive result |
 | --- | --- |
-| `hns-node-rs` | mempool-aware wallet restoration plus persisted Shakedex/HTLC funding, spend, refund, and verified-preimage tracking |
-| `hns-wallet-rs` | entity-complete encrypted CRUD, restart/reorg supervisor, and registered HNS chain/settlement runtime |
-| `hns-dane-browser-extension` | independently released wallet ABI discovery, version/capability negotiation, typed provider dispatch, and lifecycle recovery |
+| `hns-rs` | committed at `7d3b2604ac572bfea26f8a0518e89c3c8446bdba`: corrected delegated settlement/session/HNS-HTLC and complete fixed-price Shakedex fulfillment/recovery protocol boundary; unpublished and unqualified |
+| `hns-node-rs` | committed at `72876066618d3ddffb9c7e385802c8d84b8c9d5f`: restart-bound wallet restoration plus persisted Shakedex/HTLC funding, spend, recovery/refund, and verified-preimage tracking; unqualified |
+| `hns-wallet-rs` | committed at `13fddf01ed07496173df5b9bea99ab335ddd9ff0`: encrypted CRUD/recovery plus atomic HNS prepare and idempotent artifact recovery; value/name-owner paths remain unavailable |
+| `hns-dane-browser-extension` | committed through `6285fda5a7ed61c5ac93f5127de078ce8587da38`: fail-closed ABI discovery and authority invalidation; provider remains unavailable |
 
 The pre-existing Chromium insecure-delegation correction and the repository-
 root `dist/` ignore rule are committed separately at
@@ -70,10 +73,15 @@ root `dist/` ignore rule are committed separately at
 - One consolidated repository gate is selected after the source converges;
   hosted CI may be the qualification layer when a push is separately
   authorized.
-- Any necessary local Cargo target, temporary directory, Gradle state, or npm
-  cache lives on NVMe, never in the external workspace.
-- RocksDB is never rebuilt. Node qualification must use an existing prebuilt
-  library through `ROCKSDB_LIB_DIR` and `ROCKSDB_STATIC=1`.
+- The external-drive checkout is source-only. Any necessary local build or
+  qualification runs from a disposable NVMe checkout/worktree so source-
+  adjacent Cargo, Gradle, npm, compiler, and temporary state cannot return to
+  the external workspace; pointing only a final target directory at NVMe is
+  insufficient.
+- Optimized RocksDB is never rebuilt under any circumstance. Node
+  qualification must reuse one of the existing NVMe prebuilt libraries through
+  `ROCKSDB_LIB_DIR` and `ROCKSDB_STATIC=1`; a missing or incompatible artifact
+  blocks that gate rather than authorizing another RocksDB compile.
 - A failed gate is followed only by the smallest affected rerun needed to
   prove the fix; unchanged heavyweight stages are not repeated.
 

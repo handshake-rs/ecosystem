@@ -55,6 +55,19 @@ or settlement path for mainnet use.
 | `work/hns-dane-browser-extension` | `main` | `2300ef82a765a6dbd1b99ad537d3d3c2ac312d95` | STAGED PASS — `./scripts/check.sh` stages through Rust/release passed on the source-equivalent predecessor; after the docs-only fix, `npm run check:extension` passed; full script not rerun |
 | `integration` | `main` | containing commit; exact hash reported in the handoff | PASS — `./scripts/check.sh`; strict evidence/revision cross-check and diff check |
 
+### Unqualified production-continuation successors
+
+These local `main` successors were reconciled by static review and
+`git diff --check` only. They inherit no PASS label from the earlier exact
+heads and have not been pushed, tagged, published, built, or tested.
+
+| Working repository | Revision | Source-only result |
+| --- | --- | --- |
+| `work/hns-rs` | `7d3b2604ac572bfea26f8a0518e89c3c8446bdba` | independent maker settlement delegation, exact signed session-to-HNS-HTLC binding, deadline ceiling conversion, complete Shakedex buyer fulfillment, and independently seller-signed explicit-recipient `0x83` recovery vectors; canonical version `0.2.0` remains unpublished and unqualified |
+| `work/hns-node-rs` | `72876066618d3ddffb9c7e385802c8d84b8c9d5f` | disabled-by-default epoch-bound multi-script restore, process-instance-bound mempool reconciliation, pre-current/full-same-block indexing, separated current/proof name evidence, redacted public preimage serialization, and corrected Shakedex `0x84` fulfillment/`0x83` recovery tracking; release remains blocked on the published canonical protocol pin, concrete wallet adapter, safe registry retirement/reclamation, and final consolidated gate |
+| `work/hns-wallet-rs` | `13fddf01ed07496173df5b9bea99ab335ddd9ff0` | encrypted schema/provider hardening plus exact HNS restoration, atomic account/workflow/input-reservation preparation, idempotent prepared-artifact recovery, and split name evidence; HNS value paths remain hard-disabled and name ownership/resource actions remain watch-only pending the concrete node adapter, released canonical decoder/protocol, dedicated name-role scan, and final qualification |
+| `work/hns-dane-browser-extension` | `6285fda5a7ed61c5ac93f5127de078ce8587da38` | fail-closed wallet artifact/ABI discovery plus authority-generation invalidation across native request, approval, event, and header-maintenance races; still unavailable without a signed service transport, engine-minted opaque authority, reviewed approval mapping, and Windows ACL implementation |
+
 ## Prior public and documentation checkpoints
 
 The table distinguishes remote or public source from later documentation

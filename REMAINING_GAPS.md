@@ -6,6 +6,9 @@ This ledger is deliberately release-blocking.
 
 - Retain the production-parser fuzz target, locked fuzz dependency graph, and
   deterministic parser-smoke command in hosted qualification.
+- Qualify and publish the corrected marketplace/session/HNS-HTLC/Shakedex
+  boundary at `7d3b2604ac572bfea26f8a0518e89c3c8446bdba`; until separately
+  authorized, its `0.2.0` source and vectors are not a consumable release.
 - Adopt the canonical crates in every consumer without copying protocol logic.
 
 ## Standalone node, wallet, and market
@@ -27,9 +30,12 @@ This ledger is deliberately release-blocking.
 - Publish the new canonical marketplace protocol/Denuo V2 crate boundary and
   adopt it by immutable release in node/wallet/browser consumers; do not use a
   sibling path or copied wire types.
-- Complete the standalone wallet's HNS transaction builders/backend client,
-  entity-specific recovery supervisor, platform-backed database-key wrapping,
-  and full send/name/transfer/finalize/reorg integration.
+- Adopt the source-complete HNS transaction/reconciliation runtime at
+  `13fddf01ed07496173df5b9bea99ab335ddd9ff0` through a concrete node adapter and qualify its atomic prepared-
+  workflow recovery. Add the released canonical NameState/resource decoder,
+  dedicated bounded `HnsName` scan, platform-backed database-key wrapping,
+  and complete transfer/finalize/reorg integration before enabling value or
+  ownership actions.
 - Implement and register complete HNS, Bitcoin, and Ethereum runtime adapters
   for the capability traits. The current trait definitions and focused helper
   functions are not an executable `ChainModule`/`AtomicSettlement` join.
@@ -53,9 +59,13 @@ This ledger is deliberately release-blocking.
 - Complete reporter governance, quorum/outlier/circuit-breaker policy,
   malicious-board controls, fill-grant expiration, peer cooldown/scoring, and
   end-to-end browser approval for the market-price board.
-- Add confirmed and mempool-aware Shakedex transaction tracking, HTLC funding/
-  redemption/refund tracking, and verified witness/preimage extraction to the
-  node/backend boundary. Denuo status relay objects must remain hints.
+- Adopt and qualify the source-complete confirmed/mempool Shakedex and HTLC
+  tracker at `72876066618d3ddffb9c7e385802c8d84b8c9d5f` through the released
+  canonical protocol dependency and concrete wallet adapter. Its chain
+  evidence and verified revealed-preimage events—not Denuo status relay
+  objects—must remain settlement authority. Add safe registry retirement and
+  capacity reclamation; the current 16,384-global and 256-per-address limits
+  are unreclaimable lifetime caps and remain a production-availability block.
 - Qualify wallet schema upgrades from every supported prior version, offline
   backup/restore, rollback detection, and corruption recovery. Qualify the
   node's offline wallet-index reindex path and measure index disk/build cost;

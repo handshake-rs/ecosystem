@@ -16,7 +16,7 @@ workspace, monorepo, umbrella binary, or combined ecosystem package.
 | --- | --- |
 | [`hns-rs`](https://github.com/handshake-rs/hns-rs) | Canonical runtime-independent protocol, consensus, wire, proof, registry, and consent types |
 | [`hns-node-rs`](https://github.com/handshake-rs/hns-node-rs) | Standalone node runtime, storage, P2P, synchronization, mining, and RPC |
-| `hns-wallet-rs` (local; no remote configured) | Experimental encrypted Handshake-first wallet foundation, Provider API core, Shakedex/market workflows, Kyoto Bitcoin boundary, and Helios-selected Ethereum evidence policy |
+| `hns-wallet-rs` (local; no remote configured) | Unqualified production-completion source for the encrypted Handshake-first wallet, Provider API core, Shakedex/market workflows, Kyoto Bitcoin boundary, and Helios-selected Ethereum evidence policy; value/product paths remain disabled or unavailable |
 | [`MeshMine`](https://github.com/handshake-rs/MeshMine) | Mining overlay and application consuming the external node boundary |
 | [`hns-dane-engine`](https://github.com/handshake-rs/hns-dane-engine) | Canonical DNSSEC, TLSA/DANE, resolver, transport, dual-root and transport/role policy, browser authority lifecycle, and security observability crates |
 | [`hns-dane-browser-mobile`](https://github.com/handshake-rs/hns-dane-browser-mobile) | Android/iOS lifecycle, UI, proxy integration, app-store packaging, and canonical-engine adapters |

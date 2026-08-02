@@ -15,6 +15,13 @@ wallet program; its `NOT RUN` status must not be reinterpreted as permission to
 add OPEN/BID/REVEAL/REGISTER flows. Rows 27–38 are the wallet/marketplace
 supplement. Only directly demonstrated scope is credited.
 
+The 2026-08-02 source-only production successors (`hns-rs` `7d3b2604`, node
+`72876066`, wallet `13fddf01`, and Chromium `6285fda5`) do not inherit the
+earlier exact-revision PASS evidence and therefore do not upgrade any row.
+Their new protocol, recovery, and tracking code remains represented by the
+same `PARTIAL`/`NOT RUN` topology outcomes until one consolidated gate and the
+applicable multi-process or installed-product demonstrations run.
+
 The 2026-07-25 consent clarification separates transport from output
 authority: opaque P2P relay capacity is default-on with an opt-out policy,
 while any endpoint/output role remains explicit opt-in. HIP-76 requester
