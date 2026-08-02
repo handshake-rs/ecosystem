@@ -28,10 +28,13 @@ every V1 assignment and adds one separately negotiated cross-chain protocol.
 Peers must compare the exact generated fingerprint and may use only the
 semantics present in the mutually selected registry version.
 
-V2 is currently a locally qualified, unpublished `hns-rs` release candidate.
-No maintained node or wallet release advertises protocol `0x0002`; the node's
-five-role relay is a wire-disabled cache/policy core until it pins the
-generated V2 types and installs the typed envelope adapter.
+V2 registry/marketplace artifacts were locally qualified at predecessor
+`b66470a6`. Latest `hns-rs` source head `825f212d` adds later marketplace and
+NameState/resource work, is unqualified, and inherits no PASS from that exact
+predecessor. Both remain unpublished. No maintained node or wallet release
+advertises protocol `0x0002`; the node's five-role relay is a wire-disabled
+cache/policy core until it pins the generated V2 types and installs the typed
+envelope adapter.
 
 ## Service bits
 

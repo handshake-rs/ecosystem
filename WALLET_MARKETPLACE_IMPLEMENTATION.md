@@ -78,23 +78,25 @@ The future-chain boundary is expressed through `ChainModule`,
 describe receive/send/history/settlement plus hash, locktime, finality, and fee
 models. Adding Litecoin or another chain must not change provider dispatch or
 canonical market/session objects, but no new pair is enabled until that
-module's full settlement suite passes. At this checkpoint those traits are
-compiled interfaces; the HNS, Bitcoin, and Ethereum crates expose focused
-operations but do not yet register complete runtime objects implementing the
-capability traits end to end.
+module's full settlement suite passes. HNS now registers source-level
+`ChainModule`, `UtxoChainModule`, and `AtomicSettlement` implementations, but
+its value permit is hard-disabled and the runtime is unqualified. Bitcoin and
+Ethereum still expose incomplete module/settlement boundaries rather than a
+complete executable product join.
 
 | Surface | Status at this snapshot |
 | --- | --- |
-| canonical marketplace protocols | corrected source at `7d3b2604`; unpublished and not qualified at that revision |
-| node confirmed indexes/backend | source-hardened at `72876066`; disabled by default; adapter/release gate unavailable |
+| canonical marketplace/name protocols | corrected source at `825f212d`, including HSD-compatible NameState/resource codecs; unpublished and not qualified at that revision |
+| node confirmed indexes/backend | source-hardened and exposed through authenticated RPC v1 at `74f7ae36`; disabled by default and unqualified |
 | node marketplace relay | implemented and locally tested cache/policy core; live V2 wire unavailable |
-| encrypted store/provider policy | schema-v3/runtime-hardening source at `13fddf01`; unqualified |
-| usable HNS/name wallet | HNS source runtime implemented but value-disabled; names watch-only; browser product unavailable |
+| encrypted store/provider policy | schema-v3/runtime-hardening, concrete HNS node adapter, and Kyoto supervisor source at `76885098`; unqualified |
+| usable HNS/name wallet | HNS source runtime and concrete node join implemented but value-disabled; names watch-only; browser product unavailable |
 | fixed-price Shakedex | protocol fulfillment/recovery source corrected; wallet lifecycle disabled and unavailable |
-| Kyoto Bitcoin wallet/settlement | production-completion source in progress; disabled until runtime/qualification is complete |
+| Kyoto Bitcoin wallet/settlement | durable bounded supervisor source implemented; value disabled pending Kyoto persistence, signed settlement, archival, and qualification |
 | native-ETH wallet/contract | narrow source foundation; disabled; verified synchronization/deployment unavailable |
 | HNS/BTC and HNS/ETH | disabled; end-to-end settlement unavailable |
-| Chromium provider | source bridge implemented and tested; injection disabled by unavailable ABI |
+| engine provider/proxy authority | opaque exact-origin proxy admission source implemented at `f76ad372`; product consumption and qualification unavailable |
+| Chromium provider | source bridge implemented and tested at its earlier baseline; injection disabled by unavailable ABI/authority join |
 | Android/iOS provider | inactive source scaffold; Android compile-tested, iOS compile untested; unavailable |
 | excluded product families | deferred or deliberately unavailable as enumerated below |
 
@@ -134,9 +136,13 @@ refund times. `hns-swap` owns signed fixed-price listings/cancellations,
 canonical buyer fulfillment, independently seller-signed explicit-recipient
 `0x83` recovery, and SHA-256 HNS HTLC funding/redeem/refund/preimage
 primitives. Recovery does not depend on retaining or validating the listing's
-`0x84` presign. Exact fixtures are committed, but this successor was not built
-or tested and remains unpublished. Runtime persistence, reporter admission,
-chain evidence, fees, timeout margins, and execution remain downstream policy.
+`0x84` presign. The later source head
+`825f212de49d57b0ae7b5bbd0c038ddec5d52ce2` adds canonical HSD-compatible
+NameState/resource decoding and encoding, rejects noncanonical encodings, and
+retains exact proof-facing bytes and independent fixtures in the protocol
+repository. Exact fixtures are committed, but this successor was not built or
+tested and remains unpublished. Runtime persistence, reporter admission, chain
+evidence, fees, timeout margins, and execution remain downstream policy.
 
 ## `hns-node-rs`
 
@@ -180,16 +186,22 @@ so live V2 advertisement and typed wire dispatch remain disabled until the new
 canonical crate is released and pinned.
 
 The unqualified continuation at
-`72876066618d3ddffb9c7e385802c8d84b8c9d5f` adds chain-epoch-bound complete
+`74f7ae36ddfd4a396451d33a2bca1c71a04f8a75` includes chain-epoch-bound complete
 sorted-script restoration, process-instance/generation/query-bound mempool
 pages, and same-block/pre-current-view wallet indexing. It atomically tracks
 registered Shakedex-v2 and HNS-HTLC-v1 funding/spends through disconnects,
 distinguishes seller `0x84` fulfillment from independently signed `0x83`
 recovery, and extracts verified HTLC preimages while redacting incidental
 public serialization. Current name state and proof-committed name state remain
-separate. Relayed status stays an untrusted hint. This source was not built or
-tested; a released canonical protocol pin, concrete wallet adapter, and safe
-registry retirement/capacity reclamation remain unavailable.
+separate. It now exposes a conditional authenticated loopback
+`POST /api/v1/wallet` v1 contract with bounded strict JSON envelopes, durable
+chain epoch/tip binding, process/generation-bound mempool evidence, ordered
+spender results, canonical NameState bytes, and exact retained/pruned
+transaction semantics. Relayed status stays an untrusted hint. This source was
+not built or tested; a released canonical protocol pin, safe registry
+retirement/capacity reclamation, multi-process qualification, and final release
+gate remain unavailable. The concrete wallet adapter now exists as unqualified
+source at `76885098`.
 
 Wallet-index profile V1 is checksummed and fails closed on missing, corrupt,
 or partially built components. There is no online backfill: an existing chain
@@ -254,6 +266,14 @@ that mints the request-bound opaque authentication token is an explicit
 trusted security principal and must use browser-local TLS state, never page
 input.
 
+At source head `f76ad37232bcadc85eb9b9bee5f45bff8405b583`, the engine consumes
+that opaque authority context to publish non-cloneable exact-origin loopback
+proxy grants. Admission is bound to authority, runtime, process, listener, and
+origin generations; strict CONNECT authentication, pending/publication/grant
+lifetimes, and atomic expired-publication reclamation are bounded and fail
+closed. This is an engine boundary, not browser wiring: it was not built or
+tested at this successor and neither browser product consumes it yet.
+
 The Chromium adapter installs an isolated document-start bridge but injects
 the MAIN-world provider into one exact HTTPS main-frame `documentId` only
 after current navigation authority and native ABI-v1 capability pass. It has a
@@ -279,8 +299,8 @@ Xcode, simulator, or signed-device wallet result is claimed.
 
 ## Wallet, names, Shakedex, and market board
 
-The wallet store continuation at
-`13fddf01ed07496173df5b9bea99ab335ddd9ff0` has transactional SQLite schema
+The wallet continuation at
+`768850982b37dc84030ab408de0f1f010cf42ed1` has transactional SQLite schema
 V3, bounded Argon2id passphrase input, XChaCha20-Poly1305 typed entity,
 workflow, permission, approval, and replay encryption with metadata-bound
 associated data, monotonic permission tombstones, and bounded heterogeneous
@@ -296,18 +316,25 @@ HNS create/restore, encrypted seed storage, deterministic role-separated key
 derivation, receive addresses, bounded indexed confirmed/mempool restoration,
 history/reorg reconciliation, fee/send construction and signing, durable
 input reservations, typed node evidence, and HNS HTLC settlement construction
-exist in source at `13fddf01`. Value operations and settlement are hard-
-disabled on every network until the concrete node adapter, released canonical
-protocol, and qualification land. Name imports preserve separate exact-tip
-proof and current-state views but are explicitly watch-only: canonical
-NameState/resource decoding and a bounded dedicated `HnsName` derivation scan
-do not yet establish ownership. Transfer/finalize actions and browser UI are
-unavailable. HNS has separate coin, name, Shakedex, atomic-swap, identity, and
-dapp session derivation domains, and Ethereum has ordinary/swap branches. The
-Bitcoin crate currently derives one ordinary BIP84 descriptor wallet and
-accepts caller-supplied HTLC keys; its dedicated atomic-swap derivation branch
-is not implemented. A complete, reviewed derivation specification and
-cross-module deterministic recovery-vector set are also missing.
+exist in source. A concrete synchronous adapter now consumes authenticated
+loopback node RPC v1 `74f7ae36` with strict bounded HTTP/JSON, exact
+chain-epoch/tip and mempool process/generation binding, canonical transaction
+decoding, active-block rechecks for inclusions/spenders, and fail-closed
+coinbase handling. Value operations and settlement remain hard-disabled on
+every network: the node reports atomic units per 1,000 sigop-adjusted policy
+vbytes while the dormant builder still prices transaction weight, and the
+unpublished canonical protocol plus consolidated qualification are also
+missing. Name imports preserve separate exact-tip proof and current-state views
+and retain exact NameState bytes, but remain explicitly watch-only. The
+canonical codec exists only at unpublished `hns-rs` `825f212d`, and no bounded
+dedicated `HnsName` derivation scan establishes ownership. Transfer/finalize
+actions and browser UI are unavailable. HNS has separate coin, name, Shakedex,
+atomic-swap, identity, and dapp session derivation domains, and Ethereum has
+ordinary/swap branches. The Bitcoin crate derives one ordinary BIP84 descriptor
+wallet and accepts caller-supplied HTLC keys; its dedicated atomic-swap
+derivation branch is not implemented. A complete, reviewed derivation
+specification and cross-module deterministic recovery-vector set are also
+missing.
 
 Fixed-price Shakedex seller, buyer, and recovery state machines persist before
 irreversible steps and consume canonical `hns-swap` proof decoding. Ordering
@@ -337,8 +364,9 @@ advertised.
 versions fail closed; populated legacy entity tables require an explicit
 import rather than silent conversion. There is still no historical production-
 wallet upgrade corpus. Atomic HNS prepare and exact persisted-artifact retry
-now exist, while backup/rollback qualification, database-key platform
-wrapping, and the cross-chain startup supervisor remain unavailable.
+now exist, and the bounded Kyoto subsystem supervisor has its own durable
+journal. Backup/rollback qualification, database-key platform wrapping, and
+the complete multi-chain/product startup coordinator remain unavailable.
 
 The node's existing store schemas and the separate checksummed
 `wallet-index-profile/v1` record are not silently rewritten into a complete
@@ -351,13 +379,19 @@ migrated during this update.
 
 Bitcoin has one production boundary only: `bip157` 0.6.3, `bdk_kyoto` 0.17.0,
 and `bdk_wallet` 3.1.0. Code constructs a direct-P2P Kyoto client and BIP84 BDK
-wallet, supports create/load/receive/send building blocks, stores birthday/
-reorg metadata, and constructs/verifies native P2WSH SHA-256/CLTV HTLC
-funding, unsigned spends, and preimage extraction. No Esplora, Electrum,
-hosted indexer, or production Bitcoin Core RPC dependency exists. A dedicated
-swap-key branch, continuously persisted supervisor, signed HTLC spends,
-broadcast/rebroadcast, complete history runtime, full invalid-PoW/filter/peer
-fixtures, regtest settlement, and mobile/resource qualification are missing.
+wallet, supports create/load/receive/send building blocks, and constructs/
+verifies native P2WSH SHA-256/CLTV HTLC funding, unsigned spends, and preimage
+extraction. The source successor at `3a3323c0` adds a bounded supervisor with
+trusted-checkpoint discovery, encrypted CAS scan phases/checkpoints, BDK-first
+update persistence, restartable transaction/output reconciliation, bounded
+reorg recovery, and fee-bound pre-broadcast/rebroadcast journals. No Esplora,
+Electrum, hosted indexer, or production Bitcoin Core RPC dependency exists.
+The pinned `bip157` release ignores `data_dir` and does not expose durable
+header/filter/peer state, so this is not production persistence. A dedicated
+swap-key branch, safe record archival, signed HTLC spends/settlement, full
+invalid-PoW/filter/peer fixtures, regtest settlement, trusted-time policy, and
+mobile/resource qualification are missing; Bitcoin value paths remain hard-
+disabled.
 
 Bitcoin storage and bandwidth benchmark status: **not measured** for fresh
 install, new wallet, one-year restore, five-year restore, genesis restore,
@@ -402,9 +436,9 @@ refund, restart, or reorg demonstration was run for either pair.
 ## Qualification results
 
 All PASS evidence below belongs to the exact earlier revisions named in the
-final table. It does not transfer to the source-only successors at `7d3b2604`,
-`72876066`, `13fddf01`, or `6285fda5`. Those successors received only the
-static/source-generation checks recorded in the continuation table.
+final table. It does not transfer to the source-only successors at `825f212d`,
+`74f7ae36`, `76885098`, `f76ad372`, or `6285fda5`. Those successors received
+only the static/source-generation checks recorded in the continuation table.
 
 The standalone wallet gate passed formatting, locked all-target checking,
 warning-denied Clippy, 34 Rust unit/negative tests, warning-denied rustdoc,
@@ -476,15 +510,17 @@ risk within Kyoto's validation model, the Helios weak-subjectivity checkpoint,
 and Ethereum provider censorship/omission/privacy/availability. Peer status,
 relay identity, RPC booleans, and website data are hints, never chain evidence.
 
-Mainnet blockers are the unpublished V2 protocol dependency; absent complete
-chain-trait implementations and wallet runtime/native-host/mobile wiring;
-hard-disabled HNS value paths and watch-only names; incomplete name and
-Shakedex product flows; no concrete consumer for the unqualified node mempool/
-Shakedex/HTLC/preimage tracker; unreclaimable node contract-registry lifetime
-caps; missing Kyoto swap-key/supervisor/regtest/resource evidence; absent
-embedded Helios proof production and approved contract deployment; no pair
-success/refund/restart/reorg qualification; incomplete price governance; and
-no independent third-party security audit.
+Mainnet blockers are the unpublished V2/name-codec dependency; incomplete
+Bitcoin/Ethereum chain joins and wallet runtime/native-host/mobile wiring;
+hard-disabled HNS value paths, unresolved policy-vbyte versus weight fee
+sizing, and watch-only names; incomplete name and Shakedex product flows;
+unqualified node/wallet RPC and tracker integration; unreclaimable node
+contract-registry lifetime caps; pinned Kyoto header/filter/peer persistence,
+swap-key, archival, signed-settlement, regtest, trusted-time, and resource
+gaps; absent embedded Helios proof production and approved contract
+deployment; no pair success/refund/restart/reorg qualification; incomplete
+price governance; unconsumed engine proxy authority; and no independent
+third-party security audit.
 
 Deferred or deliberately unavailable features include auctions/registration,
 resource editing, renewal automation, free/donated names, domain-service and
@@ -512,9 +548,10 @@ Source-only production-continuation revisions after those exact gates:
 
 | Repository | Revision | Static-only evidence and status |
 | --- | --- | --- |
-| `hns-rs` | `7d3b2604ac572bfea26f8a0518e89c3c8446bdba` | deterministic marketplace/HNS-HTLC fixtures and Denuo registry sidecars reproduced; diff checks passed; no build/test; unpublished |
-| `hns-node-rs` | `72876066618d3ddffb9c7e385802c8d84b8c9d5f` | source/read and diff checks only; no build/test; wallet profile remains disabled and unqualified |
-| `hns-wallet-rs` | `13fddf01ed07496173df5b9bea99ab335ddd9ff0` | formatting and diff check only; no build/test; HNS value/name-owner paths remain disabled/unavailable |
+| `hns-rs` | `825f212de49d57b0ae7b5bbd0c038ddec5d52ce2` | deterministic marketplace/HNS-HTLC and HSD NameState/resource fixtures committed; static/diff checks only; no build/test; unpublished |
+| `hns-node-rs` | `74f7ae36ddfd4a396451d33a2bca1c71a04f8a75` | source/read and diff checks only; no build/test; authenticated RPC requires the disabled-by-default wallet profile and remains unqualified |
+| `hns-wallet-rs` | `768850982b37dc84030ab408de0f1f010cf42ed1` | independent static review and diff checks only; no build/test; HNS/Bitcoin value paths and name-owner actions remain disabled/unavailable |
+| `hns-dane-engine` | `f76ad37232bcadc85eb9b9bee5f45bff8405b583` | source/read and diff checks only; no build/test; proxy authority is not consumed or product-qualified |
 | `hns-dane-browser-extension` | `6285fda5a7ed61c5ac93f5127de078ce8587da38` | source/read and diff checks only; no build/test; provider remains unavailable |
 
 The ecosystem row necessarily identifies its containing commit here because a

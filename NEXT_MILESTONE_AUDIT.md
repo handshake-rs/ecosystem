@@ -1,8 +1,22 @@
 # Next ecosystem milestone audit
 
-Last updated: 2026-07-28
+Last updated: 2026-08-02
 
-Status: successive milestones completed; shared proxy-core audit remains next
+Status: successive historical milestones completed; shared proxy-core engine
+sub-slice implemented as unqualified source, product adoption remains next
+
+## 2026-08-02 source-only continuation
+
+Engine source head `f76ad37232bcadc85eb9b9bee5f45bff8405b583`
+implements the bounded shared admission/publication sub-slice: an opaque
+`ProviderAuthorityContext` mints non-cloneable exact-origin loopback proxy
+grants bound to authority/runtime/process/listener generations, with strict
+CONNECT authentication, finite pending/publication/grant lifetimes, and atomic
+expired-publication reclamation. It does not replace the product-owned native
+listener, TLS/CA, DNS I/O, resolver, or gateway implementation, and neither
+Chromium nor mobile consumes it yet. Installed-process lifecycle and network
+qualification remain open. This successor received static/diff review only;
+no build or test ran and no older PASS evidence transfers to it.
 
 ## Completed recommendation
 

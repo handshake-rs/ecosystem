@@ -22,32 +22,42 @@ NVMe. Optimized RocksDB must never be rebuilt and may only be supplied from an
 existing NVMe prebuilt library. Each coherent source revision receives only
 one consolidated qualification layer.
 
+Repository-root `/dist/` is ignored in `hns-rs`, `hns-node-rs`,
+`hns-wallet-rs`, `hns-dane-engine`, and Chromium. Mobile is intentionally not
+given a global `dist/` ignore because its tracked `dist/` tree contains store
+metadata and screenshot source; generated mobile build outputs remain covered
+by its narrower ignore rules.
+
 The Chromium half of the source tranche is committed on local `main` at
 `6285fda5a7ed61c5ac93f5127de078ce8587da38`. It performs bounded same-handle
 artifact integrity discovery without treating a digest as publisher
 authenticity or executing the artifact, and it invalidates document/approval
 authority across asynchronous native results and header maintenance. It still
 returns unavailable: no signed/pinned wallet service or framed process
-transport exists, the engine does not expose a consumable opaque provider-
-authority context, approval-summary prompts have not received method-specific
-review, and Windows ACL/ownership validation is absent. Only static review and
-`git diff --check` were performed on the two source successors; no build, test,
-push, tag, or publication evidence is attached to this revision.
+transport exists, the extension has not consumed the engine's later opaque
+provider-authority/proxy admission boundary, approval-summary prompts have not
+received method-specific review, and Windows ACL/ownership validation is
+absent. No build, test, push, tag, or publication evidence is attached to this
+source-only successor.
 
-The canonical marketplace correction is committed on local `hns-rs` `main`
-at `7d3b2604ac572bfea26f8a0518e89c3c8446bdba`. It binds fill grants to an
+The canonical marketplace and name-codec continuation is committed on local
+`hns-rs` `main` at `825f212de49d57b0ae7b5bbd0c038ddec5d52ce2`. The earlier
+marketplace correction binds fill grants to an
 independent delegated maker settlement key, joins signed swap-session terms to
 the exact native HNS HTLC descriptor, and rounds promised Unix refund times up
 to HSD's 512-second encoding rather than shortening them. Fixed-price
 Shakedex now has canonical buyer fulfillment plus an explicit-recipient,
 independently seller-signed `0x83` recovery TRANSFER; recovery neither retains
 nor validates the listing's `0x84` presign. Exact deterministic marketplace,
-HNS HTLC, and spend vectors plus registry sidecars are committed. This
-revision was source-generated and statically checked only; version `0.2.0`
-remains unpublished and no downstream release pin or qualification is implied.
+HNS HTLC, and spend vectors plus registry sidecars are committed. The latest
+successor also owns HSD-compatible NameState and resource decode/encode,
+canonicality checks, proof-facing exact bytes, and independent fixtures rather
+than leaving that protocol to wallet-local projection. This revision was
+source-generated and statically checked only; version `0.2.0` remains
+unpublished and no downstream release pin or qualification is implied.
 
 The corrected node half is committed on local `main` at
-`72876066618d3ddffb9c7e385802c8d84b8c9d5f`. Its disabled wallet profile now
+`74f7ae36ddfd4a396451d33a2bca1c71a04f8a75`. Its disabled wallet profile now
 provides chain-epoch-bound confirmed restoration for a complete sorted script
 set, process-instance/generation/query-bound mempool pages, stable combined
 transaction and separately represented current/proof/owner name evidence, and
@@ -58,23 +68,46 @@ resolution and pre-current-block overlay ordering keep this optional index
 from misreading ordinary children or already-mutated state.
 Addresses retain bounded one-to-many descriptor candidates because not every
 term is committed by the script; exact output terms select one candidate and
-ambiguous matches fail closed. This source was not built or tested and remains
-release-blocked on a published revision-pinned canonical `hns-swap`/Denuo V2
-boundary, a concrete cross-repository wallet adapter, safe contract-registry
-retirement/capacity reclamation, and the single final repository gate.
+ambiguous matches fail closed. The latest successor exposes this backend as a
+strict authenticated `/api/v1/wallet` loopback HTTP contract with durable
+epoch/tip and mempool process/generation bindings, exact ordered spender and
+transaction evidence, canonical NameState bytes, and nullable transaction
+ordinal only when the raw payload is pruned. This source was not built or
+tested and remains release-blocked on a published revision-pinned canonical
+`hns-swap`/Denuo V2 boundary, safe contract-registry retirement/capacity
+reclamation, multi-process qualification, and the single final repository
+gate.
+
+The engine authority/proxy continuation is committed on local `main` at
+`f76ad37232bcadc85eb9b9bee5f45bff8405b583`. It consumes the opaque
+`ProviderAuthorityContext` to mint non-cloneable, exact-origin loopback proxy
+publications and grants bound to authority/runtime/process/listener
+generations. CONNECT parsing, authentication, pending admissions, expiration,
+and atomic reclamation are bounded and fail closed. It does not provide wallet
+dispatch or prove that Chromium/mobile consume the authority; installed
+browser/device and proxy lifecycle qualification remain open. This successor
+was statically reviewed only and was not built or tested.
 
 The encrypted wallet runtime continuation is committed on local `main` at
-`13fddf01ed07496173df5b9bea99ab335ddd9ff0`. HNS send and settlement-lock
+`768850982b37dc84030ab408de0f1f010cf42ed1`. HNS send and settlement-lock
 preparation now authenticate and
 atomically commit the account change index, prepared workflow, and complete
 input-reservation set, then recover the exact durable artifact on an
 idempotent retry. Confirmed and mempool restoration retain exact version-zero
 Address/ScriptId identity plus the node's chain epoch, tip, mempool instance,
-and generation. Name proof state and current state remain separate; name
-imports are explicitly watch-only because no released canonical NameState/
-resource decoder or dedicated bounded `HnsName` derivation scan exists. HNS
-value operations remain hard-disabled on every network. This successor was
-formatted and statically diff-checked only; it was not built or tested.
+and generation through a concrete strict adapter pinned to node RPC v1
+`74f7ae36`. Confirmed transaction, name-owner, and unique spender blocks are
+rechecked against the same active-chain snapshot; coinbase evidence is retained
+and all such outputs fail closed for balance/spend selection. The wallet also
+contains the durable Kyoto/BDK supervisor committed at `3a3323c0`, including
+bounded encrypted scan/reconciliation/broadcast journals and explicit recovery
+failure states. HNS value operations remain hard-disabled because the node's
+fee rate is policy-vbytes while the dormant builder still prices transaction
+weight; Bitcoin value operations remain hard-disabled because the pinned Kyoto
+release does not persist/expose its header, filter, or peer database. Name
+imports remain watch-only until the unpublished canonical codec is released
+and a dedicated bounded `HnsName` derivation scan exists. This successor was
+statically reviewed and diff-checked only; it was not built or tested.
 
 ## 2026-08-02 local wallet and marketplace checkpoint
 

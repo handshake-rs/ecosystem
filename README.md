@@ -82,7 +82,13 @@ False maps to `Disabled`, true maps to direct-first `Auto`; the browser P2P
 ## Current audit
 
 The ecosystem is still implementation-in-progress and is not release-ready as
-a whole. Start with:
+a whole. The latest local source-only heads add canonical NameState/resource
+codecs (`hns-rs` `825f212d`), authenticated node wallet RPC v1 (`74f7ae36`),
+the concrete HNS adapter and durable Kyoto supervisor (`hns-wallet-rs`
+`76885098`), and engine-minted bounded proxy admissions (`f76ad372`). They were
+not built or tested and inherit no earlier PASS evidence; HNS/Bitcoin value,
+name ownership, browser provider, and settlement paths remain disabled or
+unavailable. Start with:
 
 - [`INTEGRATION_STATE.md`](INTEGRATION_STATE.md) — committed checkpoints and
   demonstrated gates;
@@ -140,8 +146,10 @@ IPA. These product releases do not upgrade the unrun installed-browser,
 signed-device, resolver-contact, or full-topology rows.
 
 Canonical engine remote `main` remains
-`7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`; its local release-preparation
-head `1d0fc9c6ba72f008e60d8c5a98741a32aeea4a75` is unpublished and unpushed.
+`7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`; older local release-preparation
+head `1d0fc9c6ba72f008e60d8c5a98741a32aeea4a75` precedes latest local source head
+`f76ad37232bcadc85eb9b9bee5f45bff8405b583`. The latest head is unbuilt,
+untested, unpublished, and unpushed.
 The bootstrap generator does have a hosted run, but
 [`30401402868`](https://github.com/handshake-rs/hns-dane-bootstrap-generator/actions/runs/30401402868)
 failed at `npm ci` because `@emnapi/runtime@1.11.3` is missing from its lockfile.

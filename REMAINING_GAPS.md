@@ -6,9 +6,10 @@ This ledger is deliberately release-blocking.
 
 - Retain the production-parser fuzz target, locked fuzz dependency graph, and
   deterministic parser-smoke command in hosted qualification.
-- Qualify and publish the corrected marketplace/session/HNS-HTLC/Shakedex
-  boundary at `7d3b2604ac572bfea26f8a0518e89c3c8446bdba`; until separately
-  authorized, its `0.2.0` source and vectors are not a consumable release.
+- Qualify and publish the corrected marketplace/session/HNS-HTLC/Shakedex and
+  canonical NameState/resource codec boundary at
+  `825f212de49d57b0ae7b5bbd0c038ddec5d52ce2`; until separately authorized,
+  its `0.2.0` source and vectors are not a consumable release.
 - Adopt the canonical crates in every consumer without copying protocol logic.
 
 ## Standalone node, wallet, and market
@@ -30,15 +31,21 @@ This ledger is deliberately release-blocking.
 - Publish the new canonical marketplace protocol/Denuo V2 crate boundary and
   adopt it by immutable release in node/wallet/browser consumers; do not use a
   sibling path or copied wire types.
-- Adopt the source-complete HNS transaction/reconciliation runtime at
-  `13fddf01ed07496173df5b9bea99ab335ddd9ff0` through a concrete node adapter and qualify its atomic prepared-
-  workflow recovery. Add the released canonical NameState/resource decoder,
-  dedicated bounded `HnsName` scan, platform-backed database-key wrapping,
-  and complete transfer/finalize/reorg integration before enabling value or
-  ownership actions.
-- Implement and register complete HNS, Bitcoin, and Ethereum runtime adapters
-  for the capability traits. The current trait definitions and focused helper
-  functions are not an executable `ChainModule`/`AtomicSettlement` join.
+- Qualify the source-complete HNS transaction/reconciliation runtime and
+  concrete authenticated node adapter at
+  `768850982b37dc84030ab408de0f1f010cf42ed1`, including atomic prepared-
+  workflow recovery and hostile HTTP/JSON, stale epoch/mempool, pruned payload,
+  coinbase, restart, and reorg cases. Align the node's sigop-adjusted policy-
+  vbyte fee rate with the wallet builder before enabling value: the dormant
+  builder currently prices transaction weight and must remain disabled.
+- Publish and consume the canonical NameState/resource codec, add a separately
+  persisted bounded `HnsName` scan, platform-backed database-key wrapping, and
+  complete transfer/finalize/reorg integration before enabling ownership
+  actions. The current name path remains watch-only.
+- Complete and register the remaining Bitcoin and Ethereum runtime/settlement
+  adapters. HNS now has a source-level `ChainModule`/`AtomicSettlement` join,
+  but its value permit remains unavailable; the Bitcoin supervisor is not yet
+  signed-settlement complete and Ethereum still lacks its evidence producer.
 - Complete and independently review the derivation/recovery specification:
   retain HNS and Ethereum role separation, add the missing dedicated Bitcoin
   atomic-swap branch, bind metadata-encryption key recovery, and publish
@@ -47,9 +54,13 @@ This ledger is deliberately release-blocking.
   preview, fulfillment, finalization, recovery, restart-at-every-state, reorg,
   and Denuo relay integration. Reverse Dutch remains deferred until fixed
   price passes.
-- Run Kyoto direct-P2P/regtest birthday, invalid-PoW, filter mismatch,
-  inconsistent-peer, false-positive, spend, signed HTLC, reorg, restart, and
-  resource suites. No Esplora/Electrum/RPC fallback may be added.
+- Replace or extend the pinned Kyoto boundary so headers, compact-filter
+  headers/filters, and peer/address state are durably exposed and restored;
+  add safe archival beyond the bounded transaction/output lifetime caps.
+  Then run direct-P2P/regtest birthday, invalid-PoW, filter mismatch,
+  inconsistent-peer, false-positive, spend, signed HTLC, reorg, restart,
+  broadcast-retry, trusted-time, and resource suites. No Esplora/Electrum/RPC
+  fallback may be added.
 - Embed and audit the selected Helios proof/persistence adapter; run the
   deterministic native-ETH contract on a local development chain through
   lock/redeem/refund/replay/authorization/reentrancy/event/rollback cases; bind
@@ -59,9 +70,10 @@ This ledger is deliberately release-blocking.
 - Complete reporter governance, quorum/outlier/circuit-breaker policy,
   malicious-board controls, fill-grant expiration, peer cooldown/scoring, and
   end-to-end browser approval for the market-price board.
-- Adopt and qualify the source-complete confirmed/mempool Shakedex and HTLC
-  tracker at `72876066618d3ddffb9c7e385802c8d84b8c9d5f` through the released
-  canonical protocol dependency and concrete wallet adapter. Its chain
+- Adopt and qualify the source-complete authenticated RPC, confirmed/mempool
+  Shakedex, and HTLC tracker at
+  `74f7ae36ddfd4a396451d33a2bca1c71a04f8a75` through the released canonical
+  protocol dependency and the source-complete wallet adapter. Its chain
   evidence and verified revealed-preimage events—not Denuo status relay
   objects—must remain settlement authority. Add safe registry retirement and
   capacity reclamation; the current 16,384-global and 256-per-address limits
@@ -89,9 +101,11 @@ This ledger is deliberately release-blocking.
   with the shared engine. TLSA-owner/ICANN trust, full-host root comparison,
   direct-first transport/role policy, canonical authority lifecycle, and
   schema-v2 observability are now shared through five exact-pinned contracts.
-  The next bounded slice is the loopback proxy admission/publication core;
-  live DNS wire, light-chain, DNSSEC, DANE, resolver, origin transport, and
-  gateway migration follow independently.
+  The engine's loopback proxy admission/publication core now exists at
+  `f76ad37232bcadc85eb9b9bee5f45bff8405b583`; the next bounded slice is exact
+  Chromium/mobile consumption of that opaque authority. Live DNS wire,
+  light-chain, DNSSEC, DANE, resolver, origin transport, and gateway migration
+  follow independently.
 - The complete engine graph is now standalone at exact canonical `hns-rs`
   revision `dde2da81f29df935f043978a6d517c1d60ceff31`; retain its exact-source,
   shallow-clone, cargo-deny, and offline gates while adopting deeper engine
@@ -160,11 +174,12 @@ This ledger is deliberately release-blocking.
 ## Integration and release
 
 - Retain protected, exact-head hosted evidence for published checkpoints and
-  close any current hosted failures. The engine's local release-preparation
-  head `1d0fc9c6ba72f008e60d8c5a98741a32aeea4a75` must remain unpushed and
-  unpublished until its separate release is authorized; local gates and
-  exact-revision consumer evidence do not substitute for protected
-  current-main checks.
+  close any current hosted failures. The engine's latest local source head
+  `f76ad37232bcadc85eb9b9bee5f45bff8405b583` (with older release-preparation
+  predecessor `1d0fc9c6ba72f008e60d8c5a98741a32aeea4a75`) must remain unpushed,
+  unpublished, and unqualified until its separate release is authorized;
+  local gates and exact-revision consumer evidence do not substitute for
+  protected current-main checks.
 - Mobile distribution readback: iOS 0.5.5 build 57 is `VALID` and its direct
   App Review submission is `WAITING_FOR_REVIEW` after protected upload run
   `30456522039`; GitHub

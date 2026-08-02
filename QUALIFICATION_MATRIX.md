@@ -15,12 +15,14 @@ wallet program; its `NOT RUN` status must not be reinterpreted as permission to
 add OPEN/BID/REVEAL/REGISTER flows. Rows 27–38 are the wallet/marketplace
 supplement. Only directly demonstrated scope is credited.
 
-The 2026-08-02 source-only production successors (`hns-rs` `7d3b2604`, node
-`72876066`, wallet `13fddf01`, and Chromium `6285fda5`) do not inherit the
-earlier exact-revision PASS evidence and therefore do not upgrade any row.
-Their new protocol, recovery, and tracking code remains represented by the
-same `PARTIAL`/`NOT RUN` topology outcomes until one consolidated gate and the
-applicable multi-process or installed-product demonstrations run.
+The 2026-08-02 source-only production successors (`hns-rs` `825f212d`, node
+`74f7ae36`, wallet `76885098`, engine `f76ad372`, and Chromium `6285fda5`) do
+not inherit the earlier exact-revision PASS evidence and therefore do not
+upgrade any row. Their canonical name codecs, authenticated node/wallet join,
+Kyoto supervisor, proxy admissions, recovery, and tracking code remain
+represented by the same `PARTIAL`/`NOT RUN` topology outcomes until one
+consolidated gate and the applicable multi-process or installed-product
+demonstrations run.
 
 The 2026-07-25 consent clarification separates transport from output
 authority: opaque P2P relay capacity is default-on with an opt-out policy,
@@ -77,11 +79,11 @@ program. They use the same evidence vocabulary.
 
 | # | Required demonstration | Status |
 | ---: | --- | --- |
-| 27 | standalone wallet locked build, Clippy, tests, docs, dependency policy, and contract reproducibility | PASS: local `hns-wallet-rs/scripts/check.sh`; 34 Rust tests, warning-denied Clippy/docs, deterministic solc artifact comparison, and zero npm audit vulnerabilities |
-| 28 | encrypted store, deterministic restore/key separation, lock, migration, workflow CAS, and replay protection | PARTIAL: HNS/ETH separation and focused store units pass; dedicated Bitcoin swap-key derivation, complete recovery vectors, platform key wrapping, entity-complete recovery, backup/rollback, and device persistence remain unavailable or unrun |
-| 29 | hostile Provider API origin/permission/navigation/approval/rate/forbidden-method matrix | PARTIAL: Rust core negatives and 25 focused Chromium adapter tests pass; no browser can dispatch a wallet method through a live ABI, and installed-browser/signed-device matrices remain unrun |
+| 27 | standalone wallet locked build, Clippy, tests, docs, dependency policy, and contract reproducibility | PASS at earlier exact wallet `8aa82dd9`: local `hns-wallet-rs/scripts/check.sh`; 34 Rust tests, warning-denied Clippy/docs, deterministic solc artifact comparison, and zero npm audit vulnerabilities. Current `76885098` has not run this gate |
+| 28 | encrypted store, deterministic restore/key separation, lock, migration, workflow CAS, and replay protection | PARTIAL: HNS/ETH separation and focused store units pass at the earlier baseline; source now includes HNS artifact recovery and bounded Kyoto scan/reconciliation journals, but dedicated Bitcoin swap-key derivation, complete recovery vectors, platform key wrapping, entity-complete migration, backup/rollback, and device persistence remain unavailable or unrun |
+| 29 | hostile Provider API origin/permission/navigation/approval/rate/forbidden-method matrix | PARTIAL: Rust core negatives and 25 focused Chromium adapter tests pass at earlier exact revisions; source now includes engine-minted opaque authority and bounded proxy admissions, but no browser dispatches a wallet method through the complete live authority/ABI join and installed-browser/signed-device matrices remain unrun |
 | 30 | complete fixed-price Shakedex seller/buyer/recovery lifecycle over Denuo | PARTIAL: canonical proof/state primitives and recovery ordering are tested; live transaction, relay, restart, reorg, and regtest sequence not run |
-| 31 | Kyoto direct-P2P restore/send/history/HTLC/reorg qualification | PARTIAL: actual Kyoto/BDK construction and HTLC units pass; dedicated swap-key derivation, persistent supervisor/history, signed settlement, P2P/regtest adversarial, and resource suites are unavailable or unrun |
+| 31 | Kyoto direct-P2P restore/send/history/HTLC/reorg qualification | PARTIAL: actual Kyoto/BDK construction and HTLC units pass only at the earlier baseline; a durable bounded supervisor/history/broadcast journal now exists as untested source, while the pinned Kyoto header/filter/peer persistence gap, dedicated swap-key derivation, signed settlement, safe archival, P2P/regtest adversarial cases, and resource suites remain unavailable or unrun |
 | 32 | Helios native-ETH wallet plus immutable contract qualification | PARTIAL: role-separated typed signing, fail-closed evidence policy, exact contract artifact, and Rust negatives pass; no embedded Helios producer, complete balance/history runtime, local-chain execution, rollback demonstration, approved deployment, or audit exists |
 | 33 | HNS/BTC success, restart, reorg, and refund | NOT RUN |
 | 34 | HNS/ETH success, restart, finality rollback, and refund | NOT RUN |

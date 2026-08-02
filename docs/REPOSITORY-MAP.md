@@ -6,7 +6,7 @@
 | --- | --- |
 | [`hns-rs`](https://github.com/handshake-rs/hns-rs) | Runtime-independent Handshake protocol, consensus, wire, proof, registry, and role-specific consent types |
 | [`hns-node-rs`](https://github.com/handshake-rs/hns-node-rs) | Standalone node runtime/networking under construction: chain state, storage, synchronization, mining, and RPC |
-| `hns-wallet-rs` (local repository; no remote configured) | Experimental encrypted Handshake-first wallet foundation, origin-bound Provider schema, Shakedex/market state machines, Kyoto boundary, and Helios-selected Ethereum evidence policy |
+| `hns-wallet-rs` (local repository; no remote configured) | Unqualified production-completion source for the encrypted Handshake-first wallet, origin-bound Provider schema, Shakedex/market state machines, durable Kyoto supervisor, and Helios-selected Ethereum evidence policy; value/product paths remain disabled or unavailable |
 | [`MeshMine`](https://github.com/handshake-rs/MeshMine) | Mining overlay, work scheduling, operator UI, and exact external-node consumer |
 | [`hns-dane-engine`](https://github.com/handshake-rs/hns-dane-engine) | DNSSEC, TLSA/DANE, validating resolution, full-host dual-root policy, canonical browser authority lifecycle, and shared observability |
 | [`hns-dane-browser-mobile`](https://github.com/handshake-rs/hns-dane-browser-mobile) | Android/iOS lifecycle, UI, FFI, proxy, store packaging, staged header publication, and shared-engine adapters |
@@ -27,17 +27,19 @@ hns-rs 0.1 published crates ──> hns-wallet-rs foundation
 hns-rs immutable pin ─────────> hns-node-rs ──> MeshMine
 hns-rs immutable pin ─────────> hns-dane-engine ──> browser authority adapters
 
-hns-rs 0.2 marketplace candidate - - > node/wallet V2 adoption (blocked: unpublished)
-hns-node-rs typed backend       - - > hns-wallet-rs runtime (interface shapes only)
+hns-rs 0.2 marketplace/name candidate - - > node/wallet adoption (unpublished)
+hns-node-rs wallet RPC v1       ══════> hns-wallet-rs adapter (source-complete; unqualified)
 hns-wallet-rs ABI artifact      - - > mobile/Chromium (blocked: not released/wired)
+hns-dane-engine proxy authority - - > mobile/Chromium (implemented engine source; unconsumed)
 
 hns-dane-crawler ── observational gap/handoff ──> hns-dane-bootstrap-generator
 ```
 
 Solid arrows are compiled, immutable dependencies at the stated checkpoint.
-Dashed arrows are designed joins that are unavailable and must not be inferred
-from compatible type names or source adapters. No maintained repository uses
-a committed sibling-checkout dependency.
+The double arrow is a source-complete versioned process contract rather than a
+Cargo dependency and remains unqualified. Dashed arrows are unavailable or
+unpublished product joins. No maintained repository uses a committed sibling-
+checkout dependency.
 
 `hns-node-rs` pins the exact canonical `hns-rs` checkpoint that defines its
 live Denuo registry negotiation and role-safe HIP-76 session policy.
@@ -53,9 +55,10 @@ schema; platform adapters bind and render those contracts while retaining
 sockets, storage, proxy integration, native interfaces, UI, and packaging.
 Their current platform runtimes stage header synchronization and publish
 validated header/peer/readiness generations atomically. Chromium also binds
-PAC and native-host replacement to explicit connection/control generations;
-this remains product-adapter code rather than completion of the planned shared
-engine proxy-core migration.
+PAC and native-host replacement to explicit connection/control generations.
+The engine proxy admission/publication sub-slice now exists at local source
+head `f76ad372`; neither product consumes it, so product TLS/proxy migration
+and qualification remain incomplete.
 
 The crawler/generator arrow is an optional operator workflow, not a runtime
 trust dependency. Portable whole-request browser boundaries require and test
@@ -69,17 +72,18 @@ signed-device matrices remain open.
   Their Cargo VCS metadata records source
   `0ea5994c336642ea7d01c51c0e22df2008985426`; documentation head is
   `f6f46e1ecf9b31ca6592a6350c254a6effb9c9d0`, and no `v0.1.0` tag exists.
-- A locally qualified 15-package `hns-rs` 0.2.0 marketplace candidate exists,
-  but it is not tagged, pushed, or published. The node and wallet therefore do
-  not advertise or consume its Denuo V2 wire protocol through a released
-  boundary.
+- The 15-package `hns-rs` 0.2.0 marketplace candidate was locally qualified at
+  predecessor `b66470a6`; latest marketplace/NameState source head `825f212d`
+  is unqualified and inherits no PASS. Neither is tagged, pushed, or published,
+  so node and wallet do not consume Denuo V2 through a released boundary.
 - `hns-wallet-rs` exists only as a local independent `main` repository. Its
-  source-level ABI and wallet foundations are experimental; no remote,
+  latest unqualified production-completion source is `76885098`; no remote,
   published crate, browser ABI artifact, or product release exists.
 - `hns-dane-engine` remote `main` remains
-  `7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`. Local release preparation
-  ending at `1d0fc9c6ba72f008e60d8c5a98741a32aeea4a75` is unpublished and
-  unpushed.
+  `7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`. Older release preparation
+  `1d0fc9c6ba72f008e60d8c5a98741a32aeea4a75` precedes latest local source head
+  `f76ad37232bcadc85eb9b9bee5f45bff8405b583`; the latter is unbuilt, untested,
+  unpublished, and unpushed.
 - Chromium v0.5.5 is public from source/tag
   `86b18497285753944ec1b9196ec05ee359c6db11` with 29 assets. macOS artifacts
   are signed and notarized; Windows artifacts are unsigned. Documentation

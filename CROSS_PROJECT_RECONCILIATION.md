@@ -6,12 +6,12 @@
 hns-rs 0.1 released crates ────────────> hns-wallet-rs foundation
 hns-rs exact immutable protocol pin ──> hns-node-rs ──> MeshMine bridge
 
-hns-rs 0.2 marketplace release - - - -> hns-node-rs / hns-wallet-rs (blocked)
-hns-node-rs typed backend       - - - -> hns-wallet-rs runtime (not joined)
+hns-rs 0.2 marketplace/name-codec release - - -> node / wallet (blocked)
+hns-node-rs wallet RPC v1       ═══════> hns-wallet-rs adapter (source-complete; unqualified)
 hns-wallet-rs versioned ABI     - - - -> mobile / Chromium (not released/wired)
 
 hns-wallet-rs
-  ├──> Kyoto direct-P2P Bitcoin source boundary
+  ├──> durable bounded Kyoto direct-P2P Bitcoin supervisor source
   └──> selected Helios Ethereum evidence policy (runtime not embedded)
 
 hns-rs ── exact immutable protocol pin ──> hns-dane-engine
@@ -24,13 +24,16 @@ hns-rs ── exact immutable protocol pin ──> hns-dane-engine
           ├──> Android/iOS browser adapter
           └──> Chromium extension/native host
 
+hns-dane-engine opaque proxy authority - - -> mobile / Chromium (not consumed)
+
 hns-dane-crawler ── optional observed remediation handoff
                   └──> hns-dane-bootstrap-generator ──> operator-published DNS
 ```
 
-Solid arrows are current compiled dependencies. Dashed arrows are designed
-joins that remain unavailable; compatible schemas do not constitute runtime
-integration.
+Solid arrows are current compiled dependencies. The double arrow is a
+source-complete versioned process contract without a sibling crate dependency;
+it remains unqualified. Dashed arrows are designed or unpublished joins that
+remain unavailable; compatible schemas do not constitute product integration.
 
 The encrypted user wallet and atomic-market application belong in standalone
 `hns-wallet-rs`; validated Handshake indexes/RPC and bounded untrusted Denuo
@@ -140,19 +143,23 @@ opt-in” rule.
   wallets, marketplace messages, and broader shared primitive adoption remain.
 - `hns-wallet-rs` now exists as an independent workspace with encrypted secret
   records, origin-bound Provider API policy, persisted Shakedex/market state,
-  a Kyoto-only Bitcoin boundary, and a narrow Ethereum contract/evidence
-  boundary. The chain traits do not yet have registered end-to-end module
-  implementations, the Bitcoin module lacks a dedicated swap-key derivation
-  branch, and the complete recovery-vector specification is missing. Full HNS
-  transaction/runtime integration, released marketplace protocol consumption,
-  live browser ABI integration, real-chain restart/reorg suites, resource
-  benchmarks, Helios proof production, and independent security review remain
-  release blockers.
-- The node's confirmed wallet indexes and twelve-call typed backend are
-  implemented, but wallet mempool restoration/subscriptions and Shakedex,
-  HTLC, and verified preimage tracking are not. Its five-role marketplace
-  relay is a bounded cache/policy core only; Denuo V2 wire advertisement is
-  disabled until canonical V2 adoption.
+  a source-complete HNS `ChainModule`/`AtomicSettlement` runtime and strict
+  node RPC v1 adapter, a durable bounded Kyoto/BDK supervisor, and a narrow
+  Ethereum contract/evidence boundary. HNS value remains hard-disabled while
+  node policy-vbyte and wallet weight fee units differ; names remain watch-only
+  until the unpublished canonical codec is released and a dedicated name-role
+  scan exists. Bitcoin still lacks durable Kyoto header/filter/peer state,
+  safe archival, dedicated swap-key derivation, and signed settlement;
+  Ethereum lacks the Helios evidence producer. Released marketplace protocol
+  consumption, live browser ABI integration, real-chain restart/reorg suites,
+  resource benchmarks, and independent security review remain blockers.
+- The node's confirmed/mempool wallet indexes, Shakedex/HTLC/preimage tracker,
+  typed backend, and authenticated loopback RPC v1 are source-complete at
+  `74f7ae36`; the strict wallet consumer is source-complete at `76885098`.
+  Neither successor was built or tested. The five-role marketplace relay is a
+  bounded cache/policy core only, Denuo V2 wire advertisement is disabled
+  until canonical V2 adoption, and registry retirement/capacity reclamation
+  remains absent.
 - MeshMine now consumes an exact immutable `handshake-rs/hns-node-rs` revision
   through its bridge. Its `504d3fed035feb8a637ca09c4e0816b6e1144622`
   pin has complete functional readiness but predates the standalone
@@ -170,19 +177,21 @@ opt-in” rule.
   databases and atomically publish validated header, peer, and readiness
   generations. Chromium additionally retains mandatory PAC control through
   native-host replacement and transient due-but-unexpired maintenance
-  failures. These product-local concurrency improvements do not complete the
-  planned shared loopback proxy-core migration.
+  failures. The shared engine now contains an opaque-authority-bound loopback
+  proxy admission/publication core at source head `f76ad372`; these products
+  do not consume it yet.
 - Browser adapters still contain platform-owned gateway, resolver, proxy, and
   network code around the five canonical contracts. Proxy-core and live
-  resolver/DNSSEC/DANE migration remain broader shared-engine consolidation.
+  resolver/DNSSEC/DANE consumption remain broader shared-engine consolidation.
   The Chromium repository's inactive historical mobile product trees were removed
   in a separate repository-boundary commit after their retained source was
   compared with canonical mobile.
 - Wallet-provider source adapters are fail-closed and deliberately inactive:
   Chromium's native host reports `walletUnavailable`, while Android/iOS are
-  source-hardwired unavailable and not controller-wired. The browser pins do
-  not yet carry the engine v3 opaque provider-authority context or a released
-  wallet ABI, so no provider method is executable end to end.
+  source-hardwired unavailable and not controller-wired. The engine now mints
+  the opaque provider-authority/proxy context, but the browser pins do not yet
+  consume it or a released wallet ABI, so no provider method is executable end
+  to end.
 - Crawler production snapshots/live-directory operation and a deployed,
   hash-pinned bootstrap appliance still need independent release
   qualification; their unit/build gates do not upgrade browser trust rows.
@@ -201,7 +210,9 @@ opt-in” rule.
 - All 14 `hns-rs` `0.1.0` crates are published and non-yanked from embedded
   source `0ea5994c336642ea7d01c51c0e22df2008985426`; no `v0.1.0` Git tag
   exists. The engine remains at remote head
-  `7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`; local release preparation at
-  `1d0fc9c6ba72f008e60d8c5a98741a32aeea4a75` is unpublished and unpushed.
+  `7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`; its current local source-only
+  head `f76ad37232bcadc85eb9b9bee5f45bff8405b583` includes the unpublished
+  release preparation, opaque provider authority, and bounded proxy admissions
+  and remains unbuilt, untested, unpublished, and unpushed.
 - The end-to-end regtest topology and prohibition on public recursive resolver
   contact have not yet been demonstrated.

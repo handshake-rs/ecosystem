@@ -80,11 +80,12 @@ projects are neither pushed nor rewritten.
 
 | Path | Current committed checkpoint |
 | --- | --- |
-| `work/hns-rs` | documentation head `f6f46e1ecf9b31ca6592a6350c254a6effb9c9d0`; published `0.1.0` source `0ea5994c336642ea7d01c51c0e22df2008985426`; no `v0.1.0` tag |
-| `work/hns-node-rs` | `eba0237dedcbc958a8bc09dd811a4a9eeaa9afe7` |
-| `work/hns-dane-engine` | remote `main` `7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`; local unpublished/unpushed preparation head `1d0fc9c6ba72f008e60d8c5a98741a32aeea4a75` |
-| `work/hns-dane-browser-mobile` | Android 0.5.5/version-code-46 source `d24f85158854abb8be4a7bb9e914aebe5e7e4679`; iOS 0.5.5/build-57 source and `v0.5.5` tag `d926561091634cd69fc9b7e79a4b76003fa4ee47`; documentation head `39ea427b744581ccc9a860f5f51f6fc31622d317` |
-| `work/hns-dane-browser-extension` | public v0.5.5 source/tag `86b18497285753944ec1b9196ec05ee359c6db11`; documentation head `3495bd1c5e7c26f9486ea81fb21dc1618c9bc2c8` |
+| `work/hns-rs` | latest local source-only head `825f212de49d57b0ae7b5bbd0c038ddec5d52ce2`; remote documentation head `f6f46e1ecf9b31ca6592a6350c254a6effb9c9d0`; published `0.1.0` source `0ea5994c336642ea7d01c51c0e22df2008985426`; no `v0.1.0` tag |
+| `work/hns-node-rs` | latest local source-only head `74f7ae36ddfd4a396451d33a2bca1c71a04f8a75`; remote/public documentation checkpoint `eba0237dedcbc958a8bc09dd811a4a9eeaa9afe7` |
+| `work/hns-wallet-rs` | independently created local `main`; latest source-only head `768850982b37dc84030ab408de0f1f010cf42ed1`; no configured remote or published ABI |
+| `work/hns-dane-engine` | latest local source-only head `f76ad37232bcadc85eb9b9bee5f45bff8405b583`; remote `main` `7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`; older unpublished preparation predecessor `1d0fc9c6ba72f008e60d8c5a98741a32aeea4a75` |
+| `work/hns-dane-browser-mobile` | latest local head `58996db0facef1bb6a7cb2876361d13dabc90c75`; Android 0.5.5/version-code-46 source `d24f85158854abb8be4a7bb9e914aebe5e7e4679`; iOS 0.5.5/build-57 source and `v0.5.5` tag `d926561091634cd69fc9b7e79a4b76003fa4ee47`; documentation head `39ea427b744581ccc9a860f5f51f6fc31622d317` |
+| `work/hns-dane-browser-extension` | latest local source-only head `6285fda5a7ed61c5ac93f5127de078ce8587da38`; public v0.5.5 source/tag `86b18497285753944ec1b9196ec05ee359c6db11`; documentation head `3495bd1c5e7c26f9486ea81fb21dc1618c9bc2c8` |
 | `work/hns-dane-crawler` | `b9e3c406631eb253f26979a0d3d9f794fd9fb11f` |
 | `work/hns-dane-bootstrap-generator` | `ff1c709c8584b13bc02654d19ebc00d09025f4c7` |
 | `work/MeshMine` | documentation head `9f781a00ee8fc3b7c6773538434235a65f167ca3` |

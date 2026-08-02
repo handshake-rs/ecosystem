@@ -10,8 +10,9 @@ consumer may silently vendor and modify canonical protocol logic.
 Release progression:
 
 1. `hns-rs` primitive/protocol crates: the original 14 allowlisted `0.1.0`
-   packages are published; the lockstep 15-package `0.2.0` marketplace
-   release candidate is locally qualified but unpublished.
+   packages are published; `b66470a6` is the last locally qualified lockstep
+   15-package `0.2.0` predecessor, while the latest marketplace/NameState codec
+   source at `825f212d` is unqualified and unpublished.
 2. `hns-node-rs`, pinned to the exact compatible `hns-rs` release.
 3. `hns-wallet-rs`, consuming published canonical protocol crates or one
    immutable `hns-rs` revision and publishing its versioned typed ABI.
@@ -37,8 +38,10 @@ their broader shared-engine consolidation is complete.
   consume canonical published protocol crates, connect to the node through a
   typed noncustodial adapter, use Kyoto, and embed the one selected Ethereum
   light-client boundary, but it may not embed node consensus/P2P or browser
-  authority/UI code. At this checkpoint the node and browser joins are not
-  compiled dependencies, and Helios is selected policy rather than an embedded
+  authority/UI code. The authenticated node RPC v1/process adapter join is
+  source-complete at node `74f7ae36` and wallet `76885098`; it is deliberately
+  not a Cargo dependency and remains unqualified. The browser join is not a
+  compiled dependency, and Helios is selected policy rather than an embedded
   runtime.
 - `hns-dane-engine` exposes stable platform ABIs; TypeScript/Kotlin/Swift do not
   reimplement consensus, DNSSEC, DANE, HPKE, or P2P protocols.
@@ -114,13 +117,24 @@ The locally qualified marketplace candidate is
 `b66470a6a07f0211e3e7fa9aef7d034c8486e75b`. It advances all public workspace
 packages and internal version requirements to `0.2.0`, adds the fifteenth
 allowlisted package `hns-marketplace-protocol`, and passes publication dry-run
-for every archive. It is not a crates.io release, remote checkpoint, or tag.
+for every archive. The latest source successor
+`825f212de49d57b0ae7b5bbd0c038ddec5d52ce2` additionally contains the corrected
+marketplace boundary and canonical HSD-compatible NameState/resource codecs;
+it has not received that gate. Neither revision is a crates.io release, remote
+checkpoint, or tag.
 
 No local or remote `v0.1.0` Git tag exists. Registry version `0.1.0` must
 therefore be attributed to its embedded source commit, not described as a
 Git-tagged release.
 
 `hns-dane-engine` remains unpublished. Canonical remote `main` is
-`7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`; the local release-preparation
-series ending at `1d0fc9c6ba72f008e60d8c5a98741a32aeea4a75` remains unpushed
-and is not a registry release.
+`7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`; the older local release-
+preparation predecessor is `1d0fc9c6ba72f008e60d8c5a98741a32aeea4a75`,
+while latest local source head `f76ad37232bcadc85eb9b9bee5f45bff8405b583`
+adds opaque provider authority and bounded proxy admissions. It is unbuilt,
+untested, unpushed, and not a registry release.
+
+`hns-wallet-rs` remains an independent local repository without a configured
+remote. Latest local source head
+`768850982b37dc84030ab408de0f1f010cf42ed1` has no published crate or browser
+ABI artifact and was not built or tested at that revision.
