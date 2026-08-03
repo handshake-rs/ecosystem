@@ -46,8 +46,8 @@ false. No build, test, push, tag, or publication evidence is attached to this
 source-only successor.
 
 The canonical protocol continuation is committed on local `hns-rs` `main` at
-`81f2df2651e8ea81be33e33a3438c4c9e0348f93`. The earlier
-marketplace correction binds fill grants to an
+`4b989aabc132e7e79b8fd57a10f2465073faf588`. The earlier marketplace
+correction binds fill grants to an
 independent delegated maker settlement key, joins signed swap-session terms to
 the exact native HNS HTLC descriptor, and rounds promised Unix refund times up
 to HSD's 512-second encoding rather than shortening them. Fixed-price
@@ -57,12 +57,17 @@ nor validates the listing's `0x84` presign. Exact deterministic marketplace,
 HNS HTLC, and spend vectors plus registry sidecars are committed. The latest
 successor also owns HSD-compatible NameState and resource decode/encode,
 canonicality checks, proof-facing exact bytes, and independent fixtures rather
-than leaving that protocol to wallet-local projection. The current head adds
-canonical HSD sigop-adjusted fee arithmetic, strict TRANSFER/FINALIZE covenant
-and transaction construction, canonical empty offer inventory, and listing-
-independent Shakedex recovery construction from an exact FINALIZE coin.
-It received source/static review only in this tranche; version `0.2.0` remains
-unpublished and no downstream release pin or qualification is implied.
+than leaving that protocol to wallet-local projection. Feature landing
+`81f2df2` added canonical HSD sigop-adjusted fee arithmetic, strict
+TRANSFER/FINALIZE covenant and transaction construction, canonical empty offer
+inventory, and listing-independent Shakedex recovery construction. Current
+head `4b989aab` makes every public package self-contained with package-local
+licenses and fixtures, adds complete deterministic listing/cancellation and
+recovery-FINALIZE vectors plus fail-closed source tests, and repairs release-
+gate definitions, fixture-mirror enforcement, the fuzz lock, and the publish
+dependency map. This tranche received source/static review only; version
+`0.2.0` remains unpublished and no
+downstream release pin or qualification is implied.
 
 The node continuation is on local and remote-tracking `main` at
 `3d346e3dadc716b5c367eee050308e71a0693a64`. Its disabled wallet profile now
@@ -176,8 +181,11 @@ Last audited canonical `hns-rs` main:
 
 All 14 allowlisted `hns-rs` crates at `0.1.0` are published and non-yanked.
 Their Cargo VCS metadata identifies
-`0ea5994c336642ea7d01c51c0e22df2008985426` as the release source. No local
-or remote `v0.1.0` Git tag exists.
+`0ea5994c336642ea7d01c51c0e22df2008985426` as the release source. Annotated
+local and `origin` `v0.1.0` tag object
+`354b286ff623424d24376f20885fb05407561d70` dereferences to the follow-up
+publication-record commit `f6f46e1ecf9b31ca6592a6350c254a6effb9c9d0`,
+whose parent is that embedded release source.
 
 Implemented and locally committed there:
 
@@ -610,8 +618,10 @@ The first dependency-publication stage is complete: every one of the 14
 allowlisted `hns-rs` `0.1.0` packages is published and non-yanked. Each package
 embeds source commit
 `0ea5994c336642ea7d01c51c0e22df2008985426`; documentation head
-`f6f46e1ecf9b31ca6592a6350c254a6effb9c9d0` records that result. A
-`v0.1.0` Git tag does not exist locally or on `origin`.
+`f6f46e1ecf9b31ca6592a6350c254a6effb9c9d0` records that result. Annotated
+local and `origin` `v0.1.0` tag object
+`354b286ff623424d24376f20885fb05407561d70` dereferences to that record rather
+than its parent release-source commit.
 
 The engine has not advanced remotely or published crates. Remote `main`
 remains `7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`; the local

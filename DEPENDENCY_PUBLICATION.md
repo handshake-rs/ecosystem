@@ -11,8 +11,8 @@ Release progression:
 
 1. `hns-rs` primitive/protocol crates: the original 14 allowlisted `0.1.0`
    packages are published; `b66470a6` is the last locally qualified lockstep
-   15-package `0.2.0` predecessor, while current fee/name/Shakedex source at
-   `81f2df26` is unqualified and unpublished.
+   15-package `0.2.0` predecessor, while current self-contained
+   fee/name/Shakedex release source at `4b989aab` is unqualified and unpublished.
 2. `hns-node-rs`, pinned to the exact compatible `hns-rs` release.
 3. `hns-wallet-rs`, consuming published canonical protocol crates or one
    immutable `hns-rs` revision and publishing its versioned typed ABI.
@@ -120,15 +120,19 @@ The locally qualified marketplace candidate is
 packages and internal version requirements to `0.2.0`, adds the fifteenth
 allowlisted package `hns-marketplace-protocol`, and passes publication dry-run
 for every archive. The latest source successor
-`81f2df2651e8ea81be33e33a3438c4c9e0348f93` additionally contains the corrected
-marketplace boundary, canonical HSD-compatible NameState/resource codecs and
-fee arithmetic, strict TRANSFER/FINALIZE construction, canonical empty offer
-inventory, and listing-independent Shakedex recovery; it has not received that
+`4b989aabc132e7e79b8fd57a10f2465073faf588` retains the corrected marketplace,
+NameState/resource, fee, TRANSFER/FINALIZE, empty-inventory, and
+listing-independent recovery boundary landed through `81f2df2`; it adds
+package-local licenses/fixtures/registries, deterministic mirror checks,
+complete listing/cancellation and recovery-FINALIZE vectors, batching-safe
+index-zero APIs, and release/fuzz dependency hygiene. It has not received that
 gate. The shared 0.2 packages remain unpublished and untagged.
 
-No local or remote `v0.1.0` Git tag exists. Registry version `0.1.0` must
-therefore be attributed to its embedded source commit, not described as a
-Git-tagged release.
+Annotated local and `origin` `v0.1.0` tag object
+`354b286ff623424d24376f20885fb05407561d70` dereferences to follow-up
+publication-record commit `f6f46e1ecf9b31ca6592a6350c254a6effb9c9d0`.
+The published archives still identify its parent
+`0ea5994c336642ea7d01c51c0e22df2008985426` as their release source.
 
 `hns-dane-engine` remains unpublished. Canonical remote `main` is
 `7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`; the older local release-

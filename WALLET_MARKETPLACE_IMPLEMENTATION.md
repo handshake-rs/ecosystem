@@ -86,7 +86,7 @@ complete executable product join.
 
 | Surface | Status at this snapshot |
 | --- | --- |
-| canonical marketplace/name protocols | source at `81f2df26` adds HSD-compatible fee algebra, strict TRANSFER/FINALIZE construction, canonical empty offer inventory, and listing-independent Shakedex recovery; unpublished and unqualified |
+| canonical marketplace/name protocols | feature source at `81f2df26` adds HSD-compatible fee algebra, strict TRANSFER/FINALIZE construction, canonical empty offer inventory, and listing-independent Shakedex recovery; current descendant `4b989aab` adds self-contained public packages and complete listing/cancellation and recovery-FINALIZE vectors; unpublished and unqualified |
 | node confirmed indexes/backend | current `main` `3d346e3d` includes authenticated RPC v1 and snapshot-bound exact final-transaction fee quotes; wallet indexes remain disabled by default and the current head is not qualified by this ledger |
 | node marketplace relay | implemented and locally tested cache/policy core; live V2 wire unavailable |
 | encrypted store/provider policy | schema-v3/runtime hardening, private ABI v2, strict provider authority lifecycle, concrete HNS node adapter, Kyoto supervisor, and explicit false Shakedex V2/Denuo/value gates at `5c5a13d4`; unqualified |
@@ -136,12 +136,15 @@ refund times. `hns-swap` owns signed fixed-price listings/cancellations,
 canonical buyer fulfillment, independently seller-signed explicit-recipient
 `0x83` recovery, and SHA-256 HNS HTLC funding/redeem/refund/preimage
 primitives. Recovery does not depend on retaining or validating the listing's
-`0x84` presign. The current source head
-`81f2df2651e8ea81be33e33a3438c4c9e0348f93` adds canonical HSD-compatible
+`0x84` presign. Feature landing `81f2df2` added canonical HSD-compatible
 NameState/resource decoding, sigop-adjusted minimum-fee arithmetic with
 explicit units, strict TRANSFER/FINALIZE covenant and transaction helpers,
 canonical zero-count offer inventory, and listing-independent Shakedex lock
-recovery from an exact FINALIZE coin. Current-tip ownership, maturity, renewal
+recovery. Current source head
+`4b989aabc132e7e79b8fd57a10f2465073faf588` adds package-local public assets,
+complete deterministic listing/cancellation and recovery-FINALIZE vectors,
+fail-closed mutation source tests, batching-safe index-zero verifier naming,
+and release dependency hygiene. Current-tip ownership, maturity, renewal
 ancestry, chain inclusion/unspent status, funding signatures, and wallet fee
 selection remain downstream checks. This successor was statically reviewed
 only and the shared 0.2 packages remain unpublished and unqualified.
@@ -367,7 +370,7 @@ sigop-adjusted fee algebra required for an independent wallet minimum check;
 the source does not copy the node formula. Name imports preserve separate
 exact-tip proof and current-state views and retain exact NameState bytes, but
 remain explicitly watch-only. Canonical codec and TRANSFER/FINALIZE helpers
-exist only in unpublished `hns-rs` `81f2df26`, and no bounded dedicated
+exist only in unpublished `hns-rs` `4b989aab`, and no bounded dedicated
 `HnsName` derivation scan establishes ownership. Transfer/finalize actions and
 browser UI are unavailable. HNS has separate coin, name, Shakedex,
 atomic-swap, identity, and dapp session derivation domains, and Ethereum has
@@ -481,8 +484,9 @@ refund, restart, or reorg demonstration was run for either pair.
 ## Qualification results
 
 All PASS evidence below belongs to the exact earlier revisions named in the
-final table. It does not transfer to the successors at `81f2df26`,
-`3d346e3d`, `5c5a13d4`, `6eb0174a`, or `d58e1473`. This report
+final table. It did not transfer to feature landing `81f2df26` or current
+descendant `4b989aab`, nor to `3d346e3d`, `5c5a13d4`, `6eb0174a`, or
+`d58e1473`. This report
 records only the per-row provenance and static review stated in the
 continuation table; it does not infer a consolidated gate result.
 
@@ -595,7 +599,7 @@ Source-only production-continuation revisions after those exact gates:
 
 | Repository | Revision | Static-only evidence and status |
 | --- | --- | --- |
-| `hns-rs` | `81f2df2651e8ea81be33e33a3438c4c9e0348f93` | canonical HSD fee policy plus strict Shakedex name transitions/recovery committed; static/diff review only in this tranche; shared 0.2 packages remain unpublished and unqualified |
+| `hns-rs` | `4b989aabc132e7e79b8fd57a10f2465073faf588` | canonical HSD fee policy and strict Shakedex name transitions/recovery retained from `81f2df2`; self-contained package assets, complete listing/cancellation and recovery-FINALIZE vectors, fail-closed source tests, and release hygiene committed; static/diff review only in this tranche; shared 0.2 packages remain unpublished and unqualified |
 | `hns-node-rs` | `3d346e3dadc716b5c367eee050308e71a0693a64` | local and remote-tracking `main`; exact fee quotes and resolver-sidecar source are present, tag `v0.3.4` points to `40b456fa0772729542118a69f27edc37bf42a3d7`, and this ledger records no new consolidated qualification result |
 | `hns-wallet-rs` | `5c5a13d4816be620475f6aa714f868449e964678` | private ABI v2, zeroizing frames, dedicated Bitcoin swap keys, provider hardening, and exact quote adoption remain; legacy Shakedex 0.1 seller/buyer execution is now hard-gated before decode/mutation; value and name-owner actions remain disabled/unavailable |
 | `hns-dane-engine` | `6eb0174ae743e6bd01c516be7a534d94be94b4bd` | source/read and diff checks only; retained proxy authority is not consumed or product-qualified |

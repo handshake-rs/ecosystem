@@ -218,8 +218,12 @@ opt-in” rule.
   code 46 APK and build 57 IPA. The Chromium v0.5.5 release has 29 assets and
   its macOS artifacts are signed/notarized; Windows artifacts remain unsigned.
 - All 14 `hns-rs` `0.1.0` crates are published and non-yanked from embedded
-  source `0ea5994c336642ea7d01c51c0e22df2008985426`; no `v0.1.0` Git tag
-  exists. The engine remains at remote head
+  source `0ea5994c336642ea7d01c51c0e22df2008985426`; annotated local and `origin`
+  `v0.1.0` tag object `354b286ff623424d24376f20885fb05407561d70`
+  dereferences to follow-up publication-record commit
+  `f6f46e1ecf9b31ca6592a6350c254a6effb9c9d0`. Current local-only `hns-rs`
+  source is `4b989aabc132e7e79b8fd57a10f2465073faf588`, self-contained but still
+  unqualified and unpublished. The engine remains at remote head
   `7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`; its current local source-only
   head `6eb0174ae743e6bd01c516be7a534d94be94b4bd` includes the unpublished
   release preparation, opaque provider authority, bounded proxy admissions,

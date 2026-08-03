@@ -80,7 +80,7 @@ projects are neither pushed nor rewritten.
 
 | Path | Current committed checkpoint |
 | --- | --- |
-| `work/hns-rs` | latest local source-only head `81f2df2651e8ea81be33e33a3438c4c9e0348f93`; remote-tracking `main` `15f715576a2111fae2a8c65fccc7860ede64bd98`; published `0.1.0` source `0ea5994c336642ea7d01c51c0e22df2008985426`; no `v0.1.0` tag |
+| `work/hns-rs` | latest local source-only head `4b989aabc132e7e79b8fd57a10f2465073faf588`; remote-tracking `main` `15f715576a2111fae2a8c65fccc7860ede64bd98`; published `0.1.0` source `0ea5994c336642ea7d01c51c0e22df2008985426`; annotated local and `origin` `v0.1.0` tag object `354b286ff623424d24376f20885fb05407561d70` dereferences to publication-record commit `f6f46e1ecf9b31ca6592a6350c254a6effb9c9d0` |
 | `work/hns-node-rs` | local and remote-tracking `main` `3d346e3dadc716b5c367eee050308e71a0693a64`; tag `v0.3.4` points to `40b456fa0772729542118a69f27edc37bf42a3d7`; current branch advancement came from the separate release workflow |
 | `work/hns-wallet-rs` | independently created local `main`; latest source-only head `5c5a13d4816be620475f6aa714f868449e964678`; no configured remote or published/signed ABI artifact |
 | `work/hns-dane-engine` | latest local source-only head `6eb0174ae743e6bd01c516be7a534d94be94b4bd`; remote-tracking `main` `7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`; older unpublished preparation predecessor `1d0fc9c6ba72f008e60d8c5a98741a32aeea4a75` |

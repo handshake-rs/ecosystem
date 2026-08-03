@@ -15,7 +15,7 @@ wallet program; its `NOT RUN` status must not be reinterpreted as permission to
 add OPEN/BID/REVEAL/REGISTER flows. Rows 27–38 are the wallet/marketplace
 supplement. Only directly demonstrated scope is credited.
 
-The 2026-08-02 production-continuation successors (`hns-rs` `81f2df26`, node
+The 2026-08-02 production-continuation successors (`hns-rs` `4b989aab`, node
 `3d346e3d`, wallet `5c5a13d4`, engine `6eb0174a`, and Chromium
 `d58e1473`) do not inherit the earlier exact-revision PASS evidence and
 therefore do not upgrade any row. Their fee/name/Shakedex primitives, exact

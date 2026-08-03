@@ -463,8 +463,10 @@ the still-open shared proxy-core milestone:
 - all 14 allowlisted `hns-rs` `0.1.0` crates are published and non-yanked,
   with embedded Cargo VCS source
   `0ea5994c336642ea7d01c51c0e22df2008985426`; documentation head is
-  `f6f46e1ecf9b31ca6592a6350c254a6effb9c9d0`, and no local or remote
-  `v0.1.0` tag exists;
+  `f6f46e1ecf9b31ca6592a6350c254a6effb9c9d0`, and annotated local and `origin`
+  `v0.1.0` tag object `354b286ff623424d24376f20885fb05407561d70`
+  dereferences to that publication-record commit rather than the embedded
+  parent release source;
 - `hns-dane-engine` remote `main` remains
   `7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`; the local unpublished
   release-preparation series ends at

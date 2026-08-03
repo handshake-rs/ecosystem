@@ -72,13 +72,19 @@ signed-device matrices remain open.
 - All 14 allowlisted `hns-rs` crates are published and non-yanked at `0.1.0`.
   Their Cargo VCS metadata records source
   `0ea5994c336642ea7d01c51c0e22df2008985426`; documentation head is
-  `f6f46e1ecf9b31ca6592a6350c254a6effb9c9d0`, and no `v0.1.0` tag exists.
+  `f6f46e1ecf9b31ca6592a6350c254a6effb9c9d0`. Annotated local and `origin`
+  `v0.1.0` tag object `354b286ff623424d24376f20885fb05407561d70`
+  dereferences to that follow-up publication record; the published archives
+  identify its parent source above.
 - The 15-package `hns-rs` 0.2.0 marketplace candidate was locally qualified at
-  predecessor `b66470a6`; current local source head `81f2df26` additionally
-  carries canonical HSD fee arithmetic, strict TRANSFER/FINALIZE construction,
-  canonical empty offer inventory, and listing-independent Shakedex recovery.
-  It is unqualified and inherits no PASS. The shared 0.2 packages remain
-  unpublished, so node and wallet cannot use them as a released boundary.
+  predecessor `b66470a6`; current local source head `4b989aab` retains the
+  later canonical HSD fee arithmetic, strict TRANSFER/FINALIZE construction,
+  canonical empty offer inventory, and listing-independent Shakedex recovery
+  landed through `81f2df2`, and adds self-contained package assets,
+  deterministic listing/cancellation and recovery-FINALIZE vectors, and
+  release dependency hygiene. It is unqualified and inherits no PASS. The
+  shared 0.2 packages remain unpublished, so node and wallet cannot use them
+  as a released boundary.
 - `hns-node-rs` local and remote-tracking `main` are
   `3d346e3dadc716b5c367eee050308e71a0693a64`; tag `v0.3.4` points to
   `40b456fa0772729542118a69f27edc37bf42a3d7`.

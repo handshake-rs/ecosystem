@@ -82,11 +82,12 @@ False maps to `Disabled`, true maps to direct-first `Auto`; the browser P2P
 ## Current audit
 
 The ecosystem is still implementation-in-progress and is not release-ready as
-a whole. Current source heads add canonical HSD fee policy and Shakedex name
-transitions (`hns-rs` `81f2df26`), snapshot-bound wallet fee quotes plus the
-v0.3.4 node/resolver sidecar and release-CI corrections (`hns-node-rs`
-`3d346e3d`), private ABI v2, dedicated Bitcoin swap derivation, provider
-hardening, exact quote adoption, and explicit fail-closed Shakedex
+a whole. Current source heads add self-contained canonical HSD fee policy,
+Shakedex name transitions, and complete deterministic listing/cancellation and
+recovery-FINALIZE vectors (`hns-rs` `4b989aab`), plus snapshot-bound fee
+quotes and the v0.3.4 node/resolver sidecar and release-CI corrections
+(`hns-node-rs` `3d346e3d`), private ABI v2, dedicated Bitcoin swap derivation,
+provider hardening, exact quote adoption, and explicit fail-closed Shakedex
 V2/Denuo/value gates (`hns-wallet-rs` `5c5a13d4`), retained provider authority
 across unrelated engine work (`hns-dane-engine` `6eb0174a`), and the closed
 ABI-v2 public approval boundary with every runtime gate false (Chromium
@@ -135,7 +136,11 @@ pass.
 
 Individual product publication is not ecosystem qualification. All 14
 `hns-rs` `0.1.0` crates are published and non-yanked from embedded source
-`0ea5994c336642ea7d01c51c0e22df2008985426`, but no `v0.1.0` Git tag exists.
+`0ea5994c336642ea7d01c51c0e22df2008985426`. Annotated local and `origin`
+`v0.1.0` tag object `354b286ff623424d24376f20885fb05407561d70`
+dereferences to the follow-up publication-record commit
+`f6f46e1ecf9b31ca6592a6350c254a6effb9c9d0`, whose parent is that embedded
+release source.
 Chromium v0.5.5 is public from source/tag
 `86b18497285753944ec1b9196ec05ee359c6db11` with 29 assets: macOS is signed
 and notarized, while Windows remains unsigned. Mobile Android 0.5.5 version

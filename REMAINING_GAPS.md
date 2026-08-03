@@ -8,7 +8,7 @@ This ledger is deliberately release-blocking.
   deterministic parser-smoke command in hosted qualification.
 - Qualify and publish the canonical marketplace/session/HNS-HTLC/Shakedex,
   NameState/resource, HSD fee-policy, and TRANSFER/FINALIZE boundary at
-  `81f2df2651e8ea81be33e33a3438c4c9e0348f93`; until separately authorized,
+  `4b989aabc132e7e79b8fd57a10f2465073faf588`; until separately authorized,
   its `0.2.0` source and vectors are not a consumable release.
 - Adopt the canonical crates in every consumer without copying protocol logic.
 
