@@ -29,12 +29,14 @@ Peers must compare the exact generated fingerprint and may use only the
 semantics present in the mutually selected registry version.
 
 V2 registry/marketplace artifacts were locally qualified at predecessor
-`b66470a6`. Latest `hns-rs` source head `825f212d` adds later marketplace and
-NameState/resource work, is unqualified, and inherits no PASS from that exact
-predecessor. Both remain unpublished. No maintained node or wallet release
-advertises protocol `0x0002`; the node's five-role relay is a wire-disabled
-cache/policy core until it pins the generated V2 types and installs the typed
-envelope adapter.
+`b66470a6`. Current `hns-rs` source head `81f2df26` additionally carries the
+corrected marketplace/NameState boundary, canonical HSD fee policy, strict
+TRANSFER/FINALIZE construction, canonical empty offer inventory, and listing-
+independent Shakedex recovery. It is unqualified and inherits no PASS from that
+exact predecessor. The shared 0.2 packages remain unpublished. No maintained
+node or wallet release advertises protocol `0x0002`; the node's five-role relay
+is a wire-disabled cache/policy core until it pins the released V2 types and
+installs the typed envelope adapter.
 
 ## Service bits
 

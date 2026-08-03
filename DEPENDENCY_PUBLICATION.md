@@ -11,8 +11,8 @@ Release progression:
 
 1. `hns-rs` primitive/protocol crates: the original 14 allowlisted `0.1.0`
    packages are published; `b66470a6` is the last locally qualified lockstep
-   15-package `0.2.0` predecessor, while the latest marketplace/NameState codec
-   source at `825f212d` is unqualified and unpublished.
+   15-package `0.2.0` predecessor, while current fee/name/Shakedex source at
+   `81f2df26` is unqualified and unpublished.
 2. `hns-node-rs`, pinned to the exact compatible `hns-rs` release.
 3. `hns-wallet-rs`, consuming published canonical protocol crates or one
    immutable `hns-rs` revision and publishing its versioned typed ABI.
@@ -38,9 +38,10 @@ their broader shared-engine consolidation is complete.
   consume canonical published protocol crates, connect to the node through a
   typed noncustodial adapter, use Kyoto, and embed the one selected Ethereum
   light-client boundary, but it may not embed node consensus/P2P or browser
-  authority/UI code. The authenticated node RPC v1/process adapter join is
-  source-complete at node `74f7ae36` and wallet `76885098`; it is deliberately
-  not a Cargo dependency and remains unqualified. The browser join is not a
+  authority/UI code. The authenticated node RPC v1 plus fee-quote contract is
+  frozen at node `5ed38d15`, contained in current node `3d346e3d`, and consumed
+  by wallet `5b540963`; it is deliberately not a Cargo dependency and remains
+  unqualified. The browser join is not a
   compiled dependency, and Helios is selected policy rather than an embedded
   runtime.
 - `hns-dane-engine` exposes stable platform ABIs; TypeScript/Kotlin/Swift do not
@@ -93,7 +94,8 @@ The initial `hns-wallet-rs` workspace consumes the existing published
 types are not yet published, so downstream live board integration remains
 disabled rather than using a sibling path or copied wire implementation.
 The wallet repository itself has no configured remote and publishes no crate
-or ABI artifact. Browser provider scaffolds therefore remain unavailable.
+or ABI artifact. Private ABI v2 exists only as source; browser provider
+scaffolds therefore remain unavailable.
 
 ## Release evidence required
 
@@ -118,10 +120,11 @@ The locally qualified marketplace candidate is
 packages and internal version requirements to `0.2.0`, adds the fifteenth
 allowlisted package `hns-marketplace-protocol`, and passes publication dry-run
 for every archive. The latest source successor
-`825f212de49d57b0ae7b5bbd0c038ddec5d52ce2` additionally contains the corrected
-marketplace boundary and canonical HSD-compatible NameState/resource codecs;
-it has not received that gate. Neither revision is a crates.io release, remote
-checkpoint, or tag.
+`81f2df2651e8ea81be33e33a3438c4c9e0348f93` additionally contains the corrected
+marketplace boundary, canonical HSD-compatible NameState/resource codecs and
+fee arithmetic, strict TRANSFER/FINALIZE construction, canonical empty offer
+inventory, and listing-independent Shakedex recovery; it has not received that
+gate. The shared 0.2 packages remain unpublished and untagged.
 
 No local or remote `v0.1.0` Git tag exists. Registry version `0.1.0` must
 therefore be attributed to its embedded source commit, not described as a
@@ -130,11 +133,19 @@ Git-tagged release.
 `hns-dane-engine` remains unpublished. Canonical remote `main` is
 `7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`; the older local release-
 preparation predecessor is `1d0fc9c6ba72f008e60d8c5a98741a32aeea4a75`,
-while latest local source head `f76ad37232bcadc85eb9b9bee5f45bff8405b583`
-adds opaque provider authority and bounded proxy admissions. It is unbuilt,
-untested, unpushed, and not a registry release.
+while latest local source head `6eb0174ae743e6bd01c516be7a534d94be94b4bd`
+adds opaque provider authority, bounded proxy admissions, and retention across
+unrelated admitted work. It is unqualified, unpushed, and not a registry
+release.
 
 `hns-wallet-rs` remains an independent local repository without a configured
 remote. Latest local source head
-`768850982b37dc84030ab408de0f1f010cf42ed1` has no published crate or browser
-ABI artifact and was not built or tested at that revision.
+`5b5409630045b19f81821951da51a9a1f7e1c9e5` has private ABI v2 source but no
+published crate, signed browser artifact, or current qualification result.
+
+`hns-node-rs` local and remote-tracking `main` are
+`3d346e3dadc716b5c367eee050308e71a0693a64`; tag `v0.3.4` points to
+`40b456fa0772729542118a69f27edc37bf42a3d7`. The tag contains the resolver
+sidecar and exact fee-quote contract; later `main` commits correct release-CI
+port verification. This provenance does not substitute for the program's
+consolidated node/wallet/product qualification.

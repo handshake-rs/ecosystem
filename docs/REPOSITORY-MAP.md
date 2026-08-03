@@ -27,9 +27,9 @@ hns-rs 0.1 published crates ──> hns-wallet-rs foundation
 hns-rs immutable pin ─────────> hns-node-rs ──> MeshMine
 hns-rs immutable pin ─────────> hns-dane-engine ──> browser authority adapters
 
-hns-rs 0.2 marketplace/name candidate - - > node/wallet adoption (unpublished)
-hns-node-rs wallet RPC v1       ══════> hns-wallet-rs adapter (source-complete; unqualified)
-hns-wallet-rs ABI artifact      - - > mobile/Chromium (blocked: not released/wired)
+hns-rs 0.2 fee/name/market candidate - - > node/wallet adoption (unpublished)
+hns-node-rs wallet RPC v1 + fee quote ═════> hns-wallet-rs adapter (source-complete; unqualified)
+hns-wallet-rs private ABI v2 source   - - > mobile/Chromium (blocked: not released/wired)
 hns-dane-engine proxy authority - - > mobile/Chromium (implemented engine source; unconsumed)
 
 hns-dane-crawler ── observational gap/handoff ──> hns-dane-bootstrap-generator
@@ -57,8 +57,9 @@ Their current platform runtimes stage header synchronization and publish
 validated header/peer/readiness generations atomically. Chromium also binds
 PAC and native-host replacement to explicit connection/control generations.
 The engine proxy admission/publication sub-slice now exists at local source
-head `f76ad372`; neither product consumes it, so product TLS/proxy migration
-and qualification remain incomplete.
+head `6eb0174a`; retained authority survives unrelated admitted work but not a
+security-invalidating transition. Neither product consumes it, so product
+TLS/proxy migration and qualification remain incomplete.
 
 The crawler/generator arrow is an optional operator workflow, not a runtime
 trust dependency. Portable whole-request browser boundaries require and test
@@ -66,31 +67,42 @@ independent resolution and DNSSEC validation; crawler snapshots and generated
 instructions cannot authorize a connection. Installed-browser and
 signed-device matrices remain open.
 
-## Current non-mobile publication checkpoints
+## Current non-mobile source and publication checkpoints
 
 - All 14 allowlisted `hns-rs` crates are published and non-yanked at `0.1.0`.
   Their Cargo VCS metadata records source
   `0ea5994c336642ea7d01c51c0e22df2008985426`; documentation head is
   `f6f46e1ecf9b31ca6592a6350c254a6effb9c9d0`, and no `v0.1.0` tag exists.
 - The 15-package `hns-rs` 0.2.0 marketplace candidate was locally qualified at
-  predecessor `b66470a6`; latest marketplace/NameState source head `825f212d`
-  is unqualified and inherits no PASS. Neither is tagged, pushed, or published,
-  so node and wallet do not consume Denuo V2 through a released boundary.
+  predecessor `b66470a6`; current local source head `81f2df26` additionally
+  carries canonical HSD fee arithmetic, strict TRANSFER/FINALIZE construction,
+  canonical empty offer inventory, and listing-independent Shakedex recovery.
+  It is unqualified and inherits no PASS. The shared 0.2 packages remain
+  unpublished, so node and wallet cannot use them as a released boundary.
+- `hns-node-rs` local and remote-tracking `main` are
+  `3d346e3dadc716b5c367eee050308e71a0693a64`; tag `v0.3.4` points to
+  `40b456fa0772729542118a69f27edc37bf42a3d7`.
+  The source adds exact snapshot-bound final-transaction fee quotes and a
+  loopback-only resolver sidecar/container topology. The head was pushed by a
+  separate workflow and later release-CI port verification was corrected on
+  `main`; this ledger records no new consolidated qualification result for it.
 - `hns-wallet-rs` exists only as a local independent `main` repository. Its
-  latest unqualified production-completion source is `76885098`; no remote,
-  published crate, browser ABI artifact, or product release exists.
-- `hns-dane-engine` remote `main` remains
+  latest unqualified production-completion source is `5b5409630045b19f81821951da51a9a1f7e1c9e5`;
+  private ABI v2 source is present, but no remote, published crate, signed ABI
+  artifact, or product release exists.
+- `hns-dane-engine` remote-tracking `main` remains
   `7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`. Older release preparation
   `1d0fc9c6ba72f008e60d8c5a98741a32aeea4a75` precedes latest local source head
-  `f76ad37232bcadc85eb9b9bee5f45bff8405b583`; the latter is unbuilt, untested,
+  `6eb0174ae743e6bd01c516be7a534d94be94b4bd`; the latter is unqualified,
   unpublished, and unpushed.
 - Chromium v0.5.5 is public from source/tag
   `86b18497285753944ec1b9196ec05ee359c6db11` with 29 assets. macOS artifacts
   are signed and notarized; Windows artifacts are unsigned. Documentation
   head `3495bd1c5e7c26f9486ea81fb21dc1618c9bc2c8` passed CI `30439859541`.
-- MeshMine documentation head
-  `9f781a00ee8fc3b7c6773538434235a65f167ca3` passed CI `30440116148`
-  without changing its immutable external-node boundary.
+- MeshMine `main` is `79f3bbc6c24bab80adaef199a9318fd0065113f6`
+  after marking workspace packages private. Earlier documentation head
+  `9f781a00ee8fc3b7c6773538434235a65f167ca3` passed CI `30440116148`; neither
+  change advances its immutable external-node boundary.
 - Bootstrap-generator CI `30401402868` exists but failed at `npm ci` because
   `@emnapi/runtime@1.11.3` is missing from `package-lock.json`.
 

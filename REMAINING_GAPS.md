@@ -6,9 +6,9 @@ This ledger is deliberately release-blocking.
 
 - Retain the production-parser fuzz target, locked fuzz dependency graph, and
   deterministic parser-smoke command in hosted qualification.
-- Qualify and publish the corrected marketplace/session/HNS-HTLC/Shakedex and
-  canonical NameState/resource codec boundary at
-  `825f212de49d57b0ae7b5bbd0c038ddec5d52ce2`; until separately authorized,
+- Qualify and publish the canonical marketplace/session/HNS-HTLC/Shakedex,
+  NameState/resource, HSD fee-policy, and TRANSFER/FINALIZE boundary at
+  `81f2df2651e8ea81be33e33a3438c4c9e0348f93`; until separately authorized,
   its `0.2.0` source and vectors are not a consumable release.
 - Adopt the canonical crates in every consumer without copying protocol logic.
 
@@ -33,11 +33,12 @@ This ledger is deliberately release-blocking.
   sibling path or copied wire types.
 - Qualify the source-complete HNS transaction/reconciliation runtime and
   concrete authenticated node adapter at
-  `768850982b37dc84030ab408de0f1f010cf42ed1`, including atomic prepared-
-  workflow recovery and hostile HTTP/JSON, stale epoch/mempool, pruned payload,
-  coinbase, restart, and reorg cases. Align the node's sigop-adjusted policy-
-  vbyte fee rate with the wallet builder before enabling value: the dormant
-  builder currently prices transaction weight and must remain disabled.
+  `5b5409630045b19f81821951da51a9a1f7e1c9e5`, including
+  atomic prepared-workflow recovery and hostile HTTP/JSON, stale epoch/mempool,
+  pruned payload, coinbase, fee-quote, restart, and reorg cases. Exact
+  final-signed node quotes are now adopted in source, but value must remain
+  disabled until the wallet consumes the released `hns-script` 0.2 canonical
+  sigop-adjusted fee algebra and independently validates the quoted minimum.
 - Publish and consume the canonical NameState/resource codec, add a separately
   persisted bounded `HnsName` scan, platform-backed database-key wrapping, and
   complete transfer/finalize/reorg integration before enabling ownership
@@ -47,13 +48,14 @@ This ledger is deliberately release-blocking.
   but its value permit remains unavailable; the Bitcoin supervisor is not yet
   signed-settlement complete and Ethereum still lacks its evidence producer.
 - Complete and independently review the derivation/recovery specification:
-  retain HNS and Ethereum role separation, add the missing dedicated Bitcoin
+  retain HNS and Ethereum role separation, qualify the new dedicated Bitcoin
   atomic-swap branch, bind metadata-encryption key recovery, and publish
   deterministic vectors for every required role.
-- Complete fixed-price Shakedex transaction construction, discovery,
-  preview, fulfillment, finalization, recovery, restart-at-every-state, reorg,
-  and Denuo relay integration. Reverse Dutch remains deferred until fixed
-  price passes.
+- Adopt the canonical strict TRANSFER/FINALIZE and listing-independent recovery
+  primitives from `hns-rs` in the wallet, then complete fixed-price Shakedex
+  discovery, preview, signed funding/fulfillment/finalization, recovery,
+  restart-at-every-state, reorg, and Denuo relay integration. Reverse Dutch
+  remains deferred until fixed price passes.
 - Replace or extend the pinned Kyoto boundary so headers, compact-filter
   headers/filters, and peer/address state are durably exposed and restored;
   add safe archival beyond the bounded transaction/output lifetime caps.
@@ -70,14 +72,20 @@ This ledger is deliberately release-blocking.
 - Complete reporter governance, quorum/outlier/circuit-breaker policy,
   malicious-board controls, fill-grant expiration, peer cooldown/scoring, and
   end-to-end browser approval for the market-price board.
-- Adopt and qualify the source-complete authenticated RPC, confirmed/mempool
-  Shakedex, and HTLC tracker at
-  `74f7ae36ddfd4a396451d33a2bca1c71a04f8a75` through the released canonical
+- Adopt and qualify the source-complete authenticated RPC, exact transaction
+  fee quotes, confirmed/mempool Shakedex, and HTLC tracker at
+  `3d346e3dadc716b5c367eee050308e71a0693a64` through the released canonical
   protocol dependency and the source-complete wallet adapter. Its chain
   evidence and verified revealed-preimage events—not Denuo status relay
   objects—must remain settlement authority. Add safe registry retirement and
   capacity reclamation; the current 16,384-global and 256-per-address limits
   are unreclaimable lifetime caps and remain a production-availability block.
+- Qualify the `v0.3.4` node plus private loopback resolver-sidecar/container
+  topology at tagged source `40b456fa0772729542118a69f27edc37bf42a3d7`
+  and reconcile the later release-CI-only `main` corrections. Retain RPC
+  authentication, avoid sharing a wallet-enabled credential with the resolver,
+  keep DNS off public interfaces, and record immutable image digests before
+  product consumption.
 - Qualify wallet schema upgrades from every supported prior version, offline
   backup/restore, rollback detection, and corruption recovery. Qualify the
   node's offline wallet-index reindex path and measure index disk/build cost;
@@ -102,8 +110,9 @@ This ledger is deliberately release-blocking.
   direct-first transport/role policy, canonical authority lifecycle, and
   schema-v2 observability are now shared through five exact-pinned contracts.
   The engine's loopback proxy admission/publication core now exists at
-  `f76ad37232bcadc85eb9b9bee5f45bff8405b583`; the next bounded slice is exact
-  Chromium/mobile consumption of that opaque authority. Live DNS wire,
+  `6eb0174ae743e6bd01c516be7a534d94be94b4bd`, including retention across
+  unrelated admitted work and fail-closed security-epoch invalidation; the next
+  bounded slice is exact Chromium/mobile consumption of that opaque authority. Live DNS wire,
   light-chain, DNSSEC, DANE, resolver, origin transport, and gateway migration
   follow independently.
 - The complete engine graph is now standalone at exact canonical `hns-rs`
@@ -141,12 +150,13 @@ This ledger is deliberately release-blocking.
 - Run signed-device Android/iOS and installed-browser Chromium matrices for
   redirects, cross-origin subresources, Service Workers, downloads, WSS,
   process restarts, and policy revocation.
-- Publish and consume the versioned wallet ABI in each browser, wire the
-  engine v3 opaque provider-injection decision through the native/mobile
-  boundary, and implement the actual wallet screens, permission persistence,
-  notification, backup, migration, and removal paths. Until then the Chromium
-  host and both mobile scaffolds must continue to report unavailable and avoid
-  announcing a provider.
+- Publish the private wallet ABI v2 as a signed, pinned artifact and consume it
+  in each browser; wire the engine v3 opaque provider-injection decision through
+  the native/mobile boundary, then qualify the source-hardened permission,
+  approval, lock/session, and event lifecycle. Implement the actual wallet
+  screens, notification, backup, migration, and removal paths. Until then the
+  Chromium host and both mobile scaffolds must continue to report unavailable
+  and avoid announcing a provider.
 - Retain the protected Developer ID identity checks, notarization evidence,
   stapling, and digest-verified release path proven for Chromium v0.5.5.
   Add equivalent authorized signing/provenance for Windows and qualify all
@@ -175,7 +185,7 @@ This ledger is deliberately release-blocking.
 
 - Retain protected, exact-head hosted evidence for published checkpoints and
   close any current hosted failures. The engine's latest local source head
-  `f76ad37232bcadc85eb9b9bee5f45bff8405b583` (with older release-preparation
+  `6eb0174ae743e6bd01c516be7a534d94be94b4bd` (with older release-preparation
   predecessor `1d0fc9c6ba72f008e60d8c5a98741a32aeea4a75`) must remain unpushed,
   unpublished, and unqualified until its separate release is authorized;
   local gates and exact-revision consumer evidence do not substitute for

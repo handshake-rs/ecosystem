@@ -50,16 +50,17 @@ types or silently substitute a backend.
 
 ## Active production tranche
 
-The current source tranche has committed the canonical codec, authenticated
-node/wallet join, durable Kyoto supervisor, engine authority/proxy admission,
-and Chromium boundary on `main` without upgrading release status:
+The current source tranche has committed the canonical fee/name/Shakedex
+boundary, authenticated node/wallet quote join, durable Kyoto supervisor,
+private wallet ABI, engine authority/proxy admission, and Chromium boundary on
+`main` without upgrading release status:
 
 | Repository | Cohesive result |
 | --- | --- |
-| `hns-rs` | committed at `825f212de49d57b0ae7b5bbd0c038ddec5d52ce2`: corrected delegated settlement/session/HNS-HTLC and fixed-price Shakedex boundary plus canonical HSD-compatible NameState/resource codecs and fixtures; unpublished and unqualified |
-| `hns-node-rs` | committed at `74f7ae36ddfd4a396451d33a2bca1c71a04f8a75`: restart-bound wallet restoration and contract tracking exposed through authenticated wallet RPC v1 with durable chain/mempool evidence; unqualified |
-| `hns-wallet-rs` | committed at `768850982b37dc84030ab408de0f1f010cf42ed1`: encrypted HNS recovery, concrete node RPC adapter, active-chain evidence rechecks, and durable Kyoto/BDK supervision; HNS/Bitcoin value paths remain hard-disabled and names watch-only |
-| `hns-dane-engine` | committed at `f76ad37232bcadc85eb9b9bee5f45bff8405b583`: opaque provider authority consumed by exact-origin, generation-bound, bounded-lifetime loopback proxy admission/publication; product consumption and qualification remain unavailable |
+| `hns-rs` | committed at `81f2df2651e8ea81be33e33a3438c4c9e0348f93`: canonical HSD fee-policy arithmetic, strict TRANSFER/FINALIZE construction, canonical empty offer inventory, and listing-independent Shakedex recovery extend the prior settlement/session/name-codec source; shared 0.2 packages remain unpublished and unqualified |
+| `hns-node-rs` | local and remote-tracking `main` at `3d346e3dadc716b5c367eee050308e71a0693a64`: exact snapshot-bound final-transaction fee quotes plus the v0.3.4 private resolver-sidecar/container source and later release-CI port fixes; tag `v0.3.4` remains at `40b456fa0772729542118a69f27edc37bf42a3d7`, and the separate external push/tag does not upgrade this ledger's qualification status |
+| `hns-wallet-rs` | committed at `5b5409630045b19f81821951da51a9a1f7e1c9e5`: private service ABI v2 with zeroizing frames, dedicated Bitcoin swap derivation, hardened namespace/origin permission and approval/event authority, and exact signed-byte quote persistence/rebroadcast; HNS value remains gated on released canonical fee algebra and product qualification |
+| `hns-dane-engine` | committed at `6eb0174ae743e6bd01c516be7a534d94be94b4bd`: opaque exact-origin proxy authority survives unrelated admitted work while security-invalidating transitions revoke it; product consumption and qualification remain unavailable |
 | `hns-dane-browser-extension` | committed through `6285fda5a7ed61c5ac93f5127de078ce8587da38`: fail-closed ABI discovery and authority invalidation; provider remains unavailable |
 
 The pre-existing Chromium insecure-delegation correction and the repository-
@@ -98,12 +99,13 @@ orchestration policy rather than committed absolute paths.
 
 After the active tranche:
 
-1. Complete fixed-price Shakedex construction, Denuo discovery, purchase,
-   finalization, cancellation, recovery, restart, and reorg topology.
+1. Adopt the canonical Shakedex TRANSFER/FINALIZE and recovery primitives in the
+   wallet, then complete Denuo discovery, purchase, signed transaction flow,
+   cancellation, recovery, restart, and reorg topology.
 2. Replace or extend the pinned Kyoto boundary with durable header/filter/peer
-   state, add dedicated swap derivation, signed HTLC supervision, safe record
-   archival, adversarial peer/reorg cases, and the full disk/bandwidth/startup/
-   mobile-memory benchmark matrix.
+   state, qualify the dedicated swap derivation, add signed HTLC supervision,
+   safe record archival, adversarial peer/reorg cases, and the full disk/
+   bandwidth/startup/mobile-memory benchmark matrix.
 3. Embed the selected Helios verifier/persistence runtime, qualify native ETH
    receive/send/history, execute and audit the immutable HTLC contract on a
    local chain, and bind any deployment to chain ID and runtime code hash.
@@ -111,8 +113,8 @@ After the active tranche:
    resistance, bilateral reservation/fill, and browser approval.
 5. Demonstrate both directions of HNS/BTC and HNS/ETH success, abort, refund,
    restart, fee-spike, timeout, preimage, and reorganization behavior.
-6. Consume the engine-minted opaque proxy authority and released wallet ABI in
-   Chromium/mobile, then run installed Chromium, signed Android/iOS, backup/
+6. Release and consume the engine-minted opaque proxy authority and private
+   wallet ABI v2 in Chromium/mobile, then run installed Chromium, signed Android/iOS, backup/
    migration, corruption, privacy, sustained fuzz, performance, and independent
    security gates.
 7. Reconcile exact revisions, release artifacts, rollback plans, and every

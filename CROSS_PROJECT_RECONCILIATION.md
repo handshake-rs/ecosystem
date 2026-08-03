@@ -145,18 +145,20 @@ opt-in” rule.
   records, origin-bound Provider API policy, persisted Shakedex/market state,
   a source-complete HNS `ChainModule`/`AtomicSettlement` runtime and strict
   node RPC v1 adapter, a durable bounded Kyoto/BDK supervisor, and a narrow
-  Ethereum contract/evidence boundary. HNS value remains hard-disabled while
-  node policy-vbyte and wallet weight fee units differ; names remain watch-only
-  until the unpublished canonical codec is released and a dedicated name-role
-  scan exists. Bitcoin still lacks durable Kyoto header/filter/peer state,
-  safe archival, dedicated swap-key derivation, and signed settlement;
+  Ethereum contract/evidence boundary. Exact final-signed node fee quotes are
+  adopted at `5b540963`, but HNS value remains hard-disabled until released
+  canonical `hns-script` 0.2 fee algebra permits independent wallet validation;
+  names remain watch-only until the unpublished canonical codec is released and
+  a dedicated name-role scan exists. Bitcoin still lacks durable Kyoto
+  header/filter/peer state, safe archival, swap-key qualification, and signed settlement;
   Ethereum lacks the Helios evidence producer. Released marketplace protocol
   consumption, live browser ABI integration, real-chain restart/reorg suites,
   resource benchmarks, and independent security review remain blockers.
 - The node's confirmed/mempool wallet indexes, Shakedex/HTLC/preimage tracker,
-  typed backend, and authenticated loopback RPC v1 are source-complete at
-  `74f7ae36`; the strict wallet consumer is source-complete at `76885098`.
-  Neither successor was built or tested. The five-role marketplace relay is a
+  typed backend, authenticated loopback RPC v1, and exact transaction fee quote
+  are frozen at contract commit `5ed38d15` and contained in current
+  `3d346e3d`; the strict wallet consumer is source-complete at `5b540963`.
+  The current join has no consolidated qualification result. The five-role marketplace relay is a
   bounded cache/policy core only, Denuo V2 wire advertisement is disabled
   until canonical V2 adoption, and registry retirement/capacity reclamation
   remains absent.
@@ -164,7 +166,8 @@ opt-in” rule.
   through its bridge. Its `504d3fed035feb8a637ca09c4e0816b6e1144622`
   pin has complete functional readiness but predates the standalone
   Denuo/HIP-76 session; the coherent parent/job topology has not yet been
-  demonstrated end to end.
+  demonstrated end to end. Current MeshMine `main` `79f3bbc` additionally keeps
+  every workspace package private without changing that pin.
 - Both browser adapters now submit independently resolved complete HNS and
   ICANN plans to the shared full-host policy, consume the same typed transport
   policy and canonical authority/status contracts, and expose the selected
@@ -178,8 +181,9 @@ opt-in” rule.
   generations. Chromium additionally retains mandatory PAC control through
   native-host replacement and transient due-but-unexpired maintenance
   failures. The shared engine now contains an opaque-authority-bound loopback
-  proxy admission/publication core at source head `f76ad372`; these products
-  do not consume it yet.
+  proxy admission/publication core at source head `6eb0174a`, retaining
+  authority across unrelated work while invalidating security-stale stamps;
+  these products do not consume it yet.
 - Browser adapters still contain platform-owned gateway, resolver, proxy, and
   network code around the five canonical contracts. Proxy-core and live
   resolver/DNSSEC/DANE consumption remain broader shared-engine consolidation.
@@ -188,10 +192,10 @@ opt-in” rule.
   compared with canonical mobile.
 - Wallet-provider source adapters are fail-closed and deliberately inactive:
   Chromium's native host reports `walletUnavailable`, while Android/iOS are
-  source-hardwired unavailable and not controller-wired. The engine now mints
-  the opaque provider-authority/proxy context, but the browser pins do not yet
-  consume it or a released wallet ABI, so no provider method is executable end
-  to end.
+  source-hardwired unavailable and not controller-wired. Private wallet ABI v2
+  and hardened provider authority exist at wallet `5b540963`, and the engine
+  mints the opaque provider-authority/proxy context, but the browser pins consume
+  neither released boundary, so no provider method is executable end to end.
 - Crawler production snapshots/live-directory operation and a deployed,
   hash-pinned bootstrap appliance still need independent release
   qualification; their unit/build gates do not upgrade browser trust rows.
@@ -211,8 +215,9 @@ opt-in” rule.
   source `0ea5994c336642ea7d01c51c0e22df2008985426`; no `v0.1.0` Git tag
   exists. The engine remains at remote head
   `7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`; its current local source-only
-  head `f76ad37232bcadc85eb9b9bee5f45bff8405b583` includes the unpublished
-  release preparation, opaque provider authority, and bounded proxy admissions
-  and remains unbuilt, untested, unpublished, and unpushed.
+  head `6eb0174ae743e6bd01c516be7a534d94be94b4bd` includes the unpublished
+  release preparation, opaque provider authority, bounded proxy admissions,
+  and authority retention across unrelated admitted work; it remains
+  unqualified, unpublished, and unpushed.
 - The end-to-end regtest topology and prohibition on public recursive resolver
   contact have not yet been demonstrated.

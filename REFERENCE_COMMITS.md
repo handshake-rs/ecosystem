@@ -38,12 +38,13 @@ tests, and only then architectural inference. Draft behavior follows exact PR
 text/commits, deterministic PR fixtures, independent Rust vectors, the Denuo
 registry, and documented migration rules.
 
-## 2026-08-02 local wallet and marketplace checkpoint
+## 2026-08-02 wallet and marketplace qualification checkpoint
 
-These are local `main` heads for this update. They were not pushed, tagged,
-or published. A repository gate establishes only the tested source/build
-scope recorded here; it does not authorize a wallet, provider, marketplace,
-or settlement path for mainnet use.
+These exact revisions retain the last non-redundant qualification evidence for
+this program. Later source heads are recorded separately below and inherit no
+PASS label. A repository gate establishes only the tested source/build scope
+recorded here; it does not authorize a wallet, provider, marketplace, or
+settlement path for mainnet use.
 
 | Working repository | Branch | Revision | Last non-redundant qualification |
 | --- | --- | --- | --- |
@@ -55,19 +56,22 @@ or settlement path for mainnet use.
 | `work/hns-dane-browser-extension` | `main` | `2300ef82a765a6dbd1b99ad537d3d3c2ac312d95` | STAGED PASS — `./scripts/check.sh` stages through Rust/release passed on the source-equivalent predecessor; after the docs-only fix, `npm run check:extension` passed; full script not rerun |
 | `integration` | `main` | containing commit; exact hash reported in the handoff | PASS — `./scripts/check.sh`; strict evidence/revision cross-check and diff check |
 
-### Unqualified production-continuation successors
+### Current production-continuation source heads
 
-These local `main` successors were reconciled by static review and
-`git diff --check` only. They inherit no PASS label from the earlier exact
-heads and have not been pushed, tagged, published, built, or tested.
+These successors inherit no PASS label from the earlier exact heads. This
+documentation reconciliation used source inspection and static diff checks
+only. The node row explicitly records its different provenance; no push, tag,
+release, build, test, or hosted-check result is implied for any other row.
 
 | Working repository | Revision | Source-only result |
 | --- | --- | --- |
-| `work/hns-rs` | `825f212de49d57b0ae7b5bbd0c038ddec5d52ce2` | the corrected marketplace boundary plus canonical HSD-compatible NameState/resource codecs, strict canonical encoders, and independently generated fixtures; canonical version `0.2.0` remains unpublished and unqualified |
-| `work/hns-node-rs` | `74f7ae36ddfd4a396451d33a2bca1c71a04f8a75` | the hardened optional wallet indexes plus authenticated loopback wallet RPC v1, durable chain-epoch/tip evidence, process/generation-bound mempool evidence, ordered spender evidence, canonical NameState bytes, and exact pruned-transaction representation; release remains blocked on the published canonical protocol pin, safe registry retirement/reclamation, and final consolidated gate |
-| `work/hns-wallet-rs` | `768850982b37dc84030ab408de0f1f010cf42ed1` | durable Kyoto/BDK supervision and a strict concrete adapter for node RPC v1, including exact active-chain, mempool, transaction, spender, name, and coinbase evidence; HNS and Bitcoin value paths remain hard-disabled, names remain watch-only, and canonical fee sizing, Kyoto persistence, released dependencies, platform integration, and qualification remain blockers |
-| `work/hns-dane-engine` | `f76ad37232bcadc85eb9b9bee5f45bff8405b583` | opaque provider authority plus exact-origin, generation-bound, bounded-lifetime loopback proxy publication and admission; browser consumers and installed-product qualification remain unavailable |
+| `work/hns-rs` | `81f2df2651e8ea81be33e33a3438c4c9e0348f93` | canonical HSD sigop-adjusted fee-policy arithmetic, strict TRANSFER/FINALIZE covenant and transaction construction, canonical empty offer inventory, and listing-independent Shakedex recovery now exist in source; the shared `0.2.0` packages remain unpublished and unqualified |
+| `work/hns-node-rs` | `3d346e3dadc716b5c367eee050308e71a0693a64` | snapshot-bound exact-final-transaction fee quotes, the v0.3.4 node/resolver sidecar, and release-CI port-verification corrections are on local and remote-tracking `main`; tag `v0.3.4` points to `40b456fa0772729542118a69f27edc37bf42a3d7`, and this ledger records no new consolidated qualification result |
+| `work/hns-wallet-rs` | `5b5409630045b19f81821951da51a9a1f7e1c9e5` | private wallet service ABI v2 with zeroizing transport buffers, dedicated Bitcoin atomic-swap derivation, provider-authority hardening, and exact node fee-quote adoption are the current source tranche; HNS value remains gated on a released canonical `hns-script` 0.2 fee-algebra helper, while product wiring and qualification remain unavailable |
+| `work/hns-dane-engine` | `6eb0174ae743e6bd01c516be7a534d94be94b4bd` | opaque exact-origin proxy authority now survives unrelated admitted work while security-invalidating transitions still revoke it; browser consumers and installed-product qualification remain unavailable |
 | `work/hns-dane-browser-extension` | `6285fda5a7ed61c5ac93f5127de078ce8587da38` | fail-closed wallet artifact/ABI discovery plus authority-generation invalidation across native request, approval, event, and header-maintenance races; still unavailable without a signed service transport, engine-minted opaque authority, reviewed approval mapping, and Windows ACL implementation |
+| `work/hns-dane-browser-mobile` | `58996db0facef1bb6a7cb2876361d13dabc90c75` | unchanged source checkpoint; provider adapters remain deliberately unavailable and signed-device wallet qualification remains open |
+| `work/MeshMine` | `79f3bbc6c24bab80adaef199a9318fd0065113f6` | workspace packages are explicitly private; its immutable node pin and unrun live parent/job topology are unchanged |
 
 ## Prior public and documentation checkpoints
 
@@ -84,5 +88,5 @@ head is not a canonical remote checkpoint.
 | `work/hns-dane-browser-extension` | `3495bd1c5e7c26f9486ea81fb21dc1618c9bc2c8` | current documentation head with green CI `30439859541`; public v0.5.5 source/tag is `86b18497285753944ec1b9196ec05ee359c6db11`, with 29 assets, signed/notarized macOS artifacts, and unsigned Windows artifacts |
 | `work/hns-dane-crawler` | `b9e3c406631eb253f26979a0d3d9f794fd9fb11f` | observational authority boundary, exact development lock, clean-environment qualification, pinned CI, and current output/deployment documentation |
 | `work/hns-dane-bootstrap-generator` | `ff1c709c8584b13bc02654d19ebc00d09025f4c7` | operator-review boundary and current documentation; hosted CI `30401402868` exists but fails at `npm ci` because `@emnapi/runtime@1.11.3` is missing from the lockfile |
-| `work/MeshMine` | `9f781a00ee8fc3b7c6773538434235a65f167ca3` | current documentation head with green CI `30440116148`; immutable canonical node pin `504d3fed035feb8a637ca09c4e0816b6e1144622` still predates the later standalone Denuo/HIP-76 implementation |
+| `work/MeshMine` | `79f3bbc6c24bab80adaef199a9318fd0065113f6` | current `main` keeps workspace packages private; earlier documentation head `9f781a00ee8fc3b7c6773538434235a65f167ca3` has green CI `30440116148`, and the immutable canonical node pin `504d3fed035feb8a637ca09c4e0816b6e1144622` still predates the later standalone Denuo/HIP-76 implementation |
 | `work/handshake-rs-profile` | `8da203b1359f4c595e0512b4914d1b4f8d497d69` | organization repository/authority graph, canonical profile-image checksum/dimension inventory, pinned CI, and current mobile-distribution reconciliation; CI `30460714542` passed |

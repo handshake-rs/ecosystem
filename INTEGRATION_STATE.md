@@ -8,9 +8,10 @@ and not authorized for mainnet settlement**
 Production completion is now the active objective. Work proceeds in the
 dependency order and with the evidence rules in
 `PRODUCTION_COMPLETION_PLAN.md`; this heading does not upgrade any status on
-its own. The first parallel source tranche covers the node's authoritative
-wallet/HTLC tracking, the wallet's encrypted runtime/recovery join, and the
-Chromium native-host wallet ABI boundary.
+its own. The current source tranche covers canonical fee/name/Shakedex
+primitives, authoritative node wallet/HTLC tracking and fee quotes, the
+wallet's encrypted runtime/private ABI/provider/recovery join, and browser
+authority boundaries.
 
 Before that tranche, the pre-existing Chromium insecure-delegation correction
 was committed on `main` at
@@ -33,15 +34,14 @@ The Chromium half of the source tranche is committed on local `main` at
 artifact integrity discovery without treating a digest as publisher
 authenticity or executing the artifact, and it invalidates document/approval
 authority across asynchronous native results and header maintenance. It still
-returns unavailable: no signed/pinned wallet service or framed process
-transport exists, the extension has not consumed the engine's later opaque
-provider-authority/proxy admission boundary, approval-summary prompts have not
-received method-specific review, and Windows ACL/ownership validation is
-absent. No build, test, push, tag, or publication evidence is attached to this
-source-only successor.
+returns unavailable: no signed/pinned ABI v2 wallet artifact or framed process
+transport is wired, the extension still expects the unreleased ABI v1, it has
+not consumed the engine's later opaque provider-authority/proxy admission
+boundary, and Windows ACL/ownership validation is absent. No build, test, push,
+tag, or publication evidence is attached to this source-only successor.
 
-The canonical marketplace and name-codec continuation is committed on local
-`hns-rs` `main` at `825f212de49d57b0ae7b5bbd0c038ddec5d52ce2`. The earlier
+The canonical protocol continuation is committed on local `hns-rs` `main` at
+`81f2df2651e8ea81be33e33a3438c4c9e0348f93`. The earlier
 marketplace correction binds fill grants to an
 independent delegated maker settlement key, joins signed swap-session terms to
 the exact native HNS HTLC descriptor, and rounds promised Unix refund times up
@@ -52,12 +52,15 @@ nor validates the listing's `0x84` presign. Exact deterministic marketplace,
 HNS HTLC, and spend vectors plus registry sidecars are committed. The latest
 successor also owns HSD-compatible NameState and resource decode/encode,
 canonicality checks, proof-facing exact bytes, and independent fixtures rather
-than leaving that protocol to wallet-local projection. This revision was
-source-generated and statically checked only; version `0.2.0` remains
+than leaving that protocol to wallet-local projection. The current head adds
+canonical HSD sigop-adjusted fee arithmetic, strict TRANSFER/FINALIZE covenant
+and transaction construction, canonical empty offer inventory, and listing-
+independent Shakedex recovery construction from an exact FINALIZE coin.
+It received source/static review only in this tranche; version `0.2.0` remains
 unpublished and no downstream release pin or qualification is implied.
 
-The corrected node half is committed on local `main` at
-`74f7ae36ddfd4a396451d33a2bca1c71a04f8a75`. Its disabled wallet profile now
+The node continuation is on local and remote-tracking `main` at
+`3d346e3dadc716b5c367eee050308e71a0693a64`. Its disabled wallet profile now
 provides chain-epoch-bound confirmed restoration for a complete sorted script
 set, process-instance/generation/query-bound mempool pages, stable combined
 transaction and separately represented current/proof/owner name evidence, and
@@ -72,42 +75,54 @@ ambiguous matches fail closed. The latest successor exposes this backend as a
 strict authenticated `/api/v1/wallet` loopback HTTP contract with durable
 epoch/tip and mempool process/generation bindings, exact ordered spender and
 transaction evidence, canonical NameState bytes, and nullable transaction
-ordinal only when the raw payload is pruned. This source was not built or
-tested and remains release-blocked on a published revision-pinned canonical
-`hns-swap`/Denuo V2 boundary, safe contract-registry retirement/capacity
-reclamation, multi-process qualification, and the single final repository
-gate.
+ordinal only when the raw payload is pruned. Contract commit
+`df0a47f4118e6d28f0d71eff732345cb0e3795af` adds a snapshot-bound quote for one
+exact final transaction, with node-resolved inputs, rate/weight/sigop/policy-
+vbyte evidence, actual/minimum fee, shortfall, and exact chain/mempool binding;
+the wallet freezes the complete RPC boundary at `5ed38d15d50098191b4473d4dda66a93d4e3e6fc`.
+Tagged v0.3.4 source `40b456fa0772729542118a69f27edc37bf42a3d7`
+packages the ordinary DNS resolver as a private loopback sidecar, while current
+`main` adds later release-CI port-verification corrections. Those external
+push/tag facts add no PASS to this ledger. Release remains blocked on a
+published canonical protocol boundary, safe registry retirement/reclamation,
+multi-process and immutable-image qualification, and the final repository gate.
 
 The engine authority/proxy continuation is committed on local `main` at
-`f76ad37232bcadc85eb9b9bee5f45bff8405b583`. It consumes the opaque
+`6eb0174ae743e6bd01c516be7a534d94be94b4bd`. It consumes the opaque
 `ProviderAuthorityContext` to mint non-cloneable, exact-origin loopback proxy
 publications and grants bound to authority/runtime/process/listener
 generations. CONNECT parsing, authentication, pending admissions, expiration,
-and atomic reclamation are bounded and fail closed. It does not provide wallet
-dispatch or prove that Chromium/mobile consume the authority; installed
-browser/device and proxy lifecycle qualification remain open. This successor
-was statically reviewed only and was not built or tested.
+and atomic invalid/expired-record reclamation are bounded and fail closed.
+Authority survives unrelated admitted work but not degradation, revocation,
+stop, policy/runtime invalidation, expiry, navigation, or same-origin decision
+replacement. It does not provide wallet dispatch or prove that Chromium/mobile
+consume the authority; installed browser/device and proxy lifecycle
+qualification remain open. No new consolidated PASS is recorded.
 
 The encrypted wallet runtime continuation is committed on local `main` at
-`768850982b37dc84030ab408de0f1f010cf42ed1`. HNS send and settlement-lock
-preparation now authenticate and
+`5b5409630045b19f81821951da51a9a1f7e1c9e5`. HNS send and settlement-lock
+preparation authenticate and
 atomically commit the account change index, prepared workflow, and complete
 input-reservation set, then recover the exact durable artifact on an
 idempotent retry. Confirmed and mempool restoration retain exact version-zero
 Address/ScriptId identity plus the node's chain epoch, tip, mempool instance,
 and generation through a concrete strict adapter pinned to node RPC v1
-`74f7ae36`. Confirmed transaction, name-owner, and unique spender blocks are
+`5ed38d15`. Confirmed transaction, name-owner, and unique spender blocks are
 rechecked against the same active-chain snapshot; coinbase evidence is retained
 and all such outputs fail closed for balance/spend selection. The wallet also
 contains the durable Kyoto/BDK supervisor committed at `3a3323c0`, including
 bounded encrypted scan/reconciliation/broadcast journals and explicit recovery
-failure states. HNS value operations remain hard-disabled because the node's
-fee rate is policy-vbytes while the dormant builder still prices transaction
-weight; Bitcoin value operations remain hard-disabled because the pinned Kyoto
-release does not persist/expose its header, filter, or peer database. Name
-imports remain watch-only until the unpublished canonical codec is released
-and a dedicated bounded `HnsName` derivation scan exists. This successor was
-statically reviewed and diff-checked only; it was not built or tested.
+failure states. Private service ABI v2, zeroizing secret-bearing frames,
+namespace-plus-origin permission persistence, approval expiry revalidation,
+lock/session rotation, event invalidation, and exact send-summary binding now
+exist in source. Bitcoin has a dedicated deterministic atomic-swap derivation
+branch. Ordinary HNS send and exposed settlement paths persist quotes for the
+exact signed bytes and re-quote those bytes before broadcast with one bounded
+reconciliation/retry, but `HNS_FEE_QUOTE_ALGEBRA_RELEASE_QUALIFIED` remains
+false because released `hns-script` 0.1 lacks canonical fee algebra. HNS and
+Bitcoin value therefore remain hard-disabled; names remain watch-only pending a
+released codec and bounded `HnsName` scan. This successor received static
+review only and no new consolidated PASS is recorded.
 
 ## 2026-08-02 local wallet and marketplace checkpoint
 
