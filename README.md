@@ -31,7 +31,7 @@ monorepo subpackage or a fork of another ecosystem product.
 `hns-wallet-rs` has an independent Git history and release boundary. Its
 configured `origin` is `https://github.com/denuoweb/hns-wallet-rs.git` at
 remote-tracking `main` `1206a8ab550cf67ff43dc162091e371946278641`;
-local `main` `604a35771a9427696b6ecf533368205392e62979` is ahead by seven commits,
+local `main` `4935e059bcde338f4260dd98202ff26ce0f3ca9f` is ahead by eight commits,
 unpushed, and has no push authorization. No wallet crates or signed browser ABI
 artifact are published, and a planned organization URL must not be read as an
 existing organization checkpoint until migration/publication is separately
@@ -94,14 +94,17 @@ quotes and the v0.3.4 node/resolver sidecar and release-CI corrections
 provider hardening, exact quote adoption, explicit fail-closed Shakedex
 V2/Denuo/value gates, an encrypted bounded `HnsName` scan tied to the ordinary
 scan's exact chain/mempool snapshot, authoritative-account CAS hardening, and
-receive-only Ethereum containment (`hns-wallet-rs` `604a3577`), retained
+receive-only Ethereum containment (`hns-wallet-rs` `4935e059`), retained
 provider authority across unrelated engine work (`hns-dane-engine`
 `6eb0174a`). The wallet now gives every private result, prompt, and event one
 authority-handle/revision, wallet-session, and permission-generation binding;
 its typed private capability snapshot carries provider/approval schema versions,
 wallet session, permission generation, and a runtime-supported subset of the
 canonical 43 methods. Fresh generation zero is distinct from a retained nonzero
-revocation tombstone, and `hns_requestAccounts` remains unavailable. Chromium
+revocation tombstone. A fail-closed caller host now owns private negotiation,
+correlation, approval/authority transitions, and event replay, while checked-in
+machine contracts describe private/public/manifest shapes without supplying
+artifact trust. `hns_requestAccounts` remains unavailable. Chromium
 `972e63a1` and mobile `4b684ebb` accept generation zero only in that never-
 authorized private capability input while keeping the public website
 `wallet_getCapabilities` result to `{providerApiVersion,methods}`. Chromium

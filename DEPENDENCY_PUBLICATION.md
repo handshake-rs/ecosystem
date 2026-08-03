@@ -40,7 +40,7 @@ their broader shared-engine consolidation is complete.
   light-client boundary, but it may not embed node consensus/P2P or browser
   authority/UI code. The authenticated node RPC v1 plus fee-quote contract is
   frozen at node `5ed38d15`, contained in current node `3d346e3d`, and consumed
-  by wallet `5b540963` and retained at current `604a3577`; it is deliberately
+  by wallet `5b540963` and retained at current `4935e059`; it is deliberately
   not a Cargo dependency and remains unqualified. The browser join is not a
   compiled dependency. Helios is selected policy rather than an embedded
   runtime, and caller-serializable evidence cannot replace the opaque provenance
@@ -97,12 +97,14 @@ disabled rather than using a sibling path or copied wire implementation.
 The wallet repository has configured `origin`
 `https://github.com/denuoweb/hns-wallet-rs.git`, whose remote-tracking `main` is
 `1206a8ab550cf67ff43dc162091e371946278641`. Current local `main`
-`604a35771a9427696b6ecf533368205392e62979` is ahead by seven commits,
+`4935e059bcde338f4260dd98202ff26ce0f3ca9f` is ahead by eight commits,
 unpushed, and has no push authorization. It publishes no crate or ABI artifact.
 Private ABI v2 exists only as source. Its typed private capability snapshot and
-result/prompt/event binding are not the public website capability result, and
-no generated native projection consumes them; browser provider scaffolds
-therefore remain unavailable.
+result/prompt/event binding are not the public website capability result. The
+caller-side host and machine-readable contracts are likewise source only: the
+manifest schema supplies no trusted key, verifier, durable rollback state, or
+artifact-to-process binding. No generated native projection consumes them;
+browser provider scaffolds therefore remain unavailable.
 
 ## Release evidence required
 
@@ -152,7 +154,7 @@ release.
 `hns-wallet-rs` remains an independent repository with configured `origin`
 `https://github.com/denuoweb/hns-wallet-rs.git` at remote-tracking `main`
 `1206a8ab550cf67ff43dc162091e371946278641`. Latest local source head
-`604a35771a9427696b6ecf533368205392e62979` is ahead by seven commits,
+`4935e059bcde338f4260dd98202ff26ce0f3ca9f` is ahead by eight commits,
 unpushed, and has no push authorization. It adds an encrypted same-snapshot
 `HnsName` scan and authoritative-account CAS hardening plus receive-only
 Ethereum containment, and now gives private ABI-v2 results, prompts, and events

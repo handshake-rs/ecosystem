@@ -16,7 +16,7 @@ add OPEN/BID/REVEAL/REGISTER flows. Rows 27–38 are the wallet/marketplace
 supplement. Only directly demonstrated scope is credited.
 
 The 2026-08-02 production-continuation successors (`hns-rs` `4b989aab`, node
-`3d346e3d`, wallet `604a3577`, engine `6eb0174a`, Chromium `972e63a1`, and
+`3d346e3d`, wallet `4935e059`, engine `6eb0174a`, Chromium `972e63a1`, and
 mobile `4b684ebb`) do not inherit the earlier exact-revision PASS evidence and
 therefore do not upgrade any row. Their fee/name/Shakedex primitives, exact
 node fee quotes, private wallet ABI, provider hardening, Kyoto supervisor,
@@ -83,7 +83,7 @@ program. They use the same evidence vocabulary.
 
 | # | Required demonstration | Status |
 | ---: | --- | --- |
-| 27 | standalone wallet locked build, Clippy, tests, docs, dependency policy, and contract reproducibility | PASS at earlier exact wallet `8aa82dd9`: local `hns-wallet-rs/scripts/check.sh`; 34 Rust tests, warning-denied Clippy/docs, deterministic solc artifact comparison, and zero npm audit vulnerabilities. Current `604a3577` received source/static review only; its added tests and consolidated gate remain unrun |
+| 27 | standalone wallet locked build, Clippy, tests, docs, dependency policy, and contract reproducibility | PASS at earlier exact wallet `8aa82dd9`: local `hns-wallet-rs/scripts/check.sh`; 34 Rust tests, warning-denied Clippy/docs, deterministic solc artifact comparison, and zero npm audit vulnerabilities. Current `4935e059` received source/static review only; its host/schema/FFI tests and consolidated gate remain unrun |
 | 28 | encrypted store, deterministic restore/key separation, lock, migration, workflow CAS, and replay protection | PARTIAL: HNS/ETH separation and focused store units pass at the earlier baseline; current source adds dedicated Bitcoin swap-key derivation, zeroizing private-ABI transport buffers, atomic approval/workflow/reservation authorization around exact signed bytes, a separately encrypted bounded `HnsName` scan under the ordinary scan's exact chain/mempool snapshot, and authoritative-account revision/CAS rollback rejection, but the current source has not run its gate and complete recovery vectors, platform key wrapping, entity-complete migration, backup/rollback, and device persistence remain unavailable or unrun |
 | 29 | hostile Provider API origin/permission/navigation/approval/rate/forbidden-method matrix | PARTIAL: Rust core negatives and 25 focused Chromium adapter tests pass at earlier exact revisions; current source adds a four-field private result/prompt/event binding, tombstone-preserving permission snapshots, a typed private capability snapshot over the canonical 43-name vocabulary, fresh-only generation zero, and explicit `hns_requestAccounts` unavailability. The public website capability result remains `{providerApiVersion,methods}`. These tests are unrun and no browser dispatches through the live engine/ABI join |
 | 30 | complete fixed-price Shakedex seller/buyer/recovery lifecycle over Denuo | PARTIAL: earlier canonical proof/state primitives and recovery ordering are tested; current unqualified `hns-rs` source adds strict TRANSFER/FINALIZE construction and listing-independent recovery from an exact FINALIZE coin, while current wallet source rejects every legacy 0.1 session entry/transition and live transaction, relay, restart, reorg, and regtest execution remain unrun |

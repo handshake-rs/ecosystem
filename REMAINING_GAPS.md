@@ -33,7 +33,7 @@ This ledger is deliberately release-blocking.
   sibling path or copied wire types.
 - Qualify the source-complete HNS transaction/reconciliation runtime and
   concrete authenticated node adapter at
-  `604a35771a9427696b6ecf533368205392e62979`, including the separate encrypted
+  `4935e059bcde338f4260dd98202ff26ce0f3ca9f`, including the separate encrypted
   bounded HNS-coin/name-role scans under one exact chain/mempool snapshot, the
   authoritative-account revision/CAS ordering and derivation-high-water
   rollback rejection, plus
@@ -173,7 +173,10 @@ This ledger is deliberately release-blocking.
   beyond `{providerApiVersion,methods}`. Keep generation zero exclusive to an
   origin with no permission history, retain nonzero tombstones, and implement
   an atomic approved-Accounts-to-real-result join before advertising
-  `hns_requestAccounts`. For mobile, connect the dormant projections at
+  `hns_requestAccounts`. Bind the checked-in manifest structure to verifier-
+  owned trust roots, artifact hashes, durable anti-rollback state, and actual
+  process launch; schema validity alone must not affect availability. For
+  mobile, connect the dormant projections at
   `4b684ebbb576c2b2f8e762c3f81c3ec2fded47f5` only through reviewed generated
   `hns-wallet-ffi` JNI/C bindings, the canonical typed engine authority result,
   controller lifecycle wiring, permission persistence, native approval UI, and

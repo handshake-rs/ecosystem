@@ -42,8 +42,8 @@ its own lockfile, licenses, gate, release boundary, and no committed sibling
 path dependency. Its configured `origin` is
 `https://github.com/denuoweb/hns-wallet-rs.git` at remote-tracking `main`
 `1206a8ab550cf67ff43dc162091e371946278641`; local `main`
-`604a35771a9427696b6ecf533368205392e62979` is ahead by seven commits,
-and those commits are unpushed with no push authorization. Its twelve crates
+`4935e059bcde338f4260dd98202ff26ce0f3ca9f` is ahead by eight commits,
+and those commits are unpushed with no push authorization. Its thirteen crates
 are:
 
 1. `hns-wallet-types`
@@ -56,12 +56,13 @@ are:
 8. `hns-wallet-bitcoin-kyoto`
 9. `hns-wallet-ethereum`
 10. `hns-wallet-ffi`
-11. `hns-wallet-service`
-12. `hns-wallet-testkit`
+11. `hns-wallet-host`
+12. `hns-wallet-service`
+13. `hns-wallet-testkit`
 
 Three additional crates were added at their canonical repository boundaries:
 `hns-marketplace-protocol` in `hns-rs`, and `hns-wallet-index` plus
-`hns-denuo-market-relay` in `hns-node-rs`. In total this update adds fifteen
+`hns-denuo-market-relay` in `hns-node-rs`. In total this update adds sixteen
 crates across the three repositories.
 
 To avoid a second set of drifting documents, the requested documentation
@@ -95,7 +96,7 @@ complete executable product join.
 | canonical marketplace/name protocols | feature source at `81f2df26` adds HSD-compatible fee algebra, strict TRANSFER/FINALIZE construction, canonical empty offer inventory, and listing-independent Shakedex recovery; current descendant `4b989aab` adds self-contained public packages and complete listing/cancellation and recovery-FINALIZE vectors; unpublished and unqualified |
 | node confirmed indexes/backend | current `main` `3d346e3d` includes authenticated RPC v1 and snapshot-bound exact final-transaction fee quotes; wallet indexes remain disabled by default and the current head is not qualified by this ledger |
 | node marketplace relay | implemented and locally tested cache/policy core; live V2 wire unavailable |
-| encrypted store/provider policy | schema-v3/runtime hardening, private ABI-v2 binding and typed capability snapshot, strict provider authority lifecycle, concrete HNS node adapter, Kyoto supervisor, false Shakedex/value gates, encrypted same-snapshot `HnsName` discovery, and authoritative-account CAS hardening at `604a3577`; source/static-only, tests unrun, unpushed, and unqualified |
+| encrypted store/provider policy | schema-v3/runtime hardening, private ABI-v2 binding and typed capability snapshot, strict provider authority lifecycle, fail-closed host state machine, machine-readable ABI contracts, concrete HNS node adapter, Kyoto supervisor, false Shakedex/value gates, encrypted same-snapshot `HnsName` discovery, and authoritative-account CAS hardening at `4935e059`; source/static-only, tests unrun, unpushed, and unqualified |
 | usable HNS/name wallet | HNS source runtime and concrete node join implemented but value-disabled; bounded name-key discovery exists as unqualified source, but names remain watch-only and the browser product is unavailable |
 | fixed-price Shakedex | canonical transaction and listing-independent recovery primitives exist; wallet lifecycle remains disabled and unavailable |
 | Kyoto Bitcoin wallet/settlement | durable bounded supervisor and dedicated swap derivation source implemented; value disabled pending Kyoto persistence, signed settlement, archival, and qualification |
@@ -226,7 +227,7 @@ protocol pin, safe registry retirement/capacity reclamation, exact image and
 multi-process qualification, and final release gate remain unavailable. The
 concrete wallet adapter now exists as unqualified source at
 `5b5409630045b19f81821951da51a9a1f7e1c9e5` and is retained at current
-`604a35771a9427696b6ecf533368205392e62979`.
+`4935e059bcde338f4260dd98202ff26ce0f3ca9f`.
 
 Wallet-index profile V1 is checksummed and fails closed on missing, corrupt,
 or partially built components. There is no online backfill: an existing chain
@@ -327,9 +328,15 @@ time rollback fails closed, wallet lock rotates service authority, and
 revocation/expiry invalidates event channels. Send prompts bind exact method,
 module, chain, amount asset, and fee asset. The checked-in subprocess advertises
 framing foundations only—not provider dispatch or value. Current
-`604a35771a9427696b6ecf533368205392e62979` adds the shared private binding,
+`4935e059bcde338f4260dd98202ff26ce0f3ca9f` adds the shared private binding,
 tombstone-preserving permission snapshots, exact typed capability snapshot, and
-canonical method-name set described above. It explicitly leaves
+canonical method-name set described above. It also adds a reusable caller-side
+host that owns private negotiation, clock/entropy, bounded correlation and
+approval-ID tombstones, authority lifecycles, mandatory-approval response
+classes, negotiated capability intersections, exact permission/session
+transitions, and event replay. A Draft 2020-12 bundle and bounded vectors cover
+private frames, public projections, and signed-manifest structure while leaving
+trust roots and verification external. It explicitly leaves
 `hns_requestAccounts` unavailable and also prevents the legacy Shakedex 0.1
 journal from creating, discovering, or advancing sessions until canonical V2,
 Denuo V2, and value-runtime release gates are qualified. This source received
@@ -384,7 +391,7 @@ iOS project contained the expected source/test references, while neither
 
 ## Wallet, names, Shakedex, and market board
 
-The wallet continuation at `604a35771a9427696b6ecf533368205392e62979`
+The wallet continuation at `4935e059bcde338f4260dd98202ff26ce0f3ca9f`
 has transactional SQLite schema V3, bounded Argon2id passphrase input,
 XChaCha20-Poly1305 typed entity, workflow, permission, approval, and replay
 encryption with metadata-bound associated data, monotonic permission
@@ -495,7 +502,7 @@ Electrum, hosted indexer, or production Bitcoin Core RPC dependency exists.
 The pinned `bip157` release ignores `data_dir` and does not expose durable
 header/filter/peer state, so this is not production persistence. A dedicated
 deterministic swap-key branch landed at `5b540963` and remains in current
-`604a3577`, but it has not been qualified. Safe record archival, signed HTLC
+`4935e059`, but it has not been qualified. Safe record archival, signed HTLC
 spends/settlement, full
 invalid-PoW/filter/peer fixtures, regtest settlement, trusted-time policy, and
 mobile/resource qualification are missing; Bitcoin value paths remain hard-
@@ -506,7 +513,7 @@ install, new wallet, one-year restore, five-year restore, genesis restore,
 time to usable balance, scan completion, persistent disk, bandwidth, and peak
 mobile memory. No universal size is claimed.
 
-Ethereum is native-ETH-only. Current `604a3577` capability discovery advertises
+Ethereum is native-ETH-only. Current `4935e059` capability discovery advertises
 deterministic offline account/receive derivation only. The immutable
 synchronization, value, settlement, and mainnet qualification constants are
 false; history, send, authoritative evidence, and atomic settlement are
@@ -569,7 +576,7 @@ refund, restart, or reorg demonstration was run for either pair.
 
 All PASS evidence below belongs to the exact earlier revisions named in the
 final table. It did not transfer to feature landing `81f2df26` or current
-descendant `4b989aab`, nor to `3d346e3d`, `604a3577`, `6eb0174a`,
+descendant `4b989aab`, nor to `3d346e3d`, `4935e059`, `6eb0174a`,
 `972e63a1`, or `4b684ebb`. This report
 records only the per-row provenance and static review stated in the
 continuation table; it does not infer a consolidated gate result.
@@ -685,7 +692,7 @@ Source-only production-continuation revisions after those exact gates:
 | --- | --- | --- |
 | `hns-rs` | `4b989aabc132e7e79b8fd57a10f2465073faf588` | canonical HSD fee policy and strict Shakedex name transitions/recovery retained from `81f2df2`; self-contained package assets, complete listing/cancellation and recovery-FINALIZE vectors, fail-closed source tests, and release hygiene committed; static/diff review only in this tranche; shared 0.2 packages remain unpublished and unqualified |
 | `hns-node-rs` | `3d346e3dadc716b5c367eee050308e71a0693a64` | local and remote-tracking `main`; exact fee quotes and resolver-sidecar source are present, tag `v0.3.4` points to `40b456fa0772729542118a69f27edc37bf42a3d7`, and this ledger records no new consolidated qualification result |
-| `hns-wallet-rs` | `604a35771a9427696b6ecf533368205392e62979` | private ABI-v2 results, prompts, and events share the exact authority/wallet/permission binding; the typed private capability snapshot uses the canonical 43-name vocabulary, fresh generation zero cannot erase a nonzero tombstone, and `hns_requestAccounts` is unavailable; prior wallet/name/value containment remains; source/static review only, added tests unrun, unpushed, no qualification inherited |
+| `hns-wallet-rs` | `4935e059bcde338f4260dd98202ff26ce0f3ca9f` | private ABI-v2 results, prompts, and events share the exact authority/wallet/permission binding; a fail-closed caller host owns negotiation, correlation, authority/approval transitions, capability intersections, and event replay; machine-readable ABI/public-projection/manifest contracts and bounded vectors are committed; `hns_requestAccounts` remains unavailable; prior wallet/name/value containment remains; source/static review only, added tests unrun, unpushed, no qualification inherited |
 | `hns-dane-engine` | `6eb0174ae743e6bd01c516be7a534d94be94b4bd` | source/read and diff checks only; retained proxy authority is not consumed or product-qualified |
 | `hns-dane-browser-extension` | `972e63a14f9067da3608f53b852adc93d8ded2a4` | source/static checks only; fresh-zero private capability admission is separate from the narrow public website result and exact permission-generation/wallet-session event matching; added tests unrun, unpushed, no service launch, all provider/value joins false or unavailable |
 | `hns-dane-browser-mobile` | `4b684ebbb576c2b2f8e762c3f81c3ec2fded47f5` | source/static checks only; dormant adapters apply the same private/public capability split and event binding; added tests unrun, no build/install/push, all four release gates false, unavailable adapter hardwired, and controller/wallet-runtime/FFI/generated-binding/UI/event-producer wiring absent |

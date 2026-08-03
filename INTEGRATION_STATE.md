@@ -135,7 +135,7 @@ consume the authority; installed browser/device and proxy lifecycle
 qualification remain open. No new consolidated PASS is recorded.
 
 The encrypted wallet runtime continuation is committed on local `main` at
-`604a35771a9427696b6ecf533368205392e62979`. HNS send and settlement-lock
+`4935e059bcde338f4260dd98202ff26ce0f3ca9f`. HNS send and settlement-lock
 preparation authenticate and atomically commit the account change index,
 prepared workflow, and complete input-reservation set, then recover the exact
 durable artifact on an idempotent retry. Confirmed and mempool restoration
@@ -168,7 +168,14 @@ Its typed private capability snapshot contains provider/approval schema
 versions, wallet session, permission generation, and the runtime-supported
 subset of the canonical 43 methods; generation zero is fresh-only, a revoked or
 expired record retains its nonzero tombstone, and `hns_requestAccounts` remains
-unavailable. No generated browser adapter consumes this private projection.
+unavailable. The new `hns-wallet-host` state machine owns the private hello and
+restart generations, clock/entropy, bounded request and approval replay,
+authority revisions, mandatory-approval response classes, capability
+intersections, exact permission/session transitions, and service-aligned event
+replay. Draft 2020-12 contracts and bounded vectors describe private frames,
+public approval/event projections, and signed-manifest structure without
+claiming a verifier or artifact. No generated browser adapter consumes this
+private projection.
 `HNS_FEE_QUOTE_ALGEBRA_RELEASE_QUALIFIED` remains false because
 released `hns-script` 0.1 lacks canonical fee algebra, so HNS and Bitcoin value
 remain hard-disabled. The legacy Shakedex 0.1 journal remains structural-only:

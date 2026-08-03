@@ -6,7 +6,7 @@
 | --- | --- |
 | [`hns-rs`](https://github.com/handshake-rs/hns-rs) | Runtime-independent Handshake protocol, consensus, wire, proof, registry, and role-specific consent types |
 | [`hns-node-rs`](https://github.com/handshake-rs/hns-node-rs) | Standalone node runtime/networking under construction: chain state, storage, synchronization, mining, and RPC |
-| `hns-wallet-rs` (configured `denuoweb` origin; local `main` unpushed) | Unqualified production-completion source for the encrypted Handshake-first wallet, origin-bound Provider schema, Shakedex/market state machines, durable Kyoto supervisor, and offline native-ETH/Helios containment; value/product paths remain disabled or unavailable |
+| `hns-wallet-rs` (configured `denuoweb` origin; local `main` unpushed) | Unqualified production-completion source for the encrypted Handshake-first wallet, origin-bound Provider schema, private ABI-v2 host/contracts, Shakedex/market state machines, durable Kyoto supervisor, and offline native-ETH/Helios containment; value/product paths remain disabled or unavailable |
 | [`MeshMine`](https://github.com/handshake-rs/MeshMine) | Mining overlay, work scheduling, operator UI, and exact external-node consumer |
 | [`hns-dane-engine`](https://github.com/handshake-rs/hns-dane-engine) | DNSSEC, TLSA/DANE, validating resolution, full-host dual-root policy, canonical browser authority lifecycle, and shared observability |
 | [`hns-dane-browser-mobile`](https://github.com/handshake-rs/hns-dane-browser-mobile) | Android/iOS lifecycle, UI, FFI, proxy, store packaging, staged header publication, and shared-engine adapters |
@@ -96,7 +96,7 @@ signed-device matrices remain open.
   `https://github.com/denuoweb/hns-wallet-rs.git` at remote-tracking `main`
   `1206a8ab550cf67ff43dc162091e371946278641`. Its latest unqualified
   production-completion source is
-  `604a35771a9427696b6ecf533368205392e62979`; local `main` is ahead by seven
+  `4935e059bcde338f4260dd98202ff26ce0f3ca9f`; local `main` is ahead by eight
   commits, unpushed, and has no push authorization. Private ABI-v2 results,
   prompts, and events share one authority/wallet/permission binding; the typed
   private capability snapshot uses the canonical 43-name vocabulary, fresh
