@@ -146,8 +146,9 @@ opt-in” rule.
   a source-complete HNS `ChainModule`/`AtomicSettlement` runtime and strict
   node RPC v1 adapter, a durable bounded Kyoto/BDK supervisor, and a narrow
   Ethereum contract/evidence boundary. Exact final-signed node fee quotes are
-  adopted at `5b540963`, but HNS value remains hard-disabled until released
-  canonical `hns-script` 0.2 fee algebra permits independent wallet validation;
+  adopted at `5b540963` and retained at current `5c5a13d4`, but HNS value
+  remains hard-disabled until released canonical `hns-script` 0.2 fee algebra
+  permits independent wallet validation;
   names remain watch-only until the unpublished canonical codec is released and
   a dedicated name-role scan exists. Bitcoin still lacks durable Kyoto
   header/filter/peer state, safe archival, swap-key qualification, and signed settlement;
@@ -157,11 +158,11 @@ opt-in” rule.
 - The node's confirmed/mempool wallet indexes, Shakedex/HTLC/preimage tracker,
   typed backend, authenticated loopback RPC v1, and exact transaction fee quote
   are frozen at contract commit `5ed38d15` and contained in current
-  `3d346e3d`; the strict wallet consumer is source-complete at `5b540963`.
-  The current join has no consolidated qualification result. The five-role marketplace relay is a
-  bounded cache/policy core only, Denuo V2 wire advertisement is disabled
-  until canonical V2 adoption, and registry retirement/capacity reclamation
-  remains absent.
+  `3d346e3d`; the strict wallet consumer landed at `5b540963` and remains in
+  current `5c5a13d4`. The current join has no consolidated qualification
+  result. The five-role marketplace relay is a bounded cache/policy core only,
+  Denuo V2 wire advertisement is disabled until canonical V2 adoption, and
+  registry retirement/capacity reclamation remains absent.
 - MeshMine now consumes an exact immutable `handshake-rs/hns-node-rs` revision
   through its bridge. Its `504d3fed035feb8a637ca09c4e0816b6e1144622`
   pin has complete functional readiness but predates the standalone
@@ -193,9 +194,14 @@ opt-in” rule.
 - Wallet-provider source adapters are fail-closed and deliberately inactive:
   Chromium's native host reports `walletUnavailable`, while Android/iOS are
   source-hardwired unavailable and not controller-wired. Private wallet ABI v2
-  and hardened provider authority exist at wallet `5b540963`, and the engine
+  and hardened provider authority landed at wallet `5b540963` and remain in
+  current `5c5a13d4`, and the engine
   mints the opaque provider-authority/proxy context, but the browser pins consume
   neither released boundary, so no provider method is executable end to end.
+  The current wallet also rejects legacy Shakedex seller/buyer session
+  creation, discovery, and advancement until canonical V2, Denuo V2, and value
+  runtime release gates are qualified; it does not reinterpret 0.1 proofs as
+  fixed-price V2 listings.
 - Crawler production snapshots/live-directory operation and a deployed,
   hash-pinned bootstrap appliance still need independent release
   qualification; their unit/build gates do not upgrade browser trust rows.

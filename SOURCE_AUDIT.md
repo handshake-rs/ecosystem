@@ -82,10 +82,10 @@ projects are neither pushed nor rewritten.
 | --- | --- |
 | `work/hns-rs` | latest local source-only head `81f2df2651e8ea81be33e33a3438c4c9e0348f93`; remote-tracking `main` `15f715576a2111fae2a8c65fccc7860ede64bd98`; published `0.1.0` source `0ea5994c336642ea7d01c51c0e22df2008985426`; no `v0.1.0` tag |
 | `work/hns-node-rs` | local and remote-tracking `main` `3d346e3dadc716b5c367eee050308e71a0693a64`; tag `v0.3.4` points to `40b456fa0772729542118a69f27edc37bf42a3d7`; current branch advancement came from the separate release workflow |
-| `work/hns-wallet-rs` | independently created local `main`; latest source-only head `5b5409630045b19f81821951da51a9a1f7e1c9e5`; no configured remote or published/signed ABI artifact |
+| `work/hns-wallet-rs` | independently created local `main`; latest source-only head `5c5a13d4816be620475f6aa714f868449e964678`; no configured remote or published/signed ABI artifact |
 | `work/hns-dane-engine` | latest local source-only head `6eb0174ae743e6bd01c516be7a534d94be94b4bd`; remote-tracking `main` `7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`; older unpublished preparation predecessor `1d0fc9c6ba72f008e60d8c5a98741a32aeea4a75` |
 | `work/hns-dane-browser-mobile` | latest local head `58996db0facef1bb6a7cb2876361d13dabc90c75`; Android 0.5.5/version-code-46 source `d24f85158854abb8be4a7bb9e914aebe5e7e4679`; iOS 0.5.5/build-57 source and `v0.5.5` tag `d926561091634cd69fc9b7e79a4b76003fa4ee47`; documentation head `39ea427b744581ccc9a860f5f51f6fc31622d317` |
-| `work/hns-dane-browser-extension` | latest local source-only head `6285fda5a7ed61c5ac93f5127de078ce8587da38`; public v0.5.5 source/tag `86b18497285753944ec1b9196ec05ee359c6db11`; documentation head `3495bd1c5e7c26f9486ea81fb21dc1618c9bc2c8` |
+| `work/hns-dane-browser-extension` | latest local source-only head `d58e1473e47bf9a50faafa5a05bba74756bdf314` (preceded by ABI-v2 documentation commit `06bea8893ea7e2324d0df7e5b486fb3cf91f9cdd`); public v0.5.5 source/tag `86b18497285753944ec1b9196ec05ee359c6db11`; documentation head `3495bd1c5e7c26f9486ea81fb21dc1618c9bc2c8` |
 | `work/hns-dane-crawler` | `b9e3c406631eb253f26979a0d3d9f794fd9fb11f` |
 | `work/hns-dane-bootstrap-generator` | `ff1c709c8584b13bc02654d19ebc00d09025f4c7` |
 | `work/MeshMine` | latest `main` `79f3bbc6c24bab80adaef199a9318fd0065113f6`; earlier documentation head `9f781a00ee8fc3b7c6773538434235a65f167ca3` |

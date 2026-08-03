@@ -85,10 +85,12 @@ The ecosystem is still implementation-in-progress and is not release-ready as
 a whole. Current source heads add canonical HSD fee policy and Shakedex name
 transitions (`hns-rs` `81f2df26`), snapshot-bound wallet fee quotes plus the
 v0.3.4 node/resolver sidecar and release-CI corrections (`hns-node-rs`
-`3d346e3d`), private ABI v2,
-dedicated Bitcoin swap derivation, provider hardening, and exact quote adoption
-(`hns-wallet-rs` `5b540963`), and retained provider authority across
-unrelated engine work (`hns-dane-engine` `6eb0174a`). These successors do not
+`3d346e3d`), private ABI v2, dedicated Bitcoin swap derivation, provider
+hardening, exact quote adoption, and explicit fail-closed Shakedex
+V2/Denuo/value gates (`hns-wallet-rs` `5c5a13d4`), retained provider authority
+across unrelated engine work (`hns-dane-engine` `6eb0174a`), and the closed
+ABI-v2 public approval boundary with every runtime gate false (Chromium
+`d58e1473`). These successors do not
 inherit earlier PASS evidence in this ledger. HNS value remains gated on a
 released canonical `hns-script` 0.2 fee-algebra helper; name ownership, browser
 provider, and bilateral settlement paths remain disabled or unavailable. Start

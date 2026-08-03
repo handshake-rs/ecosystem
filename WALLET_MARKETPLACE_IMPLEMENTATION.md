@@ -89,14 +89,14 @@ complete executable product join.
 | canonical marketplace/name protocols | source at `81f2df26` adds HSD-compatible fee algebra, strict TRANSFER/FINALIZE construction, canonical empty offer inventory, and listing-independent Shakedex recovery; unpublished and unqualified |
 | node confirmed indexes/backend | current `main` `3d346e3d` includes authenticated RPC v1 and snapshot-bound exact final-transaction fee quotes; wallet indexes remain disabled by default and the current head is not qualified by this ledger |
 | node marketplace relay | implemented and locally tested cache/policy core; live V2 wire unavailable |
-| encrypted store/provider policy | schema-v3/runtime hardening, private ABI v2, strict provider authority lifecycle, concrete HNS node adapter, and Kyoto supervisor source at `5b540963`; unqualified |
+| encrypted store/provider policy | schema-v3/runtime hardening, private ABI v2, strict provider authority lifecycle, concrete HNS node adapter, Kyoto supervisor, and explicit false Shakedex V2/Denuo/value gates at `5c5a13d4`; unqualified |
 | usable HNS/name wallet | HNS source runtime and concrete node join implemented but value-disabled; names watch-only; browser product unavailable |
 | fixed-price Shakedex | canonical transaction and listing-independent recovery primitives exist; wallet lifecycle remains disabled and unavailable |
 | Kyoto Bitcoin wallet/settlement | durable bounded supervisor and dedicated swap derivation source implemented; value disabled pending Kyoto persistence, signed settlement, archival, and qualification |
 | native-ETH wallet/contract | narrow source foundation; disabled; verified synchronization/deployment unavailable |
 | HNS/BTC and HNS/ETH | disabled; end-to-end settlement unavailable |
 | engine provider/proxy authority | opaque exact-origin proxy admission source at `6eb0174a` retains authority across unrelated work and invalidates on security transitions; product consumption and qualification unavailable |
-| Chromium provider | source bridge implemented and tested at its earlier baseline; injection disabled by unavailable ABI/authority join |
+| Chromium provider | current source `d58e1473` closes the private-ABI-v2/public-schema-v1 approval and event boundary; injection remains disabled by unavailable signed transport/projection/engine-authority joins |
 | Android/iOS provider | inactive source scaffold; Android compile-tested, iOS compile untested; unavailable |
 | excluded product families | deferred or deliberately unavailable as enumerated below |
 
@@ -216,7 +216,8 @@ source inherits no earlier PASS in this ledger; a released canonical
 protocol pin, safe registry retirement/capacity reclamation, exact image and
 multi-process qualification, and final release gate remain unavailable. The
 concrete wallet adapter now exists as unqualified source at
-`5b5409630045b19f81821951da51a9a1f7e1c9e5`.
+`5b5409630045b19f81821951da51a9a1f7e1c9e5` and is retained at current
+`5c5a13d4816be620475f6aa714f868449e964678`.
 
 Wallet-index profile V1 is checksummed and fails closed on missing, corrupt,
 or partially built components. There is no online backfill: an existing chain
@@ -292,25 +293,32 @@ degradation, revocation, stop, policy/runtime invalidation, expiry, navigation,
 or same-origin decision replacement. This is an engine boundary, not browser
 wiring, and neither browser product consumes or qualifies it yet.
 
-Wallet source `5b5409630045b19f81821951da51a9a1f7e1c9e5` replaces the unreleased ABI v1 value
-decoder with strict private ABI v2 sessions, opaque authority handles,
-structured approval prompts, typed events, and zeroizing secret-bearing frame
-buffers. Provider persistence is scoped by exact namespace plus origin;
+Wallet source `5b5409630045b19f81821951da51a9a1f7e1c9e5` introduced strict private ABI
+v2 sessions, opaque authority handles, structured approval prompts, typed
+events, and zeroizing secret-bearing frame buffers. Provider persistence is
+scoped by exact namespace plus origin;
 approval consumption revalidates current unexpired permission, process-local
 time rollback fails closed, wallet lock rotates service authority, and
 revocation/expiry invalidates event channels. Send prompts bind exact method,
 module, chain, amount asset, and fee asset. The checked-in subprocess advertises
 framing foundations only—not provider dispatch or value—and this source has not
-run a consolidated gate.
+run a consolidated gate. Current `5c5a13d4816be620475f6aa714f868449e964678`
+retains that boundary and additionally prevents the legacy Shakedex 0.1
+journal from creating, discovering, or advancing sessions until canonical V2,
+Denuo V2, and value-runtime release gates are qualified.
 
-The Chromium adapter installs an isolated document-start bridge but injects
+The Chromium adapter at `d58e1473e47bf9a50faafa5a05bba74756bdf314`
+installs an isolated document-start bridge but injects
 the MAIN-world provider into one exact HTTPS main-frame `documentId` only
-after current navigation authority and its still-pinned native ABI-v1
-capability pass. It has a
-bounded approval window, generation-bound events, and a static no-key/no-
-backend demonstration dapp. The currently deployed native host does not consume
-ABI v2, so it returns `walletUnavailable` and no provider is injected. Wallet
-database, secret, chain, Shakedex, Denuo, and recovery
+after current navigation authority and a private-ABI-v2 capability pass. Its
+website provider schema remains 1. Source validates a closed 12-kind
+browser-owned public approval projection, canonical approval IDs, private
+authority containment, native-only events, and exact close/reject context. It
+has a bounded approval window, generation-bound events, and a static no-key/no-
+backend demonstration dapp. The native host never launches a wallet service
+and still returns unavailable because the signed transport, projection adapter,
+and engine authority join do not exist. Wallet database, secret, chain,
+Shakedex, Denuo, and recovery
 integration into the native host remains unavailable. The browser's pinned
 engine/native-host boundary also does not yet consume the new Rust facade v3
 opaque provider-authority context, so no cross-repository authority/ABI join
@@ -329,7 +337,7 @@ Xcode, simulator, or signed-device wallet result is claimed.
 
 ## Wallet, names, Shakedex, and market board
 
-The wallet continuation at `5b5409630045b19f81821951da51a9a1f7e1c9e5` has transactional SQLite schema
+The wallet continuation at `5c5a13d4816be620475f6aa714f868449e964678` has transactional SQLite schema
 V3, bounded Argon2id passphrase input, XChaCha20-Poly1305 typed entity,
 workflow, permission, approval, and replay encryption with metadata-bound
 associated data, monotonic permission tombstones, and bounded heterogeneous
@@ -423,8 +431,9 @@ reorg recovery, and fee-bound pre-broadcast/rebroadcast journals. No Esplora,
 Electrum, hosted indexer, or production Bitcoin Core RPC dependency exists.
 The pinned `bip157` release ignores `data_dir` and does not expose durable
 header/filter/peer state, so this is not production persistence. A dedicated
-deterministic swap-key branch now exists at `5b540963`, but it has
-not been qualified. Safe record archival, signed HTLC spends/settlement, full
+deterministic swap-key branch landed at `5b540963` and remains in current
+`5c5a13d4`, but it has not been qualified. Safe record archival, signed HTLC
+spends/settlement, full
 invalid-PoW/filter/peer fixtures, regtest settlement, trusted-time policy, and
 mobile/resource qualification are missing; Bitcoin value paths remain hard-
 disabled.
@@ -473,7 +482,7 @@ refund, restart, or reorg demonstration was run for either pair.
 
 All PASS evidence below belongs to the exact earlier revisions named in the
 final table. It does not transfer to the successors at `81f2df26`,
-`3d346e3d`, `5b540963`, `6eb0174a`, or `6285fda5`. This report
+`3d346e3d`, `5c5a13d4`, `6eb0174a`, or `d58e1473`. This report
 records only the per-row provenance and static review stated in the
 continuation table; it does not infer a consolidated gate result.
 
@@ -588,9 +597,9 @@ Source-only production-continuation revisions after those exact gates:
 | --- | --- | --- |
 | `hns-rs` | `81f2df2651e8ea81be33e33a3438c4c9e0348f93` | canonical HSD fee policy plus strict Shakedex name transitions/recovery committed; static/diff review only in this tranche; shared 0.2 packages remain unpublished and unqualified |
 | `hns-node-rs` | `3d346e3dadc716b5c367eee050308e71a0693a64` | local and remote-tracking `main`; exact fee quotes and resolver-sidecar source are present, tag `v0.3.4` points to `40b456fa0772729542118a69f27edc37bf42a3d7`, and this ledger records no new consolidated qualification result |
-| `hns-wallet-rs` | `5b5409630045b19f81821951da51a9a1f7e1c9e5` | private ABI v2, zeroizing frames, dedicated Bitcoin swap keys, provider hardening, and exact quote adoption received source/static review only; value and name-owner actions remain disabled/unavailable |
+| `hns-wallet-rs` | `5c5a13d4816be620475f6aa714f868449e964678` | private ABI v2, zeroizing frames, dedicated Bitcoin swap keys, provider hardening, and exact quote adoption remain; legacy Shakedex 0.1 seller/buyer execution is now hard-gated before decode/mutation; value and name-owner actions remain disabled/unavailable |
 | `hns-dane-engine` | `6eb0174ae743e6bd01c516be7a534d94be94b4bd` | source/read and diff checks only; retained proxy authority is not consumed or product-qualified |
-| `hns-dane-browser-extension` | `6285fda5a7ed61c5ac93f5127de078ce8587da38` | source/read and diff checks only; no build/test; provider remains unavailable |
+| `hns-dane-browser-extension` | `d58e1473e47bf9a50faafa5a05bba74756bdf314` | source/read and diff checks only; private ABI 2/public schema 1 projection and event boundary aligned; no build/test, no service launch, and provider/value remain unavailable |
 | `hns-dane-browser-mobile` | `58996db0facef1bb6a7cb2876361d13dabc90c75` | unchanged qualified source checkpoint; signed-device wallet/provider behavior remains unrun |
 | `MeshMine` | `79f3bbc6c24bab80adaef199a9318fd0065113f6` | workspace packages are private; immutable node pin and live parent/job topology status are unchanged |
 

@@ -30,15 +30,20 @@ metadata and screenshot source; generated mobile build outputs remain covered
 by its narrower ignore rules.
 
 The Chromium half of the source tranche is committed on local `main` at
-`6285fda5a7ed61c5ac93f5127de078ce8587da38`. It performs bounded same-handle
+`d58e1473e47bf9a50faafa5a05bba74756bdf314`, after ABI-v2 documentation commit
+`06bea8893ea7e2324d0df7e5b486fb3cf91f9cdd`. It performs bounded same-handle
 artifact integrity discovery without treating a digest as publisher
 authenticity or executing the artifact, and it invalidates document/approval
-authority across asynchronous native results and header maintenance. It still
-returns unavailable: no signed/pinned ABI v2 wallet artifact or framed process
-transport is wired, the extension still expects the unreleased ABI v1, it has
-not consumed the engine's later opaque provider-authority/proxy admission
-boundary, and Windows ACL/ownership validation is absent. No build, test, push,
-tag, or publication evidence is attached to this source-only successor.
+authority across asynchronous native results and header maintenance. Private
+wallet ABI and service protocol 2 remain distinct from website provider schema
+1. The browser-owned approval-schema-2 projection closes all 12 summary kinds,
+canonical approval IDs, private-authority containment, native-only events, and
+exact close/reject context. It still returns unavailable: no signed/pinned
+artifact, reviewed private transport/projection adapter, or engine-authority
+join is wired; Windows ACL/ownership validation is absent. Artifact
+authenticity, transport, runtime, authority, provider, and value gates all stay
+false. No build, test, push, tag, or publication evidence is attached to this
+source-only successor.
 
 The canonical protocol continuation is committed on local `hns-rs` `main` at
 `81f2df2651e8ea81be33e33a3438c4c9e0348f93`. The earlier
@@ -100,7 +105,7 @@ consume the authority; installed browser/device and proxy lifecycle
 qualification remain open. No new consolidated PASS is recorded.
 
 The encrypted wallet runtime continuation is committed on local `main` at
-`5b5409630045b19f81821951da51a9a1f7e1c9e5`. HNS send and settlement-lock
+`5c5a13d4816be620475f6aa714f868449e964678`. HNS send and settlement-lock
 preparation authenticate and
 atomically commit the account change index, prepared workflow, and complete
 input-reservation set, then recover the exact durable artifact on an
@@ -121,8 +126,13 @@ exact signed bytes and re-quote those bytes before broadcast with one bounded
 reconciliation/retry, but `HNS_FEE_QUOTE_ALGEBRA_RELEASE_QUALIFIED` remains
 false because released `hns-script` 0.1 lacks canonical fee algebra. HNS and
 Bitcoin value therefore remain hard-disabled; names remain watch-only pending a
-released codec and bounded `HnsName` scan. This successor received static
-review only and no new consolidated PASS is recorded.
+released codec and bounded `HnsName` scan. The legacy Shakedex 0.1 journal is
+now explicitly structural-only: seller/buyer creation, discovery, and every
+transition—including restored sessions—fail before decode or mutation behind
+false canonical-V2, Denuo-V2, and value-runtime release gates. This prevents
+0.1 proof records from masquerading as canonical fixed-price V2 execution.
+This successor received static review only and no new consolidated PASS is
+recorded.
 
 ## 2026-08-02 local wallet and marketplace checkpoint
 

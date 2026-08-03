@@ -87,9 +87,10 @@ signed-device matrices remain open.
   separate workflow and later release-CI port verification was corrected on
   `main`; this ledger records no new consolidated qualification result for it.
 - `hns-wallet-rs` exists only as a local independent `main` repository. Its
-  latest unqualified production-completion source is `5b5409630045b19f81821951da51a9a1f7e1c9e5`;
-  private ABI v2 source is present, but no remote, published crate, signed ABI
-  artifact, or product release exists.
+  latest unqualified production-completion source is `5c5a13d4816be620475f6aa714f868449e964678`;
+  private ABI v2 source and explicit false canonical-Shakedex/Denuo/value gates
+  are present, but no remote, published crate, signed ABI artifact, or product
+  release exists.
 - `hns-dane-engine` remote-tracking `main` remains
   `7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`. Older release preparation
   `1d0fc9c6ba72f008e60d8c5a98741a32aeea4a75` precedes latest local source head
@@ -99,6 +100,10 @@ signed-device matrices remain open.
   `86b18497285753944ec1b9196ec05ee359c6db11` with 29 assets. macOS artifacts
   are signed and notarized; Windows artifacts are unsigned. Documentation
   head `3495bd1c5e7c26f9486ea81fb21dc1618c9bc2c8` passed CI `30439859541`.
+  Later local source `d58e1473e47bf9a50faafa5a05bba74756bdf314`
+  aligns its inactive discovery/public-prompt boundary to private ABI 2 while
+  leaving artifact authenticity, transport, runtime, engine authority,
+  provider, and value unavailable; it has no new qualification result.
 - MeshMine `main` is `79f3bbc6c24bab80adaef199a9318fd0065113f6`
   after marking workspace packages private. Earlier documentation head
   `9f781a00ee8fc3b7c6773538434235a65f167ca3` passed CI `30440116148`; neither

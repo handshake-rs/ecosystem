@@ -40,8 +40,8 @@ their broader shared-engine consolidation is complete.
   light-client boundary, but it may not embed node consensus/P2P or browser
   authority/UI code. The authenticated node RPC v1 plus fee-quote contract is
   frozen at node `5ed38d15`, contained in current node `3d346e3d`, and consumed
-  by wallet `5b540963`; it is deliberately not a Cargo dependency and remains
-  unqualified. The browser join is not a
+  by wallet `5b540963` and retained at current `5c5a13d4`; it is deliberately
+  not a Cargo dependency and remains unqualified. The browser join is not a
   compiled dependency, and Helios is selected policy rather than an embedded
   runtime.
 - `hns-dane-engine` exposes stable platform ABIs; TypeScript/Kotlin/Swift do not
@@ -140,7 +140,8 @@ release.
 
 `hns-wallet-rs` remains an independent local repository without a configured
 remote. Latest local source head
-`5b5409630045b19f81821951da51a9a1f7e1c9e5` has private ABI v2 source but no
+`5c5a13d4816be620475f6aa714f868449e964678` has private ABI v2 source and
+explicit false canonical-Shakedex/Denuo/value runtime gates but no
 published crate, signed browser artifact, or current qualification result.
 
 `hns-node-rs` local and remote-tracking `main` are

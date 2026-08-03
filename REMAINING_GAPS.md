@@ -33,7 +33,7 @@ This ledger is deliberately release-blocking.
   sibling path or copied wire types.
 - Qualify the source-complete HNS transaction/reconciliation runtime and
   concrete authenticated node adapter at
-  `5b5409630045b19f81821951da51a9a1f7e1c9e5`, including
+  `5c5a13d4816be620475f6aa714f868449e964678`, including
   atomic prepared-workflow recovery and hostile HTTP/JSON, stale epoch/mempool,
   pruned payload, coinbase, fee-quote, restart, and reorg cases. Exact
   final-signed node quotes are now adopted in source, but value must remain
@@ -56,6 +56,10 @@ This ledger is deliberately release-blocking.
   discovery, preview, signed funding/fulfillment/finalization, recovery,
   restart-at-every-state, reorg, and Denuo relay integration. Reverse Dutch
   remains deferred until fixed price passes.
+  Current wallet source correctly blocks every legacy 0.1 seller/buyer entry
+  and transition, including restored sessions; those false release gates must
+  not be changed before published canonical V2/Denuo consumption and the full
+  lifecycle evidence exist.
 - Replace or extend the pinned Kyoto boundary so headers, compact-filter
   headers/filters, and peer/address state are durably exposed and restored;
   add safe archival beyond the bounded transaction/output lifetime caps.
