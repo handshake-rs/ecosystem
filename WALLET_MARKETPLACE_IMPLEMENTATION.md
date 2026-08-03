@@ -31,8 +31,9 @@ Modified repositories:
   provider-injection authority decision;
 - `hns-dane-browser-extension`: authority-gated Provider API bridge, approval
   window, and demonstration dapp;
-- `hns-dane-browser-mobile`: source-level Android/iOS wallet-provider,
-  unconnected secure-key-wrapper, and UI-state adapters;
+- `hns-dane-browser-mobile`: dormant source-level Android/iOS wallet-provider
+  plus closed public approval/event projections, unconnected secure-key-wrapper,
+  and UI-state adapters;
 - `ecosystem`: architecture, dependency, registry, qualification, gap,
   revision, and implementation evidence.
 
@@ -102,7 +103,7 @@ complete executable product join.
 | HNS/BTC and HNS/ETH | disabled; end-to-end settlement unavailable |
 | engine provider/proxy authority | opaque exact-origin proxy admission source at `6eb0174a` retains authority across unrelated work and invalidates on security transitions; product consumption and qualification unavailable |
 | Chromium provider | current source `d58e1473` closes the private-ABI-v2/public-schema-v1 approval and event boundary; injection remains disabled by unavailable signed transport/projection/engine-authority joins |
-| Android/iOS provider | inactive source scaffold; Android compile-tested, iOS compile untested; unavailable |
+| Android/iOS provider | current `d6df646d` closes the dormant website-schema-1/private-native-ABI-2/public-approval-schema-2 boundary with twelve approvals and thirteen events; source/static-only, unrun, unpushed, and unavailable, with four false release gates, a hardwired unavailable adapter, and no controller, wallet runtime/FFI, generated binding, approval UI, or event producer. Earlier `58996db0` Android compile evidence does not transfer |
 | excluded product families | deferred or deliberately unavailable as enumerated below |
 
 ## Canonical protocols and Denuo registry
@@ -332,16 +333,26 @@ engine/native-host boundary also does not yet consume the new Rust facade v3
 opaque provider-authority context, so no cross-repository authority/ABI join
 is claimed.
 
-Android and iOS contain standalone typed frame validators, fixed command
-allowlists, platform secure-key wrappers, authority-binding models, and
-wallet-screen state enumerations. These sources deliberately do not alter the
-existing browser navigation path without a released wallet ABI. They are not
-wired into `MainActivity`/WKWebView, no wallet screens are rendered, and no
-signed-device wallet test passed; mobile product integration is incomplete.
-The Android scaffold and unit sources compile in the focused Gradle path. The
-iOS project contains the expected source/test references, but neither
-`swiftc` nor `xcodebuild` was available in this environment, so no Swift,
-Xcode, simulator, or signed-device wallet result is claimed.
+Current mobile head `d6df646df0989b7ab25bc305c0ae80d2f08ce432`
+keeps website Provider API schema and `providerApiVersion` 1 separate from the
+expected private native wallet ABI 2 and browser-owned public approval schema 2.
+Android and iOS close twelve typed approval summaries and thirteen typed event
+projections, reject private authority/session/channel/event-sequence material
+from page-visible results, and retain standalone secure-key helpers and wallet
+UI-state models. This source deliberately does not alter the existing browser
+navigation path: provider-bridge installation, wallet runtime, approval runtime,
+and value runtime gates are all false; the unavailable adapter is hardwired;
+the bridges are absent from `MainActivity` and WKWebView controller lifecycles;
+and no wallet runtime/FFI, generated `hns-wallet-ffi` JNI/C binding, native
+approval UI, or typed event producer exists. The successor is unpushed and
+received source/static inspection only, with no build, unit-test, Swift/Xcode,
+simulator, signed-device, or installed-product result.
+
+At exact predecessor `58996db0facef1bb6a7cb2876361d13dabc90c75`, the
+Android scaffold and unit sources compiled in the focused Gradle path and the
+iOS project contained the expected source/test references, while neither
+`swiftc` nor `xcodebuild` was available. That evidence does not qualify
+`d6df646df0989b7ab25bc305c0ae80d2f08ce432`.
 
 ## Wallet, names, Shakedex, and market board
 
@@ -530,8 +541,8 @@ refund, restart, or reorg demonstration was run for either pair.
 
 All PASS evidence below belongs to the exact earlier revisions named in the
 final table. It did not transfer to feature landing `81f2df26` or current
-descendant `4b989aab`, nor to `3d346e3d`, `b999b330`, `6eb0174a`, or
-`d58e1473`. This report
+descendant `4b989aab`, nor to `3d346e3d`, `b999b330`, `6eb0174a`,
+`d58e1473`, or `d6df646d`. This report
 records only the per-row provenance and static review stated in the
 continuation table; it does not infer a consolidated gate result.
 
@@ -649,7 +660,7 @@ Source-only production-continuation revisions after those exact gates:
 | `hns-wallet-rs` | `b999b330f17a0d7b300bff5e96b5ec2fbd294ec6` | prior private ABI, Bitcoin swap keys, provider hardening, exact quote recovery, and fail-closed legacy Shakedex gates remain; encrypted bounded `HnsName` discovery now shares the exact coin-scan chain/mempool snapshot and authoritative-account CAS ordering rejects rollback, but ownership stays watch-only; Ethereum is offline-receive-only behind false sync/history/send/value/settlement/mainnet outcomes and opaque unissued permits, with signed raw bytes zeroizing/opaque/redacted; static/diff review only, no qualification inherited |
 | `hns-dane-engine` | `6eb0174ae743e6bd01c516be7a534d94be94b4bd` | source/read and diff checks only; retained proxy authority is not consumed or product-qualified |
 | `hns-dane-browser-extension` | `d58e1473e47bf9a50faafa5a05bba74756bdf314` | source/read and diff checks only; private ABI 2/public schema 1 projection and event boundary aligned; no build/test, no service launch, and provider/value remain unavailable |
-| `hns-dane-browser-mobile` | `58996db0facef1bb6a7cb2876361d13dabc90c75` | unchanged qualified source checkpoint; signed-device wallet/provider behavior remains unrun |
+| `hns-dane-browser-mobile` | `d6df646df0989b7ab25bc305c0ae80d2f08ce432` | source/read and diff checks only; dormant website schema 1/private native ABI 2/public approval schema 2 projections close twelve approval summaries and thirteen events; no build/test/install or push, all four release gates remain false, the unavailable adapter remains hardwired, and controller/wallet-runtime/wallet-FFI/generated-binding/UI/event-producer wiring is absent |
 | `MeshMine` | `79f3bbc6c24bab80adaef199a9318fd0065113f6` | workspace packages are private; immutable node pin and live parent/job topology status are unchanged |
 
 The ecosystem row necessarily identifies its containing commit here because a

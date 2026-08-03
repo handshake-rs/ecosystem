@@ -11,7 +11,7 @@ dependency order and with the evidence rules in
 its own. The current source tranche covers canonical fee/name/Shakedex
 primitives, authoritative node wallet/HTLC tracking and fee quotes, the
 wallet's encrypted runtime/private ABI/provider/recovery join, and browser
-authority boundaries.
+authority and provider-projection boundaries.
 
 Before that tranche, the pre-existing Chromium insecure-delegation correction
 was committed on `main` at
@@ -44,6 +44,22 @@ join is wired; Windows ACL/ownership validation is absent. Artifact
 authenticity, transport, runtime, authority, provider, and value gates all stay
 false. No build, test, push, tag, or publication evidence is attached to this
 source-only successor.
+
+The mobile half of the source tranche is committed on local `main` at
+`d6df646df0989b7ab25bc305c0ae80d2f08ce432`, an unpushed successor to
+remote-tracking `main` `58996db0facef1bb6a7cb2876361d13dabc90c75`.
+Android and iOS keep website Provider API schema and `providerApiVersion` 1
+separate from the expected private native wallet ABI 2 and browser-owned public
+approval schema 2. Source closes twelve typed approval summaries and thirteen
+typed event projections while excluding private authority, session, channel,
+and event-sequence material from page-visible results. This boundary remains
+dormant and unqualified: provider-bridge installation, wallet runtime, approval
+runtime, and value runtime release gates are all immutable false; the
+unavailable ABI adapter remains hardwired; and no browser controller, wallet
+runtime, wallet FFI, generated `hns-wallet-ffi` JNI/C binding, native approval
+UI, or typed event producer is wired. No build, test, simulator, signed-device,
+installed-product, push, tag, or publication evidence is attached to this
+source/static-only successor.
 
 The canonical protocol continuation is committed on local `hns-rs` `main` at
 `4b989aabc132e7e79b8fd57a10f2465073faf588`. The earlier marketplace

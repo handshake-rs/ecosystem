@@ -166,12 +166,18 @@ This ledger is deliberately release-blocking.
   redirects, cross-origin subresources, Service Workers, downloads, WSS,
   process restarts, and policy revocation.
 - Publish the private wallet ABI v2 as a signed, pinned artifact and consume it
-  in each browser; wire the engine v3 opaque provider-injection decision through
-  the native/mobile boundary, then qualify the source-hardened permission,
-  approval, lock/session, and event lifecycle. Implement the actual wallet
-  screens, notification, backup, migration, and removal paths. Until then the
-  Chromium host and both mobile scaffolds must continue to report unavailable
-  and avoid announcing a provider.
+  in each browser. For mobile, connect the dormant website-schema-1/private-
+  native-ABI-2/public-approval-schema-2 projections at
+  `d6df646df0989b7ab25bc305c0ae80d2f08ce432` only through reviewed generated
+  `hns-wallet-ffi` JNI/C bindings, the canonical typed engine authority result,
+  controller lifecycle wiring, permission persistence, native approval UI, and
+  a typed event producer. Then qualify permission, approval, lock/session,
+  event, installed-device, and value behavior and implement the actual wallet
+  screens, notification, backup, migration, and removal paths.
+  The current mobile successor is source/static-only, unrun, and unpushed, with
+  all four release gates false and the unavailable adapter hardwired. Until then
+  the Chromium host and both mobile scaffolds must continue to report
+  unavailable and avoid announcing a provider.
 - Retain the protected Developer ID identity checks, notarization evidence,
   stapling, and digest-verified release path proven for Chromium v0.5.5.
   Add equivalent authorized signing/provenance for Windows and qualify all

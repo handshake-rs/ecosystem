@@ -199,11 +199,19 @@ opt-in” rule.
   compared with canonical mobile.
 - Wallet-provider source adapters are fail-closed and deliberately inactive:
   Chromium's native host reports `walletUnavailable`, while Android/iOS are
-  source-hardwired unavailable and not controller-wired. Private wallet ABI v2
-  and hardened provider authority landed at wallet `5b540963` and remain in
-  current `b999b330`, and the engine
-  mints the opaque provider-authority/proxy context, but the browser pins consume
-  neither released boundary, so no provider method is executable end to end.
+  source-hardwired unavailable and not controller-wired. Mobile `d6df646d`
+  closes browser-owned twelve-summary approval-schema-2 and thirteen-event
+  projections around a future private native ABI 2 while website provider
+  schema/API remains 1. Its provider-installation, wallet-runtime, approval-
+  runtime, and value-runtime gates remain false; the unavailable adapter is
+  hardwired; and no controller, wallet runtime/FFI, generated binding, approval
+  UI, or event producer is wired. Private wallet ABI v2 and hardened provider
+  authority landed at wallet `5b540963` and remain in current `b999b330`, and
+  the engine mints the opaque provider-authority/proxy context, but neither
+  browser consumes a released wallet ABI artifact or the engine authority
+  boundary, so no provider method is executable end to end. The mobile
+  successor is unpushed and has source/static inspection only, with no build,
+  test, or install result.
   The current wallet also rejects legacy Shakedex seller/buyer session
   creation, discovery, and advancement until canonical V2, Denuo V2, and value
   runtime release gates are qualified; it does not reinterpret 0.1 proofs as

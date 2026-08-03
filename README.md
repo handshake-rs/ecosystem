@@ -97,8 +97,14 @@ scan's exact chain/mempool snapshot, authoritative-account CAS hardening, and
 receive-only Ethereum containment (`hns-wallet-rs` `b999b330`), retained
 provider authority across unrelated engine work (`hns-dane-engine`
 `6eb0174a`), and the closed ABI-v2 public approval boundary with every runtime
-gate false (Chromium `d58e1473`). These successors do not inherit earlier PASS
-evidence in this ledger. HNS value remains gated on a released canonical
+gate false (Chromium `d58e1473`). Dormant Android/iOS website-schema-1/private-
+native-ABI-2/public-approval-schema-2 projections now close twelve approval
+summaries and thirteen typed events at mobile `d6df646d`; that unpushed
+successor received source/static inspection only, all four release gates remain
+false, the unavailable adapter remains hardwired, and no controller, wallet
+runtime/FFI, generated binding, approval UI, or event producer is wired. These
+successors do not inherit earlier PASS evidence in this ledger. HNS value
+remains gated on a released canonical
 `hns-script` 0.2 fee-algebra helper; the new name scan is source-only key
 discovery, not ownership proof, and names remain watch-only. Ethereum
 synchronization, history, send, authoritative evidence, settlement, and

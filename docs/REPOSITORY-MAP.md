@@ -122,8 +122,18 @@ signed-device matrices remain open.
 - Bootstrap-generator CI `30401402868` exists but failed at `npm ci` because
   `@emnapi/runtime@1.11.3` is missing from `package-lock.json`.
 
-## Current mobile publication checkpoint
+## Current mobile source and publication checkpoints
 
+- Local mobile `main` `d6df646df0989b7ab25bc305c0ae80d2f08ce432`
+  is an unpushed source-only successor to remote-tracking `main`
+  `58996db0facef1bb6a7cb2876361d13dabc90c75`. It adds dormant Android/iOS
+  website-schema-1/private-native-ABI-2/public-approval-schema-2 projections
+  that close twelve approval summaries and thirteen typed events. No build,
+  test, simulator, device, or install gate ran; all four release gates remain
+  false, the unavailable adapter remains hardwired, and controller,
+  wallet-runtime/FFI/generated-binding, approval-UI, and event-producer wiring
+  is absent. This source/static-only successor does not alter the historical
+  release evidence below.
 - Android 0.5.5 version code 46 from source
   `d24f85158854abb8be4a7bb9e914aebe5e7e4679` is deployed to Google Play
   production.

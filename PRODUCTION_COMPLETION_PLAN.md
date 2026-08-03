@@ -52,8 +52,8 @@ types or silently substitute a backend.
 
 The current source tranche has committed the canonical fee/name/Shakedex
 boundary, authenticated node/wallet quote join, durable Kyoto supervisor,
-private wallet ABI, engine authority/proxy admission, and Chromium boundary on
-`main` without upgrading release status:
+private wallet ABI, engine authority/proxy admission, Chromium boundary, and
+mobile public-projection boundary on `main` without upgrading release status:
 
 | Repository | Cohesive result |
 | --- | --- |
@@ -62,6 +62,7 @@ private wallet ABI, engine authority/proxy admission, and Chromium boundary on
 | `hns-wallet-rs` | committed at `b999b330f17a0d7b300bff5e96b5ec2fbd294ec6`: prior private ABI, Bitcoin swap derivation, provider hardening, exact quote recovery, and fail-closed Shakedex gates remain; an encrypted bounded `HnsName` scan now shares the ordinary scan's exact chain/mempool snapshot and authoritative-account revision/CAS ordering rejects derivation rollback, while names remain watch-only; Ethereum advertises offline receive only, with synchronization/history/send/value/settlement/mainnet unavailable behind false gates and opaque permits; static-only and unqualified |
 | `hns-dane-engine` | committed at `6eb0174ae743e6bd01c516be7a534d94be94b4bd`: opaque exact-origin proxy authority survives unrelated admitted work while security-invalidating transitions revoke it; product consumption and qualification remain unavailable |
 | `hns-dane-browser-extension` | committed through `d58e1473e47bf9a50faafa5a05bba74756bdf314`: private ABI/service protocol 2 discovery with website schema 1, all 12 typed public approval variants, canonical IDs, private-authority containment, native-only events, and exact close/reject context; signed artifact, transport, runtime, engine authority, provider, and value gates remain false |
+| `hns-dane-browser-mobile` | committed at `d6df646df0989b7ab25bc305c0ae80d2f08ce432` on local `main` only: dormant Android/iOS website-schema-1/private-native-ABI-2/public-approval-schema-2 source closes twelve approval summaries and thirteen event shapes; source/static-only, unrun, and unpushed, with all four release gates false, a hardwired unavailable adapter, and no controller, wallet runtime/FFI, generated binding, approval UI, or event producer |
 
 The pre-existing Chromium insecure-delegation correction and the repository-
 root `dist/` ignore rule are committed separately at
@@ -116,9 +117,12 @@ After the active tranche:
 5. Demonstrate both directions of HNS/BTC and HNS/ETH success, abort, refund,
    restart, fee-spike, timeout, preimage, and reorganization behavior.
 6. Release and consume the engine-minted opaque proxy authority and private
-   wallet ABI v2 in Chromium/mobile, then run installed Chromium, signed Android/iOS, backup/
-   migration, corruption, privacy, sustained fuzz, performance, and independent
-   security gates.
+   wallet ABI v2 in Chromium/mobile; connect the dormant mobile projections
+   through reviewed generated `hns-wallet-ffi` JNI/C bindings, exact engine
+   authority, controller lifecycle, native approval UI, and a typed event
+   producer; then run installed Chromium, signed Android/iOS, backup/migration,
+   corruption, privacy, sustained fuzz, performance, and independent security
+   gates.
 7. Reconcile exact revisions, release artifacts, rollback plans, and every
    row of `QUALIFICATION_MATRIX.md` before enabling mainnet.
 

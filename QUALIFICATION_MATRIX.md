@@ -16,8 +16,8 @@ add OPEN/BID/REVEAL/REGISTER flows. Rows 27–38 are the wallet/marketplace
 supplement. Only directly demonstrated scope is credited.
 
 The 2026-08-02 production-continuation successors (`hns-rs` `4b989aab`, node
-`3d346e3d`, wallet `b999b330`, engine `6eb0174a`, and Chromium
-`d58e1473`) do not inherit the earlier exact-revision PASS evidence and
+`3d346e3d`, wallet `b999b330`, engine `6eb0174a`, Chromium `d58e1473`, and
+mobile `d6df646d`) do not inherit the earlier exact-revision PASS evidence and
 therefore do not upgrade any row. Their fee/name/Shakedex primitives, exact
 node fee quotes, private wallet ABI, provider hardening, Kyoto supervisor,
 encrypted same-snapshot name scan, authoritative-account CAS hardening,
@@ -93,5 +93,5 @@ program. They use the same evidence vocabulary.
 | 34 | HNS/ETH success, restart, finality rollback, and refund | NOT RUN |
 | 35 | price quorum, market intent/fill, Denuo board, griefing limits, and browser approval | PARTIAL: bounded canonical protocol and local reservation/session units exist; governance, live relay, integration, and adversarial board suite not run |
 | 36 | Chromium installed extension/provider/native-host/demo dapp | PARTIAL: the source bridge, approval/event lifecycle, and 25 focused JavaScript tests pass at earlier exact revisions; current `d58e1473` statically aligns discovery to private ABI/service protocol 2 and closes the 12-kind public projection/event boundary, but it ran no gate, the native host still reports unavailable, every launch/provider/value gate is false, and no installed-browser engine/ABI E2E exists |
-| 37 | Android/iOS signed-device wallet/provider screens and secure storage | PARTIAL: Android provider/key-store sources and tests compile in the focused Gradle path and iOS project references are present; adapters are source-hardwired unavailable, screens/controller/FFI wiring do not exist, Swift/Xcode was unavailable, and no signed-device run occurred |
+| 37 | Android/iOS signed-device wallet/provider screens and secure storage | PARTIAL: at earlier exact mobile `58996db0`, Android provider/key-store sources and tests compiled in the focused Gradle path and iOS project references were present; Swift/Xcode was unavailable. Current `d6df646d` adds dormant closed twelve-kind approval and thirteen-event projections, but this successor ran no build or test, all four release gates remain false, the unavailable adapter remains hardwired, and controller, wallet-runtime/FFI/generated-binding, native approval UI/event production, and signed-device execution remain absent |
 | 38 | Bitcoin disk/bandwidth/startup/mobile-memory benchmark matrix | NOT RUN: no values estimated |
