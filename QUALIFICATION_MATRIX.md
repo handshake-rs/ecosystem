@@ -16,15 +16,17 @@ add OPEN/BID/REVEAL/REGISTER flows. Rows 27–38 are the wallet/marketplace
 supplement. Only directly demonstrated scope is credited.
 
 The 2026-08-02 production-continuation successors (`hns-rs` `4b989aab`, node
-`3d346e3d`, wallet `5c5a13d4`, engine `6eb0174a`, and Chromium
+`3d346e3d`, wallet `b999b330`, engine `6eb0174a`, and Chromium
 `d58e1473`) do not inherit the earlier exact-revision PASS evidence and
 therefore do not upgrade any row. Their fee/name/Shakedex primitives, exact
 node fee quotes, private wallet ABI, provider hardening, Kyoto supervisor,
-proxy admissions, recovery, and tracking code remain represented by the same
-`PARTIAL`/`NOT RUN` topology outcomes until one consolidated gate and the
-applicable multi-process or installed-product demonstrations run. Exact node
-fee-quote adoption also remains unable to authorize value until released
-`hns-script` 0.2 canonical fee algebra is integrated and qualified.
+encrypted same-snapshot name scan, authoritative-account CAS hardening,
+receive-only Ethereum containment, proxy admissions, recovery, and tracking
+code remain represented by the same `PARTIAL`/`NOT RUN` topology outcomes until
+one consolidated gate and the applicable multi-process or installed-product
+demonstrations run. Exact node fee-quote adoption also remains unable to
+authorize value until released `hns-script` 0.2 canonical fee algebra is
+integrated and qualified.
 
 The 2026-07-25 consent clarification separates transport from output
 authority: opaque P2P relay capacity is default-on with an opt-out policy,
@@ -81,12 +83,12 @@ program. They use the same evidence vocabulary.
 
 | # | Required demonstration | Status |
 | ---: | --- | --- |
-| 27 | standalone wallet locked build, Clippy, tests, docs, dependency policy, and contract reproducibility | PASS at earlier exact wallet `8aa82dd9`: local `hns-wallet-rs/scripts/check.sh`; 34 Rust tests, warning-denied Clippy/docs, deterministic solc artifact comparison, and zero npm audit vulnerabilities. Current `5c5a13d4` has not run this gate |
-| 28 | encrypted store, deterministic restore/key separation, lock, migration, workflow CAS, and replay protection | PARTIAL: HNS/ETH separation and focused store units pass at the earlier baseline; current source adds dedicated Bitcoin swap-key derivation, zeroizing private-ABI transport buffers, and atomic approval/workflow/reservation authorization around exact signed bytes, but complete recovery vectors, platform key wrapping, entity-complete migration, backup/rollback, and device persistence remain unavailable or unrun |
+| 27 | standalone wallet locked build, Clippy, tests, docs, dependency policy, and contract reproducibility | PASS at earlier exact wallet `8aa82dd9`: local `hns-wallet-rs/scripts/check.sh`; 34 Rust tests, warning-denied Clippy/docs, deterministic solc artifact comparison, and zero npm audit vulnerabilities. Current `b999b330` has not run this gate |
+| 28 | encrypted store, deterministic restore/key separation, lock, migration, workflow CAS, and replay protection | PARTIAL: HNS/ETH separation and focused store units pass at the earlier baseline; current source adds dedicated Bitcoin swap-key derivation, zeroizing private-ABI transport buffers, atomic approval/workflow/reservation authorization around exact signed bytes, a separately encrypted bounded `HnsName` scan under the ordinary scan's exact chain/mempool snapshot, and authoritative-account revision/CAS rollback rejection, but the current source has not run its gate and complete recovery vectors, platform key wrapping, entity-complete migration, backup/rollback, and device persistence remain unavailable or unrun |
 | 29 | hostile Provider API origin/permission/navigation/approval/rate/forbidden-method matrix | PARTIAL: Rust core negatives and 25 focused Chromium adapter tests pass at earlier exact revisions; current source adds private ABI v2 and namespace-plus-origin permission scoping, monotonic time checks, exact approval revalidation, lock/session rotation, and permission-bound event invalidation, but this source has not run its gate and no browser dispatches a wallet method through the live engine/ABI join |
 | 30 | complete fixed-price Shakedex seller/buyer/recovery lifecycle over Denuo | PARTIAL: earlier canonical proof/state primitives and recovery ordering are tested; current unqualified `hns-rs` source adds strict TRANSFER/FINALIZE construction and listing-independent recovery from an exact FINALIZE coin, while current wallet source rejects every legacy 0.1 session entry/transition and live transaction, relay, restart, reorg, and regtest execution remain unrun |
 | 31 | Kyoto direct-P2P restore/send/history/HTLC/reorg qualification | PARTIAL: actual Kyoto/BDK construction and HTLC units pass only at the earlier baseline; durable supervisor/history/broadcast journals and dedicated swap-key derivation now exist as later source, while pinned Kyoto header/filter/peer persistence, signed settlement, safe archival, P2P/regtest adversarial cases, and resource suites remain unavailable or unrun |
-| 32 | Helios native-ETH wallet plus immutable contract qualification | PARTIAL: role-separated typed signing, fail-closed evidence policy, exact contract artifact, and Rust negatives pass; no embedded Helios producer, complete balance/history runtime, local-chain execution, rollback demonstration, approved deployment, or audit exists |
+| 32 | Helios native-ETH wallet plus immutable contract qualification | PARTIAL: role-separated typed primitives, fail-closed evidence policy, exact contract artifact, and Rust negatives pass only at the earlier exact baseline; current unqualified source advertises offline receive derivation only, keeps synchronization/history/send/value/settlement/mainnet false or unavailable, requires opaque unissued Helios/value/settlement permits, and contains exact-fee/role/address-bound signing plus a zeroizing non-cloneable/non-serializable signed payload with no raw accessor and redacted diagnostics; no current gate, embedded Helios producer, balance/history runtime, controlled broadcast/recovery, local-chain execution, rollback demonstration, approved deployment, or audit exists |
 | 33 | HNS/BTC success, restart, reorg, and refund | NOT RUN |
 | 34 | HNS/ETH success, restart, finality rollback, and refund | NOT RUN |
 | 35 | price quorum, market intent/fill, Denuo board, griefing limits, and browser approval | PARTIAL: bounded canonical protocol and local reservation/session units exist; governance, live relay, integration, and adversarial board suite not run |

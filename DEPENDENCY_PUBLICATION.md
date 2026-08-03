@@ -40,10 +40,11 @@ their broader shared-engine consolidation is complete.
   light-client boundary, but it may not embed node consensus/P2P or browser
   authority/UI code. The authenticated node RPC v1 plus fee-quote contract is
   frozen at node `5ed38d15`, contained in current node `3d346e3d`, and consumed
-  by wallet `5b540963` and retained at current `5c5a13d4`; it is deliberately
+  by wallet `5b540963` and retained at current `b999b330`; it is deliberately
   not a Cargo dependency and remains unqualified. The browser join is not a
-  compiled dependency, and Helios is selected policy rather than an embedded
-  runtime.
+  compiled dependency. Helios is selected policy rather than an embedded
+  runtime, and caller-serializable evidence cannot replace the opaque provenance
+  permit that only a future embedded verifier may mint.
 - `hns-dane-engine` exposes stable platform ABIs; TypeScript/Kotlin/Swift do not
   reimplement consensus, DNSSEC, DANE, HPKE, or P2P protocols.
 - `hns-icann-dane` owns TLSA service-owner derivation and the typed ICANN
@@ -93,9 +94,13 @@ The initial `hns-wallet-rs` workspace consumes the existing published
 `hns-rs` 0.1.0 primitives exactly. The new marketplace protocol and Denuo V2
 types are not yet published, so downstream live board integration remains
 disabled rather than using a sibling path or copied wire implementation.
-The wallet repository itself has no configured remote and publishes no crate
-or ABI artifact. Private ABI v2 exists only as source; browser provider
-scaffolds therefore remain unavailable.
+The wallet repository has configured `origin`
+`https://github.com/denuoweb/hns-wallet-rs.git`, whose remote-tracking `main` is
+`1206a8ab550cf67ff43dc162091e371946278641`. Current local `main`
+`b999b330f17a0d7b300bff5e96b5ec2fbd294ec6` is ahead by six commits,
+unpushed, and has no push authorization. It publishes no crate or ABI artifact.
+Private ABI v2 exists only as source; browser provider scaffolds therefore
+remain unavailable.
 
 ## Release evidence required
 
@@ -142,11 +147,15 @@ adds opaque provider authority, bounded proxy admissions, and retention across
 unrelated admitted work. It is unqualified, unpushed, and not a registry
 release.
 
-`hns-wallet-rs` remains an independent local repository without a configured
-remote. Latest local source head
-`5c5a13d4816be620475f6aa714f868449e964678` has private ABI v2 source and
-explicit false canonical-Shakedex/Denuo/value runtime gates but no
-published crate, signed browser artifact, or current qualification result.
+`hns-wallet-rs` remains an independent repository with configured `origin`
+`https://github.com/denuoweb/hns-wallet-rs.git` at remote-tracking `main`
+`1206a8ab550cf67ff43dc162091e371946278641`. Latest local source head
+`b999b330f17a0d7b300bff5e96b5ec2fbd294ec6` is ahead by six commits,
+unpushed, and has no push authorization. It adds an encrypted same-snapshot
+`HnsName` scan and authoritative-account CAS hardening plus receive-only
+Ethereum containment while retaining the private ABI and false Shakedex/value
+gates. It has no published crate, signed browser artifact, or current
+qualification result.
 
 `hns-node-rs` local and remote-tracking `main` are
 `3d346e3dadc716b5c367eee050308e71a0693a64`; tag `v0.3.4` points to

@@ -33,24 +33,32 @@ This ledger is deliberately release-blocking.
   sibling path or copied wire types.
 - Qualify the source-complete HNS transaction/reconciliation runtime and
   concrete authenticated node adapter at
-  `5c5a13d4816be620475f6aa714f868449e964678`, including
+  `b999b330f17a0d7b300bff5e96b5ec2fbd294ec6`, including the separate encrypted
+  bounded HNS-coin/name-role scans under one exact chain/mempool snapshot, the
+  authoritative-account revision/CAS ordering and derivation-high-water
+  rollback rejection, plus
   atomic prepared-workflow recovery and hostile HTTP/JSON, stale epoch/mempool,
   pruned payload, coinbase, fee-quote, restart, and reorg cases. Exact
   final-signed node quotes are now adopted in source, but value must remain
   disabled until the wallet consumes the released `hns-script` 0.2 canonical
   sigop-adjusted fee algebra and independently validates the quoted minimum.
-- Publish and consume the canonical NameState/resource codec, add a separately
-  persisted bounded `HnsName` scan, platform-backed database-key wrapping, and
-  complete transfer/finalize/reorg integration before enabling ownership
-  actions. The current name path remains watch-only.
+- Publish and consume the canonical NameState/resource codec, qualify the
+  separately persisted bounded `HnsName` scan, add platform-backed database-key
+  wrapping, and complete transfer/finalize/reorg integration before enabling
+  ownership actions. The scan is source-only key discovery; the current name
+  path remains watch-only.
 - Complete and register the remaining Bitcoin and Ethereum runtime/settlement
   adapters. HNS now has a source-level `ChainModule`/`AtomicSettlement` join,
   but its value permit remains unavailable; the Bitcoin supervisor is not yet
-  signed-settlement complete and Ethereum still lacks its evidence producer.
+  signed-settlement complete. Ethereum advertises offline receive derivation
+  only: synchronization/history/send/value/settlement/mainnet remain false or
+  unavailable, and the opaque Helios provenance/value/settlement permits have
+  no current issuer.
 - Complete and independently review the derivation/recovery specification:
-  retain HNS and Ethereum role separation, qualify the new dedicated Bitcoin
-  atomic-swap branch, bind metadata-encryption key recovery, and publish
-  deterministic vectors for every required role.
+  qualify the new HNS name scan and its role/identifier separation, retain
+  Ethereum role separation, qualify the dedicated Bitcoin atomic-swap branch,
+  bind metadata-encryption key recovery, and publish deterministic vectors for
+  every required role.
 - Adopt the canonical strict TRANSFER/FINALIZE and listing-independent recovery
   primitives from `hns-rs` in the wallet, then complete fixed-price Shakedex
   discovery, preview, signed funding/fulfillment/finalization, recovery,
@@ -67,10 +75,13 @@ This ledger is deliberately release-blocking.
   inconsistent-peer, false-positive, spend, signed HTLC, reorg, restart,
   broadcast-retry, trusted-time, and resource suites. No Esplora/Electrum/RPC
   fallback may be added.
-- Embed and audit the selected Helios proof/persistence adapter; run the
+- Embed and audit the selected Helios proof/persistence adapter and the private
+  issuer for its opaque evidence-provenance permit; add synchronization,
+  history, nonce/fee discovery, controlled broadcast/recovery for the opaque
+  redacted signed-payload boundary, and restart/reorg handling. Run the
   deterministic native-ETH contract on a local development chain through
-  lock/redeem/refund/replay/authorization/reentrancy/event/rollback cases; bind
-  any approved address to exact chain ID and deployed runtime hash.
+  lock/redeem/refund/replay/authorization/reentrancy/event/rollback cases, and
+  bind any approved address to exact chain ID and deployed runtime hash.
 - Demonstrate HNS/BTC and HNS/ETH success/refund/restart/reorg flows before
   advertising either pair. Mainnet settlement remains disabled.
 - Complete reporter governance, quorum/outlier/circuit-breaker policy,

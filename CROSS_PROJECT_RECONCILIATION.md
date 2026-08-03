@@ -146,20 +146,26 @@ opt-in” rule.
   a source-complete HNS `ChainModule`/`AtomicSettlement` runtime and strict
   node RPC v1 adapter, a durable bounded Kyoto/BDK supervisor, and a narrow
   Ethereum contract/evidence boundary. Exact final-signed node fee quotes are
-  adopted at `5b540963` and retained at current `5c5a13d4`, but HNS value
+  adopted at `5b540963` and retained at current `b999b330`, but HNS value
   remains hard-disabled until released canonical `hns-script` 0.2 fee algebra
-  permits independent wallet validation;
-  names remain watch-only until the unpublished canonical codec is released and
-  a dedicated name-role scan exists. Bitcoin still lacks durable Kyoto
-  header/filter/peer state, safe archival, swap-key qualification, and signed settlement;
-  Ethereum lacks the Helios evidence producer. Released marketplace protocol
-  consumption, live browser ABI integration, real-chain restart/reorg suites,
-  resource benchmarks, and independent security review remain blockers.
+  permits independent wallet validation. The current source separately persists
+  a bounded encrypted `HnsName` scan under the ordinary scan's exact chain/
+  mempool snapshot and reloads the authoritative account/CAS revision before
+  reconciliation; derivation rollback fails closed. That scan discovers keys,
+  not canonical ownership, so names remain watch-only until the unpublished
+  codec is released and consumed. Bitcoin still lacks durable Kyoto header/
+  filter/peer state, safe archival, swap-key qualification, and signed
+  settlement. Ethereum advertises offline receive only: synchronization,
+  history, send, value, settlement, and mainnet remain false or unavailable;
+  the opaque Helios provenance permit has no issuer and the opaque/redacted raw
+  signing boundary has no controlled broadcaster. Released marketplace
+  protocol consumption, live browser ABI integration, real-chain restart/reorg
+  suites, resource benchmarks, and independent security review remain blockers.
 - The node's confirmed/mempool wallet indexes, Shakedex/HTLC/preimage tracker,
   typed backend, authenticated loopback RPC v1, and exact transaction fee quote
   are frozen at contract commit `5ed38d15` and contained in current
   `3d346e3d`; the strict wallet consumer landed at `5b540963` and remains in
-  current `5c5a13d4`. The current join has no consolidated qualification
+  current `b999b330`. The current join has no consolidated qualification
   result. The five-role marketplace relay is a bounded cache/policy core only,
   Denuo V2 wire advertisement is disabled until canonical V2 adoption, and
   registry retirement/capacity reclamation remains absent.
@@ -195,7 +201,7 @@ opt-in” rule.
   Chromium's native host reports `walletUnavailable`, while Android/iOS are
   source-hardwired unavailable and not controller-wired. Private wallet ABI v2
   and hardened provider authority landed at wallet `5b540963` and remain in
-  current `5c5a13d4`, and the engine
+  current `b999b330`, and the engine
   mints the opaque provider-authority/proxy context, but the browser pins consume
   neither released boundary, so no provider method is executable end to end.
   The current wallet also rejects legacy Shakedex seller/buyer session

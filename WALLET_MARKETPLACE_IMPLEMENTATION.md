@@ -38,8 +38,12 @@ Modified repositories:
 
 New repository: `hns-wallet-rs`, an independent workspace on `main`. It has
 its own lockfile, licenses, gate, release boundary, and no committed sibling
-path dependency, configured Git remote, or remote publication. Its eleven
-crates are:
+path dependency. Its configured `origin` is
+`https://github.com/denuoweb/hns-wallet-rs.git` at remote-tracking `main`
+`1206a8ab550cf67ff43dc162091e371946278641`; local `main`
+`b999b330f17a0d7b300bff5e96b5ec2fbd294ec6` is ahead by six commits,
+and those commits are unpushed with no push authorization. Its twelve crates
+are:
 
 1. `hns-wallet-types`
 2. `hns-wallet-store`
@@ -51,11 +55,12 @@ crates are:
 8. `hns-wallet-bitcoin-kyoto`
 9. `hns-wallet-ethereum`
 10. `hns-wallet-ffi`
-11. `hns-wallet-testkit`
+11. `hns-wallet-service`
+12. `hns-wallet-testkit`
 
 Three additional crates were added at their canonical repository boundaries:
 `hns-marketplace-protocol` in `hns-rs`, and `hns-wallet-index` plus
-`hns-denuo-market-relay` in `hns-node-rs`. In total this update adds fourteen
+`hns-denuo-market-relay` in `hns-node-rs`. In total this update adds fifteen
 crates across the three repositories.
 
 To avoid a second set of drifting documents, the requested documentation
@@ -89,11 +94,11 @@ complete executable product join.
 | canonical marketplace/name protocols | feature source at `81f2df26` adds HSD-compatible fee algebra, strict TRANSFER/FINALIZE construction, canonical empty offer inventory, and listing-independent Shakedex recovery; current descendant `4b989aab` adds self-contained public packages and complete listing/cancellation and recovery-FINALIZE vectors; unpublished and unqualified |
 | node confirmed indexes/backend | current `main` `3d346e3d` includes authenticated RPC v1 and snapshot-bound exact final-transaction fee quotes; wallet indexes remain disabled by default and the current head is not qualified by this ledger |
 | node marketplace relay | implemented and locally tested cache/policy core; live V2 wire unavailable |
-| encrypted store/provider policy | schema-v3/runtime hardening, private ABI v2, strict provider authority lifecycle, concrete HNS node adapter, Kyoto supervisor, and explicit false Shakedex V2/Denuo/value gates at `5c5a13d4`; unqualified |
-| usable HNS/name wallet | HNS source runtime and concrete node join implemented but value-disabled; names watch-only; browser product unavailable |
+| encrypted store/provider policy | schema-v3/runtime hardening, private ABI v2, strict provider authority lifecycle, concrete HNS node adapter, Kyoto supervisor, false Shakedex/value gates, encrypted same-snapshot `HnsName` discovery, and authoritative-account CAS hardening at `b999b330`; static-only and unqualified |
+| usable HNS/name wallet | HNS source runtime and concrete node join implemented but value-disabled; bounded name-key discovery exists as unqualified source, but names remain watch-only and the browser product is unavailable |
 | fixed-price Shakedex | canonical transaction and listing-independent recovery primitives exist; wallet lifecycle remains disabled and unavailable |
 | Kyoto Bitcoin wallet/settlement | durable bounded supervisor and dedicated swap derivation source implemented; value disabled pending Kyoto persistence, signed settlement, archival, and qualification |
-| native-ETH wallet/contract | narrow source foundation; disabled; verified synchronization/deployment unavailable |
+| native-ETH wallet/contract | deterministic offline receive derivation plus contained typed source; synchronization/history/send/value/settlement/mainnet false or unavailable; verified synchronization/deployment unavailable |
 | HNS/BTC and HNS/ETH | disabled; end-to-end settlement unavailable |
 | engine provider/proxy authority | opaque exact-origin proxy admission source at `6eb0174a` retains authority across unrelated work and invalidates on security transitions; product consumption and qualification unavailable |
 | Chromium provider | current source `d58e1473` closes the private-ABI-v2/public-schema-v1 approval and event boundary; injection remains disabled by unavailable signed transport/projection/engine-authority joins |
@@ -220,7 +225,7 @@ protocol pin, safe registry retirement/capacity reclamation, exact image and
 multi-process qualification, and final release gate remain unavailable. The
 concrete wallet adapter now exists as unqualified source at
 `5b5409630045b19f81821951da51a9a1f7e1c9e5` and is retained at current
-`5c5a13d4816be620475f6aa714f868449e964678`.
+`b999b330f17a0d7b300bff5e96b5ec2fbd294ec6`.
 
 Wallet-index profile V1 is checksummed and fails closed on missing, corrupt,
 or partially built components. There is no online backfill: an existing chain
@@ -305,7 +310,7 @@ time rollback fails closed, wallet lock rotates service authority, and
 revocation/expiry invalidates event channels. Send prompts bind exact method,
 module, chain, amount asset, and fee asset. The checked-in subprocess advertises
 framing foundations only—not provider dispatch or value—and this source has not
-run a consolidated gate. Current `5c5a13d4816be620475f6aa714f868449e964678`
+run a consolidated gate. Current `b999b330f17a0d7b300bff5e96b5ec2fbd294ec6`
 retains that boundary and additionally prevents the legacy Shakedex 0.1
 journal from creating, discovering, or advancing sessions until canonical V2,
 Denuo V2, and value-runtime release gates are qualified.
@@ -340,44 +345,58 @@ Xcode, simulator, or signed-device wallet result is claimed.
 
 ## Wallet, names, Shakedex, and market board
 
-The wallet continuation at `5c5a13d4816be620475f6aa714f868449e964678` has transactional SQLite schema
-V3, bounded Argon2id passphrase input, XChaCha20-Poly1305 typed entity,
-workflow, permission, approval, and replay encryption with metadata-bound
-associated data, monotonic permission tombstones, and bounded heterogeneous
-compare-and-swap batches. HNS preparation authenticates current revisions and
-atomically commits account change-index advancement, its prepared workflow,
-and all input reservations; deterministic retries return the already-durable
-artifact. Legacy populated schema-V1 entity tables fail closed pending an
-explicit import tool. It remains record encryption rather than full-file
-encryption. Platform key wrapping, non-Linux secure persistent opening,
-backup/rollback qualification, and device persistence remain incomplete.
+The wallet continuation at `b999b330f17a0d7b300bff5e96b5ec2fbd294ec6`
+has transactional SQLite schema V3, bounded Argon2id passphrase input,
+XChaCha20-Poly1305 typed entity, workflow, permission, approval, and replay
+encryption with metadata-bound associated data, monotonic permission
+tombstones, and bounded heterogeneous compare-and-swap batches. HNS preparation
+authenticates current revisions and atomically commits account change-index
+advancement, its prepared workflow, and all input reservations; deterministic
+retries return the already-durable artifact. Legacy populated schema-V1 entity
+tables fail closed pending an explicit import tool. It remains record encryption
+rather than full-file encryption. Platform key wrapping, non-Linux secure
+persistent opening, backup/rollback qualification, and device persistence
+remain incomplete.
 
 HNS create/restore, encrypted seed storage, deterministic role-separated key
 derivation, receive addresses, bounded indexed confirmed/mempool restoration,
-history/reorg reconciliation, fee/send construction and signing, durable
-input reservations, typed node evidence, and HNS HTLC settlement construction
-exist in source. A concrete synchronous adapter now consumes authenticated
-loopback node RPC v1 contract commit `5ed38d15` with strict bounded HTTP/JSON, exact
-chain-epoch/tip and mempool process/generation binding, canonical transaction
-decoding, active-block rechecks for inclusions/spenders, and fail-closed
-coinbase handling. Ordinary send and exposed settlement paths now quote the
-exact final signed bytes, atomically bind approval/workflow/reservations to the
-persisted quote, and durably record `RequiresRebroadcast` plus a current
-re-quote before submitting the same bytes. One stale/unavailable quote permits
-one reconciliation and one retry, with no polling loop. Value remains
-hard-disabled because released `hns-script` 0.1 lacks the canonical
-sigop-adjusted fee algebra required for an independent wallet minimum check;
-the source does not copy the node formula. Name imports preserve separate
-exact-tip proof and current-state views and retain exact NameState bytes, but
-remain explicitly watch-only. Canonical codec and TRANSFER/FINALIZE helpers
-exist only in unpublished `hns-rs` `4b989aab`, and no bounded dedicated
-`HnsName` derivation scan establishes ownership. Transfer/finalize actions and
-browser UI are unavailable. HNS has separate coin, name, Shakedex,
-atomic-swap, identity, and dapp session derivation domains, and Ethereum has
-ordinary/swap branches. The Bitcoin crate now derives a separate deterministic
-atomic-swap branch with bounded descriptors and role-aware recovery, but it is
-unqualified. A complete, reviewed derivation specification and cross-module
-deterministic recovery-vector set are still missing.
+history/reorg reconciliation, fee/send construction and signing, durable input
+reservations, typed node evidence, and HNS HTLC settlement construction exist in
+source. A concrete synchronous adapter consumes authenticated loopback node RPC
+v1 contract commit `5ed38d15` with strict bounded HTTP/JSON, exact chain-epoch/
+tip and mempool process/generation binding, canonical transaction decoding,
+active-block rechecks for inclusions/spenders, and fail-closed coinbase handling.
+The ordinary HNS-coin branches and domain-separated `HnsName` branch now run as
+separate bounded queries under the same exact chain/mempool snapshot. Their
+encrypted address and monotonic scan state are persisted separately by role;
+name-role outputs remain in history but are excluded from ordinary balance,
+input selection, reservation, and spendability.
+
+Before scanning, reconciliation reloads the full authoritative encrypted account
+and CAS revision while holding the store mutex. Account/configuration or
+revision inconsistency and receive/change/name derivation-high-water rollback
+fail closed; the authoritative revision remains ordered through persistence and
+cache installation so a stale scan clone cannot overwrite concurrently prepared
+state. This is source-only hardening and has not run the consolidated gate.
+Ordinary send and exposed settlement paths still quote the exact final signed
+bytes, atomically bind approval/workflow/reservations to the persisted quote,
+and durably record `RequiresRebroadcast` plus a current re-quote before
+submitting the same bytes. One stale/unavailable quote permits one reconciliation
+and one retry, with no polling loop.
+
+HNS value remains hard-disabled because released `hns-script` 0.1 lacks the
+canonical sigop-adjusted fee algebra required for an independent wallet minimum
+check; the source does not copy the node formula. Name imports preserve separate
+exact-tip proof and current-state views and retain exact NameState bytes. The
+new scan establishes key discovery only, not ownership: canonical codec and
+TRANSFER/FINALIZE helpers exist only in unpublished `hns-rs` `4b989aab`, names
+remain watch-only, and transfer/finalize actions and browser UI are unavailable.
+HNS has separate coin, name, Shakedex, atomic-swap, identity, and dapp-session
+derivation domains, and Ethereum has ordinary/swap branches. The Bitcoin crate
+derives a separate deterministic atomic-swap branch with bounded descriptors
+and role-aware recovery, but it is unqualified. A complete, reviewed derivation
+specification and cross-module deterministic recovery-vector set are still
+missing.
 
 Fixed-price Shakedex seller, buyer, and recovery state machines persist before
 irreversible steps and consume canonical `hns-swap` proof decoding. Ordering
@@ -409,10 +428,12 @@ advertised.
 `user_version=0` and encrypts active typed entity/provider state. Newer schema
 versions fail closed; populated legacy entity tables require an explicit
 import rather than silent conversion. There is still no historical production-
-wallet upgrade corpus. Atomic HNS prepare and exact persisted-artifact retry
-now exist, and the bounded Kyoto subsystem supervisor has its own durable
-journal. Backup/rollback qualification, database-key platform wrapping, and
-the complete multi-chain/product startup coordinator remain unavailable.
+wallet upgrade corpus. Atomic HNS prepare, exact persisted-artifact retry, and
+authoritative-account CAS ordering for the encrypted coin/name-role scan now
+exist as unqualified source, and the bounded Kyoto subsystem supervisor has its
+own durable journal. Backup/rollback qualification, database-key platform
+wrapping, and the complete multi-chain/product startup coordinator remain
+unavailable.
 
 The node's existing store schemas and the separate checksummed
 `wallet-index-profile/v1` record are not silently rewritten into a complete
@@ -435,7 +456,7 @@ Electrum, hosted indexer, or production Bitcoin Core RPC dependency exists.
 The pinned `bip157` release ignores `data_dir` and does not expose durable
 header/filter/peer state, so this is not production persistence. A dedicated
 deterministic swap-key branch landed at `5b540963` and remains in current
-`5c5a13d4`, but it has not been qualified. Safe record archival, signed HTLC
+`b999b330`, but it has not been qualified. Safe record archival, signed HTLC
 spends/settlement, full
 invalid-PoW/filter/peer fixtures, regtest settlement, trusted-time policy, and
 mobile/resource qualification are missing; Bitcoin value paths remain hard-
@@ -446,22 +467,43 @@ install, new wallet, one-year restore, five-year restore, genesis restore,
 time to usable balance, scan completion, persistent disk, bandwidth, and peak
 mobile memory. No universal size is claimed.
 
-Ethereum is native-ETH-only. It has separated ordinary/swap derivation,
-bounded EIP-1559 native and approved-HTLC signing, chain/code/state/receipt/
-event/finality policy, and a hard mainnet guard. Helios is the single selected
-model, pinned for evaluation at revision
-`43a8c9f3cdda41a6f383c4db41d9a83f102638b1`: a weak-subjectivity checkpoint
-and sync-committee/finality path anchors verified execution evidence, while
-configured providers remain availability, censorship, omission, privacy, and
-startup dependencies. The crate does not embed the Helios runtime that would
-produce unforgeable proofs, so ordinary JSON-RPC claims are insufficient and
-Ethereum synchronization is incomplete.
+Ethereum is native-ETH-only. Current `b999b330` capability discovery advertises
+deterministic offline account/receive derivation only. The immutable
+synchronization, value, settlement, and mainnet qualification constants are
+false; history, send, authoritative evidence, and atomic settlement are
+therefore unavailable. Separated ordinary/swap accounts, bounded typed
+EIP-1559/native-HTLC transactions, structural evidence models, and the contract
+remain dormant source boundaries rather than an executable runtime.
+
+Helios is the single selected model, pinned for evaluation at revision
+`43a8c9f3cdda41a6f383c4db41d9a83f102638b1`. A future embedded verifier must
+start from a reviewed weak-subjectivity checkpoint and bind sync-committee/
+finality plus execution proofs. Current serializable execution observations and
+their verification booleans are structural data, not proof provenance. A
+private-field opaque `HeliosEvidenceRuntimePermit`, with no public acquisition
+path or current issuer, is required before those observations may produce an
+authoritative verified lock. The crate does not embed that Helios runtime;
+configured providers would also remain availability, censorship, omission,
+privacy, and startup dependencies.
+
+Native-transfer and HTLC constructors require opaque value/settlement permits
+whose public acquisition paths fail closed. Signing additionally requires an
+exact immutable transaction to be fee-bound, a permit matching the operation
+class, and a secret whose derivation role and address match the required signer.
+Chain ID 1 is rejected regardless of the legacy caller policy flag. A resulting
+signed payload is zeroized on drop and deliberately has no public raw-byte
+accessor, serializer, clone implementation, or byte-revealing `Debug`; only its
+type, length, and hash are exposed. Because no permit can currently be issued
+and no controlled broadcaster exists, this is an opaque/redacted containment
+boundary rather than a raw-signing API or available value path.
 
 Ethereum database size, startup latency, and time to a usable verified balance
 were not measured because there is no embedded Helios runtime or persistent
-proof database. A future runtime must start from a reviewed weak-subjectivity
-checkpoint, remain unavailable until fresh verified evidence is present, and
-record those measurements without claiming a universal fixed size.
+proof database. No synchronization, balance/history, nonce/fee discovery,
+broadcast, persistence/recovery, redeem/refund proof verification, or rollback
+runtime exists. A future runtime must remain unavailable until fresh verified
+evidence is present and record those measurements without claiming a universal
+fixed size.
 
 `NativeEthHtlc.sol` is compiled deterministically with Solidity 0.8.35,
 optimizer runs 200, Prague EVM, and metadata CBOR disabled. It has only
@@ -469,23 +511,26 @@ optimizer runs 200, Prague EVM, and metadata CBOR disabled. It has only
 pause, token, arbitrary call, fee withdrawal, or mutable configuration. No
 deployment address is approved. A future manifest must bind chain ID,
 contract address/block, exact runtime Keccak-256 hash, compiler artifact, and
-qualification evidence. The wallet hard-rejects chain ID 1 until a reviewed
-source change follows proof persistence, local-chain tests, bytecode/contract
-audit, and finality/reorg qualification.
+qualification evidence. The settlement permit has no current issuer, so the
+artifact does not expose a wallet lock/redeem/refund path. The wallet
+hard-rejects chain ID 1 until a reviewed source change follows proof
+persistence, local-chain tests, bytecode/contract audit, and finality/reorg
+qualification.
 
 HNS/BTC and HNS/ETH share a persisted evidence-only state machine and an
 asymmetric timeout model: the intent publisher funds its offered-asset chain
 first with the later refund deadline; the shorter second lock is funded only
 after sufficient first-chain evidence. Neither pair is complete or enabled.
 HNS/BTC still lacks signed integrated chain execution; HNS/ETH additionally
-lacks embedded Helios evidence and an approved/audited deployment. No success,
+lacks embedded Helios proof provenance, an available settlement permit,
+controlled broadcast/recovery, and an approved/audited deployment. No success,
 refund, restart, or reorg demonstration was run for either pair.
 
 ## Qualification results
 
 All PASS evidence below belongs to the exact earlier revisions named in the
 final table. It did not transfer to feature landing `81f2df26` or current
-descendant `4b989aab`, nor to `3d346e3d`, `5c5a13d4`, `6eb0174a`, or
+descendant `4b989aab`, nor to `3d346e3d`, `b999b330`, `6eb0174a`, or
 `d58e1473`. This report
 records only the per-row provenance and static review stated in the
 continuation table; it does not infer a consolidated gate result.
@@ -601,7 +646,7 @@ Source-only production-continuation revisions after those exact gates:
 | --- | --- | --- |
 | `hns-rs` | `4b989aabc132e7e79b8fd57a10f2465073faf588` | canonical HSD fee policy and strict Shakedex name transitions/recovery retained from `81f2df2`; self-contained package assets, complete listing/cancellation and recovery-FINALIZE vectors, fail-closed source tests, and release hygiene committed; static/diff review only in this tranche; shared 0.2 packages remain unpublished and unqualified |
 | `hns-node-rs` | `3d346e3dadc716b5c367eee050308e71a0693a64` | local and remote-tracking `main`; exact fee quotes and resolver-sidecar source are present, tag `v0.3.4` points to `40b456fa0772729542118a69f27edc37bf42a3d7`, and this ledger records no new consolidated qualification result |
-| `hns-wallet-rs` | `5c5a13d4816be620475f6aa714f868449e964678` | private ABI v2, zeroizing frames, dedicated Bitcoin swap keys, provider hardening, and exact quote adoption remain; legacy Shakedex 0.1 seller/buyer execution is now hard-gated before decode/mutation; value and name-owner actions remain disabled/unavailable |
+| `hns-wallet-rs` | `b999b330f17a0d7b300bff5e96b5ec2fbd294ec6` | prior private ABI, Bitcoin swap keys, provider hardening, exact quote recovery, and fail-closed legacy Shakedex gates remain; encrypted bounded `HnsName` discovery now shares the exact coin-scan chain/mempool snapshot and authoritative-account CAS ordering rejects rollback, but ownership stays watch-only; Ethereum is offline-receive-only behind false sync/history/send/value/settlement/mainnet outcomes and opaque unissued permits, with signed raw bytes zeroizing/opaque/redacted; static/diff review only, no qualification inherited |
 | `hns-dane-engine` | `6eb0174ae743e6bd01c516be7a534d94be94b4bd` | source/read and diff checks only; retained proxy authority is not consumed or product-qualified |
 | `hns-dane-browser-extension` | `d58e1473e47bf9a50faafa5a05bba74756bdf314` | source/read and diff checks only; private ABI 2/public schema 1 projection and event boundary aligned; no build/test, no service launch, and provider/value remain unavailable |
 | `hns-dane-browser-mobile` | `58996db0facef1bb6a7cb2876361d13dabc90c75` | unchanged qualified source checkpoint; signed-device wallet/provider behavior remains unrun |

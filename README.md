@@ -16,7 +16,7 @@ workspace, monorepo, umbrella binary, or combined ecosystem package.
 | --- | --- |
 | [`hns-rs`](https://github.com/handshake-rs/hns-rs) | Canonical runtime-independent protocol, consensus, wire, proof, registry, and consent types |
 | [`hns-node-rs`](https://github.com/handshake-rs/hns-node-rs) | Standalone node runtime, storage, P2P, synchronization, mining, and RPC |
-| `hns-wallet-rs` (local; no remote configured) | Unqualified production-completion source for the encrypted Handshake-first wallet, Provider API core, Shakedex/market workflows, Kyoto Bitcoin boundary, and Helios-selected Ethereum evidence policy; value/product paths remain disabled or unavailable |
+| `hns-wallet-rs` (configured `denuoweb` origin; local `main` unpushed) | Unqualified production-completion source for the encrypted Handshake-first wallet, Provider API core, Shakedex/market workflows, Kyoto Bitcoin boundary, and offline native-ETH/Helios containment; value/product paths remain disabled or unavailable |
 | [`MeshMine`](https://github.com/handshake-rs/MeshMine) | Mining overlay and application consuming the external node boundary |
 | [`hns-dane-engine`](https://github.com/handshake-rs/hns-dane-engine) | Canonical DNSSEC, TLSA/DANE, resolver, transport, dual-root and transport/role policy, browser authority lifecycle, and security observability crates |
 | [`hns-dane-browser-mobile`](https://github.com/handshake-rs/hns-dane-browser-mobile) | Android/iOS lifecycle, UI, proxy integration, app-store packaging, and canonical-engine adapters |
@@ -28,10 +28,14 @@ These nine products, this `ecosystem` coordination repository, and the
 organization `.github` profile are eleven independent repositories. None is a
 monorepo subpackage or a fork of another ecosystem product.
 
-`hns-wallet-rs` is presently local-only: it has an independent Git history and
-release boundary, but no configured remote, published crates, or browser ABI
-artifact. Its planned organization URL must not be read as an existing remote
-checkpoint until publication is separately authorized.
+`hns-wallet-rs` has an independent Git history and release boundary. Its
+configured `origin` is `https://github.com/denuoweb/hns-wallet-rs.git` at
+remote-tracking `main` `1206a8ab550cf67ff43dc162091e371946278641`;
+local `main` `b999b330f17a0d7b300bff5e96b5ec2fbd294ec6` is ahead by six commits,
+unpushed, and has no push authorization. No wallet crates or signed browser ABI
+artifact are published, and a planned organization URL must not be read as an
+existing organization checkpoint until migration/publication is separately
+authorized.
 
 The dependency direction and authority boundaries are recorded in
 [`CROSS_PROJECT_RECONCILIATION.md`](CROSS_PROJECT_RECONCILIATION.md).
@@ -87,15 +91,19 @@ Shakedex name transitions, and complete deterministic listing/cancellation and
 recovery-FINALIZE vectors (`hns-rs` `4b989aab`), plus snapshot-bound fee
 quotes and the v0.3.4 node/resolver sidecar and release-CI corrections
 (`hns-node-rs` `3d346e3d`), private ABI v2, dedicated Bitcoin swap derivation,
-provider hardening, exact quote adoption, and explicit fail-closed Shakedex
-V2/Denuo/value gates (`hns-wallet-rs` `5c5a13d4`), retained provider authority
-across unrelated engine work (`hns-dane-engine` `6eb0174a`), and the closed
-ABI-v2 public approval boundary with every runtime gate false (Chromium
-`d58e1473`). These successors do not
-inherit earlier PASS evidence in this ledger. HNS value remains gated on a
-released canonical `hns-script` 0.2 fee-algebra helper; name ownership, browser
-provider, and bilateral settlement paths remain disabled or unavailable. Start
-with:
+provider hardening, exact quote adoption, explicit fail-closed Shakedex
+V2/Denuo/value gates, an encrypted bounded `HnsName` scan tied to the ordinary
+scan's exact chain/mempool snapshot, authoritative-account CAS hardening, and
+receive-only Ethereum containment (`hns-wallet-rs` `b999b330`), retained
+provider authority across unrelated engine work (`hns-dane-engine`
+`6eb0174a`), and the closed ABI-v2 public approval boundary with every runtime
+gate false (Chromium `d58e1473`). These successors do not inherit earlier PASS
+evidence in this ledger. HNS value remains gated on a released canonical
+`hns-script` 0.2 fee-algebra helper; the new name scan is source-only key
+discovery, not ownership proof, and names remain watch-only. Ethereum
+synchronization, history, send, authoritative evidence, settlement, and
+mainnet remain disabled or unavailable. Browser provider and bilateral
+settlement paths are likewise unavailable. Start with:
 
 - [`INTEGRATION_STATE.md`](INTEGRATION_STATE.md) — committed checkpoints and
   demonstrated gates;

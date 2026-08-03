@@ -110,34 +110,51 @@ consume the authority; installed browser/device and proxy lifecycle
 qualification remain open. No new consolidated PASS is recorded.
 
 The encrypted wallet runtime continuation is committed on local `main` at
-`5c5a13d4816be620475f6aa714f868449e964678`. HNS send and settlement-lock
-preparation authenticate and
-atomically commit the account change index, prepared workflow, and complete
-input-reservation set, then recover the exact durable artifact on an
-idempotent retry. Confirmed and mempool restoration retain exact version-zero
-Address/ScriptId identity plus the node's chain epoch, tip, mempool instance,
-and generation through a concrete strict adapter pinned to node RPC v1
-`5ed38d15`. Confirmed transaction, name-owner, and unique spender blocks are
-rechecked against the same active-chain snapshot; coinbase evidence is retained
-and all such outputs fail closed for balance/spend selection. The wallet also
-contains the durable Kyoto/BDK supervisor committed at `3a3323c0`, including
-bounded encrypted scan/reconciliation/broadcast journals and explicit recovery
-failure states. Private service ABI v2, zeroizing secret-bearing frames,
-namespace-plus-origin permission persistence, approval expiry revalidation,
-lock/session rotation, event invalidation, and exact send-summary binding now
-exist in source. Bitcoin has a dedicated deterministic atomic-swap derivation
-branch. Ordinary HNS send and exposed settlement paths persist quotes for the
-exact signed bytes and re-quote those bytes before broadcast with one bounded
-reconciliation/retry, but `HNS_FEE_QUOTE_ALGEBRA_RELEASE_QUALIFIED` remains
-false because released `hns-script` 0.1 lacks canonical fee algebra. HNS and
-Bitcoin value therefore remain hard-disabled; names remain watch-only pending a
-released codec and bounded `HnsName` scan. The legacy Shakedex 0.1 journal is
-now explicitly structural-only: seller/buyer creation, discovery, and every
-transition—including restored sessions—fail before decode or mutation behind
-false canonical-V2, Denuo-V2, and value-runtime release gates. This prevents
-0.1 proof records from masquerading as canonical fixed-price V2 execution.
-This successor received static review only and no new consolidated PASS is
-recorded.
+`b999b330f17a0d7b300bff5e96b5ec2fbd294ec6`. HNS send and settlement-lock
+preparation authenticate and atomically commit the account change index,
+prepared workflow, and complete input-reservation set, then recover the exact
+durable artifact on an idempotent retry. Confirmed and mempool restoration
+retain exact version-zero Address/ScriptId identity plus the node's chain epoch,
+tip, mempool instance, and generation through a concrete strict adapter pinned
+to node RPC v1 `5ed38d15`. Ordinary HNS-coin branches and the domain-separated
+`HnsName` branch now use separate bounded queries that must share that exact
+chain/mempool snapshot, including gap expansion. Name-role derivation high-water
+state is encrypted and monotonic across restart; derived-address records are
+encrypted and restart-durable. Discovered outputs remain visible to history but
+are excluded from ordinary balance, input selection, reservation, and
+spendability.
+
+Reconciliation now reloads the full authoritative encrypted account and its
+CAS revision after taking the store mutex, rejects account/configuration,
+revision, or derivation-high-water rollback, saves against that authoritative
+revision, and preserves the ordering through cache installation. This source
+hardens the stale-reconciliation/concurrent-prepare boundary, but it has not run
+the consolidated gate. Name-key discovery is not ownership proof: canonical
+NameState/resource decoding is still unpublished/unconsumed, imported names
+remain watch-only, and ownership, transfer, and FINALIZE actions remain
+unavailable.
+
+The wallet also retains the durable Kyoto/BDK supervisor committed at
+`3a3323c0`, private service ABI v2, zeroizing secret-bearing frames, hardened
+provider authority, dedicated Bitcoin swap derivation, and exact HNS quote
+recovery. `HNS_FEE_QUOTE_ALGEBRA_RELEASE_QUALIFIED` remains false because
+released `hns-script` 0.1 lacks canonical fee algebra, so HNS and Bitcoin value
+remain hard-disabled. The legacy Shakedex 0.1 journal remains structural-only:
+seller/buyer creation, discovery, and every transition—including restored
+sessions—fail before decode or mutation behind false canonical-V2, Denuo-V2,
+and value-runtime release gates.
+
+Ethereum now advertises deterministic offline receive derivation only. Its
+immutable synchronization, value, settlement, and mainnet qualification gates
+are false, making history, send, authoritative evidence, and settlement
+unavailable; chain ID 1 is rejected independently of caller policy. Public
+serializable evidence booleans remain structural data because the private-field
+opaque Helios provenance permit has no current issuer. Native/HTLC construction
+and exact-fee/role/address-bound signing likewise require opaque value or
+settlement permits that cannot be acquired. Any resulting signed bytes are a
+zeroizing, non-cloneable, non-serializable object with no raw accessor and
+redacted diagnostics, not a public raw-signing API. This successor received
+static review only and no new consolidated PASS is recorded.
 
 ## 2026-08-02 local wallet and marketplace checkpoint
 

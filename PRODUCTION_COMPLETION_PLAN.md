@@ -59,7 +59,7 @@ private wallet ABI, engine authority/proxy admission, and Chromium boundary on
 | --- | --- |
 | `hns-rs` | feature source landed at `81f2df2651e8ea81be33e33a3438c4c9e0348f93` and current self-contained release-source preparation is `4b989aabc132e7e79b8fd57a10f2465073faf588`: canonical HSD fee policy, TRANSFER/FINALIZE construction, empty offer inventory, and listing-independent recovery now include package-local public assets, deterministic listing/cancellation and recovery-FINALIZE vectors, fail-closed source tests, and corrected release gates; static review only, and shared 0.2 packages remain unpublished and unqualified |
 | `hns-node-rs` | local and remote-tracking `main` at `3d346e3dadc716b5c367eee050308e71a0693a64`: exact snapshot-bound final-transaction fee quotes plus the v0.3.4 private resolver-sidecar/container source and later release-CI port fixes; tag `v0.3.4` remains at `40b456fa0772729542118a69f27edc37bf42a3d7`, and the separate external push/tag does not upgrade this ledger's qualification status |
-| `hns-wallet-rs` | committed at `5c5a13d4816be620475f6aa714f868449e964678`: private service ABI v2 with zeroizing frames, dedicated Bitcoin swap derivation, hardened namespace/origin permission and approval/event authority, and exact signed-byte quote persistence/rebroadcast remain present; seller/buyer Shakedex creation, discovery, and transition now fail closed behind immutable false canonical-V2, Denuo-V2, and value-runtime release gates, including restored legacy sessions |
+| `hns-wallet-rs` | committed at `b999b330f17a0d7b300bff5e96b5ec2fbd294ec6`: prior private ABI, Bitcoin swap derivation, provider hardening, exact quote recovery, and fail-closed Shakedex gates remain; an encrypted bounded `HnsName` scan now shares the ordinary scan's exact chain/mempool snapshot and authoritative-account revision/CAS ordering rejects derivation rollback, while names remain watch-only; Ethereum advertises offline receive only, with synchronization/history/send/value/settlement/mainnet unavailable behind false gates and opaque permits; static-only and unqualified |
 | `hns-dane-engine` | committed at `6eb0174ae743e6bd01c516be7a534d94be94b4bd`: opaque exact-origin proxy authority survives unrelated admitted work while security-invalidating transitions revoke it; product consumption and qualification remain unavailable |
 | `hns-dane-browser-extension` | committed through `d58e1473e47bf9a50faafa5a05bba74756bdf314`: private ABI/service protocol 2 discovery with website schema 1, all 12 typed public approval variants, canonical IDs, private-authority containment, native-only events, and exact close/reject context; signed artifact, transport, runtime, engine authority, provider, and value gates remain false |
 
@@ -106,9 +106,11 @@ After the active tranche:
    state, qualify the dedicated swap derivation, add signed HTLC supervision,
    safe record archival, adversarial peer/reorg cases, and the full disk/
    bandwidth/startup/mobile-memory benchmark matrix.
-3. Embed the selected Helios verifier/persistence runtime, qualify native ETH
-   receive/send/history, execute and audit the immutable HTLC contract on a
-   local chain, and bind any deployment to chain ID and runtime code hash.
+3. Embed the selected Helios verifier/persistence runtime and its private
+   evidence-provenance issuer, add controlled signed-payload broadcast and
+   recovery, qualify native ETH receive/send/history, execute and audit the
+   immutable HTLC contract on a local chain, and bind any deployment to chain ID
+   and runtime code hash.
 4. Complete reporter governance, deterministic price rounds, Denuo board
    resistance, bilateral reservation/fill, and browser approval.
 5. Demonstrate both directions of HNS/BTC and HNS/ETH success, abort, refund,

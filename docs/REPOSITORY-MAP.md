@@ -6,7 +6,7 @@
 | --- | --- |
 | [`hns-rs`](https://github.com/handshake-rs/hns-rs) | Runtime-independent Handshake protocol, consensus, wire, proof, registry, and role-specific consent types |
 | [`hns-node-rs`](https://github.com/handshake-rs/hns-node-rs) | Standalone node runtime/networking under construction: chain state, storage, synchronization, mining, and RPC |
-| `hns-wallet-rs` (local repository; no remote configured) | Unqualified production-completion source for the encrypted Handshake-first wallet, origin-bound Provider schema, Shakedex/market state machines, durable Kyoto supervisor, and Helios-selected Ethereum evidence policy; value/product paths remain disabled or unavailable |
+| `hns-wallet-rs` (configured `denuoweb` origin; local `main` unpushed) | Unqualified production-completion source for the encrypted Handshake-first wallet, origin-bound Provider schema, Shakedex/market state machines, durable Kyoto supervisor, and offline native-ETH/Helios containment; value/product paths remain disabled or unavailable |
 | [`MeshMine`](https://github.com/handshake-rs/MeshMine) | Mining overlay, work scheduling, operator UI, and exact external-node consumer |
 | [`hns-dane-engine`](https://github.com/handshake-rs/hns-dane-engine) | DNSSEC, TLSA/DANE, validating resolution, full-host dual-root policy, canonical browser authority lifecycle, and shared observability |
 | [`hns-dane-browser-mobile`](https://github.com/handshake-rs/hns-dane-browser-mobile) | Android/iOS lifecycle, UI, FFI, proxy, store packaging, staged header publication, and shared-engine adapters |
@@ -92,11 +92,16 @@ signed-device matrices remain open.
   loopback-only resolver sidecar/container topology. The head was pushed by a
   separate workflow and later release-CI port verification was corrected on
   `main`; this ledger records no new consolidated qualification result for it.
-- `hns-wallet-rs` exists only as a local independent `main` repository. Its
-  latest unqualified production-completion source is `5c5a13d4816be620475f6aa714f868449e964678`;
-  private ABI v2 source and explicit false canonical-Shakedex/Denuo/value gates
-  are present, but no remote, published crate, signed ABI artifact, or product
-  release exists.
+- `hns-wallet-rs` is an independent repository with configured `origin`
+  `https://github.com/denuoweb/hns-wallet-rs.git` at remote-tracking `main`
+  `1206a8ab550cf67ff43dc162091e371946278641`. Its latest unqualified
+  production-completion source is
+  `b999b330f17a0d7b300bff5e96b5ec2fbd294ec6`; local `main` is ahead by six
+  commits, unpushed, and has no push authorization. Private ABI v2, explicit
+  false Shakedex/value gates, encrypted same-snapshot `HnsName` discovery with
+  authoritative-account CAS hardening, and receive-only Ethereum containment
+  are present, but no published crate, signed ABI artifact, or product release
+  exists.
 - `hns-dane-engine` remote-tracking `main` remains
   `7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`. Older release preparation
   `1d0fc9c6ba72f008e60d8c5a98741a32aeea4a75` precedes latest local source head
