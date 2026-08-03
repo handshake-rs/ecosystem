@@ -33,7 +33,7 @@ This ledger is deliberately release-blocking.
   sibling path or copied wire types.
 - Qualify the source-complete HNS transaction/reconciliation runtime and
   concrete authenticated node adapter at
-  `b999b330f17a0d7b300bff5e96b5ec2fbd294ec6`, including the separate encrypted
+  `604a35771a9427696b6ecf533368205392e62979`, including the separate encrypted
   bounded HNS-coin/name-role scans under one exact chain/mempool snapshot, the
   authoritative-account revision/CAS ordering and derivation-high-water
   rollback rejection, plus
@@ -166,18 +166,25 @@ This ledger is deliberately release-blocking.
   redirects, cross-origin subresources, Service Workers, downloads, WSS,
   process restarts, and policy revocation.
 - Publish the private wallet ABI v2 as a signed, pinned artifact and consume it
-  in each browser. For mobile, connect the dormant website-schema-1/private-
-  native-ABI-2/public-approval-schema-2 projections at
-  `d6df646df0989b7ab25bc305c0ae80d2f08ce432` only through reviewed generated
+  in each browser. Preserve its typed private capability snapshot
+  (`providerSchemaVersion`, `approvalSchemaVersion`, `walletSessionId`,
+  `permissionGeneration`, and `methods`) and four-field result/prompt/event
+  binding without widening the public website `wallet_getCapabilities` result
+  beyond `{providerApiVersion,methods}`. Keep generation zero exclusive to an
+  origin with no permission history, retain nonzero tombstones, and implement
+  an atomic approved-Accounts-to-real-result join before advertising
+  `hns_requestAccounts`. For mobile, connect the dormant projections at
+  `4b684ebbb576c2b2f8e762c3f81c3ec2fded47f5` only through reviewed generated
   `hns-wallet-ffi` JNI/C bindings, the canonical typed engine authority result,
   controller lifecycle wiring, permission persistence, native approval UI, and
   a typed event producer. Then qualify permission, approval, lock/session,
   event, installed-device, and value behavior and implement the actual wallet
   screens, notification, backup, migration, and removal paths.
-  The current mobile successor is source/static-only, unrun, and unpushed, with
-  all four release gates false and the unavailable adapter hardwired. Until then
-  the Chromium host and both mobile scaffolds must continue to report
-  unavailable and avoid announcing a provider.
+  The current wallet, Chromium, and mobile successors are source/static-only,
+  unrun, and unpushed; Chromium's provider/value gates and all four mobile
+  release gates are false, and the mobile unavailable adapter is hardwired.
+  Until reviewed native projection exists, the Chromium host and both mobile
+  scaffolds must continue to report unavailable and avoid announcing a provider.
 - Retain the protected Developer ID identity checks, notarization evidence,
   stapling, and digest-verified release path proven for Chromium v0.5.5.
   Add equivalent authorized signing/provenance for Windows and qualify all

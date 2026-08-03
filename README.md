@@ -31,7 +31,7 @@ monorepo subpackage or a fork of another ecosystem product.
 `hns-wallet-rs` has an independent Git history and release boundary. Its
 configured `origin` is `https://github.com/denuoweb/hns-wallet-rs.git` at
 remote-tracking `main` `1206a8ab550cf67ff43dc162091e371946278641`;
-local `main` `b999b330f17a0d7b300bff5e96b5ec2fbd294ec6` is ahead by six commits,
+local `main` `604a35771a9427696b6ecf533368205392e62979` is ahead by seven commits,
 unpushed, and has no push authorization. No wallet crates or signed browser ABI
 artifact are published, and a planned organization URL must not be read as an
 existing organization checkpoint until migration/publication is separately
@@ -94,17 +94,25 @@ quotes and the v0.3.4 node/resolver sidecar and release-CI corrections
 provider hardening, exact quote adoption, explicit fail-closed Shakedex
 V2/Denuo/value gates, an encrypted bounded `HnsName` scan tied to the ordinary
 scan's exact chain/mempool snapshot, authoritative-account CAS hardening, and
-receive-only Ethereum containment (`hns-wallet-rs` `b999b330`), retained
+receive-only Ethereum containment (`hns-wallet-rs` `604a3577`), retained
 provider authority across unrelated engine work (`hns-dane-engine`
-`6eb0174a`), and the closed ABI-v2 public approval boundary with every runtime
-gate false (Chromium `d58e1473`). Dormant Android/iOS website-schema-1/private-
-native-ABI-2/public-approval-schema-2 projections now close twelve approval
-summaries and thirteen typed events at mobile `d6df646d`; that unpushed
-successor received source/static inspection only, all four release gates remain
-false, the unavailable adapter remains hardwired, and no controller, wallet
-runtime/FFI, generated binding, approval UI, or event producer is wired. These
-successors do not inherit earlier PASS evidence in this ledger. HNS value
-remains gated on a released canonical
+`6eb0174a`). The wallet now gives every private result, prompt, and event one
+authority-handle/revision, wallet-session, and permission-generation binding;
+its typed private capability snapshot carries provider/approval schema versions,
+wallet session, permission generation, and a runtime-supported subset of the
+canonical 43 methods. Fresh generation zero is distinct from a retained nonzero
+revocation tombstone, and `hns_requestAccounts` remains unavailable. Chromium
+`972e63a1` and mobile `4b684ebb` accept generation zero only in that never-
+authorized private capability input while keeping the public website
+`wallet_getCapabilities` result to `{providerApiVersion,methods}`. Chromium
+retains exact session/generation matching, while mobile permission-bearing
+event payloads remain positive. Both adapters remain
+unwired: Chromium's artifact/transport/runtime/authority/provider/value gates
+and mobile's four release gates are false, and mobile's unavailable adapter is
+hardwired without controller, wallet runtime/FFI, generated binding, approval
+UI, or event producer. All three local heads are unpushed and received source/
+static review only; their added tests remain unrun and no earlier PASS transfers.
+HNS value remains gated on a released canonical
 `hns-script` 0.2 fee-algebra helper; the new name scan is source-only key
 discovery, not ownership proof, and names remain watch-only. Ethereum
 synchronization, history, send, authoritative evidence, settlement, and

@@ -146,7 +146,7 @@ opt-in” rule.
   a source-complete HNS `ChainModule`/`AtomicSettlement` runtime and strict
   node RPC v1 adapter, a durable bounded Kyoto/BDK supervisor, and a narrow
   Ethereum contract/evidence boundary. Exact final-signed node fee quotes are
-  adopted at `5b540963` and retained at current `b999b330`, but HNS value
+  adopted at `5b540963` and retained at current `604a3577`, but HNS value
   remains hard-disabled until released canonical `hns-script` 0.2 fee algebra
   permits independent wallet validation. The current source separately persists
   a bounded encrypted `HnsName` scan under the ordinary scan's exact chain/
@@ -165,7 +165,7 @@ opt-in” rule.
   typed backend, authenticated loopback RPC v1, and exact transaction fee quote
   are frozen at contract commit `5ed38d15` and contained in current
   `3d346e3d`; the strict wallet consumer landed at `5b540963` and remains in
-  current `b999b330`. The current join has no consolidated qualification
+  current `604a3577`. The current join has no consolidated qualification
   result. The five-role marketplace relay is a bounded cache/policy core only,
   Denuo V2 wire advertisement is disabled until canonical V2 adoption, and
   registry retirement/capacity reclamation remains absent.
@@ -199,19 +199,27 @@ opt-in” rule.
   compared with canonical mobile.
 - Wallet-provider source adapters are fail-closed and deliberately inactive:
   Chromium's native host reports `walletUnavailable`, while Android/iOS are
-  source-hardwired unavailable and not controller-wired. Mobile `d6df646d`
+  source-hardwired unavailable and not controller-wired. Mobile `4b684ebb`
   closes browser-owned twelve-summary approval-schema-2 and thirteen-event
   projections around a future private native ABI 2 while website provider
   schema/API remains 1. Its provider-installation, wallet-runtime, approval-
   runtime, and value-runtime gates remain false; the unavailable adapter is
   hardwired; and no controller, wallet runtime/FFI, generated binding, approval
-  UI, or event producer is wired. Private wallet ABI v2 and hardened provider
-  authority landed at wallet `5b540963` and remain in current `b999b330`, and
-  the engine mints the opaque provider-authority/proxy context, but neither
+  UI, or event producer is wired. Wallet `604a3577` now gives every private
+  result, approval prompt, and event one authority-handle/revision, wallet-
+  session, permission-generation binding, preserves nonzero permission
+  tombstones, and derives a typed private capability snapshot from the shared
+  canonical 43-method vocabulary; `hns_requestAccounts` remains unavailable.
+  Chromium `972e63a1` and mobile `4b684ebb` accept generation zero only in the
+  never-authorized private capability input, leave public website capabilities
+  as `{providerApiVersion,methods}`, and retain exact wallet-session/generation
+  matching; mobile permission-bearing event payloads remain positive. The
+  engine mints the opaque provider-authority/proxy context, but neither
   browser consumes a released wallet ABI artifact or the engine authority
-  boundary, so no provider method is executable end to end. The mobile
-  successor is unpushed and has source/static inspection only, with no build,
-  test, or install result.
+  boundary, so no provider method is executable end to end. The Chromium and
+  mobile successors are unpushed and have source/static inspection only; their added
+  tests remain unrun, with no build or install result. Chromium's provider/value
+  gates and all four mobile release gates remain false.
   The current wallet also rejects legacy Shakedex seller/buyer session
   creation, discovery, and advancement until canonical V2, Denuo V2, and value
   runtime release gates are qualified; it does not reinterpret 0.1 proofs as

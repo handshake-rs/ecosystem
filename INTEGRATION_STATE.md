@@ -30,34 +30,43 @@ metadata and screenshot source; generated mobile build outputs remain covered
 by its narrower ignore rules.
 
 The Chromium half of the source tranche is committed on local `main` at
-`d58e1473e47bf9a50faafa5a05bba74756bdf314`, after ABI-v2 documentation commit
+`972e63a14f9067da3608f53b852adc93d8ded2a4`, three unpushed commits ahead of
+remote-tracking `main` and after ABI-v2 documentation commit
 `06bea8893ea7e2324d0df7e5b486fb3cf91f9cdd`. It performs bounded same-handle
 artifact integrity discovery without treating a digest as publisher
 authenticity or executing the artifact, and it invalidates document/approval
 authority across asynchronous native results and header maintenance. Private
 wallet ABI and service protocol 2 remain distinct from website provider schema
-1. The browser-owned approval-schema-2 projection closes all 12 summary kinds,
+1. A private native capability snapshot may use permission generation zero only
+before the origin has any permission history; the public website
+`wallet_getCapabilities` result remains `{providerApiVersion,methods}`, and
+native events retain exact permission-generation and wallet-session matching.
+The browser-owned approval-schema-2 projection closes all 12 summary kinds,
 canonical approval IDs, private-authority containment, native-only events, and
 exact close/reject context. It still returns unavailable: no signed/pinned
 artifact, reviewed private transport/projection adapter, or engine-authority
 join is wired; Windows ACL/ownership validation is absent. Artifact
 authenticity, transport, runtime, authority, provider, and value gates all stay
-false. No build, test, push, tag, or publication evidence is attached to this
-source-only successor.
+false. Source/static review only was performed; the added tests remain unrun,
+and no build, push, tag, or publication evidence is attached to this successor.
 
 The mobile half of the source tranche is committed on local `main` at
-`d6df646df0989b7ab25bc305c0ae80d2f08ce432`, an unpushed successor to
+`4b684ebbb576c2b2f8e762c3f81c3ec2fded47f5`, two unpushed commits ahead of
 remote-tracking `main` `58996db0facef1bb6a7cb2876361d13dabc90c75`.
 Android and iOS keep website Provider API schema and `providerApiVersion` 1
 separate from the expected private native wallet ABI 2 and browser-owned public
 approval schema 2. Source closes twelve typed approval summaries and thirteen
 typed event projections while excluding private authority, session, channel,
-and event-sequence material from page-visible results. This boundary remains
+and event-sequence material from page-visible results. Its private capability
+input permits generation zero only for a fresh origin, while the website
+capability result stays narrow and permission-bearing events retain positive
+generation plus exact wallet-session binding. This boundary remains
 dormant and unqualified: provider-bridge installation, wallet runtime, approval
 runtime, and value runtime release gates are all immutable false; the
 unavailable ABI adapter remains hardwired; and no browser controller, wallet
 runtime, wallet FFI, generated `hns-wallet-ffi` JNI/C binding, native approval
-UI, or typed event producer is wired. No build, test, simulator, signed-device,
+UI, or typed event producer is wired. Source/static review only was performed;
+the added tests remain unrun, and no build, simulator, signed-device,
 installed-product, push, tag, or publication evidence is attached to this
 source/static-only successor.
 
@@ -126,7 +135,7 @@ consume the authority; installed browser/device and proxy lifecycle
 qualification remain open. No new consolidated PASS is recorded.
 
 The encrypted wallet runtime continuation is committed on local `main` at
-`b999b330f17a0d7b300bff5e96b5ec2fbd294ec6`. HNS send and settlement-lock
+`604a35771a9427696b6ecf533368205392e62979`. HNS send and settlement-lock
 preparation authenticate and atomically commit the account change index,
 prepared workflow, and complete input-reservation set, then recover the exact
 durable artifact on an idempotent retry. Confirmed and mempool restoration
@@ -153,7 +162,14 @@ unavailable.
 The wallet also retains the durable Kyoto/BDK supervisor committed at
 `3a3323c0`, private service ABI v2, zeroizing secret-bearing frames, hardened
 provider authority, dedicated Bitcoin swap derivation, and exact HNS quote
-recovery. `HNS_FEE_QUOTE_ALGEBRA_RELEASE_QUALIFIED` remains false because
+recovery. Every private provider result, approval prompt, and event now carries
+one authority-handle/revision, wallet-session, permission-generation binding.
+Its typed private capability snapshot contains provider/approval schema
+versions, wallet session, permission generation, and the runtime-supported
+subset of the canonical 43 methods; generation zero is fresh-only, a revoked or
+expired record retains its nonzero tombstone, and `hns_requestAccounts` remains
+unavailable. No generated browser adapter consumes this private projection.
+`HNS_FEE_QUOTE_ALGEBRA_RELEASE_QUALIFIED` remains false because
 released `hns-script` 0.1 lacks canonical fee algebra, so HNS and Bitcoin value
 remain hard-disabled. The legacy Shakedex 0.1 journal remains structural-only:
 seller/buyer creation, discovery, and every transition—including restored
@@ -170,7 +186,8 @@ and exact-fee/role/address-bound signing likewise require opaque value or
 settlement permits that cannot be acquired. Any resulting signed bytes are a
 zeroizing, non-cloneable, non-serializable object with no raw accessor and
 redacted diagnostics, not a public raw-signing API. This successor received
-static review only and no new consolidated PASS is recorded.
+static review only, its added provider/ABI tests remain unrun, and no new
+consolidated PASS is recorded.
 
 ## 2026-08-02 local wallet and marketplace checkpoint
 

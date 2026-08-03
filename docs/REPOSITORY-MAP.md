@@ -96,12 +96,16 @@ signed-device matrices remain open.
   `https://github.com/denuoweb/hns-wallet-rs.git` at remote-tracking `main`
   `1206a8ab550cf67ff43dc162091e371946278641`. Its latest unqualified
   production-completion source is
-  `b999b330f17a0d7b300bff5e96b5ec2fbd294ec6`; local `main` is ahead by six
-  commits, unpushed, and has no push authorization. Private ABI v2, explicit
-  false Shakedex/value gates, encrypted same-snapshot `HnsName` discovery with
-  authoritative-account CAS hardening, and receive-only Ethereum containment
-  are present, but no published crate, signed ABI artifact, or product release
-  exists.
+  `604a35771a9427696b6ecf533368205392e62979`; local `main` is ahead by seven
+  commits, unpushed, and has no push authorization. Private ABI-v2 results,
+  prompts, and events share one authority/wallet/permission binding; the typed
+  private capability snapshot uses the canonical 43-name vocabulary, fresh
+  generation zero cannot erase a nonzero permission tombstone, and
+  `hns_requestAccounts` is unavailable. False Shakedex/value gates, encrypted
+  same-snapshot `HnsName` discovery with authoritative-account CAS hardening,
+  and receive-only Ethereum containment remain. Source/static review only was
+  performed, added tests remain unrun, and no published crate, signed ABI
+  artifact, or product release exists.
 - `hns-dane-engine` remote-tracking `main` remains
   `7f7bb8fa100c2393f2cd5a64c64bf5e20a0f3ab5`. Older release preparation
   `1d0fc9c6ba72f008e60d8c5a98741a32aeea4a75` precedes latest local source head
@@ -111,10 +115,13 @@ signed-device matrices remain open.
   `86b18497285753944ec1b9196ec05ee359c6db11` with 29 assets. macOS artifacts
   are signed and notarized; Windows artifacts are unsigned. Documentation
   head `3495bd1c5e7c26f9486ea81fb21dc1618c9bc2c8` passed CI `30439859541`.
-  Later local source `d58e1473e47bf9a50faafa5a05bba74756bdf314`
-  aligns its inactive discovery/public-prompt boundary to private ABI 2 while
-  leaving artifact authenticity, transport, runtime, engine authority,
-  provider, and value unavailable; it has no new qualification result.
+  Later local source `972e63a14f9067da3608f53b852adc93d8ded2a4`
+  is ahead by three unpushed commits. It accepts fresh generation zero only in
+  the private capability input while leaving public website capabilities as
+  `{providerApiVersion,methods}` and retaining exact permission-generation/
+  wallet-session event matching. Artifact authenticity, transport, runtime, engine
+  authority, provider, and value remain unavailable; source/static review only
+  was performed, added tests remain unrun, and there is no new qualification.
 - MeshMine `main` is `79f3bbc6c24bab80adaef199a9318fd0065113f6`
   after marking workspace packages private. Earlier documentation head
   `9f781a00ee8fc3b7c6773538434235a65f167ca3` passed CI `30440116148`; neither
@@ -124,12 +131,15 @@ signed-device matrices remain open.
 
 ## Current mobile source and publication checkpoints
 
-- Local mobile `main` `d6df646df0989b7ab25bc305c0ae80d2f08ce432`
-  is an unpushed source-only successor to remote-tracking `main`
+- Local mobile `main` `4b684ebbb576c2b2f8e762c3f81c3ec2fded47f5`
+  is two unpushed commits ahead of remote-tracking `main`
   `58996db0facef1bb6a7cb2876361d13dabc90c75`. It adds dormant Android/iOS
   website-schema-1/private-native-ABI-2/public-approval-schema-2 projections
   that close twelve approval summaries and thirteen typed events. No build,
-  test, simulator, device, or install gate ran; all four release gates remain
+  test, simulator, device, or install gate ran. The private input accepts
+  generation zero only for a fresh origin, public website capabilities stay
+  narrow, and permission-bearing events remain positive-generation/wallet-
+  session bound. All four release gates remain
   false, the unavailable adapter remains hardwired, and controller,
   wallet-runtime/FFI/generated-binding, approval-UI, and event-producer wiring
   is absent. This source/static-only successor does not alter the historical

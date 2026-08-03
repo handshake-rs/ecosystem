@@ -42,7 +42,7 @@ its own lockfile, licenses, gate, release boundary, and no committed sibling
 path dependency. Its configured `origin` is
 `https://github.com/denuoweb/hns-wallet-rs.git` at remote-tracking `main`
 `1206a8ab550cf67ff43dc162091e371946278641`; local `main`
-`b999b330f17a0d7b300bff5e96b5ec2fbd294ec6` is ahead by six commits,
+`604a35771a9427696b6ecf533368205392e62979` is ahead by seven commits,
 and those commits are unpushed with no push authorization. Its twelve crates
 are:
 
@@ -95,15 +95,15 @@ complete executable product join.
 | canonical marketplace/name protocols | feature source at `81f2df26` adds HSD-compatible fee algebra, strict TRANSFER/FINALIZE construction, canonical empty offer inventory, and listing-independent Shakedex recovery; current descendant `4b989aab` adds self-contained public packages and complete listing/cancellation and recovery-FINALIZE vectors; unpublished and unqualified |
 | node confirmed indexes/backend | current `main` `3d346e3d` includes authenticated RPC v1 and snapshot-bound exact final-transaction fee quotes; wallet indexes remain disabled by default and the current head is not qualified by this ledger |
 | node marketplace relay | implemented and locally tested cache/policy core; live V2 wire unavailable |
-| encrypted store/provider policy | schema-v3/runtime hardening, private ABI v2, strict provider authority lifecycle, concrete HNS node adapter, Kyoto supervisor, false Shakedex/value gates, encrypted same-snapshot `HnsName` discovery, and authoritative-account CAS hardening at `b999b330`; static-only and unqualified |
+| encrypted store/provider policy | schema-v3/runtime hardening, private ABI-v2 binding and typed capability snapshot, strict provider authority lifecycle, concrete HNS node adapter, Kyoto supervisor, false Shakedex/value gates, encrypted same-snapshot `HnsName` discovery, and authoritative-account CAS hardening at `604a3577`; source/static-only, tests unrun, unpushed, and unqualified |
 | usable HNS/name wallet | HNS source runtime and concrete node join implemented but value-disabled; bounded name-key discovery exists as unqualified source, but names remain watch-only and the browser product is unavailable |
 | fixed-price Shakedex | canonical transaction and listing-independent recovery primitives exist; wallet lifecycle remains disabled and unavailable |
 | Kyoto Bitcoin wallet/settlement | durable bounded supervisor and dedicated swap derivation source implemented; value disabled pending Kyoto persistence, signed settlement, archival, and qualification |
 | native-ETH wallet/contract | deterministic offline receive derivation plus contained typed source; synchronization/history/send/value/settlement/mainnet false or unavailable; verified synchronization/deployment unavailable |
 | HNS/BTC and HNS/ETH | disabled; end-to-end settlement unavailable |
 | engine provider/proxy authority | opaque exact-origin proxy admission source at `6eb0174a` retains authority across unrelated work and invalidates on security transitions; product consumption and qualification unavailable |
-| Chromium provider | current source `d58e1473` closes the private-ABI-v2/public-schema-v1 approval and event boundary; injection remains disabled by unavailable signed transport/projection/engine-authority joins |
-| Android/iOS provider | current `d6df646d` closes the dormant website-schema-1/private-native-ABI-2/public-approval-schema-2 boundary with twelve approvals and thirteen events; source/static-only, unrun, unpushed, and unavailable, with four false release gates, a hardwired unavailable adapter, and no controller, wallet runtime/FFI, generated binding, approval UI, or event producer. Earlier `58996db0` Android compile evidence does not transfer |
+| Chromium provider | current source `972e63a1` accepts fresh-only generation zero in the private capability input while public website capabilities remain `{providerApiVersion,methods}` and native events retain exact permission-generation/wallet-session matching; source/static-only, tests unrun, unpushed, and disabled by false signed-transport/projection/engine-authority/provider/value gates |
+| Android/iOS provider | current `4b684ebb` applies the same private fresh-zero/public-capability/event-binding split to the dormant twelve-approval/thirteen-event projections; source/static-only, tests unrun, unpushed, and unavailable, with four false release gates, a hardwired unavailable adapter, and no controller, wallet runtime/FFI, generated binding, approval UI, or event producer. Earlier `58996db0` Android compile evidence does not transfer |
 | excluded product families | deferred or deliberately unavailable as enumerated below |
 
 ## Canonical protocols and Denuo registry
@@ -226,7 +226,7 @@ protocol pin, safe registry retirement/capacity reclamation, exact image and
 multi-process qualification, and final release gate remain unavailable. The
 concrete wallet adapter now exists as unqualified source at
 `5b5409630045b19f81821951da51a9a1f7e1c9e5` and is retained at current
-`b999b330f17a0d7b300bff5e96b5ec2fbd294ec6`.
+`604a35771a9427696b6ecf533368205392e62979`.
 
 Wallet-index profile V1 is checksummed and fails closed on missing, corrupt,
 or partially built components. There is no online backfill: an existing chain
@@ -239,7 +239,7 @@ values are versioned/checksummed and key-bound so relocated values fail closed.
 ## Provider API and browser authority
 
 The provider core and browser adapters parse, classify, permission-gate, and
-approval-classify the complete 43-method schema and allowlist 13 events. This
+approval-classify one canonical 43-method vocabulary and allowlist 13 events. This
 is a protocol surface, not a claim that 43 wallet operations execute in a
 browser: private wallet ABI v2 framing and service dispatch foundations now
 exist in source, but no released artifact or browser application dispatcher is
@@ -271,13 +271,29 @@ The events are `connect`, `disconnect`, `permissionsChanged`,
 `walletLocked`. Discovery uses `hns:requestProvider` and
 `hns:announceProvider`.
 
+The private ABI `providerCapabilities` request produces a typed snapshot with exactly
+`providerSchemaVersion`, `approvalSchemaVersion`, `walletSessionId`,
+`permissionGeneration`, and `methods`. Those methods describe the current
+runtime-supported subset of the canonical vocabulary, not granted permission.
+Generation zero is valid only before the exact authority has any grant or
+revocation history; an absent permission record after revocation or expiry
+retains its nonzero tombstone generation. The website-facing
+`wallet_getCapabilities` projection is deliberately different and contains
+only `{providerApiVersion,methods}`. No native adapter projects the private
+snapshot into either browser today. `hns_requestAccounts` remains a canonical
+wire name but is unadvertised and unavailable until an approved Accounts grant
+can be atomically joined to a real account result.
+
 The API explicitly rejects generic Ethereum calls/signatures/deployment/chain
 changes, PSBT and raw-transaction signing, unknown methods, secrets, and
 unrestricted native commands. Requests are bounded and bound to exact origin,
 namespace, browser-authority session, runtime generation, policy generation,
 navigation generation, wallet session, permission generation, and document.
 Origin permissions, approvals, replay state, pending counts, read/mutation
-rates, expiry, revocation, and stale generations fail closed.
+rates, expiry, revocation, and stale generations fail closed. Private provider
+results, approval prompts, and events reuse one binding containing the authority
+handle/revision, wallet session, and permission generation. Permission-bearing
+events require a positive generation matching that binding.
 
 `hns-dane-engine` API version 3 derives the exact logical scheme/host/URL port
 from the authoritative namespace decision, binds it to a private
@@ -310,17 +326,23 @@ approval consumption revalidates current unexpired permission, process-local
 time rollback fails closed, wallet lock rotates service authority, and
 revocation/expiry invalidates event channels. Send prompts bind exact method,
 module, chain, amount asset, and fee asset. The checked-in subprocess advertises
-framing foundations only—not provider dispatch or value—and this source has not
-run a consolidated gate. Current `b999b330f17a0d7b300bff5e96b5ec2fbd294ec6`
-retains that boundary and additionally prevents the legacy Shakedex 0.1
+framing foundations only—not provider dispatch or value. Current
+`604a35771a9427696b6ecf533368205392e62979` adds the shared private binding,
+tombstone-preserving permission snapshots, exact typed capability snapshot, and
+canonical method-name set described above. It explicitly leaves
+`hns_requestAccounts` unavailable and also prevents the legacy Shakedex 0.1
 journal from creating, discovering, or advancing sessions until canonical V2,
-Denuo V2, and value-runtime release gates are qualified.
+Denuo V2, and value-runtime release gates are qualified. This source received
+static review only; its added tests and consolidated gate remain unrun.
 
-The Chromium adapter at `d58e1473e47bf9a50faafa5a05bba74756bdf314`
+The Chromium adapter at `972e63a14f9067da3608f53b852adc93d8ded2a4`
 installs an isolated document-start bridge but injects
 the MAIN-world provider into one exact HTTPS main-frame `documentId` only
 after current navigation authority and a private-ABI-v2 capability pass. Its
-website provider schema remains 1. Source validates a closed 12-kind
+website provider schema remains 1. Its private capability validator accepts
+generation zero only for an authority with no permission history; its website
+capability projection remains `{providerApiVersion,methods}`, and native events
+retain exact wallet-session/permission-generation matching. Source validates a closed 12-kind
 browser-owned public approval projection, canonical approval IDs, private
 authority containment, native-only events, and exact close/reject context. It
 has a bounded approval window, generation-bound events, and a static no-key/no-
@@ -331,32 +353,38 @@ Shakedex, Denuo, and recovery
 integration into the native host remains unavailable. The browser's pinned
 engine/native-host boundary also does not yet consume the new Rust facade v3
 opaque provider-authority context, so no cross-repository authority/ABI join
-is claimed.
+is claimed. This unpushed source received static review only; its added tests
+remain unrun and every artifact, transport, runtime, authority, provider, and
+value gate remains false.
 
-Current mobile head `d6df646df0989b7ab25bc305c0ae80d2f08ce432`
+Current mobile head `4b684ebbb576c2b2f8e762c3f81c3ec2fded47f5`
 keeps website Provider API schema and `providerApiVersion` 1 separate from the
 expected private native wallet ABI 2 and browser-owned public approval schema 2.
 Android and iOS close twelve typed approval summaries and thirteen typed event
 projections, reject private authority/session/channel/event-sequence material
 from page-visible results, and retain standalone secure-key helpers and wallet
-UI-state models. This source deliberately does not alter the existing browser
+UI-state models. Android and iOS accept generation zero only in the fresh
+private capability input, keep the website result to
+`{providerApiVersion,methods}`, and require positive generation plus exact
+wallet session for permission-bearing events. This source deliberately does not alter the existing browser
 navigation path: provider-bridge installation, wallet runtime, approval runtime,
 and value runtime gates are all false; the unavailable adapter is hardwired;
 the bridges are absent from `MainActivity` and WKWebView controller lifecycles;
 and no wallet runtime/FFI, generated `hns-wallet-ffi` JNI/C binding, native
 approval UI, or typed event producer exists. The successor is unpushed and
-received source/static inspection only, with no build, unit-test, Swift/Xcode,
+received source/static inspection only; its added tests remain unrun, with no
+build, Swift/Xcode,
 simulator, signed-device, or installed-product result.
 
 At exact predecessor `58996db0facef1bb6a7cb2876361d13dabc90c75`, the
 Android scaffold and unit sources compiled in the focused Gradle path and the
 iOS project contained the expected source/test references, while neither
 `swiftc` nor `xcodebuild` was available. That evidence does not qualify
-`d6df646df0989b7ab25bc305c0ae80d2f08ce432`.
+`4b684ebbb576c2b2f8e762c3f81c3ec2fded47f5`.
 
 ## Wallet, names, Shakedex, and market board
 
-The wallet continuation at `b999b330f17a0d7b300bff5e96b5ec2fbd294ec6`
+The wallet continuation at `604a35771a9427696b6ecf533368205392e62979`
 has transactional SQLite schema V3, bounded Argon2id passphrase input,
 XChaCha20-Poly1305 typed entity, workflow, permission, approval, and replay
 encryption with metadata-bound associated data, monotonic permission
@@ -467,7 +495,7 @@ Electrum, hosted indexer, or production Bitcoin Core RPC dependency exists.
 The pinned `bip157` release ignores `data_dir` and does not expose durable
 header/filter/peer state, so this is not production persistence. A dedicated
 deterministic swap-key branch landed at `5b540963` and remains in current
-`b999b330`, but it has not been qualified. Safe record archival, signed HTLC
+`604a3577`, but it has not been qualified. Safe record archival, signed HTLC
 spends/settlement, full
 invalid-PoW/filter/peer fixtures, regtest settlement, trusted-time policy, and
 mobile/resource qualification are missing; Bitcoin value paths remain hard-
@@ -478,7 +506,7 @@ install, new wallet, one-year restore, five-year restore, genesis restore,
 time to usable balance, scan completion, persistent disk, bandwidth, and peak
 mobile memory. No universal size is claimed.
 
-Ethereum is native-ETH-only. Current `b999b330` capability discovery advertises
+Ethereum is native-ETH-only. Current `604a3577` capability discovery advertises
 deterministic offline account/receive derivation only. The immutable
 synchronization, value, settlement, and mainnet qualification constants are
 false; history, send, authoritative evidence, and atomic settlement are
@@ -541,8 +569,8 @@ refund, restart, or reorg demonstration was run for either pair.
 
 All PASS evidence below belongs to the exact earlier revisions named in the
 final table. It did not transfer to feature landing `81f2df26` or current
-descendant `4b989aab`, nor to `3d346e3d`, `b999b330`, `6eb0174a`,
-`d58e1473`, or `d6df646d`. This report
+descendant `4b989aab`, nor to `3d346e3d`, `604a3577`, `6eb0174a`,
+`972e63a1`, or `4b684ebb`. This report
 records only the per-row provenance and static review stated in the
 continuation table; it does not infer a consolidated gate result.
 
@@ -657,10 +685,10 @@ Source-only production-continuation revisions after those exact gates:
 | --- | --- | --- |
 | `hns-rs` | `4b989aabc132e7e79b8fd57a10f2465073faf588` | canonical HSD fee policy and strict Shakedex name transitions/recovery retained from `81f2df2`; self-contained package assets, complete listing/cancellation and recovery-FINALIZE vectors, fail-closed source tests, and release hygiene committed; static/diff review only in this tranche; shared 0.2 packages remain unpublished and unqualified |
 | `hns-node-rs` | `3d346e3dadc716b5c367eee050308e71a0693a64` | local and remote-tracking `main`; exact fee quotes and resolver-sidecar source are present, tag `v0.3.4` points to `40b456fa0772729542118a69f27edc37bf42a3d7`, and this ledger records no new consolidated qualification result |
-| `hns-wallet-rs` | `b999b330f17a0d7b300bff5e96b5ec2fbd294ec6` | prior private ABI, Bitcoin swap keys, provider hardening, exact quote recovery, and fail-closed legacy Shakedex gates remain; encrypted bounded `HnsName` discovery now shares the exact coin-scan chain/mempool snapshot and authoritative-account CAS ordering rejects rollback, but ownership stays watch-only; Ethereum is offline-receive-only behind false sync/history/send/value/settlement/mainnet outcomes and opaque unissued permits, with signed raw bytes zeroizing/opaque/redacted; static/diff review only, no qualification inherited |
+| `hns-wallet-rs` | `604a35771a9427696b6ecf533368205392e62979` | private ABI-v2 results, prompts, and events share the exact authority/wallet/permission binding; the typed private capability snapshot uses the canonical 43-name vocabulary, fresh generation zero cannot erase a nonzero tombstone, and `hns_requestAccounts` is unavailable; prior wallet/name/value containment remains; source/static review only, added tests unrun, unpushed, no qualification inherited |
 | `hns-dane-engine` | `6eb0174ae743e6bd01c516be7a534d94be94b4bd` | source/read and diff checks only; retained proxy authority is not consumed or product-qualified |
-| `hns-dane-browser-extension` | `d58e1473e47bf9a50faafa5a05bba74756bdf314` | source/read and diff checks only; private ABI 2/public schema 1 projection and event boundary aligned; no build/test, no service launch, and provider/value remain unavailable |
-| `hns-dane-browser-mobile` | `d6df646df0989b7ab25bc305c0ae80d2f08ce432` | source/read and diff checks only; dormant website schema 1/private native ABI 2/public approval schema 2 projections close twelve approval summaries and thirteen events; no build/test/install or push, all four release gates remain false, the unavailable adapter remains hardwired, and controller/wallet-runtime/wallet-FFI/generated-binding/UI/event-producer wiring is absent |
+| `hns-dane-browser-extension` | `972e63a14f9067da3608f53b852adc93d8ded2a4` | source/static checks only; fresh-zero private capability admission is separate from the narrow public website result and exact permission-generation/wallet-session event matching; added tests unrun, unpushed, no service launch, all provider/value joins false or unavailable |
+| `hns-dane-browser-mobile` | `4b684ebbb576c2b2f8e762c3f81c3ec2fded47f5` | source/static checks only; dormant adapters apply the same private/public capability split and event binding; added tests unrun, no build/install/push, all four release gates false, unavailable adapter hardwired, and controller/wallet-runtime/FFI/generated-binding/UI/event-producer wiring absent |
 | `MeshMine` | `79f3bbc6c24bab80adaef199a9318fd0065113f6` | workspace packages are private; immutable node pin and live parent/job topology status are unchanged |
 
 The ecosystem row necessarily identifies its containing commit here because a

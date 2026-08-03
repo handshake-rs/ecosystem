@@ -59,10 +59,10 @@ mobile public-projection boundary on `main` without upgrading release status:
 | --- | --- |
 | `hns-rs` | feature source landed at `81f2df2651e8ea81be33e33a3438c4c9e0348f93` and current self-contained release-source preparation is `4b989aabc132e7e79b8fd57a10f2465073faf588`: canonical HSD fee policy, TRANSFER/FINALIZE construction, empty offer inventory, and listing-independent recovery now include package-local public assets, deterministic listing/cancellation and recovery-FINALIZE vectors, fail-closed source tests, and corrected release gates; static review only, and shared 0.2 packages remain unpublished and unqualified |
 | `hns-node-rs` | local and remote-tracking `main` at `3d346e3dadc716b5c367eee050308e71a0693a64`: exact snapshot-bound final-transaction fee quotes plus the v0.3.4 private resolver-sidecar/container source and later release-CI port fixes; tag `v0.3.4` remains at `40b456fa0772729542118a69f27edc37bf42a3d7`, and the separate external push/tag does not upgrade this ledger's qualification status |
-| `hns-wallet-rs` | committed at `b999b330f17a0d7b300bff5e96b5ec2fbd294ec6`: prior private ABI, Bitcoin swap derivation, provider hardening, exact quote recovery, and fail-closed Shakedex gates remain; an encrypted bounded `HnsName` scan now shares the ordinary scan's exact chain/mempool snapshot and authoritative-account revision/CAS ordering rejects derivation rollback, while names remain watch-only; Ethereum advertises offline receive only, with synchronization/history/send/value/settlement/mainnet unavailable behind false gates and opaque permits; static-only and unqualified |
+| `hns-wallet-rs` | committed at `604a35771a9427696b6ecf533368205392e62979`: prior wallet/name/value containment remains; private ABI-v2 results, prompts, and events now share an authority-handle/revision, wallet-session, permission-generation binding, the typed private capability snapshot names the current runtime-supported subset of the canonical 43 methods, fresh generation zero cannot erase a nonzero permission tombstone, and `hns_requestAccounts` is unavailable; source/static review only, tests unrun, unpushed, and unqualified |
 | `hns-dane-engine` | committed at `6eb0174ae743e6bd01c516be7a534d94be94b4bd`: opaque exact-origin proxy authority survives unrelated admitted work while security-invalidating transitions revoke it; product consumption and qualification remain unavailable |
-| `hns-dane-browser-extension` | committed through `d58e1473e47bf9a50faafa5a05bba74756bdf314`: private ABI/service protocol 2 discovery with website schema 1, all 12 typed public approval variants, canonical IDs, private-authority containment, native-only events, and exact close/reject context; signed artifact, transport, runtime, engine authority, provider, and value gates remain false |
-| `hns-dane-browser-mobile` | committed at `d6df646df0989b7ab25bc305c0ae80d2f08ce432` on local `main` only: dormant Android/iOS website-schema-1/private-native-ABI-2/public-approval-schema-2 source closes twelve approval summaries and thirteen event shapes; source/static-only, unrun, and unpushed, with all four release gates false, a hardwired unavailable adapter, and no controller, wallet runtime/FFI, generated binding, approval UI, or event producer |
+| `hns-dane-browser-extension` | committed through `972e63a14f9067da3608f53b852adc93d8ded2a4`: private capability admission accepts generation zero only before any permission history while the public website capability result remains `{providerApiVersion,methods}` and events retain exact permission-generation/wallet-session matching; source/static-only, tests unrun, unpushed, with signed artifact, transport, runtime, engine authority, provider, and value gates false |
+| `hns-dane-browser-mobile` | committed at `4b684ebbb576c2b2f8e762c3f81c3ec2fded47f5` on local `main` only: dormant Android/iOS adapters apply the same fresh-zero/private versus website-capability split and positive event binding; source/static-only, tests unrun, and unpushed, with all four release gates false, a hardwired unavailable adapter, and no controller, wallet runtime/FFI, generated binding, approval UI, or event producer |
 
 The pre-existing Chromium insecure-delegation correction and the repository-
 root `dist/` ignore rule are committed separately at
@@ -117,8 +117,10 @@ After the active tranche:
 5. Demonstrate both directions of HNS/BTC and HNS/ETH success, abort, refund,
    restart, fee-spike, timeout, preimage, and reorganization behavior.
 6. Release and consume the engine-minted opaque proxy authority and private
-   wallet ABI v2 in Chromium/mobile; connect the dormant mobile projections
-   through reviewed generated `hns-wallet-ffi` JNI/C bindings, exact engine
+   wallet ABI v2 in Chromium/mobile; project the private typed capability and
+   binding through reviewed generated `hns-wallet-ffi` JNI/C bindings without
+   adding private fields to the website capability result, atomically join
+   approved `hns_requestAccounts` to real accounts, and connect exact engine
    authority, controller lifecycle, native approval UI, and a typed event
    producer; then run installed Chromium, signed Android/iOS, backup/migration,
    corruption, privacy, sustained fuzz, performance, and independent security
