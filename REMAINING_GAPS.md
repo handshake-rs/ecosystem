@@ -203,11 +203,16 @@ This ledger is deliberately release-blocking.
 - Qualify a hash-pinned bootstrap-generator release archive and appliance on
   supported operating systems, including DNSSEC rollover, authoritative DoH,
   TLSA rollover, backup/restore, uninstall, and failure recovery.
-- Repair and rerun the published bootstrap-generator CI workflow. Hosted run
-  `30401402868` failed before qualification at `npm ci` because
-  `package-lock.json` lacks `@emnapi/runtime@1.11.3`; do not count downstream
-  audit, web, appliance, or production-build steps until the locked install
-  passes.
+- Rerun the published bootstrap-generator CI workflow at current exact main.
+  Hosted run `30401402868` failed before qualification at `npm ci` because its
+  checkout reported a missing `@emnapi/runtime@1.11.3`. That lock inconsistency
+  no longer reproduces at clean current main
+  `e48315e9eda53155bd886123cb40360ac5c230ab`: npm 10.9.4 completed the exact
+  locked install in a disposable NVMe clone with lifecycle scripts, audit, and
+  funding disabled (54 packages, exit 0), and both npm 10.9.4 and 11.6.2
+  package-lock-only resolution produced no diff. This is local install evidence,
+  not a protected hosted qualification result; audit, web, appliance, and
+  production-build stages still require one authorized current-head CI run.
 - Retain a versioned crawler-to-generator handoff fixture and prove that every
   generated record still requires operator review and independent live
   DNSSEC/DANE validation.
