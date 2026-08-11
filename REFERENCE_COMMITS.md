@@ -1,5 +1,28 @@
 # Reference commits
 
+## 2026-08-10 authoritative remote-main checkpoint
+
+This table is the current source-location ledger. It supersedes push/location
+claims in the historical checkpoints below without transferring their PASS
+labels to a different revision.
+
+| Working repository | Branch or ref | Revision | Current evidence |
+| --- | --- | --- | --- |
+| `work/hns-rs` | `main` | `a93ba7a806a921a8ce2d13d9c5fc041ff0ecf6e7` | Remote `main`; exact-head CI `31372546141` passed. Source predecessor `b33b346` passed exact-head hosted protocol qualification and RustSec in run `31369025777`; current `0.2.0` packages are unpublished |
+| `work/hns-dane-engine` | `main` | `84005f1df21a30ea9dda7fafb95f9488b8f5da4b` | Remote `main`; exact-head CI `31372280327` and CodeQL `31372280387` passed after repairing the platform-feature gate; predecessor `3c12ace` has the retained local full-workspace test, strict-Clippy, and release-build result |
+| `work/hns-wallet-rs` | `main` | `4cd9a61a8520c4d3bddd15b3fffcad0d02aafd36` | Remote `main` at the canonical `handshake-rs` origin; hosted run `31372389330` failed strict Clippy in HNS workflows and a successor fix is in progress; no crates or ABI artifact published |
+| `work/hns-node-rs` | `main` | `063ba6b82b4b34ea0e56992aa0c0d48855e03e71` | Remote `main`; exact-head hosted CI `31373528053` and container `31373528055` are pending. Focused Rust 1.97.1 strict Clippy passed for `hns-store` with the mandated prebuilt RocksDB, superseding the `6e3f7a4` hosted failure |
+| `work/hns-dane-browser-mobile` | `main` | `e8d6a0baede5e34cfcf0568ffd2187cfd0456815` | Remote `main`; exact-head documentation/policy CI `31371872754` passed; full hosted CI and the installed Android debug browser belong to source predecessor `85647ae` |
+| `work/hns-dane-browser-extension` | `main` | `bfa089992b427d6b090989b6289dc68ef1e74fee` | Remote `main`; exact-head CI `31372012912` and CodeQL `31372012126` passed; full hosted CI also passed at source predecessor `08ba480` |
+| `work/namehold-wallet` | upstream `main` | `e18e38faafdaed15104ca373097e63983a5e2ed2` | Current upstream source; separate hsrd integration work is not merged here |
+| `work/namehold-wallet` | `pr-21-hsrd` | `9d168a6a3af2617b24ad29aa6fd343c59b6ff4c2` | Authenticated hsrd/ARM64 work branch; no combined-current-main or release qualification claim |
+
+“Implemented,” “exact-head tested,” “product-wired,” “value-enabled,”
+“artifact-published,” and “installed-qualified” are independent assertions.
+This table establishes source location and only the exact evidence named in its
+last column. In particular, it does not turn browser wallet/provider or P2P
+marketplace paths on.
+
 ## Repository snapshots
 
 | Repository | URL | Revision |
@@ -38,7 +61,7 @@ tests, and only then architectural inference. Draft behavior follows exact PR
 text/commits, deterministic PR fixtures, independent Rust vectors, the Denuo
 registry, and documented migration rules.
 
-## 2026-08-02 wallet and marketplace qualification checkpoint
+## 2026-08-02 local wallet and marketplace checkpoint
 
 These exact revisions retain the last non-redundant qualification evidence for
 this program. Later source heads are recorded separately below and inherit no
@@ -56,7 +79,7 @@ settlement path for mainnet use.
 | `work/hns-dane-browser-extension` | `main` | `2300ef82a765a6dbd1b99ad537d3d3c2ac312d95` | STAGED PASS — `./scripts/check.sh` stages through Rust/release passed on the source-equivalent predecessor; after the docs-only fix, `npm run check:extension` passed; full script not rerun |
 | `integration` | `main` | containing commit; exact hash reported in the handoff | PASS — `./scripts/check.sh`; strict evidence/revision cross-check and diff check |
 
-### Current production-continuation source heads
+## Historical production-continuation source heads
 
 These successors inherit no PASS label from the earlier exact heads. This
 documentation reconciliation used source inspection and static diff checks

@@ -3,7 +3,55 @@
 Status: **production-completion implementation in progress; not release-ready
 and not authorized for mainnet settlement**
 
+## Authoritative current-head state (2026-08-10)
+
+All coordinated source repositories listed here are now on their stated
+remote `main` except the explicitly separate `namehold-wallet` work branch.
+This section supersedes later historical statements that a current source head
+is local-only, unpushed, or hosted at the old wallet origin. It does not erase
+the dated evidence those statements described.
+
+| Repository | Current revision | Current qualification boundary |
+| --- | --- | --- |
+| `hns-rs` | `a93ba7a806a921a8ce2d13d9c5fc041ff0ecf6e7` | Exact-head CI passed (`31372546141`); source predecessor `b33b346` passed hosted protocol qualification and RustSec (`31369025777`). Current `0.2.0` crates remain unpublished. |
+| `hns-dane-engine` | `84005f1df21a30ea9dda7fafb95f9488b8f5da4b` | Exact-head hosted CI and CodeQL passed (`31372280327`, `31372280387`); the HNSA implementation predecessor `3c12ace` also passed local locked workspace tests, warning-denied Clippy, and release build. No crate or browser artifact is published from this head. |
+| `hns-wallet-rs` | `4cd9a61a8520c4d3bddd15b3fffcad0d02aafd36` | Hosted run `31372389330` failed strict Clippy in HNS workflows after correcting ceiling division; a successor fix is in progress. No wallet crates or native ABI artifact are published. |
+| `hns-node-rs` | `063ba6b82b4b34ea0e56992aa0c0d48855e03e71` | Exact-head hosted CI/container runs are pending. Focused Rust 1.97.1 warning-denied Clippy passed for `hns-store` using the mandated prebuilt RocksDB, superseding the `6e3f7a4` hosted failure. Current source is the unpublished `0.3.5` candidate. |
+| `hns-dane-browser-mobile` | `e8d6a0baede5e34cfcf0568ffd2187cfd0456815` | Exact-head documentation/policy CI passed (`31371872754`); source-equivalent `85647ae` passed the full hosted gate and its debug APK installed and cold-launched on Android. This is browser-scaffold evidence, not wallet/provider evidence. |
+| `hns-dane-browser-extension` | `bfa089992b427d6b090989b6289dc68ef1e74fee` | Exact-head CI and CodeQL are green; source-equivalent `08ba480` passed full hosted CI. The installed Chromium extension has no exact wallet/provider/native-host end-to-end qualification. |
+| `namehold-wallet` | upstream `main` `e18e38f`; `pr-21-hsrd` `9d168a6` | The hsrd/ARM64 integration branch is not yet reconciled with upstream `main`; no combined-main qualification or release claim exists. |
+
+Implementation, testing, wiring, enablement, publication, and installation are
+separate states. Current source implements the canonical HNSA/HNSR primitives,
+engine authority/admission, wallet lifecycle/read/market components, and
+browser-side schemas. The shipping mobile and extension runtimes still do not
+invoke `hns-wallet-rs` through a released generated JNI/C/native-host binding;
+they do not consume the latest HNSA named-route admission through an
+engine-issued product authority; wallet/provider/value/market gates remain
+false. Consequently:
+
+| State | Wallet controls | P2P marketplace |
+| --- | --- | --- |
+| Implemented in source | Partial: persistent wallet control and typed create/restore/read vocabulary exist, but the production executable/controller surface is incomplete | Partial: canonical protocols and durable wallet workflows exist |
+| Exact-head tested | Wallet `4cd9a61` failed strict Clippy; browser scaffold evidence is separate | Protocol primitives pass at `hns-rs` `b33b346`; wallet/browser end-to-end remains pending |
+| Product-wired | No | No |
+| Value-enabled | No | No |
+| Current-source artifact published | No wallet ABI artifact | No marketplace-capable browser artifact |
+| Installed qualified | No wallet flow | No discovery, approval, fill, settlement, restart, or reorg flow |
+
+The first product milestone remains an app-local wallet slice: app-owned secure
+persistence plus generated Android JNI and Apple C bindings for create,
+restore, status, unlock, lock, and one configured HNS account identity. Balance,
+history, and receive targets require a complete concrete mobile `HnsBackend`
+and are not part of that first slice. Origin permission/approval projection
+follows independently; HNS value movement, Shakedex/Denuo, HNSA/HNSR
+marketplace transport, and bilateral settlement remain later gated slices.
+
 ## Production-completion continuation
+
+The narrative below is retained historical evidence. Its old “local,”
+“unpushed,” and “current head” statements are superseded by the authoritative
+checkpoint above.
 
 Production completion is now the active objective. Work proceeds in the
 dependency order and with the evidence rules in

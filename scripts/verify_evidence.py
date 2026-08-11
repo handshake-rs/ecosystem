@@ -250,8 +250,17 @@ def verify_wallet_report(
         not in exact_section
     ):
         errors.append("wallet implementation report lacks the final ledger schema")
+    qualification_ledger = exact_section.split(
+        "Source-only production-continuation revisions",
+        maxsplit=1,
+    )[0]
     for repository in sorted(FINAL_CODE_REPOSITORIES):
-        row = final_row(exact_section, repository, "final report ledger", errors)
+        row = final_row(
+            qualification_ledger,
+            repository,
+            "final report ledger",
+            errors,
+        )
         if row is None:
             continue
         revision = verify_final_row_fields(
@@ -269,7 +278,7 @@ def verify_wallet_report(
             )
 
     ecosystem = final_row(
-        exact_section,
+        qualification_ledger,
         "ecosystem",
         "final report ledger",
         errors,

@@ -2,14 +2,26 @@
 
 This ledger is deliberately release-blocking.
 
+Current remote-main basis (2026-08-10): `hns-rs` `a93ba7a`, engine `84005f1`,
+wallet `4cd9a61`, node `063ba6b`, mobile `e8d6a0b`, and Chromium `bfa0899`.
+Current-head hns-rs, engine, mobile, and Chromium checks are green. Wallet
+`4cd9a61` failed strict Clippy in HNS workflows. Node `063ba6b` has a focused
+strict-Clippy pass and pending hosted CI/container reruns. Source
+implementation, exact-head testing, product wiring,
+value enablement, artifact publication, and installed qualification remain
+independent requirements.
+
 ## Canonical protocol repository
 
 - Retain the production-parser fuzz target, locked fuzz dependency graph, and
   deterministic parser-smoke command in hosted qualification.
-- Qualify and publish the canonical marketplace/session/HNS-HTLC/Shakedex,
-  NameState/resource, HSD fee-policy, and TRANSFER/FINALIZE boundary at
-  `4b989aabc132e7e79b8fd57a10f2465073faf588`; until separately authorized,
-  its `0.2.0` source and vectors are not a consumable release.
+- Publish the exact-head-qualified canonical marketplace/session/HNS-HTLC/
+  Shakedex, HNSA/HNSR/chat, NameState/resource, HSD fee-policy, and
+  TRANSFER/FINALIZE boundary at
+  current documentation head `a93ba7a806a921a8ce2d13d9c5fc041ff0ecf6e7`.
+  Hosted protocol qualification and RustSec pass at its source predecessor
+  `b33b346`, and exact-head documentation CI also passes; the `0.2.0` crates
+  remain unpublished and therefore are not a consumable registry release.
 - Adopt the canonical crates in every consumer without copying protocol logic.
 
 ## Standalone node, wallet, and market
@@ -31,9 +43,10 @@ This ledger is deliberately release-blocking.
 - Publish the new canonical marketplace protocol/Denuo V2 crate boundary and
   adopt it by immutable release in node/wallet/browser consumers; do not use a
   sibling path or copied wire types.
-- Qualify the source-complete HNS transaction/reconciliation runtime and
-  concrete authenticated node adapter at
-  `4935e059bcde338f4260dd98202ff26ce0f3ca9f`, including the separate encrypted
+- Complete the current hosted gate and product qualification for the
+  source-complete HNS transaction/reconciliation runtime and concrete
+  authenticated node adapter at
+  `4cd9a61a8520c4d3bddd15b3fffcad0d02aafd36`, including the separate encrypted
   bounded HNS-coin/name-role scans under one exact chain/mempool snapshot, the
   authoritative-account revision/CAS ordering and derivation-high-water
   rollback rejection, plus
@@ -88,16 +101,18 @@ This ledger is deliberately release-blocking.
   malicious-board controls, fill-grant expiration, peer cooldown/scoring, and
   end-to-end browser approval for the market-price board.
 - Adopt and qualify the source-complete authenticated RPC, exact transaction
-  fee quotes, confirmed/mempool Shakedex, and HTLC tracker at
-  `3d346e3dadc716b5c367eee050308e71a0693a64` through the released canonical
+  fee quotes, confirmed/mempool Shakedex, HTLC tracker, action-context/MTP
+  binding, and contract-retirement/reclamation work at
+  `063ba6b82b4b34ea0e56992aa0c0d48855e03e71` through the released canonical
   protocol dependency and the source-complete wallet adapter. Its chain
   evidence and verified revealed-preimage events—not Denuo status relay
-  objects—must remain settlement authority. Add safe registry retirement and
-  capacity reclamation; the current 16,384-global and 256-per-address limits
-  are unreclaimable lifetime caps and remain a production-availability block.
+  objects—must remain settlement authority. Safe retirement and reclamation
+  now exist in source; retain their canonical-evidence checks and demonstrate
+  them under long-running multi-process and adversarial capacity pressure.
 - Qualify the `v0.3.4` node plus private loopback resolver-sidecar/container
   topology at tagged source `40b456fa0772729542118a69f27edc37bf42a3d7`
-  and reconcile the later release-CI-only `main` corrections. Retain RPC
+  and separately qualify the current unpublished `0.3.5` candidate at
+  `063ba6b`. Retain RPC
   authentication, avoid sharing a wallet-enabled credential with the resolver,
   keep DNS off public interfaces, and record immutable image digests before
   product consumption.
@@ -123,15 +138,16 @@ This ledger is deliberately release-blocking.
 - Continue replacing the browser products' historical platform-neutral copies
   with the shared engine. TLSA-owner/ICANN trust, full-host root comparison,
   direct-first transport/role policy, canonical authority lifecycle, and
-  schema-v2 observability are now shared through five exact-pinned contracts.
-  The engine's loopback proxy admission/publication core now exists at
-  `6eb0174ae743e6bd01c516be7a534d94be94b4bd`, including retention across
-  unrelated admitted work and fail-closed security-epoch invalidation; the next
-  bounded slice is exact Chromium/mobile consumption of that opaque authority. Live DNS wire,
-  light-chain, DNSSEC, DANE, resolver, origin transport, and gateway migration
-  follow independently.
+  schema-v2 observability are shared. Mobile and Chromium now consume the
+  centralized cache, primitives, Urkel, durable chain, peer, DNSSEC/DANE,
+  synchronization, resolver, and network adapters from exact engine pins.
+  Current engine `84005f1` additionally contains loopback proxy authority,
+  private transport runtimes, and durable HNSA named-route admission. The next
+  bounded slice is to advance the products to that HNSA source and consume its
+  opaque authority through generated product bindings rather than projecting
+  authority in Kotlin, Swift, or JavaScript.
 - The complete engine graph is now standalone at exact canonical `hns-rs`
-  revision `dde2da81f29df935f043978a6d517c1d60ceff31`; retain its exact-source,
+  revision `b33b346780c8f6a9bb18a54390019486cdab0221`; retain its exact-source,
   shallow-clone, cargo-deny, and offline gates while adopting deeper engine
   crates in each browser.
 - The platform runtime versus canonical `hns-browser-runtime` collision is
@@ -177,15 +193,18 @@ This ledger is deliberately release-blocking.
   owned trust roots, artifact hashes, durable anti-rollback state, and actual
   process launch; schema validity alone must not affect availability. For
   mobile, connect the dormant projections at
-  `4b684ebbb576c2b2f8e762c3f81c3ec2fded47f5` only through reviewed generated
+  `e8d6a0baede5e34cfcf0568ffd2187cfd0456815` only through reviewed generated
   `hns-wallet-ffi` JNI/C bindings, the canonical typed engine authority result,
   controller lifecycle wiring, permission persistence, native approval UI, and
   a typed event producer. Then qualify permission, approval, lock/session,
   event, installed-device, and value behavior and implement the actual wallet
   screens, notification, backup, migration, and removal paths.
-  The current wallet, Chromium, and mobile successors are source/static-only,
-  unrun, and unpushed; Chromium's provider/value gates and all four mobile
-  release gates are false, and the mobile unavailable adapter is hardwired.
+  Chromium current-head CI is green; wallet current-head CI failed strict
+  Clippy. Mobile's documentation head and source predecessor have green hosted
+  evidence, but browser results cover the scaffold rather than a wallet join.
+  All repositories are pushed to the remote heads recorded above. Chromium's
+  provider/value gates and all four mobile release gates are false, and the
+  mobile unavailable adapter is hardwired.
   Until reviewed native projection exists, the Chromium host and both mobile
   scaffolds must continue to report unavailable and avoid announcing a provider.
 - Retain the protected Developer ID identity checks, notarization evidence,
@@ -220,19 +239,18 @@ This ledger is deliberately release-blocking.
 ## Integration and release
 
 - Retain protected, exact-head hosted evidence for published checkpoints and
-  close any current hosted failures. The engine's latest local source head
-  `6eb0174ae743e6bd01c516be7a534d94be94b4bd` (with older release-preparation
-  predecessor `1d0fc9c6ba72f008e60d8c5a98741a32aeea4a75`) must remain unpushed,
-  unpublished, and unqualified until its separate release is authorized;
-  local gates and exact-revision consumer evidence do not substitute for
-  protected current-main checks.
-- Mobile distribution readback: iOS 0.5.5 build 57 is `VALID` and its direct
-  App Review submission is `WAITING_FOR_REVIEW` after protected upload run
-  `30456522039`; GitHub
-  `v0.5.5` is public with the verified code 46 APK and build 57 App Store IPA.
-  Keep App Store release manual and do not add
-  a TestFlight or beta-group path. Android 0.5.5 version code 46 is already on
-  the Google Play production track.
+  close any current hosted failures. Engine `84005f1` and Chromium `bfa0899`
+  are green. Node `063ba6b` has pending hosted reruns after a focused
+  exact-head Clippy pass; wallet `4cd9a61` failed strict Clippy and requires a
+  successor correction. Their local or predecessor results do not
+  substitute for protected current-main checks. The engine and wallet remain
+  unpublished even though their source is now pushed.
+- Mobile distribution readback: Apple published iOS 0.5.5 build 57 on
+  2026-07-31 after protected upload run `30456522039`; the earlier `VALID` and
+  `WAITING_FOR_REVIEW` values are submission chronology, not current status.
+  No TestFlight distribution was used. Retain the separately documented
+  Android release/store evidence, and do not interpret any public browser
+  artifact as a wallet/provider release.
 - Run adversarial, restart, corruption, fuzz, browser, and performance suites.
 - Complete every applicable open demonstration in the 38-row
   `QUALIFICATION_MATRIX.md`. Historical row 13 remains explicitly excluded by

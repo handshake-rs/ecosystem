@@ -15,18 +15,26 @@ wallet program; its `NOT RUN` status must not be reinterpreted as permission to
 add OPEN/BID/REVEAL/REGISTER flows. Rows 27–38 are the wallet/marketplace
 supplement. Only directly demonstrated scope is credited.
 
-The 2026-08-02 production-continuation successors (`hns-rs` `4b989aab`, node
-`3d346e3d`, wallet `4935e059`, engine `6eb0174a`, Chromium `972e63a1`, and
-mobile `4b684ebb`) do not inherit the earlier exact-revision PASS evidence and
-therefore do not upgrade any row. Their fee/name/Shakedex primitives, exact
-node fee quotes, private wallet ABI, provider hardening, Kyoto supervisor,
-encrypted same-snapshot name scan, authoritative-account CAS hardening,
-receive-only Ethereum containment, proxy admissions, recovery, and tracking
-code remain represented by the same `PARTIAL`/`NOT RUN` topology outcomes until
-one consolidated gate and the applicable multi-process or installed-product
-demonstrations run. Exact node fee-quote adoption also remains unable to
-authorize value until released `hns-script` 0.2 canonical fee algebra is
-integrated and qualified.
+The authoritative 2026-08-10 remote heads are `hns-rs` `a93ba7a`, node
+`063ba6b`, wallet `4cd9a61`, engine `84005f1`, Chromium `bfa0899`, and mobile
+`e8d6a0b`. `hns-rs` current-head CI passes, and its source predecessor
+`b33b346` passed the full hosted protocol and RustSec gate. Engine and Chromium
+current-head CI/CodeQL are green.
+Mobile's exact-head documentation/policy gate passes and its source predecessor
+`85647ae` passed full hosted CI; full Chromium passed at source predecessor
+`08ba480`. Wallet current-head CI failed strict Clippy in HNS workflows. Node
+`063ba6b` has a focused exact-head `hns-store` strict-Clippy pass after the
+failed predecessor, while its hosted CI/container reruns are pending. None of
+those results demonstrates a native wallet
+binding, enabled value gate, published wallet ABI, installed provider, or P2P
+marketplace lifecycle, so the applicable rows remain `PARTIAL` or `NOT RUN`.
+The detailed source and run ledger is in `REFERENCE_COMMITS.md`.
+
+These columns are never collapsed into one “ready” label: implemented source,
+exact-head test evidence, product wiring, value enablement, artifact
+publication, and installed qualification are separate assertions. A green
+browser build or an older public browser artifact does not establish the last
+four wallet/marketplace assertions.
 
 The 2026-07-25 consent clarification separates transport from output
 authority: opaque P2P relay capacity is default-on with an opt-out policy,
@@ -52,8 +60,8 @@ provider/output roles remain zero.
 | 6 | HIP 77 through distinct proxy/target peers | PARTIAL: requester/target crypto round trip only |
 | 7 | proxy observes no plaintext qname | PARTIAL: HPKE boundary tested, topology not run |
 | 8 | ODoH opt-out disables path | PARTIAL: shared policy types tested |
-| 9 | HNSR requester/output inactive until enabled; opaque relay independently opt-out | PARTIAL: independent role defaults and migration tested |
-| 10 | HNSR route and relayed inner peer | PARTIAL: records/store/envelopes tested |
+| 9 | HNSR requester/output inactive until enabled; opaque relay independently opt-out | PARTIAL: exact-head protocol qualification covers independent role defaults, requester transport defaults, bounded reservations, and circuit runtime state; the required product/full-node role topology remains unrun. |
+| 10 | HNSR route and relayed inner peer | PARTIAL: exact-head protocol qualification covers HNSA named routes, HNSR route service, bounded circuit runtimes, and non-node chat/web profiles; engine source adds durable authority-bound HNSA admission. No browser-to-live-relay inner peer has been demonstrated. |
 | 11 | disabling an HNSR role withdraws/closes only that role's state | NOT RUN |
 | 12 | block traverses HNSR inner connection | NOT RUN |
 | 13 | historical wallet opens/bids/reveals/registers demonstration | NOT RUN: explicitly excluded from this wallet update; retained only for the earlier topology ledger |
@@ -65,7 +73,7 @@ provider/output roles remain zero.
 | 19 | buyer finalizes name | NOT RUN |
 | 20 | Dutch lowest price cannot execute early | PASS: permanent primitive regression |
 | 21 | MeshMine coherent parent snapshot | PARTIAL: immutable external-node bridge and eight focused snapshot/binding tests pass; live node topology not run |
-| 22 | mobile browser builds | PARTIAL: Android 0.5.5 version code 46 from `d24f85158854abb8be4a7bb9e914aebe5e7e4679` is signed, artifact-verified, and deployed to Google Play production; iOS 0.5.5 build 57 source/tag `d926561091634cd69fc9b7e79a4b76003fa4ee47` passed exact Apple CI `30454904736` and live App Store screenshot run `30454926117`; build 57 is `VALID` and its direct App Review submission is `WAITING_FOR_REVIEW` after protected upload run `30456522039`; the review path is manual and uses no TestFlight; installed Android/iOS device behavior and resolver-contact evidence remain open |
+| 22 | mobile browser builds | PARTIAL: Android release artifacts and store deployment are retained at the documented release sources; iOS 0.5.5 build 57 source/tag `d926561091634cd69fc9b7e79a4b76003fa4ee47` passed exact Apple CI `30454904736`, screenshot run `30454926117`, and protected upload `30456522039`, then became public on 2026-07-31 without TestFlight. Current remote `e8d6a0b` passes its documentation/policy gate, source predecessor `85647ae` passes full hosted CI, and that predecessor's Android debug APK installed and cold-launched. The installed wallet/provider and full resolver-contact matrices remain open. |
 | 23 | Chromium extension builds | PARTIAL: public v0.5.5 source/tag `86b18497285753944ec1b9196ec05ee359c6db11` has 29 cross-platform MV3/native-host/Setup assets; macOS artifacts are signed and notarized, Windows artifacts remain unsigned, and documentation head `3495bd1c5e7c26f9486ea81fb21dc1618c9bc2c8` passed hosted CI `30439859541`; installed catalog/browser proxy/restart/uninstall/policy-revocation matrices remain unrun |
 | 24 | direct authoritative DNS remains first | PARTIAL: both five-contract adapters use and test direct UDP/TCP before authenticated authoritative DoH and a policy-admitted relay, with requester consent separate from every disabled browser provider/output role; packet-capture/full-process topology remains unrun |
 | 25 | fallbacks remain locally DNSSEC/DANE validated | PARTIAL: the shared engine and both adapters test secure TLSA enforcement, authenticated denial/proven-insecure WebPKI, bogus/indeterminate fail-closed state, transport-aware TLSA owner derivation, and immutable complete-host root plans through canonical authority/status publication; the full live installed-browser/device matrix remains unrun |
@@ -83,15 +91,15 @@ program. They use the same evidence vocabulary.
 
 | # | Required demonstration | Status |
 | ---: | --- | --- |
-| 27 | standalone wallet locked build, Clippy, tests, docs, dependency policy, and contract reproducibility | PASS at earlier exact wallet `8aa82dd9`: local `hns-wallet-rs/scripts/check.sh`; 34 Rust tests, warning-denied Clippy/docs, deterministic solc artifact comparison, and zero npm audit vulnerabilities. Current `4935e059` received source/static review only; its host/schema/FFI tests and consolidated gate remain unrun |
-| 28 | encrypted store, deterministic restore/key separation, lock, migration, workflow CAS, and replay protection | PARTIAL: HNS/ETH separation and focused store units pass at the earlier baseline; current source adds dedicated Bitcoin swap-key derivation, zeroizing private-ABI transport buffers, atomic approval/workflow/reservation authorization around exact signed bytes, a separately encrypted bounded `HnsName` scan under the ordinary scan's exact chain/mempool snapshot, and authoritative-account revision/CAS rollback rejection, but the current source has not run its gate and complete recovery vectors, platform key wrapping, entity-complete migration, backup/rollback, and device persistence remain unavailable or unrun |
-| 29 | hostile Provider API origin/permission/navigation/approval/rate/forbidden-method matrix | PARTIAL: Rust core negatives and 25 focused Chromium adapter tests pass at earlier exact revisions; current source adds a four-field private result/prompt/event binding, tombstone-preserving permission snapshots, a typed private capability snapshot over the canonical 43-name vocabulary, fresh-only generation zero, and explicit `hns_requestAccounts` unavailability. The public website capability result remains `{providerApiVersion,methods}`. These tests are unrun and no browser dispatches through the live engine/ABI join |
-| 30 | complete fixed-price Shakedex seller/buyer/recovery lifecycle over Denuo | PARTIAL: earlier canonical proof/state primitives and recovery ordering are tested; current unqualified `hns-rs` source adds strict TRANSFER/FINALIZE construction and listing-independent recovery from an exact FINALIZE coin, while current wallet source rejects every legacy 0.1 session entry/transition and live transaction, relay, restart, reorg, and regtest execution remain unrun |
-| 31 | Kyoto direct-P2P restore/send/history/HTLC/reorg qualification | PARTIAL: actual Kyoto/BDK construction and HTLC units pass only at the earlier baseline; durable supervisor/history/broadcast journals and dedicated swap-key derivation now exist as later source, while pinned Kyoto header/filter/peer persistence, signed settlement, safe archival, P2P/regtest adversarial cases, and resource suites remain unavailable or unrun |
+| 27 | standalone wallet locked build, Clippy, tests, docs, dependency policy, and contract reproducibility | PARTIAL: earlier exact wallet `8aa82dd9` passed local `hns-wallet-rs/scripts/check.sh` with 34 Rust tests, warning-denied Clippy/docs, deterministic solc artifact comparison, and zero npm audit vulnerabilities. Current remote `4cd9a61` failed hosted run `31372389330` on strict Clippy in HNS workflows; a successor fix is in progress and no current consolidated PASS is recorded. |
+| 28 | encrypted store, deterministic restore/key separation, lock, migration, workflow CAS, and replay protection | PARTIAL: current source includes schema-v3 encrypted entities, monotonic permission tombstones, approval/workflow/reservation CAS, separate HNS name/Shakedex scans and key allocation, and an account-authenticated encrypted aggregate BDK snapshot. Focused predecessor evidence exists, but current consolidated CI fails strict Clippy; platform key wrapping, populated schema-v1 import, legacy BDK SQLite import, backup/rollback, cross-process/device persistence, and complete recovery qualification remain open. |
+| 29 | hostile Provider API origin/permission/navigation/approval/rate/forbidden-method matrix | PARTIAL: current source has the exact 43-method vocabulary, authority/permission/session binding, approval-schema-v3 name disclosures, and library-only exact-account plus synchronized-read compositions including `hns_requestAccounts`/`hns_accounts`. The checked-in executable remains control-only, current consolidated CI does not pass, and no browser dispatches through a released native engine/ABI join; installed hostile-origin/restart matrices remain pending. |
+| 30 | complete fixed-price Shakedex seller/buyer/recovery lifecycle over Denuo | PARTIAL: current canonical protocol source has exact listing/cancellation/fulfillment/recovery and TRANSFER/FINALIZE primitives, while wallet source adds an encrypted fixed-price board, canonical transaction plans, key allocation, durable value workflows, and terminal reservation release. All Shakedex canonical-V2, Denuo-V2, and value release gates remain false; product coin selection, live relay, provider/trusted-UI dispatch, restart/reorg, and regtest execution remain unavailable or unrun. |
+| 31 | Kyoto direct-P2P restore/send/history/HTLC/reorg qualification | PARTIAL: actual Kyoto/BDK construction, durable supervisor/history/broadcast journals, dedicated swap-key derivation, and encrypted aggregate BDK persistence exist in source. The aggregate is capped at 1 MiB; durable Kyoto header/filter/peer state, a legacy BDK SQLite importer, signed settlement, safe archival, P2P/regtest adversarial cases, and resource suites remain unavailable or unrun. |
 | 32 | Helios native-ETH wallet plus immutable contract qualification | PARTIAL: role-separated typed primitives, fail-closed evidence policy, exact contract artifact, and Rust negatives pass only at the earlier exact baseline; current unqualified source advertises offline receive derivation only, keeps synchronization/history/send/value/settlement/mainnet false or unavailable, requires opaque unissued Helios/value/settlement permits, and contains exact-fee/role/address-bound signing plus a zeroizing non-cloneable/non-serializable signed payload with no raw accessor and redacted diagnostics; no current gate, embedded Helios producer, balance/history runtime, controlled broadcast/recovery, local-chain execution, rollback demonstration, approved deployment, or audit exists |
 | 33 | HNS/BTC success, restart, reorg, and refund | NOT RUN |
 | 34 | HNS/ETH success, restart, finality rollback, and refund | NOT RUN |
-| 35 | price quorum, market intent/fill, Denuo board, griefing limits, and browser approval | PARTIAL: bounded canonical protocol and local reservation/session units exist; governance, live relay, integration, and adversarial board suite not run |
-| 36 | Chromium installed extension/provider/native-host/demo dapp | PARTIAL: the source bridge, approval/event lifecycle, and 25 focused JavaScript tests pass at earlier exact revisions; current `972e63a1` accepts generation zero only in a never-authorized private capability snapshot, keeps the public website capability result narrow, and retains exact permission-generation/wallet-session event matching. Its added tests remain unrun, the native host reports unavailable, every launch/provider/value gate is false, and no installed-browser engine/ABI E2E exists |
-| 37 | Android/iOS signed-device wallet/provider screens and secure storage | PARTIAL: at earlier exact mobile `58996db0`, Android provider/key-store sources and tests compiled in the focused Gradle path and iOS project references were present; Swift/Xcode was unavailable. Current `4b684ebb` applies the same private fresh-zero/public-capability/event-binding split to the dormant twelve-approval/thirteen-event projections, but its added tests are unrun, all four release gates remain false, the unavailable adapter remains hardwired, and controller, wallet-runtime/FFI/generated-binding, native approval UI/event production, and signed-device execution remain absent |
+| 35 | price quorum, market intent/fill, Denuo board, griefing limits, and browser approval | PARTIAL: canonical market envelopes and a bounded encrypted replay/tombstone-safe fixed-price board with restart watermarks exist, together with durable wallet reservation/session workflows. Reporter governance, live relay/outbox supervision, peer policy, browser approval, and adversarial board qualification remain absent or unrun. |
+| 36 | Chromium installed extension/provider/native-host/demo dapp | PARTIAL: current remote `bfa0899` contains signed-wallet artifact admission, approval-schema-v3 source, and consolidated shared-engine dependencies; its exact-head CI/CodeQL are green and full hosted CI also passed at source predecessor `08ba480`. A Chromium extension is installed locally, but no exact wallet artifact launches, the native wallet/provider/value gates remain false, and no installed engine/ABI/provider E2E exists. |
+| 37 | Android/iOS signed-device wallet/provider screens and secure storage | PARTIAL: current remote `e8d6a0b` contains approval-schema-v3 and consolidated shared-engine browser source; exact-head documentation/policy CI and predecessor `85647ae` full hosted CI pass. The predecessor Android debug browser installed and launched, but all four wallet release gates remain false, the unavailable adapter is hardwired, and controller, wallet runtime, generated JNI/C binding, native approval UI/event production, and signed-device wallet execution remain absent. |
 | 38 | Bitcoin disk/bandwidth/startup/mobile-memory benchmark matrix | NOT RUN: no values estimated |

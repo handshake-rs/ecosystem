@@ -16,7 +16,7 @@ workspace, monorepo, umbrella binary, or combined ecosystem package.
 | --- | --- |
 | [`hns-rs`](https://github.com/handshake-rs/hns-rs) | Canonical runtime-independent protocol, consensus, wire, proof, registry, and consent types |
 | [`hns-node-rs`](https://github.com/handshake-rs/hns-node-rs) | Standalone node runtime, storage, P2P, synchronization, mining, and RPC |
-| `hns-wallet-rs` (configured `denuoweb` origin; local `main` unpushed) | Unqualified production-completion source for the encrypted Handshake-first wallet, Provider API core, Shakedex/market workflows, Kyoto Bitcoin boundary, and offline native-ETH/Helios containment; value/product paths remain disabled or unavailable |
+| [`hns-wallet-rs`](https://github.com/handshake-rs/hns-wallet-rs) | Unpublished production-completion source for the encrypted Handshake-first wallet, Provider API core, Shakedex/market workflows, Kyoto Bitcoin boundary, and offline native-ETH/Helios containment; browser product and value paths remain disabled |
 | [`MeshMine`](https://github.com/handshake-rs/MeshMine) | Mining overlay and application consuming the external node boundary |
 | [`hns-dane-engine`](https://github.com/handshake-rs/hns-dane-engine) | Canonical DNSSEC, TLSA/DANE, resolver, transport, dual-root and transport/role policy, browser authority lifecycle, and security observability crates |
 | [`hns-dane-browser-mobile`](https://github.com/handshake-rs/hns-dane-browser-mobile) | Android/iOS lifecycle, UI, proxy integration, app-store packaging, and canonical-engine adapters |
@@ -29,13 +29,47 @@ organization `.github` profile are eleven independent repositories. None is a
 monorepo subpackage or a fork of another ecosystem product.
 
 `hns-wallet-rs` has an independent Git history and release boundary. Its
-configured `origin` is `https://github.com/denuoweb/hns-wallet-rs.git` at
-remote-tracking `main` `1206a8ab550cf67ff43dc162091e371946278641`;
-local `main` `4935e059bcde338f4260dd98202ff26ce0f3ca9f` is ahead by eight commits,
-unpushed, and has no push authorization. No wallet crates or signed browser ABI
-artifact are published, and a planned organization URL must not be read as an
-existing organization checkpoint until migration/publication is separately
-authorized.
+canonical `origin` is now `https://github.com/handshake-rs/hns-wallet-rs.git`,
+and remote `main` is recorded in the current checkpoint below. No wallet crate
+or signed browser ABI artifact has been published merely because the source is
+now hosted by the organization.
+
+## Current remote-main checkpoint (2026-08-10)
+
+This is the authoritative current-head summary. Older dated ledgers remain as
+evidence, but any statement in them that these heads are local-only, unpushed,
+or the current revision is superseded by this section and
+[`REFERENCE_COMMITS.md`](REFERENCE_COMMITS.md).
+
+| Repository | Current source head | Exact-head evidence at this checkpoint |
+| --- | --- | --- |
+| `hns-rs` | remote `main` `a93ba7a806a921a8ce2d13d9c5fc041ff0ecf6e7` | Exact-head CI passed in run `31372546141`; source predecessor `b33b346780c8f6a9bb18a54390019486cdab0221` passed the full hosted protocol qualification and RustSec in run `31369025777`. The source includes HNSA named routes, bounded HNSR circuit/runtime work, HNS chat, marketplace, name, and fee-policy primitives. Version `0.2.0` is still unpublished. |
+| `hns-dane-engine` | remote `main` `84005f1df21a30ea9dda7fafb95f9488b8f5da4b` | Exact-head hosted CI and CodeQL passed (`31372280327`, `31372280387`). The preceding HNSA implementation at `3c12ace6daddd0ba555c242b1d893e047827e679` also passed local locked workspace tests, strict Clippy, and release build. No engine crates are published. |
+| `hns-wallet-rs` | remote `main` `4cd9a61a8520c4d3bddd15b3fffcad0d02aafd36` | Hosted run `31372389330` failed strict Clippy in HNS workflows after the earlier ceiling-division correction; a successor fix is in progress. RustSec passed at the predecessor. The source has persistent control, HNS account/read composition, name and Shakedex workflows, and encrypted BDK persistence, but no released native browser binding. |
+| `hns-node-rs` | remote `main` `063ba6b82b4b34ea0e56992aa0c0d48855e03e71` | Exact-head hosted CI and container runs are pending. Focused Rust 1.97.1 strict Clippy passed for `hns-store` at this head using the mandated prebuilt RocksDB, superseding the `6e3f7a4` hosted Clippy failure. The source is the unpublished `0.3.5` candidate and pins canonical `hns-rs` `b33b346`. |
+| `hns-dane-browser-mobile` | remote `main` `e8d6a0baede5e34cfcf0568ffd2187cfd0456815` | Exact-head documentation/policy CI passed in run `31371872754`; the source-equivalent predecessor `85647ae7467daffdc9c80ff91a339a72a2744e98` passed full Android/iOS CI. Its Android debug APK was installed and cold-launched, which qualifies the browser scaffold only. |
+| `hns-dane-browser-extension` | remote `main` `bfa089992b427d6b090989b6289dc68ef1e74fee` | Exact-head CI and CodeQL are green; source-equivalent predecessor `08ba480fcbae4144a329c90e478ccae4bcab5000` passed the full hosted gate. A local Chromium installation does not yet supply an exact-artifact wallet/provider end-to-end result. |
+| `namehold-wallet` | upstream `main` `e18e38f`; hsrd work branch `pr-21-hsrd` `9d168a6` | The authenticated hsrd/ARM64 work is branch-only and is not reconciled with current upstream `main`; no combined-main or release qualification is claimed. |
+
+The status words are intentionally independent:
+
+- **implemented** means source exists at the cited head;
+- **exact-head tested** means a stated gate ran against that exact revision;
+- **product-wired** means a shipping browser invokes the wallet/engine through
+  its production binding, not merely that schemas and screen enums exist;
+- **value-enabled** means spend or marketplace execution gates are enabled;
+- **artifact-published** means a versioned registry, GitHub, or store artifact
+  exists for that source; and
+- **installed-qualified** means that exact artifact passed the stated
+  installed-browser or device scenario.
+
+Under those definitions, the mobile and extension sources are **implemented**
+browser scaffolds and their engine consolidation is tested at the revisions
+stated above. They are not yet **product-wired** to `hns-wallet-rs` or the
+engine's new HNSA/HNSR authority path, their wallet/value/market release gates
+remain false, no wallet ABI artifact is published, and no installed wallet or
+P2P-marketplace flow is qualified. Older public browser/store releases and the
+installed Android debug browser do not upgrade those wallet-specific states.
 
 The dependency direction and authority boundaries are recorded in
 [`CROSS_PROJECT_RECONCILIATION.md`](CROSS_PROJECT_RECONCILIATION.md).
@@ -83,7 +117,11 @@ persisted requester switch starts false/off and requires explicit user opt-in.
 False maps to `Disabled`, true maps to direct-first `Auto`; the browser P2P
 `VERSION` service mask and every provider/output role remain zero.
 
-## Current audit
+## Superseded continuation narrative
+
+The paragraphs in this section preserve the earlier production-continuation
+audit. They are not the current-head ledger; use the 2026-08-10 checkpoint
+above for repository location, push, test, and release status.
 
 The ecosystem is still implementation-in-progress and is not release-ready as
 a whole. Current source heads add self-contained canonical HSD fee policy,
