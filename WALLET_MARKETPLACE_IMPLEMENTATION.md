@@ -1,5 +1,11 @@
 # Wallet and Marketplace Implementation Report
 
+> **Historical implementation report:** This report is scoped to its
+> 2026-08-02 heads. Shakescape mobile `1.0.4` now contains native direct-wallet
+> reads, send review/broadcast, name transfer/finalization, and closed Shakedex
+> offer exchange. Current enablement and remaining provider/cross-chain gates
+> are in [`CURRENT_STATE.md`](CURRENT_STATE.md).
+
 Snapshot: 2026-08-02
 
 Overall status: **production-completion implementation in progress; not
