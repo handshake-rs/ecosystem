@@ -1,5 +1,11 @@
 # Cross-project reconciliation
 
+> **Historical architecture checkpoint:** This document explains the joins and
+> authority separations reviewed through 2026-08-02. The current published
+> dependency graph, native mobile wallet, and opaque swap-relay boundary are
+> reconciled in [`CURRENT_STATE.md`](CURRENT_STATE.md); older blocked/dashed
+> joins below remain evidence for their cited revisions only.
+
 ## Authority and dependency direction
 
 ```text
