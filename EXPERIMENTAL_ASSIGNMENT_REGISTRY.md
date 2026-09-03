@@ -1,44 +1,40 @@
 # Experimental assignment registry
 
-Published canonical V1 source:
+Published Shakescape Experimental V1 source:
 
-- [`handshake-rs/hns-rs/registry/denuo-experimental-v1.toml`](https://github.com/handshake-rs/hns-rs/blob/main/registry/denuo-experimental-v1.toml)
+- [`handshake-rs/hns-rs/registry/shakescape-experimental-v1.toml`](https://github.com/handshake-rs/hns-rs/blob/main/registry/shakescape-experimental-v1.toml)
 
-Published canonical V1 binary:
+Published canonical binary:
 
-- [`handshake-rs/hns-rs/registry/denuo-experimental-v1.bin`](https://github.com/handshake-rs/hns-rs/blob/main/registry/denuo-experimental-v1.bin)
+- [`handshake-rs/hns-rs/registry/shakescape-experimental-v1.bin`](https://github.com/handshake-rs/hns-rs/blob/main/registry/shakescape-experimental-v1.bin)
 
-The local, unpublished V2 candidate is generated at
-`work/hns-rs/registry/denuo-experimental-v2.toml` and
-`work/hns-rs/registry/denuo-experimental-v2.bin`. No remote link is published
-for those files until the candidate is pushed and released.
+The separate HNSR service-profile source and binary are
+[`hnsr-service-profiles-v1.toml`](https://github.com/handshake-rs/hns-rs/blob/main/registry/hnsr-service-profiles-v1.toml)
+and
+[`hnsr-service-profiles-v1.bin`](https://github.com/handshake-rs/hns-rs/blob/main/registry/hnsr-service-profiles-v1.bin).
+Adding a named route does not reinterpret or change the packet-registry
+fingerprint.
 
 Registry fingerprints:
 
-- V1: `95774db08c569b36fa7b7e4a071930f563b7251fc30934ba986732379a6e542d`
-- V2: `734226e866435821e40be7bde85fb19dd6eb867c5620abb8347ac8cd23da4f2c`
+- Shakescape V1: `04fce3f12b717c4254bb66ac07474a6c9f61bd2916efc18ebfc79df82a89a66b`
+- HNSR service profiles V1: `59f47afa6e536afe784ba65823eb1a028fa0ace72d7e721888b4be586a687ad2`
 
 The organization migration changed only canonical source-identity URLs encoded
 in the registry metadata. Assignments, payload limits, meanings, and consent
 defaults are unchanged.
 
-Status: **Denuo Experimental Registry V1 and additive V2; neither is globally
-authoritative or an official Handshake assignment registry.** V2 retains
-every V1 assignment and adds one separately negotiated cross-chain protocol.
-Peers must compare the exact generated fingerprint and may use only the
-semantics present in the mutually selected registry version.
+Status: **Production-supported Shakescape Experimental V1; not globally
+authoritative and not an official Handshake assignment registry.**
+“Experimental” names the private assignment namespace and does not make the
+published parsers or compatibility commitments prototypes. Peers compare the
+exact generated fingerprints and use only mutually selected semantics.
 
-V2 registry/marketplace artifacts were locally qualified at predecessor
-`b66470a6`. Current `hns-rs` source head `4b989aab` retains the later corrected
-marketplace/NameState boundary, canonical HSD fee policy, strict
-TRANSFER/FINALIZE construction, canonical empty offer inventory, and
-listing-independent Shakedex recovery, and adds package-local public assets
-plus deterministic listing/cancellation and recovery-FINALIZE vectors. It is
-unqualified and inherits no PASS from that exact predecessor. The shared 0.2
-packages remain unpublished. No maintained
-node or wallet release advertises protocol `0x0002`; the node's five-role relay
-is a wire-disabled cache/policy core until it pins the released V2 types and
-installs the typed envelope adapter.
+The `hns-rs 0.4.1` publication contains the current registry and protocol
+types. HNSR `0x0004` is an opaque swap-circuit protocol with independent
+named requester profiles; it does not replace the atomic (`0x0001`) or
+cross-chain (`0x0002`) marketplace assignments. See
+[`CURRENT_STATE.md`](CURRENT_STATE.md) for current consumers and product gates.
 
 ## Service bits
 
