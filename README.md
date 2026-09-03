@@ -4,6 +4,11 @@
 
 <h1 align="center">Handshake Rust Ecosystem</h1>
 
+> **Current snapshot (2026-09-02):** See [`CURRENT_STATE.md`](CURRENT_STATE.md)
+> for the reviewed source heads, published dependency cohorts, Shakescape
+> `1.0.x` product boundaries, and remaining qualification work. Dated sections
+> below retain the evidence and reasoning of their recorded checkpoints.
+
 This repository coordinates architecture, source auditing, integration
 testing, qualification, migration, and releases across the
 [`handshake-rs`](https://github.com/handshake-rs) organization. Product source
