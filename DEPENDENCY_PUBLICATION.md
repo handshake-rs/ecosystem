@@ -1,11 +1,18 @@
 # Dependency publication
 
+> **Current publication state (2026-09-02):** `hns-rs 0.4.1` and
+> `hns-wallet-rs 0.2.1` are published cohorts, and the browser products consume
+> exact published protocol/engine/wallet packages. See
+> [`CURRENT_STATE.md`](CURRENT_STATE.md). The candidate sequence below is kept
+> as publication history and does not describe the current registry state.
+
 ## Policy
 
-Cross-repository consumers use exact immutable Git revisions until compatible
-crate releases exist. Release candidates must use one immutable `hns-rs`
-revision or published crate set and must record the registry fingerprint. No
-consumer may silently vendor and modify canonical protocol logic.
+Cross-repository consumers must prefer exact compatible published crates and
+record registry checksums and VCS provenance. An exact immutable Git revision
+is permitted only where no compatible crate release exists and must remain an
+explicit, reviewed exception. No consumer may silently vendor and modify
+canonical protocol logic.
 
 Release progression:
 
