@@ -1,16 +1,21 @@
 # Repository Map
 
+> **Current map (2026-09-02):** The reviewed heads and active dependency graph
+> are in [`../CURRENT_STATE.md`](../CURRENT_STATE.md). The detailed map below
+> preserves the August transition, including then-local origins and blocked
+> joins that are no longer current.
+
 ## Maintained products
 
 | Repository | Responsibility |
 | --- | --- |
 | [`hns-rs`](https://github.com/handshake-rs/hns-rs) | Runtime-independent Handshake protocol, consensus, wire, proof, registry, and role-specific consent types |
 | [`hns-node-rs`](https://github.com/handshake-rs/hns-node-rs) | Standalone node runtime/networking under construction: chain state, storage, synchronization, mining, and RPC |
-| `hns-wallet-rs` (configured `denuoweb` origin; local `main` unpushed) | Unqualified production-completion source for the encrypted Handshake-first wallet, origin-bound Provider schema, private ABI-v2 host/contracts, Shakedex/market state machines, durable Kyoto supervisor, and offline native-ETH/Helios containment; value/product paths remain disabled or unavailable |
+| [`hns-wallet-rs`](https://github.com/handshake-rs/hns-wallet-rs) | Published encrypted Handshake-first wallet packages with native direct-HNS controllers, private provider contracts, closed Shakedex workflows, and bounded cross-chain modules; consumer products retain their own enablement gates |
 | [`MeshMine`](https://github.com/handshake-rs/MeshMine) | Mining overlay, work scheduling, operator UI, and exact external-node consumer |
 | [`hns-dane-engine`](https://github.com/handshake-rs/hns-dane-engine) | DNSSEC, TLSA/DANE, validating resolution, full-host dual-root policy, canonical browser authority lifecycle, and shared observability |
-| [`hns-dane-browser-mobile`](https://github.com/handshake-rs/hns-dane-browser-mobile) | Android/iOS lifecycle, UI, FFI, proxy, store packaging, staged header publication, and shared-engine adapters |
-| [`hns-dane-browser-extension`](https://github.com/handshake-rs/hns-dane-browser-extension) | Chromium MV3 extension, mandatory PAC/proxy, native host, cross-platform Setup, release signing, and shared-engine adapters |
+| [`hns-dane-browser-mobile`](https://github.com/handshake-rs/hns-dane-browser-mobile) | Shakescape Android/iOS lifecycle, authenticated browser, native direct-wallet UI/controllers, FFI, proxy, and store packaging |
+| [`hns-dane-browser-extension`](https://github.com/handshake-rs/hns-dane-browser-extension) | Shakescape Chromium MV3 extension, mandatory PAC/proxy, native host, cross-platform Setup, release signing, and shared-engine adapters |
 | [`hns-dane-crawler`](https://github.com/handshake-rs/hns-dane-crawler) | HSD-derived topology snapshots, stored DNS evidence, readiness queues, reports, and optional live directory |
 | [`hns-dane-bootstrap-generator`](https://github.com/handshake-rs/hns-dane-bootstrap-generator) | Operator-authored delegation, DNSSEC/DS, authoritative DoH, TLSA, verification, and appliance material |
 
