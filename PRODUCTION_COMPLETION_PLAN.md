@@ -1,5 +1,11 @@
 # Production completion plan
 
+> **Plan baseline:** This is the 2026-08-02 production-completion plan, not a
+> current implementation ledger. The published protocol/wallet cohorts and
+> native Shakescape wallet now satisfy portions previously described as source
+> only; unresolved product gates are summarized in
+> [`CURRENT_STATE.md`](CURRENT_STATE.md).
+
 Status date: 2026-08-02
 
 Target state: a production-complete, independently qualified Handshake wallet,
