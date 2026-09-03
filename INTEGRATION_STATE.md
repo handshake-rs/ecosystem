@@ -1,5 +1,10 @@
 # Integration state
 
+> **Superseded current-state header:** The authoritative ecosystem state is now
+> the 2026-09-02 ledger in [`CURRENT_STATE.md`](CURRENT_STATE.md). The detailed
+> August material below is retained as a checkpoint; its heads, versions,
+> publication state, and browser-wallet availability are not current.
+
 Status: **production-completion implementation in progress; not release-ready
 and not authorized for mainnet settlement**
 
