@@ -1,5 +1,11 @@
 # Source audit
 
+> **Audit provenance:** The paths, PDF identity, and repository observations
+> below record the original source audit. For reviewed code heads after the
+> subsequent package and product work, use
+> [`CURRENT_STATE.md`](CURRENT_STATE.md). A newer documentation-only commit does
+> not replace the code-bearing head recorded there.
+
 Audit root:
 `/media/den/DEN_DATA_128/Organized_Backup/Personal/Documents/Projects/Crypto-and-Blockchain/handshake/hns-rust-ecosystem-2026-07-24`
 
