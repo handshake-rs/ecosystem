@@ -1,5 +1,10 @@
 # Reference commits
 
+> **Current ledger:** [`CURRENT_STATE.md`](CURRENT_STATE.md) records the
+> 2026-09-02 reviewed code heads. The tables below are chronological checkpoints
+> and preserve commit-scoped evidence; their earlier “current” labels do not
+> supersede the newer ledger.
+
 ## 2026-08-10 authoritative remote-main checkpoint
 
 This table is the current source-location ledger. It supersedes push/location
