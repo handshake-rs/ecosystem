@@ -1,5 +1,10 @@
 # Remaining gaps
 
+> **Supersession notice (2026-09-02):** The current open-gate summary is in
+> [`CURRENT_STATE.md`](CURRENT_STATE.md). This ledger captures the August
+> release-blocking state; its unpublished `0.2.0`, browser `0.5.x`, and
+> unavailable native-wallet claims have since been superseded.
+
 This ledger is deliberately release-blocking.
 
 Current remote-main basis (2026-08-10): `hns-rs` `a93ba7a`, engine `84005f1`,
