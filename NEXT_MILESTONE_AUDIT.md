@@ -1,5 +1,11 @@
 # Next ecosystem milestone audit
 
+> **Historical milestone sequence:** The entries below end at the 2026-08-02
+> source-only checkpoint. Later package publication, browser `1.0.x`, native
+> wallet, and relay work is summarized in
+> [`CURRENT_STATE.md`](CURRENT_STATE.md); do not use the older “next” labels as
+> the active roadmap.
+
 Last updated: 2026-08-02
 
 Status: successive historical milestones completed; shared proxy-core engine
