@@ -1,5 +1,11 @@
 # Qualification matrix
 
+> **Audit status (2026-09-02):** This matrix preserves the qualification state
+> of its August implementation checkpoint. Several source and publication rows
+> have since advanced, notably the published protocol/wallet cohorts and the
+> Shakescape `1.0.x` native wallet. Use [`CURRENT_STATE.md`](CURRENT_STATE.md)
+> for present status and read each row below only against its cited revision.
+
 Status vocabulary:
 
 - `PASS`: directly demonstrated by retained command/output evidence.
