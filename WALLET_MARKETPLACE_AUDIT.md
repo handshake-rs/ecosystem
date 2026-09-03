@@ -1,5 +1,10 @@
 # Wallet and Marketplace Audit
 
+> **Milestone-zero record:** This audit remains the 2026-08-02 design input and
+> threat/boundary analysis. It is not the current feature inventory. See
+> [`CURRENT_STATE.md`](CURRENT_STATE.md) for the implemented native mobile
+> wallet/market boundary and still-disabled provider and cross-chain joins.
+
 Audit date: 2026-08-02
 
 This audit is the milestone-zero input for the modular wallet, provider,
